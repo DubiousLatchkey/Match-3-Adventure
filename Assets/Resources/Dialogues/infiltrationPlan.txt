@@ -1,0 +1,98 @@
+|main -5 -1,myra -15 -1,pleice 5 -1,catelia 15 -1
+|setBackground StagingArea
+myra:We're clear!
+catelia:That's it?
+skeleton:Gyahhh!
+myra:Not clear!
+main:Remember when I said I said I didn't see many guys on the other side of the portal?
+pleice:Yeah?
+main:I was wrong!  Run!
+???:Intruders!
+ :An alarm bell can be heard ringing through the skeleton encampment.
+catelia:Was that a human voice?
+myra:No time, just run!
+|transition OutsideOfTheCastle
+skeleton:Gyahh!
+catelia:*whispering* Do you think they've given up on finding us yet?
+main:Luckily they're pretty dumb.  I think we'll be fine for now, as long as we stay away from big groups of them.
+myra:That's actually something I wanted to bring up.  These skeletons actually seem very smart.  Usually, to animate something, an animator has to control all the parts individually.  This is definitely NOT that.
+catelia:Well, unless Atheria is hiring thousands of skilled animators and is hiding them somewhere.
+pleice:That... doesn't seem likely.
+catelia:I was being sarcastic.
+myra:This is actually very interesting.  What kind of breakthrough do you think she made?  That human voice from before - were they trying to control the skeletons?  Can these ones respond to audio?  Are they each controlled by some sort of intelligent device?
+main:Let's focus on the problem at hand.
+myra:Hang on, this is actually really interesting.  If one saw us, would it recognize us?  Do they share information?  Do they communicate?
+catelia:These sound like questions to ask Atheria when we see her.  I'm with @main@.  What do we do now that they're alerted to us?
+pleice:A castle of this size would need a staff.  A staff needs resources.  There's probably a town nearby.  I see some buildings over there, so that could be it.
+main:Alright, we can look for a town, bunker down for the night.  Let's -
+myra:Wait, they'll be expecting four people.  We should split up.  Two of us can scout the perimeter, look for ways in the castle.  The others can get a room.
+main:Sounds like you just volunteered to scout.  Who else?
+catelia:I'll go.  I may not know a lot about magic, but I do know about Illis.
+main:Alright.  Pleice, you and I can find the town.
+pleice:Got it.
+myra:We'll meet you at the inn before sundown.
+|exit myra right
+|exit catelia right
+main:Let's hope that really is a town...
+|transition CastleTown
+|translate main -10 -1
+|translate pleice 10 -1
+pleice:I think I see an inn over there.
+main:Nice.
+main:Huh.
+pleice:What is it?
+main:I don't know...  I guess this place just seems a lot more normal than I thought it would.
+pleice:Yeah, I see what you mean.  You'd never guess this place is used by a hostile power for supplies.
+main:You think the people from this town helped attack the city?  I know I heard a voice back at the skeleton staging area, so there are definitely humans in her army.
+pleice:Let's reserve judgement for now and just get a room.
+|transition Inn
+|translate pleice 0 -1
+|enter innkeeper 10 -1
+innkeeper:Hello!  Travelers?  I always know'em when I see'em.  Will you guys be needing a room?
+main:Yes actually, what gave us away?
+innkeeper:C'mon, a town like this?  I know everyone around here.
+pleice:"A town like this?"
+innkeeper:I just mean the size.  Honestly, there wouldn't be anything here without Atheria's business.
+main:What can you tell me about her?
+innkeeper:Atheria?  Not much.  I just deal with her people really.  For all the fancy stuff in their castle, they still need food.
+pleice:What about what Atheria is doing?  I heard about a, um, well, that something big was going on around here.
+innkeeper:I think she's doing something with the skeletons over by her camps.  Oh, right, you might not have seen them.  See, Atheria's a necromancer.  I mean, there are usually a few more skeletons in town, so yeah, it does seem like they're mobilizing for something.
+main:Atheria doesn't tell you guys what she's doing?
+innkeeper:Maybe she tells the bigwigs that run the town, 'cause no one tells me.  I'm sure people will be talking about it in a few days.
+innkeeper:Anyway, that'll be a silver piece per person.
+pleice:We're expecting two more, so here's four.
+main:Pretty cheap for a night.
+innkeeper:I know, right?  I used to run an inn in a town east of here, and the lord would always demand tribute.  For my inn, it was free quartering for his troops.  Ugh.  It just made things so expensive for everyone else.  That's one upside of living here in Atheria's domain.
+main:I suppose skeletons don't really need room and board huh?
+innkeeper:Yep.  Say, you two look hungry, why not get something to eat?
+pleice:Sure.
+innkeeper:Take a table, any open one.
+|displayCG sittingInTheInn
+pleice:Hang on, do you see that cloaked guy back there.
+main:Who?
+pleice:No sudden movements.  I think they're watching us.  Just... act casual.
+main:Does the cloak seem... familiar to you?
+pleice:Yeah...  Wait, remember that mysterious person from the docks?
+main:From when we helped Cat?  Sure...  The one who was going to buy the Illis?
+pleice:I think it's the same cloak.
+main:Holy cow.  You think it was one of Atheria's people buying the Illis?
+pleice:It makes sense I guess.  She would need a lot of it.  I think this one is watching us.
+main:Do you think they're onto us yet?
+pleice:If they aren't yet, they will be when Myra and Cat get back.  How are we going to play this?
+main:We should leave and lure her out back somewhere out of sight.  Then we can "deal with" them.
+pleice:You know, if kill them and no one reports back to the castle, Atheria is going to know where we're staying.
+main:Yeah, but if we let them report back, they're going to know anyways.  Killing them will buy us some time while they figure it out.
+pleice:*Sighs* You're right.  Let's just walk straight out.  I'm sure that'll be suspicious enough for them to follow us.
+main:Alright.  Let's go.
+|exit innkeeper right
+|stopDisplayCG 
+|transition CastleTownAlley
+main:Are they following?
+pleice:I'm not looking back.  We'll alert them!
+main:Whatever, let's just do this.
+main:We know you're following us!
+|enter servant 10 -1
+servant:...
+ :The cloaked figure stops and begins to turn and run
+pleice:Get them!
+|combat spyInCastleTownCombat

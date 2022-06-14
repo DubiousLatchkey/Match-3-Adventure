@@ -1,0 +1,3 @@
+enemy:11 7
+dialogue: lameDuckAdministration
+companion: myra

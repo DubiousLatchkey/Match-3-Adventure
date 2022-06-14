@@ -1,0 +1,6 @@
+How To Play
+basics
+Welcome to the field of battle, where you must manipulate mana to defeat your opponents!
+Each piece on the board can be swapped with it's neighbor to create matching lines.
+When you match three or more in a row, you receive that piece's respective resource.
+For now, focus on sword pieces that deal damage to your opponent.

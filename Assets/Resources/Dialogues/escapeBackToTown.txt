@@ -1,0 +1,20 @@
+|main 14 -1,catelia 7 -1,skeleton -7 -1
+|setBackground GateExterior
+skeleton:Auggh!
+|exit skeleton left
+|move catelia 1 -14 0 1
+|move main 1 -7 0 1
+catelia:Why are skeletons attacking?
+main:We can worry about that later!  Right now we have to get back to the guild!
+ :City guards fall left and right to the oncoming horde.
+catelia:We have to help these people!
+main:Unless we regroup and form a plan, we're done for.  I doubt the two of us are going to hold off this army.
+catelia:But how are we going to get back?  They're already at the door!  We should stay and fight.
+|display redOrb
+ :A few skeletons have already made it past the guards and are heading through the open gate.
+main:Look, Catelia, This came out of nowhere.  The guards are too busy and disorganized right now to fight back effectively.  If we can push through their line, we can at least close the gate behind us, stop more of them from getting through.
+|stopDisplay 
+catelia:...
+main:See that body?  I think that's their captain.  We're the only ones who can do it right now.
+catelia:*Sigh* You're right.  C'mon let's go!
+|combat breakingThroughToTheGatesCombat

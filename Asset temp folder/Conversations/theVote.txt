@@ -1,0 +1,52 @@
+ :In the distance, Duchess Rehnquist hands the royal staff to the Sergent-at-arms.
+@main@:Duchess.
+rehnquist:Marchioness.
+rehnquist:I see you found out about today's resolution.
+@main@:Oh?  I'm just here serving the Empire as a member of Parliment.
+rehnquist:It doesn't matter.  No one will vote to keep the Inquisition around.  Especially considering how aggressively you've been abusing its powers.
+@main@:Abusing?  But I thought that was your intention behind the Inquisition when you put forward the resolution of its creation.
+rehnquist:Exactly.  There's no way the Cordissian faction is going to vote with you against their pocketbooks, and there's no way any of my lords are going to vote for the Inquisition.
+rehnquist:I can see it now.  What a unique show of bipartisan unity.  All will come together to preserve the power of the nobility.
+cordiss:Oh really?
+rehnquist:Cordiss.
+cordiss:Rehnquist.  And of course, the star of today's show, the beautiful @main@.
+ :He leans over and kisses @main@'s hand as a sign of greeting.  Rehnquist's eyes widen.
+cordiss:Well then, I shall see you ladies inside.
+@main@:Beware, pride goeth before the fall.
+ :A messenger bursts in wearing the colors of Marchioness Ellsworth.  They rush to Duchess Rehnquist's side and whisper something in her ear.  The shocked look on the Duchess' face is enough to know what she heard.
+rehnquist:What.  Have.  You.  Done.
+@main@:I don't think I've ever seen you scared before.  
+@main@:You should be.
+
+ :The lords of the Empire make their way into the House chamber.
+ :Duchess Rehnquist looks nervously at the lords around her.  It's clear that she wasn't expecting this many lords to show.
+cordiss:The look on Rehnquist's face is priceless.  Oh this debate is going to be so much fun.
+speaker:Duchess Rehnquist will speak on today's resolution.
+rehnquist:Ah - yes.  Ahem... I stand to ask the question laid before you on the order paper.
+clerk:Resolved, the House must move to revoke resolution 47 titled The Creation of the Mage Inquisition.
+rehnquist:Milords, I stood here mere months ago to warn you of a magical threat like none other.  At the time, it seemed that the best course of action was to create an organization to handle it.  However, it is now clear to me that Marchioness Blair is not suited for this authority.
+cordiss:This isn't like her normal speeches.  She's almost... admitting wrong?  Oh my goodness, is she going to beg us for votes?
+rehnquist:Her abuses of power have left the Inquisition a mere puppet for Blair's schemes.  I've just received word that Marchioness Ellsworth is not able to attend today.  Clearly, this is an attempt from the Inquisition to rob us of our power as nobles.  We must vote now to end this farce.
+cordiss:Milords I object!  The Inquisition's goals are noble, and their leadership decidedly so as well.  I, like all lords of this empire, are more than willing to sacrifice for the sake of the preservation of magic.  It is clear to me that the Duchess is merely acting in her own self-interest, with no regard to the empire she claims to love.
+rehnquist:You hypocrite!  Milords, do you not recall that the noble Duke Cordiss stood here not a year ago denying the legitimacy of Marchioness Blair?
+lords:Hear, hear!
+cordiss:Perhaps at the time I failed to see the noble qualities of the Marchioness, but I have seen the light!  The only hypocrite here is you, who is trying to revoke the resolution she fought so hard for!
+lords:Hear, hear!
+rehnquist:How dare you!
+speaker:Order!  Order!
+rehnquist:Milords, you cannot believe Duke Cordiss!  His lands have been targeted most by the Inquisition.  There is no world where he would vote for his own suffering - clearly he has some scheme in mind.
+@main@:I beg to differ milords.  I thank each one of you who has submit to the authority of the Inquisition - taken on that financial burden for the sake of the mana field's health.  Duke Cordiss has been most generous.  Even after suffering such hardship, he still believes in our noble pursuit.  It is only Duchess Rehnquist who has balked as soon as it was her turn to contribute.
+rehnquist:Listen to this milords.  Cordiss' good friends in the Mages Guild don't even believe the threat exists, and he preaches about how we must all contribute.  The nerve!
+cordiss:Recall, milords, it was the Duchess herself who proposed this idea herself as a magical authority equal to the Mages Guild.  Surely you still believe in the idea that Her Majesty's Government should diversify.
+ :The debate continues as each side continues to accuse the other of hypocracy until...
+speaker:The question being now put, those in favor say "content" -
+rehnquist's lords:Content!
+speaker:Those opposed say "not content" -
+cordiss' lords:Not content!
+speaker:Clear the bar and begin voting procedures.
+ :With dread, Rehnquist stands to have her vote tallied.  On the other side of the bench, @main@ is just as nervous on the inside, afraid she miscalculated.
+ :Duke Cordiss looks positively estatic.  It is clear he is revelling in Rehnquist's suffering.
+speaker:The question is that the resolution be passed.  Milords have voted.  There are 34 who say content, and 35 who say not content.  The not contents have it.
+ :rehnquist rushes out of the room in shame.
+cordiss:Bwahhahahaha!  Now that was satisfying.  I take back anything bad I said about you @main@.
+@main@:I share your relief your Grace.  Thank you.

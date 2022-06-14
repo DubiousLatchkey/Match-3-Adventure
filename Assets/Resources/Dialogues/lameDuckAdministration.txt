@@ -1,0 +1,30 @@
+|main 0 -1,myra -7 -1,pleice -14 -1
+|setBackground warroom
+main:We got her...
+|move main 1 7 0 1
+|move myra 1 7 0 1
+|move pleice 1 7 0 1
+|enter catelia -14 -1
+catelia:Is it over?	
+pleice:Yeah...
+myra:Not yet.
+main:But Atheria's dead.  What else is there to do?
+myra:She may be dead, but we still have to stop all the things in here that are channelling mana.  If she brought the end of magic 2 years closer, there's probably a lot of magic being used around here.
+catelia:I only caught a little bit of your conversation.  What's going on?
+pleice:Well, essentially, Atheria is also worried about the end of magic.
+catelia:Then why did you kill her?
+main:Yeah, but instead of doing things literally any other way, she decided to invade the city with her skeleton army to control the use of magic.
+catelia:Right.  Now what?
+myra:Well, she used so much mana trying to limit the use of mana that we only have until the end of the year before magic is gone for good.
+main:Let's see if we can't get her army to stand down.  Who's even puppeteering all of these skeletons?
+ :Suddenly, the door to the warroom bursts open.
+|move main 1 7 0 1
+|move myra 1 7 0 1
+|move pleice 1 7 0 1
+|move catelia 1 7 0 1
+|enter roxanne -14 -1
+roxanne:Atheria!  Your guards-
+roxanne:...
+ :Her eyes dart from Atheria's body to the gathered four.
+main:Uh... This isn't what it looks like?
+|combat roxanneCombat

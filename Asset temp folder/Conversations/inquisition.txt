@@ -1,0 +1,46 @@
+jay:Now that we've pacified Lady Iredell, what's next?
+@main@:Now we can return to our original mission - preventing the death of magic.
+jay:Ah, you mages have a much better grasp of that than I.
+roxanne:The raid on the slaver camp was a good call.  They just reported in their first profit with 10% the mana usage as before.
+myra:No thanks to some ingenious ideas of yours truly.
+@main@:Thanks Myra.  I think we should put my new title to use.  What can we realistically legislate in Thracia?
+jay:Well what would help?
+myra:In theory, we want to reduce the amount of mana drawn from the mana field.
+catelia:I think Jay and I would prefer the layman's terms?
+gabriella:It basically means cutting back on magic.
+jay:Cutting back on magic?  But that would be a strategic disaster!
+gabriella:Yes, but we're trying to think of ways that we can reduce the amount of mana we channel while maintaining a reasonable standard of living.
+myra:For example.  Some Illis crystals that are mined come with mana in them from nature.  By changing to these crystals for lighting and disposing of them when they run out of mana, we don't have to channel more mana to power the lights.
+myra:Learned that tidbit from the miners.
+jay:Ok, so making the Empire switch to methods that require less channelling magic is better.
+@main@:Exactly.  In theory, we could switch most magically-powered objectsto use precharged Illis crystals.  It just becomes more expensive as a lot more mining is required.
+catelia:Why don't we just decree that you have to use naturally charged crystals?
+@main@:Well, since we are trying to keep in the good graces of our vassals, we don't want to impose anything they won't like too quickly.
+jay:Seeing as you now control the largest Illis mine in Thracia, I can see how this would look like a money grab.
+gabriella:Besides, it's moot if they can just trade for Illis charged by mages outside of Thracia.  The Merchant's Guild will step in.
+@main@:We'll have to deal with them eventually.  They'll swoop in to capitalize on anything that makes channelling mana profitable.
+gabriella:Hey, don't say "deal with"!  That's my family we're talking about!
+@main@:Sorry.
+roxanne:Sounds like we need a higher authority.
+myra:If I were Empress, I would try to slowly switch over to naturally occuring charged Illis, but even with all of the authority in the world, we can't stop individuals from just channelling on their own.
+roxanne:In this theoretical world, you could just ban excess channelling of mana.  Or you could make channelling require a license or something.  It would be enforceable with enough mana field monitoring devices around the Empire.
+gabriella:That's... scarily totalitarian.  Besides, we only really need to get rid of the big actors to keep the field in balance.
+@main@:Right.  Currently, I have to authority to police those inside Thracia's borders, but to get to the wider Empire, we need to some kind of governing body that has authority beyond this region.
+jay:Like an inquisition?
+@main@:Yes... if we could convince Duchess Rehnquist to get the House of Lords to vote to create one, we could slowly bring mana channelling rates down across the Empire.
+catelia:Sounds like the demand for Illis is about to go up.  We should open more mines.
+roxanne:Before I go into how much work that would take, we don't know the location of any other Illis deposits.
+catelia:Then we'll hire some land surveyors.  
+myra:That's actually a great idea.  The profits can fund our inquisition activities.
+roxanne:But how are you going to convince Lady Rehnquist to go along with this idea?
+@main@:Well, given the Mages Guild is in The City, this should hurt Duke Cordiss.
+jay:It would also give her power to police his lands to some extent.
+myra:I think she would like the deniability of it.  She can claim it is for the good of the mana field, which it is, and get some power in the meantime.
+gabriella:Sounds dangerous to mix politics into this.  Isn't that what Atheria did - mix her ambitions into what's right?
+myra:Perhaps, but the real world requires compromises to get anything done.
+@main@:It sounds like our best course of action unless we're going to limit our activities to just Thracia, which is not really enough to stop the coming Death of Magic.
+catelia:In the meantime, we'll try to find some more Illis deposits and get mining started there.
+@main@:Excellent.  Myra, Roxanne, can you help?
+myra:No problem.
+roxanne:As you wish.
+@main@:As for me, it's off to the Captial again...

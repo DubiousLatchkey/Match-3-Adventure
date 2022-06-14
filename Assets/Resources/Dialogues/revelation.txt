@@ -1,0 +1,141 @@
+|main -5 -1,pleice -12 -1,catelia 7 -1
+|setBackground docksNight
+|playMusic Bygone
+main:And stay down!
+exchange member:They got Ephran!  Run!
+|setExpression pleice Pained
+pleice:Phew!
+|setExpression pleice Normal
+catelia:Finally!  This town has put up with the Exchange for too long.
+main:I can still barely believe we did it...
+catelia:Our work isn't done yet though.  Unless we get the city guard to start doing their jobs, they'll just come back.
+main:Right.  You said you were going to pay Captain Cordiss a visit.
+catelia:Hopefully, they see reason, but if not, well, we might have to push a little harder.
+|setExpression pleice Question1
+pleice:That's just a nicer way to say "theaten".  Isn't that a little, I don't know, evil?
+|setExpression pleice Normal
+|setExpression catelia Serious
+catelia:Unfortunately, it's our only option; I'm not about to just let the Exchange walk all over us. Besides, I'd hardly call the guard's ignorance to our plight "good".
+pleice:Couldn't we just get a court audience?  I doubt they'd stand for this neglect either.
+catelia:I tried that.  Unfortunately, House Cordiss had other ideas in mind.  They said they'd "look into it", and nothing happened.
+main:Nobles.  Nothing noble about them.
+pleice:Fair enough.
+catelia:I've got things handled here.  Why don't you two get some rest?  You'll need your strength for when we confront Cordiss tomorrow.
+main:"we"?
+catelia:Sorry, I assume too much.  Listen, you guys were a great help today, and I'd really appreciate the backup.
+pleice:Say no more.  I'm in.  How about you @main@?
+main:Hey, we've come this far right?  I've got nothing against helping the community.  I'm in.  Besides, this is has been the most exciting day I've had in months!  We don't usually get this much combat in guild work, but I already feel better at this.
+|setPrefValue maxRedMana 11
+|setPrefValue maxBlueMana 11
+|setPrefValue maxYellowMana 11
+|setPrefValue hp 105
+|setExpression catelia Happy
+catelia:Great!  Swing by my place tomorrow.
+|transition hallwayMage
+|exit catelia right
+|move main 1 8 0 1
+|move pleice 1 23 0 1
+|enter myra -10 -1
+ :The next day...
+myra:And where are you two heading?
+main:Um... Right, we were going to go over what we are going to be doing before my next test today.
+pleice:Well, we started helping some people yesterday, and...
+myra:Whatever it is, it can wait.  You need to see this.  Now.
+|transition lab
+main:What's so important?  You certainly don't sound like you're talking about the curriculum.
+myra:I'm not.  I did some digging into what you called a vision yesterday @main@, and I don't think it was a vision at all.
+|setExpression pleice Question1
+pleice:Not a vision?
+|setExpression pleice Normal
+main:I definitely did more than just see things.
+pleice:I know visions aren't really scientific, but what else could it have been?
+myra:Well, I have a theory that @main@ was actually transported into the future, if just for a few minutes.
+main:...You're kidding right?
+|setExpression myra Serious
+myra:Not in the slightest.  I went into the archives looking for similar magical accidents and found a few matching your experience.  When channeling a large amount of energy, mages would be engulfed in an explosion.  When awoken, they would claim that they hadn't destroyed the room they were in, after all - they had just been in it.
+pleice:Yeah, but people see a lot of things when they black out like that.
+myra:They were dismissed as hallucinations, but @main@, what you saw was different, right?
+main:Yeah, I was in the ruins of what was, apparently, this building.
+myra:Exactly.  Those researchers who caused those explosions had long tenures.  It could be that they arrived in their own labs later in the future, when everything was fixed.  That would mean-
+pleice:The Mage Guild building is going to be destroyed?  Come on, this isn't really proof.
+msin:I have to admit, this sounds pretty far-fetched.
+myra:I thought so too, except for one detail: @main@, you said you couldn't use magic in the future right?
+main:Well, I'm not saying it was the future, but yeah, I couldn't use magic.
+myra:What if I could prove that magic was disappearing?
+|setExpression pleice Shocked
+pleice:What!?
+|setExpression pleice Normal
+myra:Mana field theory states that magic is drawn though a field of mana that permeates through space right?  In theory, what if we were to draw too much from the field?  No one would be able to conjure magic.
+main:Come on, that's a thought experiment more than anything.  Everyone knows you can't tax the local field too much or you'll lose your mana, but it always comes back.  Can you really apply it to the whole world?
+myra:Well I had to check.  You know our attack detection system on the roof?  They're simple machines that detect magic and let us know if anything goes above a certain point.  Each one is pretty short range so spells in the building don't affect them, so they usually just end up measuring the background magic, but yesterday, they had a huge decrease when you had your incident.
+|setExpression main Shocked
+main:Because of me?
+|setExpression main Normal
+myra:I can't think of anything else.  The line still hasn't recovered, so maybe you channelling so much mana caused a worldwide field reduction.
+pleice:And when it hits zero...
+myra:No more magic.  The detectors are calibrated to what the field is at every day, so no one would notice if it was slowly going down from all the magic use.  I'd have to watch an uncalibrated detector over time for a while to confirm.
+main:Does that mean magic is going to just... go away?  How come no one's noticed?
+myra:For your second question, as long as the field can keep giving mana normally, magic use will be unaffected, but as for the first, I don't know.
+ :Myra gestures to a detector on her desk
+myra:I've set up one of the detectors here.  If this needle goes down consistently over time, we have a problem.
+main:...
+pleice:But none of this explains how @main@ travelled into the future!
+myra:At this point, it doesn't matter if what @main@ experienced was time travel, a vision, or even a hallucination - magic might be going away for good.
+ :@main@ takes a deep breath
+main:So what do we do now?
+myra:Honestly?  I don't know.  This is just a theory, so I'll have to wait a week or so to see if the field is actually weakening.
+myra:Maybe reducing or controlling magic usage?  We know our current magic use rate is unsustainable, so until we can think of a new way to generate mana, I don't know if we even should be channelling mana.
+|setExpression pleice Shocked
+pleice:Now hang on!  No magic?  Even if we were to stop, that wouldn't stop other people from taking advantage of the fact we aren't using magic anymore!
+|setExpression pleice Normal
+pleice:Like that necromancer in the Mirren plains?  Uhh... Ath-something?
+main:Atheria
+pleice:Yeah, that's her name.  The empire can't control her.  Even if we changed the law or something, she's going to keep using magic, I mean, we'd even just be encouraging her to invade us.
+myra:Let's not get ahead of ourselves.  Until the experiment finishes, try not to think too much about it.  Just... go finish helping your friend, and we'll cross the whole "Death of Magic" bridge later.
+|transition doorCatelia
+|exit myra left
+|move main 1 -10 0 1
+pleice:That was...
+main:I know.  Let's just go help Catelia.
+pleice:Hey it might be just a mistake!
+main:Yeah, but I have a feeling it isn't.
+ :@main@ knocks on Catelia's door
+|move main 1 8 0 1
+|enter catelia -10 -1
+|setExpression catelia Happy
+catelia:There you guys are!  I was beginning to think you weren't coming.
+|setExpression catelia Normal
+main:We were... delayed.
+catelia:Oh?
+pleice:It's a long story.
+catelia:Anyway, before we leave for Cordiss' office, I wanted to tell you about the loot from the docks.
+main:Loot?
+catelia:We did interrupt their Illis shipment.  I've got both the crystals, and the coin that mysterious looking guy was going to use to buy it.
+main:Sweet.  Any idea what to do with it?
+catelia:I don't know yet.  I thought I'd give the valuables back to the people they stole it from, but the Illis has been crushed into powder, so that's not really an option.
+catelia:Well, we should get going.
+|playMusic Anodyne
+|transition armoryCordiss
+|translate main 6 -1
+|translate pleice 12 -1
+|translate catelia 0 -1
+|setExpression catelia Normal
+catelia:Captain!
+|enter ilyania -8 -1
+ilyania:You have a lot of nerve coming in here after what you pulled last night.
+pleice:News travels fast doesn't it?
+ilyania:You think that you can just take the law into your own hands like that?  Do you have any idea how bad that makes me look?
+catelia:Hopefully bad enough to force you to do your job for once.  Or at least make you dress the part.
+ilyania:The deals I had with the Exchange kept this district safe!
+catelia:That's one hell of a claim to make when I'm the one actually out there keeping the peace!
+ilyania:I've told you before that your little neighborhood watch is not authorized to-
+catelia:Especially when you're taking a cut of the profits.
+ilyania:...
+ilyania:Who told you about that?
+main:Shut the exchange down.  We've already done half the work for you.
+ilyania:No.  That's enough, I'm shutting YOU down.
+ :Captain Cordiss gestures to the guards near her
+ilyania:You two, escort these ladies off the premises.
+catelia:I'm not going anywhere until you give me your word that you'll mop up the rest of the Exchange.
+main:Looks like we're going to have to do this the hard way.
+|combat guardCombat

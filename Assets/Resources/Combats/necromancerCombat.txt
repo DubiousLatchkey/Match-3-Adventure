@@ -1,0 +1,3 @@
+enemy:13 0
+dialogue: announcementOfIntent
+companion: myra

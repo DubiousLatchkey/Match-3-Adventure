@@ -1,0 +1,35 @@
+@main@:What are the most recent reports from the Inquisition?
+catelia:We had a few field disturbances from in Thracia, but when I took the Inquisition forces there, they quickly agreed to start only using precharged Illis.
+@main@:Excellent.  How has this affected field decay?
+myra:According the most recent measurements, it's having some effect, but not as much as we'd hoped.
+@main@:What seems to be the issue?
+myra:Well, the Inquisition's authority is respected in Thracia, as well as in some of Duke Cordiss' lands, but as long as we don't go after Duchess Rehnquist's lords, they'll try to sell recharged Illis on the black market.
+catelia:What we're seeing on the ground is that a lot of the Illis is being sold after their natural charge has been consumed to Rehnquist lands, where mages there are recharging them and reselling them there.
+@main@:Hmm... We thought this might happen, but I didn't think it would be a problem to such an extent.
+myra:The free market is a powerful force.  As long as it's cheaper to recharge Illis than buy more naturally charged Illis, people will try to fill the gap.
+@main@:Have you tried to take down these rechargers Cat?
+catelia:Yes, but they've all relocated to Rehnquist lands now.
+@main@:It may be time to assert the power of the Inquisition as it was written in law now.
+gabriella:We're going after Duchess Rehnquist?
+@main@:Well, not after her directly, but we have to at least target her lords' use of Illis.
+roxanne:Are you sure about this?  This is an irreversable course.  As soon as we start going after Lady Rehnquist, she'll have the Inquisition's authority revoked and probably invade us.
+jay:If we're going to start policing her lands as well, we should choose our first target wisely.
+@main@:Right.  I'd imagine we'd want to cripple Lady Rehnquist's military as much as possible to prevent a quick military response.  We may be able to fight in the House of Lords, but I don't think we can stand up to the might of the Imperial army on our doorstep.
+myra:Do you have a plan for winning in the House of Lords?
+@main@:I've got an idea.  Duke Cordiss and Duchess Rehnquist hate each other right?
+gabriella:Yeah, so?
+@main@:I'm sure Lord Cordiss would love to see Lady Rehnquist brought down a peg.  Rehnquist's majority in the House is slim.  With the Thracian Lords, plus his own, we would only have to sway a few others to maintain the Inquisition's authority.
+roxanne:How many exactly?
+@main@:We'd have to ask the Duke himself that.
+catelia:Switching side huh?  You are devious @main@, and I mean that as a compliment.
+roxanne:It seems feasible.  This way we could reduce mana channelling throughout the empire and finally bring the mana field back to normal levels.
+jay:Who's the first target then?
+@main@:When the House was debating my legitimacy, Duchess Rehnquist mentioned a Marchioness Ellsworth that was in charge of a number of her forces.
+jay:That sounds right to me.  I think I've heard of her before.
+roxanne:Now hang on.  We have a considerable army now with the new conscipts, but definitely not enough to face the Imperial army head on.  Besides that, we'd need a lot more cannons to seige such a fortified target.
+@main@:True.  Though we don't know exactly what we're up against when it comes to Ellsworth.  While we send scouts, we should meet with Duke Cordiss and request more seige armaments.
+myra:I think I could get you a meeting.  I've talked with one of his advisors on behalf of the Mages Guild before.
+catelia:I doubt he'd refuse a meeting from the Inquisition, even if to just to yell at us.
+gabriella:I don't know.  How receptive of us will he be?  I mean, we are pretty aggressively going after his lords.
+jay:We're betting that he's petty enough or at least hates Lady Rehnquist enough that he'll take any chance to hurt her.  When it comes to nobles, that's almost always a sure bet - which is a big problem with the system we have actually.  I think there should be a system of governers and councils who -
+@main@:Focus Jay.  Let's keep this hush-hush.  We can't have Duchess Rehnquist making any preemptive actions.

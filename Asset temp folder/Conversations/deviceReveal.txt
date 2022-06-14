@@ -1,0 +1,50 @@
+jay:Milady, do you feel well?
+@main@:No, but what is it.
+jay:We've taken the Guild.  We'll try to put it back together starting tomorrow.
+@main@:That's... good.  I... need to be alone right now.
+jay:I understand, milady.
+
+ :@main@ contemplates in her bed as Jay stands outside.
+ :She cries, but is interrupted by a noise from outside.
+ :Someone bangs at the door.  Their voices, although muffled, are heard inside.
+jay:What are you doing!  I told you she is not to be disturbed!
+roxanne:She needs to see this!
+jay:Can't it wait until tomorrow's meeting?
+roxanne:Look!
+ :There is a silence.
+jay:Milady, you need to see this.
+ :@main@ dries her eyes and steps outside.
+@main@:What!
+roxanne:Look!
+ :She holds forth a mana field detector.  In an instant, the gravity of the situation dawns on @main@ as she sees the needle visibly dropping.
+@main@:Fetch the others.  Now.
+
+catelia:What's the big idea people?  I was in the middle of debriefing some of the soldiers!
+ :Her eyes fall on the table to see the device.
+catelia:Not again!
+jay:Again?
+myra:The last time we saw this happen, it was when Atheria opened her portals to invade the city.
+roxanne:Portals take a lot of mana to channel, but we're the only ones who know how to make them.
+myra:I can't think of anything else that could cause this... what about you roxanne?  You're the mana field theory expert here.
+roxanne:Besides portals, there are some experimental things we tried that could do this, but they're so esoteric that I don't believe any of them could cause this.
+catelia:Isn't the answer simple?  Someone is channelling a butt-ton of mana.
+@main@:We can do the same thing we did then - locate the source.  That should narrow things down at least.
+myra:Right, Jay, can you hand me that detector over there?
+jay:Uh sure.
+myra:Roxanne, hold the other one.
+roxanne:Ah, I see what you're doing.
+myra:Ok, the field is clearly stronger on Roxanne's than on mine.  The source of this is coming from this side of the room... which is...
+catelia:North.  It looks like its a little to the west too.
+myra:Ok, what's in that direction.  Obviously The City -
+@main@:It's the Mage's Guild.
+roxanne:That makes sense, but what could they possibly be doing there?
+myra:I have no idea.
+@main@:Well I'm not sitting here and waiting to find out.  We need to get to The City, and we need to get there now.
+roxanne:You know, the portal we opened to the north side of the City was never closed...
+@main@:That's amazing.  We should probably get the Inquisition ready too.
+catelia:And I had just sent a bunch of them to the barracks...  I'll muster who I can, and we'll meet you on the other side.
+jay:We're still missing a part of the plan.  What are we going to do once we get to The City?
+@main@:I'm going to talk to Duke Cordiss.  I suspect he might know something.
+myra:Really? Why?
+@main@:Last time I talked to him, he said Oleron was also worried about the end of magic, but from the perspective of internalized mana theory.
+myra:Hmmm...

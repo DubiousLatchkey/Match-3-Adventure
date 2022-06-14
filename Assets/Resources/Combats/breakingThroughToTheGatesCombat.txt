@@ -1,0 +1,4 @@
+enemy:9 -1
+enemy:9 1
+dialogue: closingTheCityGates
+companion: catelia

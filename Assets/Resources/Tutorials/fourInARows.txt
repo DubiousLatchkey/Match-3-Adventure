@@ -1,0 +1,4 @@
+Four or More in a Row
+fourInARows
+When you match four or more pieces in a row, you will get an extra turn to move.
+Your opponents can take extra turns as well, so make sure you get them!

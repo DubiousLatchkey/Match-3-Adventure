@@ -1,0 +1,72 @@
+|main -7 -1,myra 7 -1
+|setBackground SundownOutsideTheCastle
+|display PrePortal
+main:Holy cow, it worked!
+myra:Can you see through it?
+main:No, but I can still feel it somehow...
+myra:We need to direct it into the castle.  Try and orient yourself.
+main:This is VERY strange.  I can sort of sense where mana is being drawn from I think?
+myra:Pleice!  Cast a spell!
+pleice:What spell?
+myra:Anything.  We just need to see if @main@ can see it through the portal.
+pleice:Okay.
+ :@main@ sees a flicker of light light up behind her.
+main:I see it!  Hang on, if that was you casting something...  Well I can feel a lot of magic that's coming from that way, so that must be the castle, right?
+myra:Maybe?  Try and move the portal exit to it.
+main:Alright, here we go...
+|display CastlePortal
+catelia:Wow.
+main:I don't know how long this thing is going to last, so if we're going in, we're doing it now.
+myra:Nothing ventured,
+main:Nothing gained.  Let's go!
+|transition controlRoom
+|stopDisplay 
+|enter pleice -14 -1
+|enter catelia 14 -1
+ :As the group enters the room, the portal vibrates violently before collapsing.
+main:Phew, that was close.
+catelia:Shh!  Look!
+ :The four draw their attention to the person floating in the middle of the room.
+pleice:What?  Who... Myra, what are we looking at here exactly?
+myra:I don't know.
+ :She approaches the person.
+main:Careful!  You might wake them!
+myra:They seem to be totally unresponsive.
+myra:Hello?
+ :She waves her hand around the body's glowing eyes.
+myra:Nothing.
+catelia:I don't know what you guys were expecting in the castle, but I sure wasn't expecting whatever this is supposed to be.
+pleice:Are they... ok?
+main:First things first.  Let's be a little quiter.  We don't want to alert Atheria's people.
+catelia:Where are we?
+myra:Well, we're definitely in the castle, but I have no gauge as to where in it we are.
+main:Then that's our first task.  Let's find where we are, and where Atheria is.
+|transition CastleChamber
+main:That's a weird sense of vertigo.
+pleice:Yeah, I certainly don't feel like we went up a floor.
+catelia:Ok, so if we're here on the second floor, Atheria's chambers should be somewhere around here, right?
+myra:Yes, but she could be anywhere.  She might not even be in the castle right now.
+main:That doesn't seem right.  She wouldn't lock herself out of her own castle.
+myra:Good point.
+catelia:What time is it?  You think she's eating?
+pleice:I think I have a way to find out where she is.  Let's just ask that maid over there.
+main:Wait, what?
+pleice:Hey!  Excuse me!
+|exit pleice left
+main:Did she just do what I thought she did?
+catelia:I think so.
+myra:Well, I guess the staff wouldn't have any reason to assume we're enemies.
+main:I guess...
+|enter pleice -14 -1
+main:Any luck?
+pleice:She said Atheria's in the war room.
+catelia:Huh.  That was easy.
+myra:I've been in the castle's war room in the city.  It was ground level, so I think we may be able to say the same for this castle.
+main:Then let's find a staircase.
+|transition outsideTheWarRoom
+main:Two guards at the door.
+pleice:We could just pull the same trick and just ask to speak to Atheria.
+catelia:Yeah, but then we'd have to deal with two more guys when we confront her.
+pleice:Right.
+main:Then let's deal with them now.
+|combat warroomGuardsCombat

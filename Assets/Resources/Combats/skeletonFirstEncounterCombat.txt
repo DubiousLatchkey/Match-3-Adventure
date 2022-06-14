@@ -1,0 +1,3 @@
+enemy:9 0
+dialogue: escapeBackToTown
+companion: catelia

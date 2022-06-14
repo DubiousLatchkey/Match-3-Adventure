@@ -1,0 +1,5 @@
+enemy:5 -1 mercenaryExchange
+dialogue: meetingTheCommunity
+companion: pleice
+tutorial: castingSpells
+tutorial: multipliers

@@ -1,0 +1,3 @@
+solo: 30 Magical Shield
+dialogue: thePortal
+tutorial: basics

@@ -1,0 +1,4 @@
+enemy:4 -1 mercenaryAtherian
+dialogue: wakingUp
+tutorial: opponents
+tutorial: fourInARows

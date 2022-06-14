@@ -1,0 +1,129 @@
+|main -5 -1
+|enter mercenaryAtherian 5 -1 generic raider
+|setBackground testingHallRuined
+|playMusic Anodyne
+main:Hyah!
+ :@main@ attempts to cast a spell at the raider, but nothing happens...
+main:But why?
+raider:What, you trying to cast magic?  That's rich.  
+raider:Agh!
+ :The raider's sword lands directly on @main@'s head
+main:No!
+|transition lab
+|playMusic Sunset Meadow
+|exit raider right
+|translate main 12 -1
+main:What?  Owwww my head...
+|enter pleice 0 -1
+|setExpression pleice Happy
+pleice:Oh my gosh!  You're awake!
+|enter myra -12 -1
+myra:How do you feel @main@?
+main:Like I just got hit in the head with an axe.
+|setExpression pleice Pout
+pleice:I'm just glad you're ok.  That explosion was huge!
+|setExpression main Question1
+|setExpression pleice Normal
+main:Explosion?
+ :Pleice and Myra look at each other.
+|setExpression pleice Question1
+pleice:The explosion you caused in the testing hall?
+|setExpression pleice Normal
+main:I have no idea what you're talking about.
+myra:Tell me what you remember.
+|setExpression main Normal
+main:I was... I was trying to break that barrier by overwhelming it, and then... um...
+|setExpression main Question1
+main:There was a light? I...I was somewhere else.
+|setExpression main Normal
+myra:Right, that light you saw was the barrier collapsing and, well, exploding.
+main:You look fine though.
+myra:The council is always shielded during magical tests in case something like this happens, but I don't think anyone expected this kind of damage.
+main:I do feel better at chanelling mana.
+|setPrefValue maxRedMana 10
+|setPrefValue maxBlueMana 10
+|setPrefValue maxYellowMana 10
+|setPrefValue Enflame 6
+|setPrefValue Fiery Transfusion 6
+ :@main@ now has access to spells!
+ :Spells can be cast on your turn by paying their mana cost.
+|setExpression main Question1
+main:Wait, "this kind of damage"?  What happened to the testing hall? I didn't destroy it, did I?
+myra:Afraid so.  Your spell blew the side of the building out.  It's still standing, but no one is going to be using the hall for a while.  Or the adjacent rooms for that matter.
+pleice:Hey, look on the bright side!  At least no one was hurt!  It's usually pretty sparse this time of day anyways.
+|setExpression main Pout
+main:Except me.
+|setExpression main Normal
+pleice:Yeah... Except you don't look burned or anything - you or your clothes
+myra:The physician said you didn't have any shrapnel wounds either.  Did you shield yourself in time?
+main:No I... It was like I wasn't even there.  It was still the Mage Guild, but everything was... different.
+|setExpression myra Serious
+pleice:Different how?
+main:Everything was destroyed, basically rubble.
+|setExpression pleice Question1
+pleice:You... had a dream?
+main:No.  It was so real.  I met someone, they mentioned raiders and booked it.  Those raiders, they found me and...
+ :@main@ rubs the sore spot on her head
+main:Yeah!  I was hit right here!  I woke up right after that.
+|setExpression pleice Normal
+|setExpression myra Question1
+myra:What are you trying to say?  That you had a vision of some sort?
+|setExpression myra Normal
+|setExpression main Question1
+main:I guess?  It was so much more than just seeing though.  It was like I was there, just after an apocolyptic event happened.
+|setExpression main Normal
+pleice:Wow.
+main:We'll talk about it later.
+ :@main@ stretches her arms out
+main:I feel like I've been lying down for a while.   How long was I out?
+myra:A few hours.  You look all better now though.
+|setExpression main Normal
+main:I guess I am.  I don't feel hurt anywhere.  Even my head seems fine now.
+pleice:You mean like it was hurt in a vision and you weren't actually hurt?
+|setExpression main Serious
+main:Yeah...
+|setExpression main Normal
+myra:Let's hope things go more smoothly next time.
+|setExpression main Shocked
+main:Next time?  You mean I failed?
+myra:Unfortunately, though you did technically obliterate the barrier, the Archmage believes that accidentally destroying the testing hall demonstrated *ahem* "A level of magical control unsuitable for guild membership".
+|setExpression main Serious
+main:Heh, sorry about that.
+|setExpression main Normal
+myra:Don't worry.  The Archmage isn't too mad all things considered.  You have, after all, proven your magical strength at least.  The council is willing to give you another test during the next exam period.
+main:Which is...
+plaice:In about six months.
+|setExpression main Shocked
+main:Six months!?  Dang.
+|setExpression main Normal
+myra:Yeah, the schedule is pretty set in stone already, but hey, it's not like we have the facilities to test you again right now.
+main:...Right.
+myra:Relax, we'll talk more about what we'll do for the next six months tomorrow.  In the meantime, what you said about your vision has me intrigued.  I'm going to do some research.
+|setExpression pleice Happy
+pleice:Bye Myra!
+|setExpression pleice Normal
+|exit myra left
+main:Now what?
+pleice:Well, I did order a cake to celebrate your acceptance, but...
+|setExpression main Happy
+main:I guess we'll just have to pretend to have a good reason to treat ourselves.
+|setExpression main Normal
+pleice:I guess so.
+|transition alley
+main:So where is this cake?  I'm starving.
+|setExpression pleice Shocked
+pleice:Right, you missed dinner!  Geez, I totally forgot!
+|setExpression pleice Normal
+pleice:It's right down this alley, I know this great place-
+|playMusic Flesh & Bones
+|enter mercenaryExchange 10 -1 generic thief
+|move main 1 -10 0 1
+|move pleice 1 -10 0 1
+thief:Well what do we have here?
+|setExpression pleice Angry
+pleice:Not one of you guys...
+|setExpression main Serious
+main:Please, we're guild apprentices, you don't want to hurt yourself.
+thief:I think I know exactly what I'm doing.  They give you apprentices all this expensive equipment before you know how to use it!  You're begging to get robbed.  What say you just pay your dues to the Exchange huh?
+pleice:Don't say we didn't warn you.
+|combat exchangeThiefCombat

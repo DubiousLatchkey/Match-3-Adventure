@@ -1,0 +1,4 @@
+enemy:10 0
+enemy:10 0
+dialogue: meetingAtheria
+companion: catelia

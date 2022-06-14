@@ -1,0 +1,25 @@
+jay:What's our next course of action milady?
+@main@:I tried to convince him, but he just wouldn't listen.
+roxanne:Shall I ready the troops?
+@main@:...Yes.
+catelia:It's too bad Gabby won't be with us.
+myra:Are you ready to face her in battle @main@?
+@main@:No.
+@main@:Regardless, we can't stop now.  We're so close...
+jay:What is our plan of attack?  This isn't another castle - we'll be in the city fighting in streets.
+@main@:We want to minimize the possibility of interference from the populace.  We also don't want the capital guard trying anything.
+roxanne:I'll send word to Duchess Rehnquist so the guard won't interfere.
+jay:We can form a perimeter around the Merchant's Guild building to keep any civilians out.  This will also have the benefit of keeping Lord Duvall in.
+@main@:Those sound like good plans.
+jay:What then?  Should we just send the troops in through the front door?  It will be a killbox.
+roxanne:If what we seek is the destruction of the Merchant's Guild, may I recommend burning the building down?
+jay:Interesting idea.
+myra:I disagee.  If we want to make sure the Guild keeps its authority, just with us at the helm, we need a working bureaucracy to control the merchants selling Illis.
+@main@:I think Myra's right.  If the Guild loses authority, the merchants will just sell the recharged Illis no matter what we say.  The benefits of being in still have to be greater than not being in after the ban.
+roxanne:I see.
+jay:A frontal assault it is then.  We'll fight any forces the try to field on the outside, break down the door, and search the premises for the Baron.
+@main@:We'll need to keep the clerks alive.  Remember, we aren't destroying the Guild, just taking it over.
+roxanne:It's like our calling card now.  We don't destroy, we just control.
+catelia:@main@, are you going to take part in this assault?  I can't imagine it will be easy if you have to fight Gabby.
+@main@:I have to.  If anything, because she's there.  If I can't stomach my own beliefs, what right do I have to lead?
+myra:Well spoken, but it is still tragic it has come to this.

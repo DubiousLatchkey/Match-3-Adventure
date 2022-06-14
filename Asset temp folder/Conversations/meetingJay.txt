@@ -1,0 +1,43 @@
+roxanne:Marchioness Blair, I presume?
+@main@:Heh.  The name... still doesn't feel real.
+gabriella:Well, welcome to the aristocracy!
+roxanne:I didn't think it was even possible for a commoner to ascend to nobility.  I guess I don't really know much about court politics.
+gabriella:Well my father did it, but even with his considerable wealth, he only managed to get an barony.
+roxanne:Really?  I wonder how many times this has happened...
+roxanne:In the meantime, I think you have your first duty to preform as Marchioness.
+@main@:Really?  What's going on?
+roxanne:A knight showed up earlier requesting an audience with the new lady of the castle.
+@main@:But we've only just arrived back from the ceremony!
+gabriella:Ah, the responsibilities of the nobility.  My father goes to soooo many meetings.  I'll tell you that I'm not looking forward to that when I become the next Baroness Duvall.
+@main@:Alright, I'll meet him.
+
+ :A knight in full armor stands in courtyard.  When he sees @main@ approach, he kneels.
+@main@:...
+@main@:Oh!  You may rise Sir...
+jay:Jay.  I wish to swear myself into your service milady.
+@main@:I can't say that's what I was expecting to hear.  Tell me more about yourself.
+jay:I was a knight of Countess Iredell.  I've defected here to join your cause.
+@main@:Iredell...  Wait, but as one of my vassals, why would Lady Iredell oppose your service to me?
+jay:She does not recognize you as the rightful Marchioness, milady.  She is already beginning to muster forces against you.
+@main@:If you knew about my ascension before my own ceremony and began travelling here before it even happened, surely you know the reasons for the... um...  controversy surrounding me?
+jay:Frankly milady, I don't give a damn.
+@main@:Excuse me?
+jay:Apologies for my language, but I did not come here because I believe you are some lost child of Marquess Blair, but to make a difference.
+@main@:A difference.  That is what I've always wanted to do as well.
+jay:Well milady, I think you're doing an excellent job of that already.
+@main@:Oh?
+jay:Your ascension as a commoner of no status is the first of its case I've heard of, and I hope it isn't the last.  I first heard of your exploits when you freed the slaves at the Mirran Mine.
+jay:I was actually tasked with retrieval of the slaves, but I am no slaver.  I wish for a world where the Empire is a fairer place where abhorent practices like slavery are nonexistent and commoners have a chance to rise above their station.
+@main@:And so you have come to me.
+jay:Yes.  My former lady wishes to end your rule immediately, but I believe that you are the greatest hope for the Empire in this generation, and I will not bear arms against it.
+@main@:Wow.  You would betray your lord just to follow your ideals?  How can I be sure you won't do it again with me?
+jay:Do you seek a fairer world my lady?
+@main@:Yes, but that wasn't the reason I sought a title.
+jay:What was your reason? Power?  I-
+@main@:Not power.  Listen.  The way we are using magic now is straining the mana field.  If the Empire continues like this for much longer, magic will die.
+jay:I can't say I follow.  My expertise is in military strategy, not magical theory.
+@main@:Unless we can get enough influence to change magic policy throughout the empire, magic will cease to be.
+jay:Truly?
+@main@:That is what we here at Castle Blair believe.
+jay:Very well.  As long as you serve for the betterment of the people, I will serve you.
+@main@:As you wish, Sir Jay.  I accept you into my service.

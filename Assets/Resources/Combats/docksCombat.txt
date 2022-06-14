@@ -1,0 +1,5 @@
+enemy:5 -1 mercenaryExchange
+enemy:6 -1 mageAtherian
+dialogue: preExchangeBossFight
+companion: pleice
+tutorial: weapons

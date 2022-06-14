@@ -1,0 +1,64 @@
+@main@:Operationally, how are we going to do this?
+roxanne:The scouts say the camp is minimally staffed with some troops set up to prevent a revolt.
+catelia:Ok, that sounds good.
+myra:Hang on, there's got to be a catch.  Other slave installations have been taken down by abolitionists in the countryside - why wouldn't they target this?
+roxanne:Well, the camp is easily defensible.  The whole place is walled off, and there are watchtowers so we won't be able to sneak inside.
+catelia:Illis is too economically important, I guess.
+@main@:Ok, then we'll have to plan to break through the gates.
+myra:Any mage should be able to take it down given time, but the delay means they'll be waiting for us on the other side.
+@main@:Anything else?
+roxanne:That should be everything if we're just going for a frontal assault.  We'll start by trying to take down the watchtowers, and then go through the gate.
+@main@:Then let's move out.
+
+ :A bell sounds from one of the watchtowers
+catelia:Sounds like they've seen us.
+@main@:Then we'll reply in kind.  Attack!
+
+### fights ###
+
+roxanne:There!  Looks like the leader by his armor!
+@main@:Alright, I'm going after him!
+slavedriver:Who do you think your messing with?
+@main@:Someone worth killing.
+
+slavedriver:Ack!  My lord ... will have ... your head!
+slavedriver:Ugh.
+ :He collapses to the ground.  Nervously, the soldiers around him begin laying down their arms.
+catelia:Looks like it's over.  What are we going to do with these guys?
+@main@:We're not just going to kill everyone.  Have them round up their wounded and leave.
+catelia:Roger that.
+slaves:We're free!
+ :Shouts of happiness ring out from the enslaved people throughout the camp.  One of them steps forward.
+slave:One of your men said you were the leader here.
+@main@:That's right.  I'm @main@.
+slave:Why did you free us?  We're nobodies here.
+@main@:Ah, well, in addition to the immorality of slavery, we're here to make sure too much magic isn't channelled.  Er, long story short, use too much magic, and there will be no more forever.
+slave:If you say so.  Wait, does that mean you're going to shut this place down?
+@main@:That was the plan...
+slave:You do realize that most of us were prisoners of war right?  There's no way we'll make it back to our homes without being hunted down.
+@main@:I see...
+slave:I'm sure some of us want to join up with you or whatever, but unless you can pay and feed us, freedom is just going to mean death for us.
+myra:Ah the tragedy of conquest.  Whenever you take someplace over, its problems become your problems.
+@main@:Myra!  Any ideas?
+myra:Well, we should be able to offer some of these people employment.  If we're going to keep making raids like this we'll need a larger army.
+@main@:Sounds expensive...
+slave:You do know that you're standing on one of the region's biggest nest eggs right?
+@main@:Yes, but Illis mining not only uses a lot of mana, but also contributes to the channelling of more throughout the rest of the empire.
+myra:True, but now that we're in charge, we can run this place ethically and use as little mana as possible in mining.
+slave:That sounds like a lot of manual labor.  You know this place isn't set up for that, right?
+@main@:Is it possible?
+slave:Probably, but it will take some time.
+@main@:Hmm...Well, as long as we can make enough to keep the people fed and mana channelling to a minimum.
+myra:I'll stay around to see what we can do about that.  This is a very intersting problem, and I'm fascinated at what we may do to solve it.
+roxanne:Hey @main@, are you busy?
+@main@:Just finishing up over here.
+ :@main@ nods to myra who goes with the slave's leader to begin taking stock of the situation.
+roxanne:So, some of these guys want to join us.
+@main@:Ah yes.  I heard this may happen.  How many can we afford to take in?
+roxanne:Well, with our budget, we can take a few dozen to cover our losses from Atheria's invasion, but I have another idea as well.
+@main@:What is it?
+roxanne:The castle town is pretty sparse, so I think a population injection of laborers could really help our own supply base and tax revenue.
+@main@:Interesting.  We could mark out some land near town for them.
+roxanne:Exactly what I was thinking.  Now, technically we don't own any of this land, but we are and have been the defacto lords of this corner of Thracia.
+@main@:Well, if we can get some people a new start, I'm all for it.
+roxanne:Excellent.  I'll start rounding up our forces to return to Castle Blair.

@@ -1,0 +1,4 @@
+Spells
+castingSpells
+You now have access to spells!  When you have the mana for one, you can tap it to cast it!
+Press and hold a spell to see what it does.  You can also do this for your opponents' spells.

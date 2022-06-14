@@ -1,0 +1,28 @@
+@main@:I can't believe we pulled through...
+catelia:Yeah, I didn't think we'd be able to repel a real army.
+roxanne:Hardly an army - more of a show of force.
+@main@:Well they succeeded on that front.
+myra:I don't think he expected this much resistance, after all, Atheria is gone now, and there are no more skeletons.
+gabriella:Will he be back?  I hope we can get right with the Guild before he decides to come back in force.
+myra:I don't like our chances.  Duke Cordiss is good friends with Oleron, so if the Duke wants his land back, I don't think Oleron is going to stop him.
+@main@:Are we supposed to fight the entire Imperial Army next time?  Roxanne, surely Atheria had a plan for this.
+roxanne:Well, we had a skeleton army that deterred things like this, but I take it that that's off the table.
+@main@:If only we could legitimately possess this land even if Duke Cordiss wants it from us.
+gabriella:Buying the land is out of the option.  I mean, there's no way Marquess Blair would just give up his lands to us, even for money.
+roxanne:Well...
+@main@:You have an idea?
+roxanne:You told me Atheria was trying to get Marquess Blair title, right?  How would that have worked?
+myra:I'd imagine with Duke Cordiss out of the picture, Duchess Rehnquist would basically control all of the House of Lords, and then she'd be able to do whatever she wants.
+@main@:Well, even with him still around, we're no friends of Duke Cordiss.  Maybe she'd be willing to back us in opposition to him.
+myra:The enemy of my enemy...
+catelia:Ok sure, but how exactly do we, you know, ask?
+gabriella:We'd have to get an audience with her court.  Actually, I think I've been to Duchess Rehnquist's court before... yeah, when I was a kid.  My father had some business with the Duchess.
+roxanne:Ah, he's the head of the Merchant's Guild, right?
+gabriella:Yep.
+@main@:Do you think you could get us an audience?
+gabriella:It shouldn't be that hard.  People go all the time to settle disputes and such.
+roxanne:Sounds like it's settled.  The only question is who's going?  It's a few days on horseback to the capital.
+@main@:Right, maybe just Gabby and I will go.  The rest of you can stay here and hold down the fort, so to speak.
+catelia:We do need to repair the damage from the trebuchets...
+myra:And there's still the issue of getting the former slaves settled on land near here.
+gabriella:Right, then we'll see you all in a few days!

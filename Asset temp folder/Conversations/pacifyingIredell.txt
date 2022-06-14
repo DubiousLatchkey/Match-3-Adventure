@@ -1,0 +1,84 @@
+@main@:Roxanne, what do the scouts have to say about Iredell's castle?
+roxanne:It seems like hitting her Illis supplies has helped.  There is no sign of a magical barrier around the castle.
+jay:How does lack of Illis mean no magical barrier?  Illis isn't consumed when we channel mana into it.
+catelia:Each time you charge a crystal, it seems to harm it.  The amount of mana able to be stored in it each time decreases unless re-refined.
+jay:I see.  So without a fresh supply, Lady Iredell can't keep up her barrier engine.
+myra:Large magical devices tend to go through Illis very quickly.
+@main@:So with the barrier down, how are we going to actually take the castle?
+jay:Without a 3:1 men advantage, I don't see us building seige ladders and taking the castle conventionally.  If we can manage to entrap them, I estimate victory in a mere 4 months.
+@main@:4 months!?
+jay:If we intercept enough food smuggling, I believe we could even starve them out in half that.
+gabriella:I wasn't expecting it to take so long...
+catelia:Yeah, what's the big idea?  Let's just storm them like we usually do!
+jay:Laying seige to a castle is very different from attacking a loosely organized fort.  They have defenses all along the walls, so the few men we can get onto them will be outnumbered and surrounded.
+catelia:Let's just bust down the doors then!
+myra:I don't think anyone here knows how to build a battering ram - or seige ladders for that matter.
+roxanne:We could use the cannons we stole from Lord Cordiss.
+jay:You have cannons!?  You should have told me this earlier!  This totally changes the equation.
+gabriella:Really?
+jay:They truly are a wonderous new invention.  No castle is safe from them.  I have heard stories about Lady Rehnquist's campaigns where she brought down walls within minutes.  How many do you have?
+@main@:Two.
+jay:Er, well they should do the trick.
+catelia:Awesome.  I'd rather not wait outside a castle for 4 months.
+@main@:How do these things work?
+myra:From what I understand, they use the fact that charged Illis powder, when struck, creates a large explosion.  That is then used to push a metal ball at high speeds into walls.
+@main@:I suppose it's lucky we have an Illis mine.  If we only used the naturally charged crystals, we should be able to use them without harming the mana field.
+roxanne:Hang on, we're also going to need cannonballs.  The few we found at Duke Cordiss' camp are not going to be sufficient.  I'll contact our town blacksmith about it.
+catelia:I can take charge of grinding the powder.  I used to do that all the time at my shop!  I'm going to need a few helping hands though.
+jay:I would also like to take the time to prepare the cannons to continue drilling with our troops.  I know they were successful at taking the Exchange's fort, but I need more time to train them.
+@main@:Sounds like we've got our work cut out for us.  Let's do this people!
+
+@main@:Are you sure you know how to aim these things?
+jay:In theory...
+@main@:Well I don't think more finagling with those sights is going to do anything.  Let's just test fire them.
+jay:Test fire at the enemy?  As soon as we start firing they are going to start preparing defenses!
+catelia:Bah.  You said yourself that we're out of archer and mage range.  C'mon, I'm getting antsy just waiting around here!
+gabriella:I'd prefer we be sure before we set off explosions meant to bring down walls.
+roxanne:The troops are ready regardless of the cannon situation.  No time like the present.
+myra:As much as I'd prefer to be cautious about these cannons, I can't wait to see what they look like in action!
+@main@:We're already in position.  Let her rip!
+jay:As you wish milady.  3... 2... 1...
+ :A deafening blast makes the group each take a step back as the cannons fire.  While one seems to have hit its target, the other buries itself at the base of the walls.
+roxanne:Reload!
+ :A number of soldiers quickly refill the cannons with Illis powder and load additional cannonballs into the barrels.
+ :Meanwhile, jay rearranges the sights on the cannon, trying to adjust for where they landed.
+@main@:Fire!
+ :As the hammers hit the Illis, twin bellows of purple flames once again erupt from the cannons.
+ :This time, they both hit.  Small figures in the distance scramble to react.
+@main@:Once the walls come down, we charge.
+ :Several volleys later...
+gabriella:My ears are starting to hurt...
+catelia:Come on!  How much more can they possibly take?
+roxanne:Fire!
+ :Another salvo is sent hurling to the walls of Castle Iredell.  However, this time something different happens.
+myra:Wait!  Look!  The walls are coming down!
+ :In the distance, a large section of the wall collapses, leaving behind a large opening.
+@main@:Finally!  Sound the attack!
+ :A horn sounds above @main@'s troops as they begin their advance to the new opening in the wall.
+
+
+### combats here ###
+
+@main@:Yield!
+ :Iredell lies defeated on the ground as @main@ stands above her.
+iredell:Never!
+ :@main@ lowers her staff to Iredell's head, preparing another spell.
+iredell:Gah!  Fine!
+ :She looks to her attendants nearby who have been watching in shock.
+iredell:Call for them to lay down their arms!
+ :A shocked attendant bolts out of the room.
+iredell:There!  It's over.  I suppose you are going to kill me now?
+@main@:Do you really think me so malevolent?
+iredell:All you do is take what you want.  You don't deserve any of this.  You took Marquess Blair's title, his lands... why not my life?
+@main@:And what did you do to deserve these lands?  Be born?  I worked to get here!
+iredell:Foolish peasant!  You have no idea what it's like to be me!
+@main@:Perhaps.  But now that you have nothing you know what it's like to be me.  I could kill you know and absorb your lands into my own, but If you were to swear loyalty to me I'd reconsider.
+iredell:...
+@main@:Ah, die living a life of nothing or do whatever you have to to make an impact.  That was the decision I faced living as a commoner in a back country farm.  I don't think you want to die, do you?
+iredell:No...
+@main@:Then what's it going to be?  Death or loyalty?  Don't make we wait forever here.
+iredell:Damn it!  Damn it all...
+iredell:I pledge my loyalty to you, Lady Blair...
+@main@:That wasn't so hard!  Now you vote with me and with Duchess Rehnquist on the House of Lords.  Don't worry, I'll try to make your reparations bearable.  I would prefer these lands be profitable after all.
+iredell:...
+@main@:Believe me.  I seek what is best for Thracia and the Empire.

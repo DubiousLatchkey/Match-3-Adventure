@@ -1,0 +1,17 @@
+|main -5 -1,pleice -12 -1,catelia 6 -1
+|setBackground docksNight
+|playMusic Flesh & Bones
+main:We got them!  1 shipment of magical crystals stopped.
+pleice:How's Catelia?
+|setExpression catelia Angry
+catelia:Argh!
+|enter mercenaryExchange 12 -1 generic Boss
+boss:Ha!  C'mon Catelia, haven't we been through this before?  You can't stop us - the Exchange is going to be the controlling influence in town whether you like it or not!
+|setExpression main Serious
+main:Not if we have anything to say about that!
+boss:Please!  You're telling me you two going to take me down?  Me?  Don't make me laugh.
+|setExpression catelia Serious
+catelia:Careful, he's strong.
+boss:Well if that ain't the understatement of the year.  None of you are walking out of here - not after what you've done!
+main:Right back at you.
+|combat exchangeBossCombat

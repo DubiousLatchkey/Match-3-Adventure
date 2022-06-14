@@ -1,0 +1,30 @@
+@main@:So Roxanne, would you give us a breakdown of our current situation?
+roxanne:The Illis mine to the north of us is expecting a delivery of slaves.  Without the money from the sale, we can't pay off our mercenaries.  We have some spare funds from taxation, but they won't last us very much longer.
+myra:Wow, you tax the people here?
+roxanne:Like I said, we're basically an independent earldom.
+gabriella:How long will the money last?
+roxanne:Depending on how long we stretch them out, maybe 2 months.
+catelia:I think I can help with that.  When we fought the Exchange in the city, we interrupted a sale of Illis to, uh, here.  We can use that money to help fund us.
+roxanne:You mean return the money you stole from us.
+@main@:The important thing is that we're all on the same side now. Will it help?
+roxanne:Yes, but it will only cover, say, 2 weeks of operating costs.
+@main@:So we need a way of generating income, but we also need to stop the Death of Magic at the same time.
+myra:Well what are our assets?
+roxanne:Besides the mages, mercenaries, and the castle, we have control over some of the lands around this castle.  We also have the equipment that armed the skeleton army we used to attack the city.  I've already sent some people to try and recover as much of it as possible.
+gabriella:How about let's not plunder the countryside.  I'm sure we can find an someone that it would be right to attack and plunder that also channels a lot of mana.
+roxanne:Not including the Mages Guild, the target we've always wanted to attack the Merchant's Guild.  After all, they control the distribution of most magic supplies.
+gabriella:What!  We can't do that!  That's my family!
+roxanne:Oh... would that make you Lady Duvall?
+gabriella:Technically.  Just call me Gabriella, please.
+@main@:She has a point though...  hmmm.  Any other ideas?
+catelia:The Exchange deals in Illis throughout the Empire.  I'm sure they're active in... Er, where exactly is this castle, anyways?
+roxanne:We're in the Themata of Thracia.  We've dealt with the Exchange's ilk before, but have no knowledge of where they're based.
+myra:I don't think any of these solves the underlying issue though.  Most mana channelling goes to fuel our mana-powered cities.  Any individual use pales in comparison.
+roxanne:We could go against the mining of Illis directly.  The miner that wanted slaves from us could be a good target.
+@main@:Hmm, a natural rights violator and threat to the mana field.  Sounds like a good target.  We could free the slaves there as well!
+myra:Generally people don't take too kindly to you taking their "property".
+gabriella:And slavery is still very popular among some people in power.  I know my father is still in support of it.
+myra:Yes, it does make Duchess Rehnquist's expansionist military campaigns more lucrative.
+@main@:But they're rich, use a lot of mana in the Illis mining process, and they supply the demand for Illis, which people channel mana into to power cities.
+myra:It will definitely be impactful.  Can we do it though with Atheria's, I mean, our forces?
+roxanne:I'll send some scouts to check the place out.  This could be a good idea.

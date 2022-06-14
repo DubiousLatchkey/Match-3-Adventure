@@ -1,0 +1,2 @@
+solo: 50 Magical Shield
+dialogue: assaultOnTheControlRoom

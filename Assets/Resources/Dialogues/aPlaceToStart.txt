@@ -1,0 +1,42 @@
+|main 0 -1,roxanne -14 -1,catelia 7 -1,pleice -7 -1
+ :The crowd gazes nervously as the mage falls.
+roxanne:Listen, everyone!  Do not lose sight of our goal!  Atheria may be gone, but the end of magic remains a threat!
+ :Unease amongst the mages turns to a grudging accceptance as most are too hungry and tired to complain.
+ :The mercenaries seem unsure you'll pay them, but they seem appeased enough by your promise for now.
+main:Everyone... um... Just resume your standard duties.  I'll work with Roxanne to see what we'll do next.
+ :The crowd gives no reaction.
+main:Dismissed!
+|transition warroom
+|enter myra 14 -1
+main:That... could have gone better.
+ :@main@ does a double take at the bodies on the floor.
+main:I forgot we left these bodies here.
+pleice:We should give them a proper burial.
+roxanne:I'll have the staff clean this place up.
+ :She sighs
+roxanne:I kind of expected a violent reaction from Powell, but if he was the only one, I think we'll be fine.
+myra:I think it went well for what is essentially a coup.
+catelia:Hey, we're totally justified here.
+pleice:I suppose, but they seem like good people, and it's just too bad that it had to come to blows.
+roxanne:I appreciate your thought, but "those people" are now "us".
+pleice:You're right.  I think WE can really take this organization in the right direction.
+catelia:Speaking of which, what are "we" called?  What kind of organization are we?
+myra:That's a good question.  From what we can gather, Atheria seemed to govern the castle town and sought Duke Cordiss' title.  Is this place an earldom like you said it was like Roxanne?
+roxanne:Not officially.  This castle used to belong to Marquess Blair, but we liberated it a few years ago.  He was one of Duke Cordiss' lackeys, and the Duke tried to retake the castle, but we stopped him.  Now we're in this gray area where we hold territory but have no legitimacy.
+roxanne:However, without our skeleton army, our negotiating position is severely weakened.
+pleice:We won't need them if we do this the right way.
+roxanne:That sounds very naive.  Unless we can get some kind of backing from the lords, we're basically just waiting to be taken over.
+myra:I can try and negotiate with the rest of the Mage's Guild Council.  If we could get this place sanctioned by the council, we would be fine, but I can't see them agreeing to this, and I doubt the people here will be very happy with that.
+catelia:All of this politicking is exhausting.  Can't this wait until morning?
+main:Cat's right.  Let's handle this in the morning.
+roxanne:I would like to get the castle organized before talking next steps.
+ :She gazes at the bodies in the rooms
+roxanne:And get THIS cleaned up.  How many other people did you kill?
+main:No one!
+roxanne:How is that possible?
+myra:We reverse-engineered your portal spell and portalled in.
+roxanne:Not even going to think about the mana field implications of that right now, but... thank you for not killing everyone you saw.
+roxanne:Talk to the staff about getting some rooms.  They were left over from Marquess Blair, and our little coup didn't seem to affect them in the slightest.
+|transition warroom
+ :The next morning...
+main:

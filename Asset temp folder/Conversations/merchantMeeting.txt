@@ -1,0 +1,36 @@
+@main@:Baron Duvall.
+duvall: Marchioness Blair.  Your reputation preceeds you.
+@main@:Does it?
+duvall:Well of course.  You've been causing quite the commotion after your meteoric rise to power.
+@main@:Then I can imagine you know why I'm here.
+duvall:Yes.  My daughter has made quite the case for you.
+@main@:Thanks Gabby.
+gabriella:Don't mention it.
+duvall:However, I'm afraid I can't abide by the Inquisition's request for me to enforce non-sale of recharged Illis.
+@main@:I see.  And why is that?
+duvall:The Guild must take neutrality with what our merchants are selling.  That's the whole purpose behind the Guild - to protect trade, not restrict it.
+@main@:And what of the mana field?
+duvall:While I wouldn't dream of condoning the sale of recharged Illis, I cannot take action against those who do.  It's just not my business.
+@main@:Besides the fact that it is literally your business, I'm sure you don't think it's because of all of the merchant's we've found selling it.
+duvall:What can I say?  It's a very profitable trade these days.  If only someone would stop enforcing all of these trade restrictions.  Listen, the Merchants Guild isn't going to budge on this issue, and that's final.
+@main@:Gabby?
+gabriella:While I don't agree with it, I... will defend it.
+@main@:...
+duvall:All of you lords are the same.  You think land and soldiers gives you power?  No.  Money is power.  You can't fight the tide of the market my friend!
+@main@:Listen closely Baron.  You and I both know that magic will cease to be channellable if magic use continues at modern rates.  I'm asking that you help stop that, even if it costs you a little bit of the share you get from their sales.  Is that so much to ask?
+duvall:Maybe magic will die, maybe it won't.  I don't care - I'll be rich either way, so if the end is coming, I rather meet it with a bigger pile of gold.
+@main@:But think of how the economy will shrink if you don't act now.  It will be good for you in the long run, trust me.
+duvall:Will it?  Only channelling will be affected so any naturally charged Illis will still work.  To me it sounds like the only people that are going to be affected are you mage eggheads.
+@main@:And isn't your daughter one of them?
+gabriella:Don't use me as a prop for your argument, @main@.
+duvall:Exactly.  I'm set either way.  I always play both sides because I intend to win.
+@main@:I didn't want to have to say this, but if you do not comply, I will be forced to march here with the Inquisition's army and exert our rightful authority.
+duvall:Ha!  You aren't the first to have tried.  You know why no one in your House of Lords legislates against the Merchant's Guild?  If they did that, they'd lose their fortunes immediately.
+@main@:You'll find my interests are beyond money.
+duvall:Perhaps, but can you say the same for your precious Inquisition?  People have to get paid Blair, and if I raise prices for you and your subjects... well, you can kiss your newfound power goodbye.
+@main@:That won't be an issue when nothing stands of this institution.
+gabriella:@main@, please don't...
+duvall:I dare you to try.  My mercenaries are Osmani.  I'm sure you've heard the stories about them, right?  They'll stop any force dead in its tracks.
+ :@main@ stands to leave.
+duvall:Leaving already?
+@main@:It's clear we have nothing more to discuss.

@@ -1,0 +1,75 @@
+ :As the last mage falls, @main@ notices another person stumble out of the smoke.  It seems like the fire is finally spreading inside.
+@main@:Roxanne!
+roxanne:Milady?
+@main@:How's the mana field?  Is the device destroyed yet?
+roxanne:Not yet, we're still seeing a decrease.
+@main@:We need something more destructive.
+roxanne:An explosive spell?  That would take up most of the Illis we have left here.
+@main@:Stop the firebombing, we're putting all our chips on this one.
+roxanne:As you wish.
+roxanne:Mages! Ready Devastation Wave!
+ :The Mage Corps troops immediately switch scrolls and begin casting.
+@main@:Aim for the atrium.  That's got to be the only room big enough to hold a machine that big.
+roxanne:Fire!
+ :The mages unleash their spell towards the largest room of the Guild.  Flaming debris shoots out in all directions as the shockwave hits.
+@main@:Did that do it?
+roxanne:Yes!  The dial is steady.  We did it!
+ :There's a commotion as Jay can be seen leading a group of Inquisition soldier around to the back of the building.
+@main@:What's going on over there?
+ :Her question is suddenly answered as a horse-drawn wagon comes barreling past them.
+@main@:This can't be good.
+
+@main@:Jay!  Report!
+jay:It's Oleron!  He's got something in the back of the -
+ :His response is abruptly cut off as the world goes white for a second, and @main@ loses all hearing.
+ :She turns around to see a secondary explosion rising from the rubble of where they destroyed the device.  The lighning mixed in signals it was a magical explosion.
+@main@:Augh.
+@main@:Was that the device exploding?
+roxanne:It must have been.
+jay:Listen!  Oleron is getting away and he's got something on the back of that wagon of his!
+roxanne:Another device?  Or part of one.
+@main@:I'm going after him.
+roxanne:How?  He's on horseback!
+@main@:You there!  Citizen!
+ :A man is trying to get a hold of his horse as they were clearly startled by the explosion.
+@main@:In the name of the Inquisition and the nobility, relinquish your horse!
+citizen:Are you crazy?  No - Augh!
+ :@main@ doesn't let him finish, unleashing a spell from her staff and taking the reins as his body slumps off.
+roxanne:I see...
+
+ :@main@ follows the path Oleron took, her lack of cargo allowing her to catch up.
+@main@:Oleron!  In the name of the Inquisition, Cease!
+Oleron:Not to s madwoman like you!
+@main@:Damn it!  Cease and I may spare you!
+
+ :After a brutal fight, a visibly weakened Oleron loses control of his horses.  The side of his wagon hits the side of a building, breaking something structural.
+ :The cart collapses as the horses run off, no longer restrained.  @main@ dismounts to view the wreckage and a dying Oleron.
+oleron:Why?  I was trying to save us...
+@main@:So am I.  What is this you took with you?
+ :@main@ moves closer to inspect what is clearly a magical device.
+oleron:It's... the core...
+@main@:Of the device we blew up?
+oleron:Yes... When it became unstable, we had to... get it to safe...ty.
+@main@:Why would you build this?
+oleron:We needed... to fuel... the Source...
+ :A light starts emitting from the damaged device.  It start vibrating.
+@main@:What's happening?  What it doing?
+oleron:What it was... designed to do...
+@main@:Channel mana?  Uh oh.
+ :The device starts glowing brighter and brighter.
+@main@:Take this!
+ :She attempts to cast a spell, but nothing happens.
+@main@:Its already drained all the mana in the area... No... Nooooo!
+ :She attempts to get close to the device, but is driven back by a burning sensation.
+@main@:Nooooooo!
+ :The device begins to shake itself to pieces until... Nothing.
+ :...
+@main@:What... happened?  I can't feel...
+ :Her hands move to her face.  She feels nothing until a sharp pain indicates she has been badly burned.
+@main@:Aaaaaah!
+ :She surveys what she can from the ground.  Oleron is there, clearly dead.  What remains of the device sits in front of her.
+@main@:Please work...
+ :@main@ attempts to cast the most basic light spell, but when she goes to channel the mana, there is no response.
+@main@:No...  All of... my work...
+@main@:Just to... fail?
+ :As collapses once more into unconciousness, her last sensation is of her compatriots rushing to her side.

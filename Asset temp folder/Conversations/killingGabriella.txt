@@ -1,0 +1,45 @@
+catelia:Perimeter secured, @main@.
+jay:The main force is ready.
+@main@:Begin the assault!
+
+### fights here ###
+
+duvall:Are you mad @main@?  What are you doing!
+@main@:Weren't you the one who dared me to attack you?
+duvall:I didn't think you'd actually do it!  Insane!  The history you are destroying here stretches since before the Empire!
+@main@:Yeah, yeah.  If you really cared so much, you would have submitted to my authority.
+duvall:Over my dead body.
+@main@:That's the idea.
+
+### fight with Duvall ###
+
+duvall:Augh!
+ :He falls to the ground, dead.
+gabriella:No!  Father!
+@main@:It's over, Gabby.  We don't have to fight.
+gabriella:We don't have to fight!?  You come here, kill my father, and say we don't have to fight?  You understand nothing.
+@main@:There's been enough death today.  I don't want to fight you.
+@main@:Look.  We've taken over the building.  There's no point in fighting anymore.  We can work together again!
+gabriella:I can't believe you @main@.  I always knew you were ambitious, but I can't believe you would go this far.
+@main@:You know my "ambitions" are to save the world.
+gabriella:As everyone's are.  I think I understand what Countess Iredell, Marchioness Ellsworth, and Duke Cordiss all felt.
+@main@:What do you mean?
+gabriella:The feeling when someone takes everything that matters to you, and then asks for your help.  Maybe some of them felt differently, but I, for one, can't believe your arrogance.
+@main@:Don't do this Gabby.  Don't you believe in our cause?
+gabriella:I have no choice Marchioness Blair.  You killed my father, prepare to die.
+@main@:Then you have chosen your fate, Lady Duvall.
+
+### fight with Gabriella ###
+
+gabriella:Ah!
+ :Gabriella falls to the ground, her wounds mortal.
+gabriella:Was I still... holding back?
+@main@:It didn't have to be this way...
+gabriella:Heh.  You might... be able to fight without mercy... but clearly... I can't...
+gabriella:Ah...
+ :Gabriella's final breath is exhaled as a tear rolls down @main@'s cheeck.
+soldier:Milady, the building is secure.  I see you've handled the Baron.
+@main@:I suppose I have...
+soldier:Milady?
+@main@:It's nothing.  Deliver the news to Jay.  He'll give you your next orders.
+soldier:As you wish, milady.

@@ -1,0 +1,45 @@
+|main 0 -1
+|setBackground hallwayMage
+|playMusic Philosopher's Demise
+main:*inhales and exhales*
+|setExpression main Normal
+main:Any second now...
+|enter pleice 10 -1
+|move main 1 -10 0 1
+|setExpression main Shocked
+pleice:Hey @main@!
+main:Ahh!  You surprised me Pleice!
+|setExpression main Normal
+pleice:Well aren't you nervous.
+main:Of course I am!  They're going to call me in any minute now!
+|setExpression pleice Happy
+pleice:Calm down!  Being nervous isn't going to help anything.
+|setExpression main Pout
+main:Easy for you to say!
+|setExpression main Normal
+pleice:Yeah yeah, just teasing.
+|setExpression pleice Normal
+pleice:Anyway, that's why I'm here.  They're ready for you now.  Good luck!
+|setExpression main Normal
+main:Breathe in, and..... out
+|transition testingHall
+|exit pleice right
+|move main 1 0 0 1
+|setExpression main Normal
+main:Alright, here we go...
+ :The mages present at their desks turn to face @main@.
+|enter oleron 7 -1
+|enter myra 14 -1
+oleron:@main@, you stand before this council today to requesting full Mage Guild membership.  Guild membership is not something we take lightly; as a mage of our order, your actions would reflect on this council as well as the rest of the guild.
+myra:Yes, yes Archmage.  As @main@'s mentor, I can assure you that she is well aware of the responsibilities membership brings.
+oleron:Very well Myra.  @main@, Myra has vouched for your magical abilities since your apprenticeship began, but the council still requires a test before we can allow you to join us.
+myra:Call it a formality.
+oleron:Formality or not, the test is a tradition - one every one of us has taken, and one that each prospective mage will for a very long time yet.
+oleron:But I digress.  @main@, are you ready?
+main:As ready as I'll ever be.
+myra:Have a little more confidence!
+myra:So, the test is a simple one - break this barrier.  This is a test of problem solving as much as it is one of your magical abilities.
+ :A wall of light springs to life in the center of the testing hall.
+oleron:I've not gotten the opportunity to see you at work @main@.  I'm looking forward to seeing your thought process.
+main:Breathe in, and... out
+|combatDirect examCombat

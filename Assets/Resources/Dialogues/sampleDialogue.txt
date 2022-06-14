@@ -1,0 +1,54 @@
+|main -10 -1,pleice 10 -1
+main:This is a sample piece of dialogue.  This line is short and will fit in one textbox.
+pleice:This is another sample piece of dialogue.  This line is long and will have to be fit onto multiple textboxes.  Therefore, the system needs to figure out how to automatically kern between 2 textboxes and break the lines accordingly.  I think it will either check against some sort of character count and then go back to the last word or just crop to the nearest sentence.  Both seem ok, so I'll need to to more research to see what looks nice.
+|move main 1 15 0 1
+main:Look at me!  I've moved to the right 15 units!
+|move main 1 -10 0 1
+main:Look at me!  I've moved to the left 10 units!
+|move main 1 5 0 1
+main:Look at me!  I've moved to the right five units!
+pleice:This is a piece of dialogue that references @main@ as a variable
+|setExpression main Angry
+main:Hey!  I don't want to be referred to as a variable!
+|move main 1 -10 0 2
+|move pleice 1 -10 0 1
+|setExpression main Normal
+pleice:Lol I moved to near where you were.  I'm also going to say some more things so it's easier to test this behavior with click interruption.
+main:Aaaand, when you move to this line of text, the move continues, because there is a time in lines of 2.
+pleice:Only when you see this text does the animation snap to the finished position.
+pleice:Anyway, I'm going to exit the scene now
+|exit pleice right
+|move main 1 10 0 1
+main:And I'm back to where I was.  This is testing to see if the fade out is awkward or if it justifies a new type of command
+|enter pleice 10 -1
+pleice:Ahah!  I'm back!
+pleice:Now for the facial expressions test
+|setExpression pleice Angry
+|setExpression main Angry
+main:Angry
+|setExpression pleice Happy
+|setExpression main Happy
+pleice:Happy!
+|setExpression pleice Question1
+|setExpression main Question2
+main:What?
+|setExpression pleice Serious
+|setExpression main Serious
+pleice:...Seriously?
+|setExpression pleice Serious
+|setExpression main Serious
+main:Oh yeah
+|setPrefValue maxRedMana 11
+|setPrefValue maxBlueMana 11
+|setPrefValue maxYellowMana 11
+|setPrefValue hp 105
+|setPrefValue Amplifying Staff 1
+main:bt dubs, I just improved my max mana and health and learned Amplifying Staff
+main:Alright, swap time
+|swap main pleice
+main:I wonder how that looked.  Let's try from offscreen
+|moveTo main 2 25 -1 1
+main:Ok now that I'm offscreen
+|swap main pleice
+pleice:tadaaa
+|combat TestCombat

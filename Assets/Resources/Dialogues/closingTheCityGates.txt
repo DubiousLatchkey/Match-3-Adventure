@@ -1,0 +1,194 @@
+|main 14 -1,catelia 0 -1
+|setBackground GateInterior
+main:We're through!  Close the gates!
+|move catelia 1 -4 0 1
+catelia:Help me with this winch!
+main:No time, just cut the rope!
+guard:Wait for us!
+ :Catelia hesitates, and turns to see a guard desperately running to the gates while others attempt to fight back.
+catelia:What do we do?
+main:We have to keep them out right?
+catelia:That'll doom the ones still outside!
+main:I don't know!  Keep on the winch - I'll try to get them back inside!
+|move main 1 -28 0 1
+main:Get in before we close the gates!
+ :The panicked guard make it through just as the ones behind him are cut down.
+catelia:Hah!
+ :Catelia cuts the rope.
+ :With a roaring thud, the portcullis crashes into place.
+guard:They're all... dead...
+ :The skeletons hack at the gate to no avail.
+|move main 1 14 0 2
+|move catelia 1 11 0 2
+main:I think that'll hold them off - for now anyway.
+catelia:You think this is the cause of the strange readings?
+main:Looks like it.  Let's get back to Myra and Pleice.  They need to know what happened here.
+|transition Lab
+|enter myra -14 -1
+|translate main 7 -1
+|translate catelia 14 -1
+myra:Something's got the people outside all up in arms.  What did you two do?
+main:Nevermind that, the city was attacked by an army of what looked like animated skeletons.
+catelia:It was like they came out of nowhere!  We were taking the measurements when a whole horde of them suddenly appeared!
+myra:Really?  Out of nowhere?
+main:Yeah.  I think this army might be the cause of the dips in mana field.
+myra:I don't think so.  Animation may continuously use magic, but animators usually leave an Illis source on whatever they are animating so they don't have to keep channeling mana.
+|move main 1 -7 0 1
+|move catelia 1 -7 0 1
+|enter pleice 14 -1
+pleice:Guys! The north side of the city was just attacked by skeletons!
+myra:The north side too?
+pleice:Yes!  They came out of nowhere!  I helped some of the guards there, but I had to leave my sensor behind.
+myra:I don't think you'll need it.  I have a feeling I know what caused the dips from earlier.
+main:Really?
+myra:Well, it's just a feeling, but I theorized earlier that @main@ was teleported into the future.  If she created a portal through time, it should be also possible to make a portal through space.
+catelia:You got teleported in to the future @main@!?
+main:It's a long story...
+pleice:Myra, are you saying these skeletons arrived via portal?
+myra:Exactly.  I can't think of anything else that could so drastically affect the mana field from so far away.
+main:Hang on, that's not even theoretically possible.  If we're the only empire with magic, who could possibly have made such a breakthrough?
+myra:Someone with the skills to animate an entire army of skeletons.
+main:Good point.
+catelia:Do you think it could be Atheria the Necromancer?  I've heard some pretty scary stories the dead rising in the Mirren plains.
+main:And those storm clouds over the castle in the south?  Is that hers?
+myra:Let me check a map.
+pleice:Don't worry Catelia, technically necromancy isn't anything more than animating a dead body, usually a skeleton.  It just happens to be really creepy.
+catelia:That... doesn't sound much better.
+myra:Got it!  That's definitely her.
+myra:If you saw storm clouds gathering over the castle... Heh, it's still an unexplained phenomenon of intense magic use, but I think it helps prove mana field theory, you see -
+main:Let's get back to reality for a second here.  We don't even know there is a portal.
+myra:Likely multiple, given the surprise attack from multiple angles of the city.
+pleice:We should tell the rest of the mage council.  We can get backup and attack them through their own portal!
+myra:*Sigh* I doubt the rest of the council is going to believe any of this without at least being able to see the portals, but I don't think we can get access to the portals without actually leaving the city.
+catelia:And getting trapped outside.  I see.
+pleice:Then what do we do?
+main:Then we go ourselves.
+pleice:Are you sure?  There might not even be any portals.  This whole thing sounds absurd.
+catelia:I dunno, I've seen magic do some pretty crazy stuff.
+myra:It may be all the same to you, but to those who've studied magic - Well, let's just say we're working in the realm of some not widely accepted theories.
+main:Well, they may not be widely acccepted, but that's why Atheria got exiled from the Mage's Guild in the first place right?  Wasn't she a proponent of mana field theory?
+pleice:I'm pretty sure her trying to kill the council was the bigger concern.
+myra:It is true that her exile made mana field theory pretty unpopular.  The council is pretty firmly in the Internalized Mana camp even today.
+main:The thing is, she may have been right on the mana field thing, and I think today proves it.  If the council won't help us, and the army is busy keeping the skeleton army from getting through the walls, we need to act.
+myra:I agree that we need to do something.  I'll try and convince the council to commit some resources.  We'll probably have an emergency meeting later today to assess the situation and decide a course of action.  In the meantime, you all should prepare for a fight.  Meet me at the south city gate at first light tomorrow.
+|exit myra right
+pleice:Wow, so we're really doing this huh?
+catelia:Not just helping my district this time, but the whole city.
+main:Alright, let's make a stop at the guild armory.
+|transition Armory
+|translate main -7 -1
+|translate pleice 0 -1
+|translate catelia -14 -1
+main:Let's see what we've got here...
+catelia:Is this ok if I'm not a guild member?
+main:Technically, we can't even be here if we're not on an official guild mission, so I think we're all bending the rules a little today.
+pleice:Check out these scrolls.  I think they've got some useful spells written on them.
+main:I think I'll take a staff as well.
+|setPrefValue Precision Strike 6
+|setPrefValue Crimson Staff 2
+ :You've gained a new weapon and spell!
+catelia:So anyone can use one of these scrolls to learn spells?  I've always thought learning would be cool.
+pleice:What we call a spell is really a series of mental actions that manipulate mana, so these scrolls help us remember the order of those actions.  Technically, you don't need them at all.
+main:Yeah, but you have to learn what those elementary actions are first before being able to read what any of this means.
+catelia:Well I can barely read in the first place, so I think that's a moot point.  Maybe after this is all over you guys can teach me magic.
+main:Assuming magic still exists after this.  Atheria's spells are really taking a toll on the mana field.
+pleice:Yeah, you'd think as a believer in mana field theory she would have thought about how much she's taxing it right now.
+main:Alright, if we're ready, I think the only thing to do now is wait.
+catelia:We should get some rest.  This day has been much more than I bargained for.
+pleice:Catelia, if you feel this is too risky, I completely understand if -
+catelia:No.  This is the right thing to do.  I'll be there tomorrow.
+|transition GateInterior
+|exit pleice left
+|exit catelia left
+|translate main 7 -1
+main:Man it's early...
+|enter pleice -7 -1
+pleice:Hey @main@!  Ready to take down some bad guys?
+main:Ready as I'll ever be.  This is so different from doing patrols with the occasional inter-guild squabble.
+pleice:Yeah, but we did pretty well against the exchange right?
+main:Sure, but this just feels so much... bigger I guess.  *Takes deep breath* Alright.  We can do this.
+myra:Good to hear.
+|enter myra -14 -1
+pleice:Now we're just waiting on Catelia
+myra:How did you guys meet anyway?  I don't remember either of you ever mentioning her before.
+main:She's part of the neighborhood watch.  We met after some Exchange guy tried to get us.
+pleice:It was after @main@ exploded.  Then we helped her take the Exchange down.
+|enter catelia 14 -1
+catelia:Thanks for that, by the way.
+main:Hey Catelia!  Man, that's like four syllables.
+catelia:Yeah, I get that a lot.  You can call me Cat if it's easier.
+pleice:Works for me.
+myra:Now that we're all here, let me go over the plan.
+myra:The guild is not going to offer help, but as a member of the council, I have the authority to at least sanction our activities.  
+main:Dang.  I hoped we'd at least get something.
+myra:Currently, the city seems to be surrounded by skeletons, and they've begun to lay seige.  The Mage's Guild is currently working with the City Guard to organize a counteroffensive, and we've sent messages to the army for aid.
+catelia:How are they getting messages out through the seige?
+myra:Messenger pigeons and some very careful couriers.  Concidentally, we'll be taking the same way out of the city they did.
+pleice:By flying?
+myra:Ha ha, very funny.  We can't open the gates without an army off the undead flooding in, so the couriers lowered themselves off the wall and went by foot.
+main:By foot?  The army will catch whiff of the seige when merchants start being turned back long before they make it.
+myra:I don't know the details.  Maybe they'll get a horse from a nearby town or something.  Hopefully we'll be taking a portal.
+myra:Follow me.
+|transition Wall
+myra:They wouldn't leave the portal unguarded, so I think all we have to do is follow them to their camp.
+pleice:Right.  Are you sure there even is a portal?
+myra:*Sigh* No, but do you have any better ideas?
+pleice:I guess not.
+main:Hey, I believe you Myra.
+|exit main left
+ :@main@ takes the rope and slides down the wall
+catelia:Here goes nothing...
+|exit catelia left
+ :Pleice takes a deep breath
+|exit pleice left
+|exit myra left
+|transition SkeletonCamp
+|enter main 14 -1
+|enter pleice -7 -1
+|enter catelia 7 -1
+|enter myra -14 -1
+myra:There's the camp.  Now we just have to find the portal.
+|display portal
+pleice:Holy cow...  There it is.
+main:That's the portal?  It's not how I thought it would look like.
+myra:I suppose it makes sense that we would be able to see right through.
+main:This is good!  It doesn't look like there are many skeletons on the other side.
+catelia:Yeah, but once we're through, the ones on this side are just going to follow us.  I don't know about you, but I can't fight an army.
+myra:Hmmm.  Look at the corners of the portal.  It looks like those devices are maintaining the shape of the portal.  If the dips in mana field yesterday were portals opening, I think they must be relatively stable after that.
+|stopDisplay 
+main:I think I get what you're saying.  If we dash through and break the devies off the corners, you think the portal will collapse?
+myra:Exactly.
+pleice:Wait, these skeletons appeared all around the city, AND we saw multiple dips in the mana field.  Doesn't that suggest there are more portals?
+catelia:Well, if the other openings are there when we get through we can break them too, but if they aren't, they shouldn't have any way of knowing we got through, right?
+myra:They can still contact other troops on this side, then take their portals to us.
+main:Well, we'll have a head start.  We'll go through and try to lay low.  Sieging the city must need most of Atheria's forces.  Hopefully they can't commit too much on the search for us.
+pleice:"Hopefully"?  I'm still worried about getting to the portal, it doesn't matter what we do afterwards if we can't get there in the first place.
+myra:Well, skeletons don't need food or sleep, so there isn't actually much in this camp.  Also, this was all made yesterday.  It looks like most of them are just over there guarding weapons - I think we have a shot if we just sprint past the 2 guards around the portal.
+main:On 3?
+catelia:I'm ready.
+pleice:Now?  Hang on!
+main:One...
+pleice:Ok ok, I'm ready!
+main:Two...
+myra:Let's do this.
+main:THREE!
+|move main 2 30 0 1
+|move catelia 2 50 0 1
+|move pleice 2 40 0 1
+|move myra 2 50 0 1
+|displayCG crossing the portal
+ :The 4 sprint to the portal from their hiding spot
+|setBackground StagingArea
+|translate main -5 -1
+|translate myra -15 -1
+|translate pleice 5 -1
+|translate catelia 15 -1
+main:I'm through!
+myra:Hyah!
+ :Myra unleashes a spell towards the weapon stockpile.  The outer wall catches fire, distracting some of the skeletons.
+ :As they make it through the portal, @main@ destroys one of the devices keeping the portal open, and it collapses.
+|stopDisplayCG
+myra:Good work, but we still have to get out of... wherever here is.
+pleice:Look out!
+skeleton:Gyahh!
+|combat postPortalCombat

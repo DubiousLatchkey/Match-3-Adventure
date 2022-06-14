@@ -1,0 +1,64 @@
+|roxanne -7 -1,main 0 -1,mage 14 -1,myra -14 -1
+|setBackground controlRoomEmpty
+roxanne:Warren!  Are you ok?
+main:Hey, don't worry about it, we're not with the council.
+myra:Technically, I am on the council.
+main:Yes, but we believe in mana field theory.  We're here to help.
+roxanne:Technically, you did just kill our leader, so I wouldn't say you came to help.
+main:Ok, but we're here to help now.  It's clear that with these clearly unethical army controlling machines and portal use that Atheria strayed from the original intent long ago.  We'll make that right together, ok?
+mage:...I didn't really support invading The City, but Atheria thought it was the only way...
+main:Hey, listen to me, we'll find another way.
+roxanne:Why don't you just get something to drink?  You need your rest now.
+mage:Ok...
+|exit mage left
+myra:Are we going to have to have this conversation twenty more times?  It would be more efficient to get everyone together for a speech.
+roxanne:We can do that.  I'll ring the meeting bell.  Just meet me in the castle courtyard.
+|exit roxanne left
+|enter pleice -7 -1
+|enter catelia 7 -1
+catelia:Phew!
+pleice:I think we got the rest of them.  They are TIRED.  How could they do this to them?
+catelia:When you believe in your cause, you've got to lay everything down for it.
+pleice:Seems pretty extreme for something so... abstract though.
+myra:Just because it's abstract doesn't mean it isn't real.
+pleice:Sure...
+main:Anyway, we should get to the courtyard.  Roxanne is getting everyone together for a meeting.
+|transition castleCourtyard
+myra:I shouldn't be the one to talk.
+main:What?  But you're the most senior of us!
+myra:I'm a member of the Mage's Guild Council.  These guys broke away because the council wouldn't listen to them.
+main:So?  Wouldn't they be glad to see someone on the council supporting them?
+myra:Maybe, but they'll expect me to represent the whole council, which I can't do.  This changeover is going to be very delicate, so I don't want to make them think the Guild is taking over.
+pleice:Wait, we aren't taking control of them for the guild?
+myra:We can't.  They're here to escape the guild.  It would be better to maintain the existing organization and keep it separate.
+catelia:Yeah, when you involve those big institutions in, it brings their baggage along with it.  That's one of the reasons I started the City Watch, to get rid of the politics and corruption.
+main:I understand.
+myra:I'll be watching though.
+|exit myra left
+|enter roxanne -14 -1
+roxanne:Well, everyone's here.  Mages, staff, and the mercenaries you didn't just leave armyless on the other side of the portal.
+main:Ah... um...
+roxanne:I would appreciate it if you listened to my advice about when it comes to running this place.
+main:Sorry.  You're right.
+roxanne:Anyway, some of the mages are are loyal to Atheria, while others are loyal to the cause.  The rest are just paid.  The stage is yours.
+|displayCG speech
+main:Hello everyone.  Thank you for meeting at such short notice.  As some of you may already know, Atheria is dead.
+ :A stunned look overtakes some of the audience, while those who know remain determined.
+main:I'm @main@.  This is Pleice and Catelia.  We came to stop Atheria from invading the city.
+ :The stunned looks turn to realization and angry whispers.
+main:She sought the same thing we did, to stop the end of magic from coming.  We saw her extensive channeling of magic as dangerous, and so came to stop her.  It is only now that we understand that you seek the same thing.  However, the fact that we confused your intentions is clear evidence that Atheria's original ideas no longer guide this organization.
+pleice:Yes, no more channeling portals and other things that excessively tax the mana field in the name of saving it.
+main:I know not all of you wanted to be so... imperialist in your preservation of mana, and we're here to start everything over, and run this place the right way, right Roxanne?
+roxanne:I know that is what you claim.  Trust will be hard to come by, but as we seek the same goal, I am willing to give you the benefit of the doubt... for now.
+catelia:More importantly, we won't have everyone here arrested and hanged.
+ :Many murmurs break out through the crowd.  A few look on angrily, while others have calmed down.
+mercenary:We don't really care about all this magic nonsense.  Are we getting paid or not?
+main:Yes!  We'll run this place just like Atheria did.
+roxanne:Really?
+main:We'll try.  We are not going to violate human dignity at the same time though.
+roxanne:Hmph.
+mage:And what about those of us that don't want to work for you?
+pleice:It's ok!  You're free to go if you want.
+mage:Enough!  I don't have anywhere else to go.  You'll never replace Atheria!
+roxanne:Hang on Powell -
+|combat successionCombat

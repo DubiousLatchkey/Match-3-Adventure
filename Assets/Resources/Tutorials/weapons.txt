@@ -1,0 +1,4 @@
+Weapons
+weapons
+You now have a weapon equipped!  Weapons offer passive effects that make you more powerful.
+Press and hold on the weapon icon to see its effects.  You can do the same for your opponents' weapons.

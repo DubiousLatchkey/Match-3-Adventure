@@ -1,0 +1,139 @@
+|main 7 -1,pleice 11 -1,catelia 0 -1,ilyania -8 -1
+|setBackground armoryCordiss
+|playMusic Philosopher's Demise
+ilyania:Woah there, let's just calm down here.
+ilyania:Let's not escalate to using any more violence shall we?
+catelia:Says the person who just sicced their personal guard on us.
+ilyania:Call it a misunderstanding and let's just move on, ok?
+main:Talk about an about face.
+ilyania:Hey, no need to threaten anyone ok?  I'll do you a favor - you - you want the Exchange gone right?
+catelia:I want nothing left.  If I hear about another shop getting raided for their Illis again-
+ilyania:Deal!  Just leave, and there will be no need to come back.
+ :Catelia looks at Captain Cordiss suspiciously.
+ilyania:You have my word.  
+catelia:Your word doesn't seem to mean much.  I will be back to check on things.
+ilyania:Whatever you want.
+catelia:Alright, I think we're done here.  Let's go.
+|transition alley
+|exit ilyania left
+|translate catelia -8 -1
+|translate main 4 -1
+|translate pleice 9 -1
+catelia:That went better than expected.  Luckily for us, Captain Cordiss is a coward.
+main:How does someone like that even end up running the city guard?
+catelia:A lot of nepotism.  I'm sure you've know Duke Cordiss, Ilyania's uncle, lord of the city and it's surrounding lands?
+pleice:Ah, the same Cordiss.  So what will you do now that the Exchange is gone?
+catelia:Well they aren't gone yet, I'm going to make sure they stay gone.  The only reason I started the watch was because my shop was raided by the Exchange a few months back.
+main:You had a shop?
+catelia:Yeah, I refined Illis.  Unfortunately, the Exchange wanted to get into the business, and took basically everything I had.  Maybe I can check out their headquarters and get my refiner back - maybe even get back in business with what we took from the trade we interrupted.
+|setExpression pleice Happy
+pleice:That sounds great!  we'll -
+|setExpression pleice Shocked
+pleice:Wait, is that Myra?
+|setExpression pleice Normal
+ :The 3 turn to see a frantic Myra running towards them carrying a magical field sensor
+|enter myra -10 -1
+|move catelia 1 5 0 1
+|move main 1 2 0 1
+|move pleice 1 2 0 1
+myra:*pant* *pant* There you two are!  And this is your new friend I presume?
+main:Oh yeah, uh, this is Catelia.
+catelia:Nice to meet you Myra.  You're also from the Mage Guild?
+myra:Yeah, but we've got a bigger problem than introductions right now.
+ :She gestures to the field sensor.  The reading is significantly lower than was earlier.
+|setExpression main Shocked
+|setExpression pleice Shocked
+myra:You didn't try to travel through time did you?
+main:What?  No!  Why is it going down?
+|setExpression main Normal
+|setExpression pleice Normal
+myra:I have no idea.
+|setExpression catelia Question1
+catelia:I feel a little out of the loop here.  What's going on?
+|setExpression catelia Normal
+pleice:Long story short, if that needle hit zero, magic will disappear.
+|setExpression catelia Shocked
+catelia:What!?  Then what do we do?
+ :This is the end of Act One, and will have a transition of some sort to the title
+ :You can play past this, but everything beyond this point is very work in progress.
+|transition lab
+|setExpression catelia Normal
+main:Okay, there has to be some way to deal with this right?
+catelia:Its still going down!
+myra:We would have to interrupt whatever's drawing this much mana, but we don't even know who's doing this, what's causing it, or where this is happenning!
+pleice:Well can we find out?  Are there any big experiments scheduled for today?
+myra:Not that I know of...
+catelia:Wait!  Its... I think it stopped!
+ :All heads turn to the needle on the device - the movement has stopped.
+pleice:It did!  Are we in the clear?
+myra:Thank goodness!  The device was on a pretty sensitive setting.  Maybe it was just something natural?  A natural fluctuation maybe?
+main:Hang on, it was going down at a pretty even pace.  That sounds like a spell to me.
+myra:That's a worrying thought.  I'll admit the rate was pretty constant, but no normal spell would do something like that to the mana field, even at close range.  Also, its been falling for a while -
+catelia:Uh, guys?
+myra:-so a spell would have had to take a long time to make it decrease for so long -
+pleice:Guys look!  It's going down again!
+main:That's not good...
+ :All eyes are once again focused on the needle.
+main:Does that look like the same rate to you?  If it is, it might be the same spell as before.
+catelia:I don't know... It looks similar to me.
+myra:Natural or not, we need to stop whatever's doing this.  Step one is finding the location.
+main:I think I've  got an idea for that one.  We know that the reading should be right?  We also know that the field decreases more closer to the source.  With a few readings from different places, shouldn't we be able to figure out where this is coming from?
+myra:That sounds like it could work.  The problem is, we don't know the final field level the center would be at, but with a few measurements of the function over distance, we could approximate the local minimum.
+catelia:Uhhh, you lost me at "field".  You mean like with grass?
+pleice:To translate, we can find the origin of this decrease.  We just need some measurements.
+myra:They'd have to be very far apart for us to get useful data, but we should be able to do this.
+main:Once we know where these huge spells are coming from, we can try and stop whoever is casting them.
+myra:I'll set up one of the devices here. @main@, pleice, you guys can each take one to opposite ends of the city.
+catelia:How can I help?
+main:You can come with me Catelia.
+myra:Alright.  Take the measurements at the next strike of the clock.  Measure the angle of the needle.
+|transition cityWallExterior
+|exit myra left
+|exit pleice right
+|translate main -10 -1
+|translate catelia 10 -1
+ :@main@ and Catelia make their way just outside the south city gate.
+main:Alright, I think this is far enough, we've just got to wait for the clock now.
+catelia:Wait, I'm still confused - what are we measuring?
+main:This device monitors the strength of the mana around us.  There's a theory that magic works because mana is in this field all around us that we can siphon from.  From these massive shifts we've measured, it looks like its correct.
+catelia:So are we looking for some number of, umm, mana units?
+main:Well, the theory hasn't been standardized yet, so our equipment can't measure absolute values like that yet, but in theory, yes.  If we measure the angle this needle makes, we can make our measurements from the proportional difference that it was at when we calibrated it back in the lab.
+main:Speaking of which, where's my protractor?
+ :@main@ frantically searches her pockets to no avail.
+catelia:Don't sweat it, here.
+|move catelia 1 -10 0 1
+ :Catelia hands @main@ a protractor, which she gratefully accepts
+|move catelia 1 10 0 1
+main:Thanks.  If you don't mind me asking, why do you have a protactor?
+catelia:Oh, it's just from my bag of work tools from when I had my shop.  You need a lot of this kind of stuff for refining Illis.  I still carry it around for nostalgia I guess.  I've also got a straightedge, a small mallet...
+main:I think I get the gist.
+ :In the distance, the sound of the clock tower ringing can be heard.
+catelia:That's our cue.
+main:Ok, let's get these measurements.
+|setExpression catelia Shocked
+catelia:Uhh, I don't think you'll have to...
+|display redOrb
+ :Off in the distance, lightning is seen drawing towards a castle in the distance.
+main:Aaaand, let's see 42 degrees -
+catelia:@main@?
+ :She gestures to the gathering storm.  
+|setExpression main Shocked
+main:Oh.  Well, I think we found what we came for.  We have to get back.
+|stopDisplay 
+|setExpression catelia Normal
+catelia:No disagreement here.
+|setExpression catelia Shocked
+catelia:Wait!  Look!
+|move catelia 1 18 0 1
+|move main 1 10 0 1
+|setExpression catelia Normal
+|enter skeleton -15 -1
+skeleton:GRAAAAAH!
+catelia:What... is... THAT!?
+main:Looks like an animated skeleton?  I'm not an expert!
+|setExpression main Shocked
+main:Wow that's a lot of them...
+catelia:What's it doing here?
+|setExpression main Normal
+main:No time, fight!
+|combat skeletonFirstEncounterCombat

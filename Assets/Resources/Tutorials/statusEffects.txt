@@ -1,0 +1,5 @@
+Status Effects
+statusEffects
+The icon next to the player portait is a status effect.
+A status effects gives positive or negative effects to the affected player for as long as they are active.
+To see the specifics of what a status effect does, press and hold its icon.

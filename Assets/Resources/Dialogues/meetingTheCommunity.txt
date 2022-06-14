@@ -1,0 +1,133 @@
+|main 10 -1,pleice -10 -1
+|setBackground alley
+|playMusic Philosopher's Demise
+main:That should do it.  What did they think would happen?
+pleice:You didn't kill them, did you?
+main:Nah, just knocked'em out.  Besides, how would I explain that to Myra?  "Sorry I blew up the guild building, also, I killed some Exchange guy after not getting membership".
+pleice:Yeah, we're not even in a guild protected part of the city.
+|setExpression main Question1
+main:Still, isn't attacking guild members, well not MEMBERS, per se, but you know, protectorates, a little out of the Exchange wheelhouse?
+|setExpression main Normal
+|enter catelia 10 -1
+|move main 1 -13 0 1
+|move pleice 1 -2 0 1
+|setExpression catelia Serious
+???:Yes, it is.
+|setExpression pleice Question1
+pleice:Who are you?
+|setExpression pleice Normal
+catelia:My name is Catelia.  I lead the neighborhood watch.
+main:Really?  I thought the Exchange kept order around this part of town.
+|setExpression catelia Pained
+catelia:*sigh* They do, but we keep them from harassing the citizens too much.
+|setExpression catelia Normal
+ :@main@ looks at the unconscious body on the ground.
+main:Thanks, but I think you might be a little late to the party.
+catelia:So it seems.  Unfortunately, we don't have enough people to maintain order around here.  I'm the only one who does this full time.  Everyone else just patrols during their free time.
+catelia:I'll take care of this one.
+ :She gestures to the would-be thief
+|setExpression pleice Question1
+pleice:"Take care"?  That's... ominious.
+|setExpression catelia Serious
+catelia:I'm just going to ask them a few questions.  Attacking 2 Mage Guild apprentices?  The Exchange is getting bold - and that doesn't bode well for me.
+pleice:"Ask them a few questions"?  Can't you just give them to the city guard?
+|setExpression pleice Normal
+main:I'll bet those guys are all paid off by the Exchange.
+catelia:She's right.  The guard captain for this district gets "donations" to turn a blind eye to Exchange business.  Now it's up to the people to fend for ourselves.
+catelia:Listen, we need to deal with the Exchange sooner or later, or else whatever's got them so excited is going to affect more than just my district.  You two were attacked by this thief; Isn't that enough grounds for the Mage's Guild to intervene or at least help?
+pleice:Not really, we were out of their territory and we're not even full members.
+ :Catelia looks disappointed
+main:But... I mean, we're here, right?  We can't really act on behalf of the guild, but we can as individuals.
+catelia:Look, if you want to help, come to my house tonight - we're having a watch meeting.  I'm right next to the smith's.
+|exit catelia right
+pleice:Well, seeing as you aren't becoming a guild member for a while, I guess we have some free time.
+main:No need to rub it in.  I would have helped even if I passed, I mean, I could act with the authority of the guild too in that case.  But first-
+ :@main@'s stomach rumbles
+pleice:Cake?
+|setExpression main Happy
+main:Yes please.
+|transition doorCatelia
+|setExpression main Normal
+|move main 1 13 0 1
+main:She said she lived right next to the smith's, but not which side.
+pleice:Maybe it's this house on the right?  She did say "right" next to the smith's.
+main:Come on, no one says "left" next to.  Besides, "right" from which direction?
+|setExpression pleice Pained
+pleice:*sigh* Well there's a 50/50 chance regardless.
+|setExpression pleice Normal
+|enter catelia 0 -1
+|setExpression catelia Happy
+catelia:What are you guys just standing out here for?  Meeting's starting.
+|setExpression catelia Normal
+|transition diningRoomNight
+|move main 1 -10 0 2
+|move catelia 1 10 0 2
+catelia:Alright, now that everyone's here, we can get started.
+catelia:Oh yes, the newcomers are Mage's Guild apprentices I met on patrol today.  Would you two care to introduce yourselves?
+main:I'm @main@, and this is my friend-
+pleice:Pleice
+main:We got attacked by an Exchange thief today.  I hear that that isn't good news for the city.
+catelia:Yes.  But we aren't just going to take this lying down.  I have a plan.
+watchman:Hang on, does this mean we have guild support now?
+catelia:Unfortunately no, but with the help of these two, we may be able to get these gangsters out.
+|setExpression main Shocked
+main:Wait, go on the offensive?
+|setExpression main Normal
+catelia:We've been playing defense for too long, managing sympotoms.  Unless we take down the Exchange at the source, that's all we'll ever do - and we're losing.
+pleice:But aren't they a whole organization?  We're just a few people!
+catelia:All we need to do is break their bureaucracy, cut off the head of the serpent.  Once Captain Cordiss stops getting those "donations", they'll crack down on the lower level guys.
+|setExpression main Question1
+main:Yeah, but won't they reorganize?
+|setExpression main Normal
+catelia:We might need to have a... talk with the good captain.
+watchman:We've thought about this for a while.
+main:Alright then.  What do you need us to do?
+catelia:We can hit them at the docks tonight.  From what I've been able to gather, they're arranging a sale of their *ahem* "acquired" Illis powder.  It's a big shipment, so the Exchange brass should be there.
+pleice:So that's why they wanted our magical artifacts.
+watchman:Wait, what's Illis powder?
+pleice:Illis crystals are used to craft magical amplifiers like @main@'s staff.
+catelia:Yeah, this room is technically being lit by an Illis light.
+watchman:No, I got that, but you said powder?
+main:Yeah, when they they steal people's equipment, the crystals are built into them, so they crush and grind everything down for easy transport.  It can be reforged later.
+|setExpression main Shocked
+main:That's must be why they're starting to target the Mage's Guild - they're expanding their business!
+|setExpression main Normal
+|setExpression catelia Serious
+catelia:Exactly.  Let's go interrupt their party, shall we?
+pleice:Wait!  We don't have our guild patrol gear, we'd have to get our weapons first.
+catelia:Here, take these.
+ :She hands them some staffs
+|setPrefValue Amplifying Staff 2
+ :You now have access to weapons!
+main:Alright, ready to go then!
+|playMusic Flesh & Bones
+|transition docksNight
+|exit pleice left
+|exit main right
+|exit catelia right
+|enter mercenaryExchange -10 -1 generic thief
+|enter mageAtherian 10 -1 generic ???
+thief:This is the stuff.  
+ :The Exchange member gestures to a nearby chest
+thief:Do you have the payment?
+???:Of course.  My employer always keeps her word.
+ :The buyer opens a smaller chest, revealing the gold within.
+catelia:Alright, on my signal.  Wait until we know where the leader is.
+ :Representatives of both parties cross to check the validity of the other's goods.
+???:Hmm... This Illis is not pure... there are bits of metal and wood in here.
+thief:Hey, this is the best you can get from the black market - unless of course you want the Mage's Guild asking why you need so much.
+???:My mistress will hear about your... repurposed product.
+thief:As long as we get paid.  So are we good here?
+ :The thief looks to the shadows behind them where another figure gives a nod.
+catelia: That's the leader.  I'll go there, you two, disrupt the sale.
+thief:Things look good on this end.  Shake on it?
+ :As the mysterious figure moves to complete the deal... 
+catelia:Now!
+|move ??? 1 5 0 1
+|move thief 1 15 0 1
+|enter main -5 -1
+|enter pleice -13 -1
+ :@main@ and Pleice burst out of the shadows with the rest of the watch.  Catelia rushes to the surprised Exchange leader.
+thief:What the-
+???:I knew this was a bad idea!
+|combat docksCombat

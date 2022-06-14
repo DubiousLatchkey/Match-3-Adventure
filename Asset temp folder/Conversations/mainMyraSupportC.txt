@@ -1,0 +1,34 @@
+myra:Well this has been an interesting turn of events.
+main:Yeah, what are we going to do?
+myra:About what?
+main:About this... castle!  Besides, can we really call off their executions?
+myra:I'll talk with the council about it.  We'll say it's an internal Mage's Guild affair.
+main:Yeah, but... invading The City?  You'd think the Duke would take offense to that.
+myra:Well, from what Atheria said, Duchess Rehnquist was planning a "peaceful" occupation of The City, and Duke Cordiss hates her, so we'd have to spin it to him like we stopped one of Rehnquist's plots against him.
+main:Huh, so are we going to be the ones to tell him that?
+myra:I'll let Oleron do it.  He's always been way better with the politicking.  Besides, I hear Duke Cordiss is super lazy.  If we can handle the problem, I'm sure he won't bother us.
+main:I guess that's what the Duchess was counting on.
+myra:Who knows?  All of my court gossip is 5 years out of date.
+main:...
+main:What's it like being a noble?
+myra:Not fun.  I mean, it probably beats living in whatever backwater you came from, but unless you're the firstborn, there's no real power.
+myra:Uh, no offense.
+main:None taken.  It is a backwater.  I mean, that's the whole point I left: to actually do something in the world.  
+myra:That kind of dedication makes up for any station of birth - in my opinion.
+main:Managing this castle is probably already much more than any commoner could ask for.
+myra:Perhaps, but when I left my house to join the guild, I did some thinking.
+main:What about?
+myra:The nobility hasn't been here forever.  The Northern Empire obviously inherits it's imperial lineage from the Southern Empire, but records before the first Emperor are pretty shoddy.
+main:So?
+main:Well, the first Emperor was simply a lord with lofty ambitions, but where did his house come from?  If we trace things far back enough, we're all commoners.
+main:I thought most houses claim their lines are eternal?
+myra:True, but as a member of a noble house who has looked at our genealogical records, there is an end to them.
+main:Huh.
+myra:Besides that, most of the houses have been taken over by adopted children at some point or another.  Everyone likes to talk about about bloodlines and such, but in the end, what matters is who takes orders from who right now.
+main:Yeah, but don't people usually listen to the person with the purest bloodline?
+myra:True, but my point is that you shouldn't just think certain doors are closed to you just because you're a commoner.
+main:Ok, but that's just not true.  I mean, the supposedly meritocratic Mage's Guild wouldn't even let me in when I first came.
+myra:You got us there, but you're missing the forest for the trees - I did give you an apprenticeship afterall.  A little determination can subsitute the need for money or connections - or get the latter 2 at the very least.
+main:I was lucky there was someone like you there.  Most people who've tried to make it aren't met with such a nice outstretched hand.
+myra:Maybe I trivialized the problems of the commonfolk a little, but in the end, nobles are just people too.  We'll figure out how to keep this band of misfits alive.
+main:I hope you're right.

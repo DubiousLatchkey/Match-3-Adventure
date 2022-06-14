@@ -1,0 +1,25 @@
+catelia:...
+pleice:Hey Catelia, what's wrong?
+catelia:I don't know, this last battle just feels kind of... wrong.
+pleice:Wrong?  We were protecting ourselves!  Besides, if we didn't do anything, those slaves would just be sent back to the mines.
+catelia:Yeah, I get that, but it just feels wrong having to fight soldiers from the city - I mean we were helping the people of the city repel an invasion just a few days ago.
+pleice:You didn't seem to feel bad when we were fighting your district's guard.  I mean she was even related to Duke Cordiss.
+catelia:Yeah, but that was in service to the city - to make it better.  I knew Ilyania's problems and that she was bad for my district, but this?  Duke Cordiss is my lord.
+catelia:Like, I don't know... are you from The City Pleice?
+pleice:No, I'm from the capital.  My father runs the Merchant's Guild.
+catelia:Wow, wait - does that mean you're nobility?  Should I be calling you miss or my lady?
+pleice:Oh no no no, please.  The title is mostly honorary.  We hold no lands, but the guild is important enough that the Queen bestowed a barony on my father many years ago.
+pleice:Besides, we're friends here.  Having you call me "Madam Duvall" would feel quite awkward.
+catelia:Anyway, Pleice, if you're from the capital, your lord would be Duchess Rehnquist right?  Imagine you had to fight troops sent by her!
+pleice:I suppose that would feel very strange.
+catelia:Exactly.  I don't know about you, but this castle doesn't really feel like a home to fight for yet, you know?
+pleice:Maybe so, but I feel more like I'm fighting for my friends.  With @main@ and Myra around, the battles feel worth it regardless who we're facing.
+catelia:But not me huh?
+pleice:What?  No, that's not what I meant!  It's just kind of weird saying your name when you're right there!
+catelia:Relax!  I totally get it.  I mean, besides we've only known each other, what, a few days now?
+pleice:That may be so, but I would like you to know that I do think of you as a friend Cat.  We may not have known each other long, but we've had each others' backs these past few crazy days.
+catelia:Thanks Pleice.  Sometimes I feel like the odd one out in the castle.  I mean, you mages all know each other from the guild, and all of Atheria's old people know each other.  I just kind of got swept up in this.
+pleice:I never thought about it that way.  Now I'm self-concious about using magic jargon.  Oh I hope it hasn't been too weird for you.
+catelia:Well, a few days ago, I only knew the basics of magic.  Now I'm helping fight to prevent its end?  I can't say it hasn't been weird.
+catelia:But, it's better with a friend by my side.
+pleice:Aww, thanks Cat.

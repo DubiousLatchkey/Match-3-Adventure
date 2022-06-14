@@ -1,0 +1,3 @@
+|main 0 0
+main:As you can see, I've emerged from combat to a different dialogue
+|combat testCombat2

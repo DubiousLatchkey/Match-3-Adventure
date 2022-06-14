@@ -1,0 +1,5 @@
+Multipliers
+multipliers
+Looks like some multiplier pieces have been scored.  These pieces will increase the damage your spells do.
+Each piece you score gives an extra 10% damage, maxing out at 2x damage.
+However, the multiplier decays 10% per turn.

@@ -1,0 +1,64 @@
+|main 14 -1,myra 7 -1,pleice 0 -1,catelia -7 -1,roxanne -14 -1
+|setBackground warroom
+roxanne:If you're going to kill me, just do it quickly.
+catelia:Fine by me.
+pleice:Wait!  We don't have to kill everyone here!
+main:She's right.  Besides, I don't think we can.
+myra:What's your name, and what do you do here?
+roxanne:...I'm Roxanne.  I run operations for Atheria.
+myra:How many people work for - ahem - worked for Atheria?
+roxanne:There are 20 mages, maybe an equal amount of staff, and a few mercenaries.
+catelia:We can take them.
+main:I don't think we have to.  After all, we all seek the same thing, right?
+roxanne:What?
+myra:Yes, we also seek to stop the end of magic.  However, it appears that Atheria's intentions got a little... skewed on the way there.
+roxanne:No, she was always dedicated to stopping the end of magic.
+pleice:Then that whole business about getting a title from Duchess Rehnquist was just a happy accident along the way?
+roxanne:What?
+catelia:She didn't tell you?
+roxanne:Oh my... wait, that explains why she didn't want us to portal in the city.  She just wanted them scared enough so Rehnquist's forces could "liberate" the city and occupy it.
+roxanne:So, what are you going to do with us now?
+myra:It would be a waste just to see all of you executed by the Duke.
+main:With your help, we could get this place back up and running, doing what it was originally doing.
+pleice:Yeah, but this time, the right way.
+main:I'm @main@.  How does that sound?
+ :@main@ holds out her hand to Roxanne.
+ :Roxanne shake it cautiously, still expecting some kind of trick.
+catelia:I don't know about working with all of these...
+roxanne:What, criminals?  Please.  We're more organized than the army.  We acted more like an earldom than a band of raiders.
+catelia:I find that unlikely.
+main:I think you might be a bit biased there.
+myra:Regardless, we're going to need to get a handle of the immediate situation here.
+main:Yeah, we need to stop that skeleton army.
+myra:I'm actually curious as to how you did it.
+roxanne:It's probably easier if I show you.
+|transition controlRoom
+catelia:So that's why these people are here...
+roxanne:Yes.  Puppeting so many skeletons would be impossible, but with some portal magic for senses and their complete attention, one person can control a hundred skeletons.
+main:Alright, let's get these people out of here.
+roxanne:Not so fast!  If you just pull them out, all of the skeletons will just fall apart!  We'll lose so much equipment!
+pleice:Then how can we communicate for them to come back?
+roxanne:...You can't.  We gave them their orders to hold the seige for a day before they would rotate in shifts to maintain a force at each city gate.
+pleice:A day?  They must be starving!
+roxanne:A small price to pay.  One we all paid willingly.
+myra:Hang on, how much mana does this take?  You mentioned portals are used so they can sense things where the skeletons are?
+roxanne:Uhh, quite a bit, but it wouldn't have mattered if -
+main:Well it does matter now.  Catelia, Pleice!  Get these people out of here.
+pleice:Now?
+catelia:Got it!
+|exit pleice right
+|exit catelia left
+|move main 1 -14 0 1
+|move myra 1 7 0 1
+main:Let's get them out of here.
+|transition controlRoomEmpty
+|move main 1 -7 0 1
+|move myra 1 -14 0 1
+|enter mage 14 -1
+mage:Augh!!!
+ :The mage slowly stands up.
+mage:What is...  Why would you...  Who are you?
+ :The mage gazes with hostility at @main@ and Myra.
+roxanne:Hang on there Warren, let's not do anything hasty...
+mage:They're a council task force!  Stop them!
+|combat necromancerCombat

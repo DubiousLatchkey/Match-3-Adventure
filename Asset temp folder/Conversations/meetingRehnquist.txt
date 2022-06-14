@@ -1,0 +1,43 @@
+secretary:We shall now hear from @main@ bearing news from Atheria.
+rehnquist:Excellent.  News regarding the city has been all too contradictory.  Rise and speak.
+main:Your Grace, I am @main@.  I regret to inform you that Atheria has died.
+rehnquist:I suspected as such when I heard her army had disintegrated.  Hmm...
+ :The Duchess looks at @main@, analyzing her demeanor
+rehnquist:You bear the garb of the Mage's Guild, and yet you speak as though you were aligned with Atheria.  Explain.
+main:When we, ah, um, Mage's of the Guild, defeated Atheria, we discovered her evidence of the coming end of magic and we also believe it will come to pass soon.  Has she told you about this before?
+rehnquist:Yes.  Though as I understand it, her ideas were not popular among the rest of the Guild.  Has that changed?
+main:Well, no.  However, we have maintained control over what forces she used to control, and are still trying to stop the death of magic.
+rehnquist:I couldn't care less about that.  I know she failed to threaten the city enough for my forces to respond.  Now I'm down control over the city and the person who was going to be my new Marchioness Blair.
+main:Well...
+rehnquist:Speak.
+main:I came here to request your sanction for our activities.  We've already been attacked by Duke Cordiss, and we know you are opposed to him.
+ :Rehnquist looks closely at @main@, scrutinizing her intention.
+rehnquist:@main@, was it?
+main:Yes?
+rehnquist:You are in charge of what was Atheria's forces?
+main:Um - yes!
+rehnquist:Judging from the way you present yourself, you have little experience in court.  Am I right?
+main:Yes... Your Grace.
+rehnquist:What house are you from?
+main:House?
+rehnquist:Your house?  Your family?  Your surname?
+main:I, um, don't have one.
+ :Rehnquist looks surprised.
+rehnquist:No name?  Yet you are a mage and leading a small army?
+main:...Yes.  Is that a problem, Your Grace?
+ :Rehnquist suddenly smiles deviously.
+rehnquist:You know, I happen to be of need of a Marchioness Blair, and it sounds like you need a last name.
+main:I don't quite follow...
+rehnquist:My deal with Atheria was for her to threaten the city.  In desperation, Cordiss would have to ask me for aid, I would take over his courts and "defeat" Atheria.  In return for her aid, I would grant Atheria Marquess Blair's old title.
+rehnquist:It wouldn't have been a problem since I would have control over the House of Lords, but it seems like fate had something else in store.  Atheria was to take control of Blair's old vassals, but I cannot force them to yield now without someone to take the title.
+main:Wait, you want me to be a Marquess?
+rehnquist:Not "a" Marquess.  Specifically Marchioness Blair.  Marquess Blair is currently hiding in the city, but with no castle and no lands, he has no legitimacy besides his blood.  I have control over enough of the House of Lords to give you official control over his old lands.
+secretary:Milady, are you sure about this?  She's a nobody - a commoner!
+rehnquist:True, but think how that will work for our advantage.  Atheria was an Iredell - provably not a Blair, but @main@ here has no ties.  No ties whatsoever.  Your legitimacy will come through my decree.  Besides, we've already told the Empress we were going to appoint a new Marchioness Blair.
+rehnquist:However, I will also require many things of you.  First, you must prove your loyalty to me.  Second, you must bring Blair's vassals under control, and third, you and Blair's vassals must vote with me in the House of Lords.
+main:I - uh - this is a lot...
+rehnquist:Can you do it?
+main:Yes, Your Grace!
+rehnquist:Excellent.  Protasekretis - what is currently our most pressing issue?
+secretary:In the wake of Atheria's lack of policing in Blair's lands, the forst east of the Mirran Plains has become a haven for bandits.  There is a camp of them there threatening Capital merchants.
+rehnquist:Indeed.  @main@, clear out this bandit camp to prove your loyalty to me.  If you can do this, I will give you Blair's title if you bring his vassals under my control.  As a Marchioness, you can seek whatever it is you want about the end of magic as long as you bring me my votes.

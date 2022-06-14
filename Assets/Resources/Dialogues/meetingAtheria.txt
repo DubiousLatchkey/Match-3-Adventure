@@ -1,0 +1,43 @@
+|main 0 -1,myra -7 -1,pleice -14 -1,catelia 14 -1
+|setBackground outsideTheWarRoom
+main:Let's move!
+myra:Wait!  Catelia, keep watch on the door while we deal with Atheria, we don't want to be ambushed.
+catelia:Got it.
+|exit catelia left
+|transition warroom
+|enter atheria 14 -1
+atheria:So, you're the cause of all the racket outside.  I assume I also have you to thank for one of my portals being destroyed?
+main:You're welcome.
+atheria:Hmph.  Your arrival was not unforseen, though I must say you are here sooner than expected.  Perhaps I should have given the council a bit more credit, but they never did like listening to you Myra.
+myra:Atheria.  Long time no see.  You should give the council more credit; I'm on it now.  You seem to have done well for yourself as well.
+atheria:Yes, I have.  Listen.  I'm doing this for all of our sakes.
+myra:Yeah right.  I suppose trying to kill the council was also "for the greater good?"
+atheria:Yes, that's exactly what I'm saying.  You know me Myra.  I'm not just some madwoman.
+myra:That's what I thought, but attemped assassination has a way of changing peoples' minds.
+atheria:Don't be like Oleron.  Come now.  You used one of my portals - you've seen the results mana field theory can give.  I'm right.  The end of magic is coming.
+pleice:Wait, what?
+atheria:Oh, you didn't tell them?
+main:She told us, but she failed to mention that it was your idea.
+myra:I'll admit, I didn't want to believe you were right, but what I've seen has convinced me that it does make sense.  However, if you knew the cost of channelling so much mana, why in the world would you channel so much mana?
+atheria:Just let me explain-
+myra:You can explain it behind bars.
+pleice:Wait!
+pleice:I think we should hear her out.
+main:I want to hear this.
+myra:Fine.  Explain.
+atheria:If we keep increasing magic use at the rate we are now, the end of magic will come by the end of the year.  I'm invading the city to do the same thing I was trying to 5 years ago: remove the council.  They refuse to acknowledge what's coming, so I have to act.
+myra:And what was your projection for the end of magic before you channelled all this mana for your army and portals?
+atheria:...
+atheria:3 years.  
+atheria:I couldn't stand around and do nothing.  It doesn't matter.  Once I have control over the city and the Mage's Guild, I'll be able to control the use of magic, and stop the end of magic from ever coming.
+myra:The Empress will not stand for this.  The army will come to liberate the city within a few weeks.
+atheria:Are we talking about our Empress?  You've been cooped up in your lab for too long Myra.  Empress Nyala can't mobilize without Duchess Rehnquist's forces.  Fortunately, she's willing to give me Marquess Cordiss' title if I support her in the House of Lords.
+pleice:She can't do that! Only royalty can bestow nobility!
+atheria:Please, if Duchess Rehnquist recognizes me as head of House Cordiss, no one is going to complain.  Trust me.  This will limit the bloodshed.
+myra:I suppose it's a solid plan.  In theory.
+atheria:Join me.  We can stop the end of magic together.
+pleice:Never.
+main:You've gone too far.  Maybe you believed in saving the world at one point, but trying to grab power like this?  You've lost sight of your goal.
+atheria:Myra?
+myra:We're putting an end to this madness.
+|combat atheriaCombat

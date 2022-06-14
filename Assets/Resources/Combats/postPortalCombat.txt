@@ -1,0 +1,4 @@
+enemy:9 0
+enemy:9 0
+dialogue: infiltrationPlan
+companion: myra

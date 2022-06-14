@@ -1,0 +1,47 @@
+|main -7 -1
+|setBackground testingHall
+main:Almost got it...
+|setExpression main Angry
+main:What in the-
+ :Without warning, the magical barrier lights up again, quenching @main@'s spell.
+main:I didn't know barriers could light up like that.  This must be part of the test.
+|setExpression main Serious
+main:Let's see how it likes this!
+ :@main@ unleashes a torrent of magical energy, striking the barrier directly.
+main:This is one powerful barrier... Just need a little more...
+|setExpression main Shocked
+main:Wait, what?
+|playSound Fire Ignition
+|transition testingHallRuined
+|setExpression main Question1
+|move main 1 7 0 1
+|playMusic Anodyne
+|setPrefValue maxRedMana 0
+|setPrefValue maxBlueMana 0
+|setPrefValue maxYellowMana 0
+main:Where... Where am I?  What happened?
+main:Hello?  Anyone there?
+|move main 1 -7 0 1
+???:Shut up!  The raiders could hear you!
+main:What?  Who's there!?  Whare are - What raiders?
+???:Seriously?  Did you hit your head or something?
+main:Something is very wrong here.  I-I can't feel my magic.  Where's the Mage's Guild?
+???:You're standing in it!  Also, did you say ma-
+ :A distant clamoring of voices and disturbed rubble can be heard getting louder
+???:Screw this, I'm not staying here to help some nutcase.  If you want to die so badly, be my guest.  I'm outta here.
+|move main 1 4 0 1
+|setExpression main Shocked
+main:Wait, I don't even know your-
+ :The sounds from earlier have stopped
+|setExpression main Serious
+|enter mercenaryAtherian 7 -1 generic raider
+|move main 1 -4 0 1
+raider:Well well well, looks like we got ourselves a scavenger.  You've strayed a little too far from your little camp haven't you?
+main:What?  I'm not a scavenger!
+raider:Of course you aren't.  Take her things.
+ :They gesture to the heavily armed people behind them.
+raider:You know the consequences of scavenging here lady.  If you know what's good for you, you'll just hand over your valuables and get lost.
+|setExpression main Angry
+main:Excuse me?  You can't do that!
+raider:Ha!  Just watch me!
+|combatDirect futureCombat

@@ -1,0 +1,40 @@
+catelia:Finally found you @main@!  I guess I should have expected to find you around the Mage's Guild.
+@main@:Cat!  You're finally here!  Listen, we need to act quickly.  They're building a device that's channelling all of the mana.
+catelia:Like the one that powers The City?
+@main@:Yes, but this one must be a thousand times more powerful.
+roxanne:Self sustaining mana chanellers were Oleron's career-defining achievement I believe.
+@main@:Yeah, but when you have a hammer... well I think we're the nail in this case.
+roxanne:Technically, wouldn't the nail be the the Death of Magic?
+jay:Forget about that!  What do we need to do to stop it?
+@main@:We need to destroy the device.
+jay:Just like that?
+@main@:Just like that.
+roxanne:If you want a guarantee, you know what my solution is.
+catelia:Burn it down?
+roxanne:The building may be stone, but there is still a lot of wood in there.  Any substantial fire would be enough to destroy a delicate magical device.
+@main@:It'll work.  Any other ideas?  Remember, time is of the essence.
+jay:If time is of the essence, I will say now we don't have enough troops to form a perimeter and assault the front like we did before with the Merchant's Guild.  Fire seems like the best move here.
+myra:I still have a lot of things in my office, but given we have less than a day to do this... It is... acceptable.
+@main@:Usually Gabby would give another suggestion here.
+ :The others are silent.  They don't know how to respond.
+@main@:Right, sorry.  Cat, can you do it?
+catelia:We'll do our best.  We'll need some help from the Mage Corps as well.
+roxanne:We're on it.  I'll instruct them to begin firebombing immediately.
+jay:Careful for the surrounding houses.  We don't want to burn down the whole city.
+roxanne:Not my priority.  If we lose magic, I lose my arm.  I couldn't care less about The City right now.
+jay:That's what I'd thought you'd say.  This is why we need - er sorry.  I'll let you get to it.
+catelia:Formations!
+ :Soldiers of the Inquisition begin to line up.
+myra:I can't watch this...  Excuse me.
+jay:With this force, I can't guarantee we won't have people escape.  We can cover the main streets, but that's it.
+catelia:Wait, we're killing everyone?  I though we just need to make sure the device is destroyed.
+jay:What is your command, milady?  If we attempt to kill those who flee, there will be no one left who could do something like this.  However, it is... brutal.
+@main@:...
+ :In the distance, the first volley of fire spells arcs towards the Guild building.  Another begins before the first lands.
+catelia:Uh, we're going to need a decision.
+@main@:Do it.
+@main@:This was supposed to be over with the Merchant's Guild.  I don't want any more surprises.
+jay:You heard Marchioness Blair!  No one here lives to threaten the mana field!
+soldiers:Yes Sir!
+catelia:Look!
+ :A group of surpised looking mages run outside.  They see the soldiers and arm themselves in kind.

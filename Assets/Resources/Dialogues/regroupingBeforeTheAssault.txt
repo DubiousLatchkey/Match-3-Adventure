@@ -1,0 +1,96 @@
+|main -10 -1,pleice 10 -1
+|setBackground CastleTownAlley
+main:I hope that wasn't too loud...
+pleice:Just help me hide the body
+|transition CastleTownAlley
+ :A few minutes later
+|move main 1 -5 0 1
+|move pleice 1 -10 0 1
+|enter myra 10 -1
+|enter catelia 15 -1
+catelia:Hey guys!
+|setExpression main Shocked
+main:Ahhh!
+|setExpression main Normal
+main:Oh, it's just you two.
+myra:Why are you guys back here?
+pleice:Uhh...
+main:Let's just say Atheria is going to know where we are soon.
+pleice:Not immediately, just when whoever it is we killed doesn't report back in, it won't take a long search to find us.
+myra:This complicates things.  Who is this person?
+main:We don't know.  She was following us - probably keeping watch for suspicious individuals in town.
+catelia:She could have just been a townsperson on watch!  You didn't have to kill her!
+main:Yeah, but if we didn't, we'd probably we wading in skeletons by now.
+catelia:Yeah, but now they'll be looking in force!  If she had reported you as a suspicious individual, Atheria would've probably just sent a small unit to investigate.
+main:You don't know Atheria's operational procedures.
+catelia:Maybe, but you could have just killed the "me" for this town.
+pleice:You're right.  We shouldn't have done it so casually.
+myra:Regardless, when this person's shift is done for the day, they might think it's a simple missed report, or, if they're smart, figure out it was us and search the inn.
+main:That means we should have until tonight to plan this attack.
+catelia:Yeah, about that...
+main:What?
+myra:We also have some news that complicates things, but I'd rather talk about it away from prying eyes.
+pleice:Agreed.
+|transition InnroomWhereItHappens
+main:What did you find in your little scouting mission?  Any weaknesses?
+catelia:Well, none that we could exploit.
+myra:The castle is well guarded, there are lookouts at regular intervals, and the portcullis is locked down.
+catelia:We overheard someone complaining about how they aren't opening the gates for a while because of our... incursion through their portal.
+myra:Yes, they seem to be on high alert right now, which does not bode well for us.
+catelia:Also, there are still about a hundred of skeletons around and inside the castle walls that we could count, and that's alongside many human guards as well.
+pleice:So... what's the plan then?  How are we getting in?
+myra:Honestly?  I have no idea.  I didn't expect the castle to still be this well guarded given the size of the army sieging the city right now.
+catelia:We could always scale the walls at night-
+myra:If we had a siege ladder.  Besides, we'd still be vastly outnumbered.  We're not exactly assassins that can just sneak behind everyone's backs.
+main:Hmmm...
+pleice:We could... wait, no.
+catelia:Would the people here be willing to help us?  We are overthrowing an imperalist lord.
+pleice:From what I could tell, the people actually like it here.  It seems like Atheria mostly leaves the people alone and even provides them with business.
+myra:Huh.  Interesting.
+main:What about the portals?   Are there any that lead into the castle or the grounds?
+catelia:None that we could see.
+myra:This portal spell is the biggest breakthrough of the decade.  It's going to revolutionize everything.  I doubt Atheria would just leave one out in the open.  Any portals she makes are likely guarded, hidden, or both.
+main:Well, would revolutionize our world if it didn't lead to the collapse off the mana field.
+myra:Yes...  That is a problem.
+catelia:You guys keep talking about finding a portal, but you know magic; why don't we just make one ourselves?
+main:...
+main:That idea might not be half-bad.
+pleice:Yeah, but, how?
+main:Well we know it is possible.
+myra:We also kind of know the method.  When you blew up the testing hall, I think a portal was made.
+catelia:So it can be done?
+pleice:I don't know.  We don't really know the exact set of circumstances that led to the... um... phenomenon
+myra:I think I do.  Magical shielding has always been understood as a physical manifestation of mana that allows it to block magic and projectiles, but...
+main:You think mana field theory has an alternate explanation?  
+myra:Yes.  The existence of the mana field suggests that a shield could be made of displacements in the mana field rather than physical space.  Breaking it could then also break a hole in what it was displacing, aka space itself.
+main:Could we replicate it?
+myra:Maybe.  We'd have to maneuver the exit hole inside the castle somehow though.  That, I don't know how to do.
+catelia:We aren't going to find out in here.  Let's get experimenting!
+myra:Hold your horses for a second, I have no idea how long we can keep any sort of portal open.  When we do it, we have to be ready to strike, no matter how good or bad it ends up.
+pleice:Let's rest first.  I've had enough combat for one morning.
+catelia:Right.  We're going to go fight a rogue necromancer who seems to be 5 years ahead of accepted theory, so I for one am going to get something to eat.
+main:It probably makes sense to attack at sundown anyway.
+|transition SundownOutsideTheCastle
+ :That night...
+main:*pant* *pant*  Ok that one didn't work, let's try again.
+myra:Hmm... Let me try a different kind of shield spell...
+pleice: Could this be quieter?  We don't want to alert the castle guards!
+catelia:Come on... This time...
+myra:Step back girls, this is gonna be a big one.
+|exit pleice right
+|exit catelia right
+|move main 1 5 0 1
+myra:Remember, exactly what you did during the test.
+main:Yeah, yeah, like I've been doing.
+|display MagicalShield
+pleice:Isn't it kind of ironic?
+main:What?
+pleice:We're here to stop Atheria from making too many portals and making magic unusable, but here we are trying to make a portal ourselves.
+catelia:Is that irony?  Also, what is irony?  I thought it was when something defeats the purpose of something else.
+pleice:No, it's... wait is it?  I thought it was when you're trying to do something and the opposite happens.
+main:Look, regardless of methods, we're trying to stop Atheria, and that's a good thing.  Hopefully this portal isn't the last straw.  Let's not get distracted by that other stuff.
+myra:I'm waiting @main@...
+main:Shoot!  Sorry!
+myra:Well isn't that ironic.
+myra:Alright, go!
+|combat OpeningThePortalCombat

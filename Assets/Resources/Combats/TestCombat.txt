@@ -1,0 +1,4 @@
+enemy:0 0
+enemy:1 -1
+dialogue: sampleDialogue2
+companion: pleice

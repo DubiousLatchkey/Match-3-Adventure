@@ -1,0 +1,5 @@
+Fighting an Opponent
+opponents
+Unlike with the Magic Shield, you are now fighting someone who can fight back.
+After each move you make, your opponent will do the same, accruing the same resources you do.
+Make sure not to set up anything dangerous your opponent can use! 

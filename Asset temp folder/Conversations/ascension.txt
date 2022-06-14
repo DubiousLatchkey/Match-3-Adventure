@@ -1,0 +1,30 @@
+rehnquist:Take this.
+ :She hands @main@ a very thick robe.
+@main@:Ah, these are my cermonial robes?
+rehnquist:Not just ceremonial.  They are the symbol of your power.
+@main@:Thank you.
+ :@main@ slings on the heavy robes around her back.
+rehnquist:The ceremony will have you walk in, take an oath, and walk out.
+@main@:That's it?
+rehnquist:Basically.  The key here is that as many people as possible see the Empress recognize you as the rightful Marchioness Blair.
+rehnquist:Don't mess up.  
+rehnquist:Walk in slowly when the music starts.
+
+ :Musicians play as @main@ walks into the room.
+attendant:@main@ may now approach the Empress.
+ :@main@ walks slowly and deliberately, masking the nervousness she feels inside.
+empress:Kneel, @main@.
+ :As @main@ kneels before the empress, she takes a diadem from a pillow held by an attendant next to her.
+empress:Can any attest to the nobility of this peer?
+rehnquist:I can.  @main@ is the rightful holder of the lands of Thracia.
+empress:Will you take the oath of peerage?
+@main@:Yes, I am ready.
+empress:Madam, will you grant and preserve, and by your oath confirm to the people of Thracia the laws, customs and liberties granted to them by the Throne of the Empire and your noble predecessors?
+@main@:I will.
+empress:Madam, will you preserve for the Lords, Guilds, and people peace and accord, according to your power?
+@main@:I will.
+empress:And will you act in all of your judgements with equal and justice and benevolence, according to your power?
+@main@:I will.
+empress:Then take this diadem, and rise, Marchioness @main@ Blair.
+crowd:All hail Marchioness Blair, all hail Empress Nyala!
+ :Trumpets blare as @main@ begins to leave.

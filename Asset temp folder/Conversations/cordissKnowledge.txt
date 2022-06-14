@@ -1,0 +1,37 @@
+cordiss:...yes, and 3 by tomorrow.
+@main@:Lord Cordiss!  Your aide said I might find you here.
+cordiss:Lady Blair?  I certainly wasn't expecting to see you again so soon.  I thought the Inquisition was still at the capital.
+@main@:Long story short, I used magic to get here.  I need to speak with you.  Now.
+cordiss:And what is so urgent that you must interrupt my daily business?
+@main@:The Mage's Guild is doing something.  I need to know what.
+cordiss:That's... awfully vague.  Perhaps you should ask Lord Rutledge over here, he works for the Mage's Guild.
+@main@:Are you doing something to prevent the Death of Magic?
+rutledge:How do you know that?
+@main@:You weren't exactly subtle about it.  You should know that whatever you're doing is only making it worse.
+rutledge:Sacrilege.  You should know that mana field theory is wrong.  We're saving magic.  You and your Inquisition are the ones making it worse.
+cordiss:Now hold on, we don't want there to be any conflict between my friends on both sides here.
+rutledge:Speak for yourself Duke.  This project was supposed to be a secret from the Inquisition.  If you know about it...
+ :He draws his staff.
+rutledge:Then I have no choice but to eliminate you.
+
+### fight here ###
+
+rutledge:Gah!
+ :Lord Rutledge falls to the ground, panting.
+@main@:Tell me what this project is and I might spare you.
+rutledge:Grrr...  It's a device.  We're channelling as much mana as possible to maintain the health of the Source.
+@main@:Thank you.
+ :She unleashes a quick spell, killing Rutledge instantly.
+cordiss:Wow, cold-blooded.
+@main@:Hey, I said might.
+cordiss:What was he talking about?
+@main@:The Source is the theoretical Source of magic for all things.  It's the basis of internalized mana theory.
+cordiss:If you say so.  You know I don't appreciate you killing my friend here.
+@main@:Was he your friend?
+cordiss:Well, business associate, but I don't want you causing any more trouble while you're here.
+@main@:Didn't you hear him, the Mage's Guild is basically ending magic right now.
+cordiss:You know Oleron is my friend, right?  I don't want you destroying the Mage's Guild while you're here.
+@main@:Tell that to my army.  Looks like their crossing the waterway now.
+cordiss:What!?  I...
+cordiss:Hmph.  Very well.  Just try and limit your damage to the Guild building, won't you?
+@main@:We'll see. 

@@ -1,0 +1,4 @@
+enemy:8 -1 soldierCordissian
+enemy:8 6 soldierCordissian
+dialogue: endOfAct1
+companion: pleice

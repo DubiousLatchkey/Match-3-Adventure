@@ -1,0 +1,3 @@
+pleice|Are you ok?  Don't worry, I've got this.|75|10|10|10|0|12,1
+myra|Pull back!  I'll take it from here.|100|13|13|13|0|3,6
+catelia|Get behind me!  You need to rest.|75|7|7|7|0|12,15

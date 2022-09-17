@@ -1,10 +1,10 @@
 catelia:Finally found you @main@!  I guess I should have expected to find you around the Mage's Guild.
-@main@:Cat!  You're finally here!  Listen, we need to act quickly.  They're building a device that's channelling all of the mana.
+@main@:Cat!  You're finally here!  Listen, we need to act quickly.  They're building a device that's channelling all mana.
 catelia:Like the one that powers The City?
 @main@:Yes, but this one must be a thousand times more powerful.
 roxanne:Self sustaining mana chanellers were Oleron's career-defining achievement I believe.
 @main@:Yeah, but when you have a hammer... well I think we're the nail in this case.
-roxanne:Technically, wouldn't the nail be the the Death of Magic?
+roxanne:Technically, wouldn't the nail be the the death of Magic?
 jay:Forget about that!  What do we need to do to stop it?
 @main@:We need to destroy the device.
 jay:Just like that?

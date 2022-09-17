@@ -1,0 +1,254 @@
+main:Yield!
+ :Iredell lies defeated on the ground as @main@ stands above her.
+iredell:Never!
+ :@main@ lowers her staff to Iredell's head, preparing another spell.
+iredell:I suppose you are going to kill me now?
+main:Do you really think me so malevolent?
+iredell:All you do is take what you want.  You don't deserve any of this.  You took Marquess Blair's title, his lands... why not my life?
+main:And what did you do to deserve these lands?  Be born?  I worked to get here!
+iredell:Foolish peasant!  You have no idea what it's like to be me!
+main:Perhaps.  But now that you have nothing you know what it's like to be me.  Listen, I only want your fealty.
+ :Iredell looks around to see her soldiers surrendering.
+iredell:You...
+jay:Milady.
+iredell:How dare you betray me!  Why?
+jay:You never listened to anything I had to say.  Modernizing the army, peasant land rights, promotions based on merit, nothing!  Do you really have to ask?
+iredell:Radicals, the lot of you!
+main:Look, your vote matters to me.  What can I do to make you vote with me and the Duchess?
+jay:Awfully generous to ask what you can do for her.
+main:It's a chance for you to decide your own defeat.  I'm willing to make some concessions for a more amiable relationship.
+iredell:A false choice from a false Marchioness, I'm not going to play your games.  You'll have to kill me.
+jay:You know, we don't really need her.
+ :A flicker of worry passes over Iredell's face.
+main:What do you mean?
+jay:If we do kill her, the title passes to her daughter.
+iredell:You wouldn't...
+jay:Actually, where is Mary, by the way?
+soldier:I think I found her.
+ :She pulls out a young girl, maybe 13 or 14, from behind some rubble.
+mary:Mommy, help!
+ :The Countess' smug expression begins to fade.
+jay:As I was saying, if the title passes to Mary, I wonder: will she be willing to die before cooperating too?  Or even better, perhaps she'll come to see things as we do without her mother there to lead her astray.
+main:That's enough, Jay.  
+jay:As you wish, milady.
+main:He raises a valid point though.  So what's it going to be Iredell?  Don't make me wait here.
+iredell:Fuck!
+iredell:I... swear my fealty to you, ... Lady Blair.
+main:Thank you.  In return I bestow upon you my protection.  I'll try to make things easier on you.  We'll ransom your soldiers to their families instead of to you and we won't loot your treasury.
+ :@main@ casts a healing spell at Iredell.
+main:I hope you'll repay my kindness Iredell and that when next we meet, it's more pleasant.
+
+roxanne:...and to conclude, our losses in terms of funds and manpower is not insignificant.  We'll be able to recoup some from turned soldiers and ransoms, but if we plan to do this again soon, we're going to need more money and more men.
+main:If only I could have gotten our forces to the rendezvous.  Carrying the cavalry barriers with us slowed us down.
+gabriella:But if you hadn't carried them, your defense would have been less effective anyway.
+main:Maybe.  I still feel we could have planned that better.
+jay:We have a visitor.  He says he comes in the name of the Empress.
+main:Bring him in.
+messenger:My Lady Blair, the Empress requests your presence at the House of Lords for the autumn session.  
+main:Right, my official duties.
+messenger:I think milady would like to know that one of the resolutions to be voted on is a challenge to your legitimacy.
+main:Well, we didn't assume control of Thracia for nothing.  Thank the Empress for her invitation.
+messenger:If that is all, I'll take my leave.
+main:Yes, uh, you are free to go.
+jay:Milady, it is usually courteous to treat a messenger of the Empress with a meal after his journery.
+main:Ah, Roxanne, can you handle it?
+roxanne:Very well, right this way.
+ :The two leave the room
+gabriella:I'll come along - I'll get to see my father there at the House of Lords too.
+
+main:Uhhhh... How exactly do the House of Lords proceedings work?
+rehnquist:Let me handle that.  If there is pressure for you to speak, remind them that your Imperial legitimacy trumps their complaints.
+main:Where do I sit?
+rehnquist:Just sit next to me.  
+|enter sergeant-at-arms
+rehnquist:Ah Sergeant, your staff
+ :She hands him an staff decorated with a double-headed eagle
+sergeant-at-arms:Thank you, your Grace.
+main:What was that?
+rehnquist:The Staff of Parliment.  Technically, we all serve at the behest of Her Majesty the Empress, and her staff is used in lieu of herself being here to be a symbol of her authority.
+main:But why do you have it?
+rehnquist:Let's just say it took some convincing for the Empress to give me her personal staff.  I like to do this little charade of handing it to the sergeant before we enter the House Chambers to remind everyone else here of who's really in charge.
+main:I... see.
+rehnquist:Make sure your vassals are sitting on my side when we enter.
+main:Yes, your Grace.
+|transition houseOfLords
+ :Slowly, the lords of the 33 themata of the Southern Empire enter the chamber of the House of Lords.
+speaker:The first to speak today is Duke Grier.
+grier:Milords, I stand to ask the question laid before you on the order paper.
+clerk:Milords, the usurpation of Marquess Blair's peerage is an abomination, and the houseless @main@ must be removed from her position, and the themata of Thracia be returned to the control of John Blair.
+grier:Milords, why are we all here?  We are here because we are the best of our society.  The leaders and landholders who must work together to secure the empire's future.
+grier:The nature of our births, education, lands, and the grace of Her Majesty the Empress give us authority over the commonfolk who are unable to see from our priviledged positions.
+grier' lords:Hear, hear!
+grier:Why is is then, that an established, well educated, lord of this house, and my personal friend, the right, noble Marquess Blair's rightful seat in this chamber be taken from him?
+grier:If it is such that such noble qualities imbue one with authority, then this imposter -
+ :He glares directly at @main@.
+grier: -must be removed under the authority of this house, and the true Marquess Blair's lands restored.
+blair:Milords, the noble Duke speaks truth.  When my castle was forcibly taken by hostile forces, I retained my noble dignity.  When I returned to this chamber to ask for aid, I did so as a Marquess of the Empire.
+blair:When the army to reclaim my lands was repelled, I retained my title, my nobility, and my honor.  Yes, it has been years since then, but I remain the rightful lord of Thracia.
+rehnquist:Milords, the opposition makes many points as to the legitimacy of the noble Marchioness Blair, yet they continue to refer to John Blair as "Marquess".  As a point of order, noble lords of this House should refer to the Marchioness Blair with the respect befitting of her position and to John as the commoner Her Majesty has recognized him as.
+speaker:Point of order sustained.
+blatchford:Milords, this whole proceeding is a farce.  Duchess Rehnquist is clearly mocking us with this point of order.  The noble Duke Grier deserves to speak to his side of the argument and not be effectively censured by the Lord Speaker.
+ellsworth:Milords, that is a blatant misrepresentation of the situation.  Must I remind the noble Earl Blatchford that our titles are derived from the power of her Imperial Majesty, Empress Nyala?  If we do not acknowledge who she has given peerage, we are undermining her authority.
+rehnquist's lords:Hear, hear!
+main:Who's this coming to our defense?
+rehnquist:That's Marchioness Ellsworth.  She manages a good portion of my forces, and everyone sitting on this side of the house will be defending your right to rule today.
+main:Wow.
+blatchford:Milords, we are not undermining the authority of Her Majesty.  The purpose of this chamber is to question and assist in the execution of government of Her Majesty, and we cannot do that effectively unless we can refer to John Blair by his imperial title.
+grier:Enough.  Milords, the fact that the supposed Marchioness Blair has not spoken to her own defense proves she is a puppet of Duchess Rehnquist.  We are nobility, and should be recognized as such.  There is no place among us for weak, poor spoken commoners.
+ :@main@ glances over to the Duchess who nods her head slightly.
+main:Milords, such accusations are outrageous.  I am recognized by Her Majesty the Empress, and the noble lords of this house have full knowledge of that.  I am no weak commoner.  In fact, if anyone here today is weak, it is John Blair himself.  The noble Duke Grier was correct.  We are nobles, and deserve to be recognized as such.
+main:John Blair was the one who lost his castle to mere bandits; there is a reason he isn't here today.  By right of conquest and Her Majesty's blessing, I am the rightful lord of Thracia.
+rehnquist's lords:Hear, hear!
+grier:And what of your subjects?  Milords, who do Blair's vassals swear their loyalties to?
+iredell:Milords, we serve the noble Marchioness @main@ Blair.
+rehnquist:Perhaps the news did not reach the City yet Duke Grier?
+ :Grier fumes silently as he realizes his mistake.
+ :Debate in the House of Lords continues until the time to vote approaches.
+speaker:The question being now put, those in favor say "content" -
+grier' lords:Content!
+speaker:Those opposed say "not content" -
+rehnquist's lords:Not content!
+speaker:Clear the bar and begin voting procedures.
+ :One by one, scribes bring paper votes from each lord to the center of the chambers where clerks count the votes.
+speaker:The question is that the motion be agreed to.  Milords have voted.  There are 34 who say content, and 35 who say not content.  The not contents have it.
+main:*Exhales* Well, that was tense.
+rehnquist:Please.  The debate is just a formality.  In truth, this matter was settled as soon as I deemed it so.  That's how it goes with a majority in the House and influence in her Majesty's court.
+
+### Meeting Lord Duvall ###
+
+myra:Right.  Now that you have control over Thracia, we can start enacting some policies against charging illis.
+roxanne:That's all well and good, but who is going to do the policing, and how are we going to pay them?
+main:Our current forces should be enough for minor policing activities around Thracia, right?
+roxanne:Yes, but maintaining an army of this size is not feasible in the long term.  Taney raised it with the expectation it would be demobilized after receiving her title from the Duchess.
+main:Well, I'm allowed to levy taxes on my vassals now.  Can't we just fund them that way?
+roxanne:With the rates you promised them?  Not indefinitely.
+myra:These local ordinances aren't going to enough anyway.  Even with channeling use decreased in Thracia, my calculations estimate we only have a few months before total field collapse.
+gabriella:Are you saying we should give up?
+main:No, she's saying we need to go bigger.
+catelia:Bigger?
+main:Like an imperial decree.  Empire wide authority and funding.
+catelia:How in the world do you plan to do that?
+main:Duchess Rehnquist controls the majority in the House of Lords.  All we need to do is get her to agree.
+catelia:Huh.
+roxanne:What's going to make her want an empire-wide policing force that stops mages from channeling mana into Illis?
+myra:We'd have to pitch her something that she wants.
+gabriella:Surely she doesn't want a mana field collapse - magic is the main advantage the empire has over other kingdoms.
+myra:Yes, but that also means that mana and channeling it is a very lucrative business.  It's difficult to convince someone to take a major hit to trade now for a vague future problem.  Especially if it means giving someone else a bunch of power.
+main:That's what she cares about then?  Power?
+myra:Rule zero of power - without power, you can affect nothing.
+main:Then how can we turn this into something to help her maintain power.
+jay:Ugh, this reeks of compromise, but we do what we must, I suppose.
+main:If we only enforce the laws on lands controlled by lords aligned with Duke Grier, wouldn't that help keep order as well as make Rehnquist rich?
+myra:Oh now that's... that's...
+roxanne:Genius.  All the charged Illis would have to be bought from her territory
+jay:I love it and hate it at the same time.
+gabriella:It's such a blatent power grab.
+main:That's the thing - we dont' tell them we're only enforcing it on Grier aligned lands.  News travels slow, and by the time they figure it out, we'll already have enough of a presence that they won't be able to raise an army fast enough.
+gabriella:It just feels really scummy.
+main:It's temporary.  Once we're well funded, we can work on the rest of the empire.
+gabriella:Well at least my family is going to get rich off this - if it succeeds.
+catelia:Shouldn't we slow down first?  Consolidate control over our territories first?
+myra:I don't think we have the time.  I don't hate this plan.
+catelia:Alright then.  I don't like it, but if we have to, we have to.
+jay:We have to make sure the nobles are the ones to take the price here, not the people.
+main:I will do my best Jay.  Time to set up a secret meeting with the Duchess.
+
+rehnquist:What is the purpose of this meeting @main@?
+main:Well your Grace, Duke Grier is obviously not very happy about my ascension.  Surely he will try to gain more control in the House of Lords.
+rehnquist:Obviously, but he doesn't have the forces to oppose me openly.
+main:Not yet, but I have a plan that will make sure he cannot rise against you.
+rehnquist:Oh?
+main:I'm asking to pass a law that would ban the charging of Illis crystals with mana.
+rehnquist:Is this about your mana field collapse issue?
+main:Yes, and I realize that it would be very uneconomical to pass this law, but I have a catch that should make you rich and Duke Grier suffer.
+rehnquist:It had better.  Otherwise there's no way I'm passing something like that.
+main:The law also dictates the creation of an independent military command to enforce the fines associated.
+rehnquist:Like an Inquisition of sorts?
+main:Yes.  Give the command to me, and I will only enforce the law on lands controlled by lords aligned with the Duke.
+rehnquist:...Hahahahaha!
+rehnquist:HA!
+main:You... don't like it?
+rehnquist:Oh I don't like it, I LOVE it.  Enough deniability to look benevolent and will nicely fund the next war of reconquest.  What are you doing planning on doing with the money from the fines?
+main:The plan was to use 50% to fund the Inquisition, as you put it, and the other 50% would go to the empress.
+rehnquist:I'm making it 60/40.
+main:As you wish milady.
+rehnquist:Excellent.  You know, I thought you were ambitious when you first stepped in here asking for protection.  I had a good feeling about you.  I can see that my investment has been rewarded.
+rehnquist:I will meet with my vassals immediately to organize the deception.
+
+ :One sham of a debate later...
+main:Ladies and gentleman, we are now the Inquisition.
+ :@main@ holds up a copy of the imperial decree defining their new authority.
+jay:Congratulations milady.
+roxanne:In that case, it is time to execute the plan.  I have conscription orders drafted up for our lands and the Thracian lords.  Will we have funding?
+main:Yes.  In addition to 40% of the fines we levy, we have some gold arranged by her Imperial Majesty.
+roxanne:I'll count it out when it gets here.  I've outlined a list of protential problem lords with Jay and prepared a list of our members to be in charge of the Inquisition detactments that will monitor them.
+main:Alright.  Once the conscripts get in, are you ready to drill them Jay?
+jay:Of course milady.  It will be nice to have a regularly-sized force for once.  Catelia will be aiding me as well.
+main:And Myra, how's the mana field doing?
+myra:An average of measurements over time across our territory says we have 4 months before total field collapse.
+gabriella:That's not a lot of time.
+myra:True, but we'll gain more as we assert more control.
+
+ :1 month later...
+roxanne:We have a problem.
+main:What's the situation.
+roxanne:Earl Blatchford refused to stop charging Illis and buying recharged crystals despite our repeated warnings.  Just today I got word he took it a step further.
+main:Oh?
+roxanne:He's executed the detactment we sent to enforce our authority.  Quite horribly I would add.
+main:Sounds like we've got to lay down the law.
+roxanne:I wonder if he's figured out the whole thing is a trick yet.
+main:We can't have him looking too deeply at it.  Let's put a stop to him.  Call a meeting.
+
+jay:A non-compliant earl?  This is what we've been training for.
+main:Are our troops ready?
+jay:I would like more time to train them, but they are in a deployable state.
+gabriella:So are we going to ask him nicely to pay his dues and stop?
+jay:I wouldn't recommend it.  He killed our people, we've got to show we mean business now.
+gabriella:Isn't that a one way trip to escalation city?  Shouldn't we give him a chance to pay reparations?
+roxanne:I agree with Gabriella.  We don't want to start a civil war here.
+gabriella:I actually thought you'd be more for revenge.  Didn't you know the guy who was killed pretty well?
+roxanne:Francis?  Yes.  He was one of Taney's lieutenants.  We bonded over a shared love of accounting. 
+main:You... don't really seem beat up about it?
+roxanne:Well I could sit in my room and cry or I could do my job.  Revenge isn't my style.  After all, I'm here working for my the people who killed my last boss, who killed my boss before that.
+main:Good point.  In any case, I agree that we shouldn't just destroy his castle and threaten his children if it can be avoided.  I'd like to avoid another Iredell.
+main:We'll show up in force, but give him a chance to negotiate backtaxes... back fines?  Whatever the term is.
+roxanne:Monetary compensation for the murders of Francis and his detachment should be added to that.
+main:Do we know why we was so... extreme?
+roxanne:According to what Francis wrote before his death, the Earl's income relies on the Illis charging and refinining industry in his territory.  Apparently they called his fief the lifeblood of the cities for their reliance on the channeling on his territory.
+jay:Hmm, that means there should be a lot of mages in his territory.  I'll have to run an anti-mage drill before we leave.
+main:Doesn't that mean that he's going to be less likely to agree to settling things with money?   I mean, we are taking away a significant portion of his personal income.
+gabriella:Let's hope he sees reason then. He should have at least some idea of how field collapse wouldn't be beneficial either.
+jay:I don't doubt he knows about it, but accepting it and sacrificing for it is another thing entirely.  Even I think what we're asking of him is a bit unreasonable.  Necessary, but unfortunate.
+main:What do you think the chances of him accepting are Roxanne?
+roxanne:10%, maybe less.
+main:Well, it's worth a shot to try and keep this peaceful.
+
+catelia:Presenting her ladyship Marchioness Blair!
+main:Earl Blatchford.  I've come to negotiate.
+blatchford:I won't tolerate the disrespect the Inquisition has suffered upon myself and my subjects.  You're asking me to give up all of my industry and starve the City of lights and running water.
+main:There are sources of Illis other than recharging.  The City will survive.
+blatchford:Oh you mean natural sources like your mine?  Yes I know all about it!  Your scheme to get rich doesn't fool anyone "Blair".
+main:You heard about mana field collapse Blatchford.  Surely you know your industry won't survive that either.
+blatchford:A preposterous theory.  Even if mana field theory were true, there is no evidence it is decreasing in strength.
+main:We've done the experiments.  We only have a few months left!
+blatchford:I'm supposed to take your word for it while you conveniently profit off these policies?  You can go back to whatever armpit of the Empire you came from.
+main:Look, I'm offering a lot of concessions.  A hold on your fines if you just stop industrial scale channeling of mana on your lands.  We can show you our data.
+ :Blatchford response by holding up a severed head.
+roxanne:Francis...
+blatchford:Leave, or suffer the same fate as your compatriot here.
+main:Very well Blatchford, you've forced my hand.  Prepare the artillery.
+jay:We'll see how he likes these new cannons.  Fire!
+ :Blatchford and his posse quickly scramble into the confines of his castle as impacts thunder along the outside wall.
+main:Now to play the waiting game...
+catelia:Wait, what's that?
+ :Figures crest a nearby hill - it's Blatchford's army!
+roxanne:When did he have the time to raise those forces?
+jay:It's a trap!  We've got to realign NOW.
+ :Jay quickly starts grabbing officers and telling them to rearrange their lines.
+catelia:Their cavalry is charging!
+jay:This is bad, we have no barriers.
+main:Send out our own cavalry, we have to delay them!
+jay:Yes, milady!
+main:Bring out the mages too, we can try to disrupt them before meeting their main army!  I'll direct them myself.
+roxanne:Yes, milady!
+catelia:Looks like we got one hell of a fight on our hands!

@@ -71,7 +71,7 @@ public class EnemyController : MonoBehaviour, PlayerController
         enemies.enemies[11] = new Enemy("Atheria, Necromancer General", new int[] { 10, 3, 7 }, new Spell[] { spells.spells[10], spells.spells[8], spells.spells[1] }, 150, 15, 15, 15, 0.05f);
         enemies.enemies[12] = new Enemy("Roxanne, Atheria's Right Hand", new int[] { 10, 3, 7 }, new Spell[] { spells.spells[10] }, 100, 10, 10, 10, 0.1f);
         enemies.enemies[13] = new Enemy("Atherian Mage", new int[] { 10, 3, 7 }, new Spell[] { spells.spells[0] }, 100, 10, 10, 10, 0.2f);
-
+        enemies.enemies[14] = new Enemy("Earlygame Enemy", new int[] { 5, 10, 5 }, new Spell[] { spells.spells[55] }, 30, 15, 15, 15, 0.4f);
 
         enemies.Save(Path.Combine(Application.persistentDataPath, "enemies.xml"));
 
@@ -616,6 +616,9 @@ public class EnemyController : MonoBehaviour, PlayerController
                 if (i is DamageIncreaseEffect) {
                     amount = ((DamageIncreaseEffect)i).modifyDamage(amount);
                 }
+                else if (i is SpellDamageIncreaseEffect) {
+                    amount = ((SpellDamageIncreaseEffect)i).modifyDamage(amount);
+                }
             }
             //Enemy effects
             foreach (StatusEffect i in statusEffects) {
@@ -644,7 +647,7 @@ public class EnemyController : MonoBehaviour, PlayerController
                     amount = ((DamageReductionEffect)i).modifyDamage(amount);
                 }
             }
-            return amount;
+            return (int)(amount * gridController.damageMultiplier);
         }
         else if (damageType == DamageType.statusEffectDamage) {
             //Weapon effects
@@ -1005,7 +1008,7 @@ public class EnemyContainer {
     public Enemy[] enemies;
 
     public EnemyContainer() {
-        enemies = new Enemy[14];
+        enemies = new Enemy[15];
     }
 
     public void Save(string path) {

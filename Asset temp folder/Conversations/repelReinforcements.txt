@@ -1,0 +1,26 @@
+main:They're stalled!  Get back in formation!
+main:Jay, is the formation set?
+jay:Enough.  They're also trying to destroy our cannon with theirs on the wall.
+main:I thought you said they weren't accurate?
+jay:They're failing, but they'll hit eventually.
+roxanne:Can't we use the cannon against their ambush force?
+jay:They aren't accurate enough.  We'd have a lot of friendly fire when we engage!  We need to focus on taking out their artillery first or else we won't be able to seige them at all!
+roxanne:That won't matter if they crush us here.  We aren't organized for a defense - there's no way we can stop their advance otherwise.
+main:... We're going with Roxanne's plan.  Prepare for a lot of attrition.
+jay:As you wish milady.  I'll limit how much we engage with to maximize our artillery's effectiveness and minimize friendly losses.
+ :Jay orders the first line to meet the enemy forces still advancing and signals the artillery to fire as close to the enemy side as possible.
+main:Fire!
+ :The Inquisition forces slow down the incoming Blatchfordians as artillery fire consumes them all.  When the dust settles, the Blatchfordians are disorganized, but alive.  The Inquisition forces are all dead.
+jay:Looks like the cannon was... effective.  Roxanne's plan worked... to an extent.  Our front line is totally lost though.
+main:Stop the artillery and send our forces in - we can win now!
+roxanne:Yes milady.  Told you it was necessary, Jay.
+jay:...
+ :The second and third lines advance on the battered Blatchfordians.
+ :Slowly, the Blatchfordians begin to rout.  
+ :The castle forces remain and continue to bombard the Inquisition cannon.
+main:Jay, can we still seige the walls?
+jay:...I'll make it work.
+ :Under fire from castle defenses, the Inquisition forces reorient to face Blatchford Castle's walls.
+ :Blatchford's artillery seems to be focused on trying to destroy the Inquisition's cannons, allowing the infantry and cavalry to enter formation without much incident.
+main:So it's an artillery duel?
+jay:Yes.  It's been theorized this is what warfare would be like against foes with cannon as well, but it hasn't happened much yet.

@@ -1,0 +1,42 @@
+@main@:Roxanne!  There you are.  What's our status?
+roxanne:Not great.  We've repelled the initial wave, but by the way they're pulling back it looks like they're about to start hitting us with their cannons now.
+@main@:How did they get all this here so quickly?
+roxanne:Well, I don't think there are that many soldiers here.  I talked to the guys on watch last night, and they said most of the people here in the morning were seige engineers putting the cannons together.
+@main@:Why would they do that?
+myra:From what I'm hearing, it sounds like Grier really hoped to scare us into handing the castle over.  I mean think about it - it would be impossible to mobilize a large army in the time since we freed that slave camp and bring them all here.
+@main@:He did say he's doing this for Marquess Blair - maybe this is just a favor to him, not an invasion.
+roxanne:Ok, then what do we do about it?
+ :A crash rumbles through the castle.
+roxanne:He's still got his personal forces and those cannons aren't just for show.
+@main@:Right, we'll have to get a force close enough to destroy them.
+roxanne:No way are we going to just open the gates and run forward.  His forces still outnumber us, even if it is only slightly.
+@main@:We need another way around.  If we can flank his forces, I'm sure we can destroy the cannons.
+roxanne:Taney would open a portal.
+myra:That could work -
+@main@:No!  We all know how harmful that is to the mana field.  
+roxanne:You'd rather die here?
+@main@:Look, only if we have no other option.  Is there any way we could sneak out of here and into a favorable position?
+roxanne:...
+myra:Don't castles usually have tunnels leading out?
+roxanne:I know there is one here, but it won't put you behind them.  A portal would be so much easier -
+@main@:Where will it put us?
+roxanne:I think it opens up somewhere to the side of where they are now.
+@main@:Not optimal, but I think it's enough.
+myra:Are you sure?
+@main@:Yes.  Let's do this.
+
+@main@:Alright, the moment we open this door, we charge the cannons.  Roxanne, you go for the one on the left, and I'll go for the one on the right.
+roxanne:It isn't too late to do the portal idea.
+@main@:I said no, and that's final.  We don't have time to debate this.
+catelia:Actually, how much time do we have before they bring down the walls?
+roxanne:I don't know.  I'm not a seige engineer.
+@main@:Any guesses?
+myra:I've heard of seiges that lasted a long time.  I don't know how that applies now that cannons are a thing, but it should be at least on the order of days.
+@main@:Are you willing to bet on that?
+myra:No.
+@main@:Then let's go.  Are we ready?
+gabriella:Ready.
+myra:Ready.
+catelia:Ready.
+roxanne:Fine.  I'm ready.
+

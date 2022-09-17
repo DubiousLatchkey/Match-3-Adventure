@@ -1,0 +1,46 @@
+main:Is it just me or do they seem undermanned?
+gabriella:It seems that way to me too - I guess they had too much tied up in their army.
+main:Onwards to the main chambers then, we've got to find the Countess!
+ :A couple of soldiers open the front doors and enter the room.
+jay:Milady, step back!
+ :The soldiers who entered are blasted back out by a magical explosion - at least parts of them.
+main:That was close!  What the heck was that?
+jay:Our last ditch defense plan.  Turn the main chambers into a killbox and use a set of secret tunnels to get food in while waiting for help.  I'd hoped she would have surrendered, but if she's this dug in, she's committed.
+main:It's too bad you know all about her secret tunnels right?
+jay:Indeed.  If we cut them off, she'll be at our mercy.
+gabriella:Is she so stubborn?  Couldn't we just negotiate.
+main:I certainly don't want to have to stay here and starve her out.  Let's give it a shot.
+ :@main@ walks over to the remains of the front door while keeping a safe distance from it.
+main:Countess Iredell!  I'm here to parley!
+ :There is no response.
+main:Look, Jay told us about your secret tunnels - you've got no food and no way out.  Let's not do this in a way that wastes the lives of your soldiers.
+ :Again, they refuse to answer.
+main:Well, I guess we're doing this the hard way.
+
+main:Roxanne, how goes the occupation?
+roxanne:As well as we could hope.  There is some looting going on, but that's to be expected.
+main:We should try to minimize that.  Anyway, any ideas on how to get to Iredell?
+roxanne:We could organize an overwhelming force.  They're got a few windows we could go in through as well as the side hallways out.  A simultaneous attack along all axes should be sufficient.
+jay:At significant losses.
+main:Jay, you have a better idea?
+jay:Not really.  I helped design this so it works against my ideas.  Starving them out seems like the best option right now.
+gabriella:It seems cruel, but also less violent than an attack.
+main:Why don't we just shoot a couple holes into the building with the cannon?
+jay:Huh, I didn't think of that.  Simple, but effective.
+roxanne:And chaotic.  It would be hard to plan an attack around a specific hole or section that gets knocked down.
+main:But also hard to defend from.
+gabriella:Must we always be so violent?  I think they'll be up to negotiate in a few days.
+roxanne:I'm not the biggest fan, but I believe staying here to starve them represents its own logistical challenges.
+main:I've made my choice - we're going in guns blazing.  Bring in the cannons!
+ :A team is assembled to mount the cannon just beyond the rubble of the wall pointing at the main building.
+ :Besides them, soldiers prepare to rush into the gap.
+main:Last chance Iredell!
+ :One of Iredell's soldiers emerges from beyond cover to taunt the gathered forces before quickly returning behind to cover.
+main:You may fire when ready.
+ :The roar of cannonfire is immediately followed by a dust-flinging explosion of brick from the opposing walls.
+ :The sound of collapsing stone pierces the dust as teams of soldiers advance to newly created holes.
+
+iredell:@main@!
+main:Finally decided to talk Iredell?
+iredell:No.  I'm going to kill you and then I'm going to kill that traitor Jay.
+main:Fat chance.

@@ -36,7 +36,109 @@ main:No one!
 roxanne:How is that possible?
 myra:We reverse-engineered your portal spell and portalled in.
 roxanne:Not even going to think about the mana field implications of that right now, but... thank you for not killing everyone you saw.
-roxanne:Talk to the staff about getting some rooms.  They were left over from Marquess Blair, and our little coup didn't seem to affect them in the slightest.
+roxanne:Talk to any of the other castle staff about getting some rooms.  We're the ones that stayed after Marquess Blair, uh, left, so I'm pretty sure this little coup won't matter much to the others.
+roxanne:I'll tell you what I've learned in Taney's time here: keep everyone paid, and no one does more than complain.
 |transition warroom
  :The next morning...
-main:
+main:Ugh, where am I?  Oh, right... right...
+???:Good morning.
+main:Good morning... wait, who... what?
+tamsin:I'm Tamsin.  I attended to Lady Taney and Lord Blair before her.  Now, unless milady wishes otherwise, I will attend to your needs.
+main:"milady"?  Sorry, I'm not a noble.
+tamsin:Oh?  I apologize then.  I assumed you would be of one house or another, but I should have known when you didn't introduce yourself by your house name.
+main:It's no issue.  The others didn't want to cause problems with their families by claiming this land.  Meanwhile, there's me who doesn't even have a last name.
+tamsin:Then we share something in common... @main@.
+main:Huh. I guess so.
+tamsin:Well then @main@, while I help you dress, breakfast will be served soon.  Do you prefer eating in the dining room or would you rather have me have some food brought up to your room?
+main:Oh... uh, so fancy.
+tamsin:Regardless of who lives in Castle Blair, we do pride ourselves in our quality of service.
+main:I'll eat with the others.
+tamsin:Very good.  One more thing @main@ - Lady Taney had a meeting scheduled with Mrs. Ward who is to arrive here later today.
+main:Ward?  Do you have any information as to who that is?
+tamsin:Jocelyn Ward.  I believe she was one of Lady Taney's business partners.  Ms. Roxanne would likely know more.
+main:I guess I'll talk with her.
+|transition hallway
+ :Later that day
+main:Alright Roxanne, who's this Ward person?
+roxanne:Oh Jocelyn?  She runs an Illis mine north of here.  Back when these lands belonged to Lord Blair, he managed it, but ever since he was ousted, the mine has acted as an independent business.
+roxanne:Taney's control was pretty tenuous at the time, so she made a deal with her to supply labor in exchange for 10% of profits and a mutual promise that they would otherwise leave each other alone.
+main:Labor as in... slaves?
+roxanne:Yes.  It was a big improvement over her previous situation where Lord Blair would just appropriate 10% of her Illis production.
+main:Ah feudal duties.  I remember my mom counting out the bags of grain we needed to give our lord.
+roxanne:In any case, she's here to deliver us her "tax" from our last shipment of slaves.
+main:Right.  About the slavery thing, we're not going to be doing that anymore.
+roxanne:It is a repulsive business, but it is also one of our primary income streams.
+main:Yeah, we're going to have to rearrange some things.  For the better.
+roxanne:No arguments here.  However, there is still the issue of money and what we're going to say to Jocelyn.
+main:We'll wing it.  Let's go and meet her.
+
+main:Jocelyn Ward, I presume?
+jocelyn:I recognize you Roxanne, but who's your friend here?
+roxanne:My new boss.  Lady Taney was deposed by the Mage's Guild yesterday.
+main:I'm @main@.
+ :jocelyn's brow furrows
+jocelyn:I see.
+roxanne:I understand your concerns, but I would say our deal remains unchanged.  
+jocelyn:Really?  Because my deal was with Taney.  If you're the one calling the shots now @main@, I'm going to need some assurances.
+main:Name them.
+jocelyn:Number 1: no interference.  Taney left me alone, unlike Blair, and I appreciate my independence.
+main:Understandable.
+jocelyn:And number 2: keep the slaves flowing.  
+main:That's where we're going to have a problem.
+jocelyn:Oh really?  You one of those abolitionists?
+main:Proudly.  This organization will no longer be dealing in the slave trade.
+jocelyn:And you said the deal was unchanged Roxanne.
+roxanne:Look, we're doing some reorganizing.  You're free to find another supplier, but at least pay us for the last shipment.  After that, we can leave each other alone.
+jocelyn:My deal was with Taney, and it looks like to me that this whole operation is changing.  I may owe her still, but I don't owe you anything.
+main:Yeah?  Well she's dead.  We're the inheriting organization.
+jocelyn:Please.  Sounds to me like I owe nothing then.  Credit doesn't transfer like that kid.
+roxanne:Let's be reasonable Jocelyn, we can still come to a deal.
+jocelyn:Yeah?  About what?  You've got nothing to offer me anymore, and you aren't even run by the same people.  I'm outta here.
+main:Well, shoot.  Let's talk to the others about this.
+
+@main@:So Roxanne, would you give us a breakdown of our current situation?
+roxanne:The Illis mine to the north of us expects us to deliver slaves.  Without the money from the sales, we can't pay off our mercenaries.  We have some spare funds from taxation, but they won't last us very much longer.
+myra:Wow, you tax the people here?
+roxanne:Like I said, we're basically an independent earldom.
+gabriella:How long will the money last?
+roxanne:Depending on how long we stretch them out, maybe 2 months.
+catelia:I think I can help with that.  When we fought the Exchange in the city, we interrupted a sale of Illis to, uh, here.  We can use that money to help fund us.
+roxanne:You mean return the money you stole from us.
+@main@:The important thing is that we're all on the same side now. Will it help?
+roxanne:Yes, but it will only cover, say, 2 weeks of operating costs.
+@main@:So we need a way of generating income, but we also need to stop the Death of Magic at the same time.
+myra:Well what are our assets?
+roxanne:Besides the mages, mercenaries, and the castle, we have control over some of the lands around this castle.  We also have the equipment that armed the skeleton army we used to attack the city.  I've already sent some people to try and recover as much of it as possible.
+gabriella:How about let's not plunder the countryside.  I'm sure we can find an someone that it would be right to attack and plunder that also channels a lot of mana.
+roxanne:Not including the Mages Guild, the target we've always wanted to attack the Merchant's Guild.  After all, they control the distribution of most magic supplies.
+gabriella:What!  We can't do that!  That's my family!
+roxanne:Oh... would that make you Lady Duvall?
+gabriella:Technically.  Just call me Gabriella, please.
+@main@:She has a point though...  hmmm.  Any other ideas?
+catelia:The Exchange deals in Illis throughout the Empire.  I'm sure they're active in... Er, where exactly is this castle, anyways?
+roxanne:We're in the Themata of Thracia.  We've dealt with the Exchange's ilk before, but have no knowledge of where they're based.
+myra:I don't think any of these solves the underlying issue though.  Most mana channelling goes to fuel our mana-powered cities.  Any individual use pales in comparison.
+roxanne:We could go against the mining of Illis directly.  The miner that wanted slaves from us could be a good target.
+@main@:Hmm, a natural rights violator and threat to the mana field.  Sounds like a good target.  We could free the slaves there as well!
+myra:Generally people don't take too kindly to you taking their "property".
+gabriella:And slavery is still very popular among some people in power.  I know my father is still in support of it.
+myra:Yes, it does make Duchess Rehnquist's expansionist military campaigns more lucrative.
+@main@:But they're rich, use a lot of mana in the Illis mining process, and they supply the demand for Illis, which people channel mana into to power cities.
+myra:It will definitely be impactful.  Can we do it though with Atheria's, I mean, our forces?
+roxanne:I'll send some scouts to check the place out.  This could be a good idea.
+
+main:Operationally, how are we going to do this?
+roxanne:The scouts say the camp is minimally staffed with some troops set up to prevent a revolt.
+catelia:Ok, that sounds good.
+myra:Hang on, there's got to be a catch.  Other slave installations have been taken down by abolitionists in the countryside - why wouldn't they target this?
+roxanne:Well, the camp is easily defensible.  The whole place is walled off, and there are watchtowers so we won't be able to sneak inside.
+catelia:Illis is too economically important, I guess.
+main:Ok, then we'll have to plan to break through the gates.
+myra:Any mage should be able to take it down given time, but the delay means they'll be waiting for us on the other side.
+main:Anything else?
+roxanne:That should be everything if we're just going for a frontal assault.  We'll start by trying to take down the watchtowers, and then go through the gate.
+main:Then let's move out.
+
+ :A bell sounds from one of the watchtowers
+catelia:Sounds like they've seen us.
+main:Then we'll reply in kind.  Attack!

@@ -1,0 +1,7 @@
+main:Looks like that's most of them.
+???:You again!?
+main:Well, well, well, look who it is.
+boss:Who the hell are you?  You have a grudge against me or something?
+main:I don't even know your name.  I'm just here to maintain imperial order - nothing personal.
+boss:Well you could have fooled me.  I ain't gonna take this lying down.
+main:Hit me with your best shot.

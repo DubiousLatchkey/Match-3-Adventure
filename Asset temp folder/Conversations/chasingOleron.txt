@@ -20,56 +20,77 @@ roxanne:Yes!  The dial is steady.  We did it!
 @main@:This can't be good.
 
 @main@:Jay!  Report!
-jay:It's Oleron!  He's got something in the back of the -
- :His response is abruptly cut off as the world goes white for a second, and @main@ loses all hearing.
+jay:It's Rutledge!  He's got something in the back of the -
+ :His response is abruptly cut off as the world goes white for a second.  @main@ loses all hearing.
  :She turns around to see a secondary explosion rising from the rubble of where they destroyed the device.  The lighning mixed in signals it was a magical explosion.
-@main@:Augh.
+@main@:Augh!
 @main@:Was that the device exploding?
 roxanne:It must have been.
-jay:Listen!  Oleron is getting away and he's got something on the back of that wagon of his!
-roxanne:Another device?  Or part of one.
+jay:Listen!  Rutledge is getting away and he's got something on the back of that wagon of his!
+roxanne:Another device?  Or maybe part of one.
 @main@:I'm going after him.
-roxanne:How?  He's on horseback!
-@main@:You there!  Citizen!
- :A man is trying to get a hold of his horse as they were clearly startled by the explosion.
-@main@:In the name of the Inquisition and the nobility, relinquish your horse!
-citizen:Are you crazy?  No - Augh!
- :@main@ doesn't let him finish, unleashing a spell from her staff and taking the reins as his body slumps off.
-roxanne:I see...
+roxanne:How?  He's on horseback and there's a sea of flames between us and him!
+@main@:We can't let him get away.
+jay:Agreed, but I don't see a way we can reach him in all this chaos.
+@main@:There's always a way.
+roxanne:We shouldn't overextend our forces.  Rutledge is one just one man and we can stop the rest of the guild if we stay focused.
+@main@:That may be true, but let's not forget our main objective.  I don't know how that device works, but we can't let him do whatever it is he does with it that is draining the rest of the mana field.
+roxanne:I know, but he's as good as gone now.  We can hold the line in against the rest of the guild as is, but not if we have to chase Rutledge down too.
+jay:Unfortunately, I agree with Roxanne's assessment.  It is, however, irrelevant given we won't be able to catch up to him today.  When the situation calms down slightly here, I will personally ride and hunt Rutledge down.
+@main@:I can think of one way to catch up to him...
+roxanne:We agreed - no more portals.
+jay:Isn't that a bad idea?
+@main@:Yes, but we don't have the time.  If Rutledge reactivates the device, I don't think magic will be long for this world.
+roxanne:A portal would cause the same result.
+jay:Is this a "damned if we do, damned if we don't" situation?
+@main@:Not necessarily.  Look.  Either we do nothing and Rutledge causes the end of magic, or we take a risk and have a chance of saving the world.  I think the choice is pretty obvious.
+jay:Assuming Rutledge is hellbent on activating the device as soon as possible.
+@main@:He escaped the guild hall with literally nothing else.  Obviously it's his priority number one.  Roxanne, get a couple mages.
+roxanne:As you wish, milady.
+jay:I hope this works.
+@main@:So do I.
 
- :@main@ follows the path Oleron took, her lack of cargo allowing her to catch up.
-@main@:Oleron!  In the name of the Inquisition, Cease!
-Oleron:Not to s madwoman like you!
-@main@:Damn it!  Cease and I may spare you!
+ :Roxanne flags down 4 mages from their formation.  After a quick conversation, they start casting in front of the group.
+roxanne:These are the guys Taney had make the portals to the city during their invasion.
+@main@:Good.  We'll need to cut Rutledge off somewhere.
+jay:The best location would be the south side of the harbor.  Either he's leaving the city by boat or has some plan to get out past the north side of the city.  Both routes take him past the south side harbor.
+roxanne:You heard the man.  Put the exit at the harbor.
+ :The mage nearest to her nods, and soon a hole in reality begins to form.
+roxanne:You feel that?  We're close to losing it all.
+@main@:Not if I have anything to say about it - Look!  There he is!
+ :As the portal expands, Rutledge's wagon can be seen coming into view.
+@main@:I'm going in.
+ :@main@ dashes through, simultaneously casting a spell at the wagon.
+ :With an explosion, Rutledge is forced to stop as his damaged wagon skids against the ground.
+@main@:You are guilty of crimes against the Inquisition.  Cease and we will spare you!
+Rutledge:I will never surrender to some madwoman like you!
 
- :After a brutal fight, a visibly weakened Oleron loses control of his horses.  The side of his wagon hits the side of a building, breaking something structural.
- :The cart collapses as the horses run off, no longer restrained.  @main@ dismounts to view the wreckage and a dying Oleron.
-oleron:Why?  I was trying to save us...
-@main@:So am I.  What is this you took with you?
- :@main@ moves closer to inspect what is clearly a magical device.
-oleron:It's... the core...
-@main@:Of the device we blew up?
-oleron:Yes... When it became unstable, we had to... get it to safe...ty.
-@main@:Why would you build this?
-oleron:We needed... to fuel... the Source...
- :A light starts emitting from the damaged device.  It start vibrating.
-@main@:What's happening?  What it doing?
-oleron:What it was... designed to do...
-@main@:Channel mana?  Uh oh.
- :The device starts glowing brighter and brighter.
-@main@:Take this!
- :She attempts to cast a spell, but nothing happens.
-@main@:Its already drained all the mana in the area... No... Nooooo!
- :She attempts to get close to the device, but is driven back by a burning sensation.
-@main@:Nooooooo!
- :The device begins to shake itself to pieces until... Nothing.
- :...
-@main@:What... happened?  I can't feel...
- :Her hands move to her face.  She feels nothing until a sharp pain indicates she has been badly burned.
-@main@:Aaaaaah!
- :She surveys what she can from the ground.  Oleron is there, clearly dead.  What remains of the device sits in front of her.
-@main@:Please work...
- :@main@ attempts to cast the most basic light spell, but when she goes to channel the mana, there is no response.
-@main@:No...  All of... my work...
-@main@:Just to... fail?
- :As collapses once more into unconciousness, her last sensation is of her compatriots rushing to her side.
+ :After a brutal fight, a visibly weakened Rutledge falls to the ground.  Both parties are drained.
+rutledge:Why?  I'm trying to save us...
+@main@:So am I.
+ :All of a sudden, a loud crunch sounds as the portal behind @main@ collapses in a deafening explosion.
+@main@:Aaaaaggh!
+
+@main@:What...  was that?
+ :She looks up to see the light of the device on the wagon's back fade away.  @main@ stumbles to her feet.
+@main@:Uuuugh...
+ :@main@ attempts to cast a spell.  Any spell.  Or just channel mana.  Anything to show there's still magic in the world.
+@main@:No...
+ :It is futile.  No indication of the extranormal appears.
+rutledge:Uuuugh....
+@main@:You...
+ :She hobbles towards the form of the fallen man.
+@main@:...will pay for what you have done here.
+ :Her strength restored by rage, @main@ smashes her staff into Rutledge's stomach.
+rutledge:Aaaaah!  Why?  I-
+@main@:Shut up!  If only I could have been faster...
+ :As @main@ strikes again, she sees how frail the old man is.
+rutledge:Uaaagh!
+ :His body curls up instinctively.
+@main@:All I've done... just for you come in and make it all meaningless!?
+ :She braces her staff against Rutledge's throat and pushes. He gasps for breath, but finds none.  
+ :@main@ watches as his thrashing grows slower.  Slower.
+ :Nothing.
+ :
+@main@:It's over.
+ :Reality reasserts itself, and @main@'s weakness returns.  As she collapses into unconciousness, her final glimpse of the world is of her compatriots rushing to her side.

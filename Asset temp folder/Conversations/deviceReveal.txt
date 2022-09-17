@@ -26,7 +26,7 @@ jay:Again?
 myra:The last time we saw this happen, it was when Atheria opened her portals to invade the city.
 roxanne:Portals take a lot of mana to channel, but we're the only ones who know how to make them.
 myra:I can't think of anything else that could cause this... what about you roxanne?  You're the mana field theory expert here.
-roxanne:Besides portals, there are some experimental things we tried that could do this, but they're so esoteric that I don't believe any of them could cause this.
+roxanne:Besides portals, there are some experimental things we tried that could do this, but they're esoteric enough to be out of the question.
 catelia:Isn't the answer simple?  Someone is channelling a butt-ton of mana.
 @main@:We can do the same thing we did then - locate the source.  That should narrow things down at least.
 myra:Right, Jay, can you hand me that detector over there?

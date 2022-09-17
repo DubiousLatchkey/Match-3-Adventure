@@ -1,64 +1,112 @@
-@main@:Operationally, how are we going to do this?
-roxanne:The scouts say the camp is minimally staffed with some troops set up to prevent a revolt.
-catelia:Ok, that sounds good.
-myra:Hang on, there's got to be a catch.  Other slave installations have been taken down by abolitionists in the countryside - why wouldn't they target this?
-roxanne:Well, the camp is easily defensible.  The whole place is walled off, and there are watchtowers so we won't be able to sneak inside.
-catelia:Illis is too economically important, I guess.
-@main@:Ok, then we'll have to plan to break through the gates.
-myra:Any mage should be able to take it down given time, but the delay means they'll be waiting for us on the other side.
-@main@:Anything else?
-roxanne:That should be everything if we're just going for a frontal assault.  We'll start by trying to take down the watchtowers, and then go through the gate.
-@main@:Then let's move out.
-
- :A bell sounds from one of the watchtowers
-catelia:Sounds like they've seen us.
-@main@:Then we'll reply in kind.  Attack!
-
-### fights ###
-
-roxanne:There!  Looks like the leader by his armor!
-@main@:Alright, I'm going after him!
-slavedriver:Who do you think your messing with?
-@main@:Someone worth killing.
-
-slavedriver:Ack!  My lord ... will have ... your head!
-slavedriver:Ugh.
- :He collapses to the ground.  Nervously, the soldiers around him begin laying down their arms.
+ :Jocelyn collapses to the ground.  Nervously, the few guards left behind her begin laying down their arms.
 catelia:Looks like it's over.  What are we going to do with these guys?
 @main@:We're not just going to kill everyone.  Have them round up their wounded and leave.
 catelia:Roger that.
 slaves:We're free!
  :Shouts of happiness ring out from the enslaved people throughout the camp.  One of them steps forward.
-slave:One of your men said you were the leader here.
+slave:One of your people said you were the leader here.
 @main@:That's right.  I'm @main@.
-slave:Why did you free us?  We're nobodies here.
-@main@:Ah, well, in addition to the immorality of slavery, we're here to make sure too much magic isn't channelled.  Er, long story short, use too much magic, and there will be no more forever.
-slave:If you say so.  Wait, does that mean you're going to shut this place down?
+slave:Who are you people?  More of Lord Blair's men?
+@main@:Ah, well, in addition to the immorality of slavery, we're here to make sure too much mana isn't channelled.  Er, long story short, use too much magic, and there will be no more forever.
+slave:If you say so.  I guess the abolitionists aren't an armed movement.  Man, you could have told us you were coming, we would have helped!
+main:...That's a good point.
+slave:Wait, if you're anti-slavery, does that mean you're going to shut this place down?
 @main@:That was the plan...
-slave:You do realize that most of us were prisoners of war right?  There's no way we'll make it back to our homes without being hunted down.
-@main@:I see...
-slave:I'm sure some of us want to join up with you or whatever, but unless you can pay and feed us, freedom is just going to mean death for us.
+slave:You do realize that most of us were prisoners of war right?  There's no way we'll make it back to our homes without being hunted down.  Are you planning on protecting us from any lords that come looking ofr a new revnue stream?
+@main@:I, uh...
+slave:I'm sure some of us want to join up with you or whatever, but unless you can pay and feed us, freedom is going to be no better than death.
 myra:Ah the tragedy of conquest.  Whenever you take someplace over, its problems become your problems.
 @main@:Myra!  Any ideas?
 myra:Well, we should be able to offer some of these people employment.  If we're going to keep making raids like this we'll need a larger army.
 @main@:Sounds expensive...
-slave:You do know that you're standing on one of the region's biggest nest eggs right?
+slave:You do know that you're standing on one of the themata's biggest nest eggs right?
 @main@:Yes, but Illis mining not only uses a lot of mana, but also contributes to the channelling of more throughout the rest of the empire.
 myra:True, but now that we're in charge, we can run this place ethically and use as little mana as possible in mining.
 slave:That sounds like a lot of manual labor.  You know this place isn't set up for that, right?
 @main@:Is it possible?
-slave:Probably, but it will take some time.
-@main@:Hmm...Well, as long as we can make enough to keep the people fed and mana channelling to a minimum.
-myra:I'll stay around to see what we can do about that.  This is a very intersting problem, and I'm fascinated at what we may do to solve it.
+slave:Probably, but it will take some time.  But why should we listen to you?  Our yields could be much higher without whatever regulations you're thinking over.
+myra:These are the Duke's lands.  Without political cover you'll be reenslaved in a few weeks when he comes to reclaim them.
+slave:Convenient for you.
+@main@:Look, we can work out a deal.  We just need to make enough to keep the people fed and mana channelling to a minimum.
+myra:I'll stay around to see what we can do about that.  This is a very interesting problem, and I'm fascinated at what we could do to solve it.
 roxanne:Hey @main@, are you busy?
 @main@:Just finishing up over here.
- :@main@ nods to myra who goes with the slave's leader to begin taking stock of the situation.
+ :@main@ nods to myra who goes with the slaves' leader to begin taking stock of the situation.
 roxanne:So, some of these guys want to join us.
 @main@:Ah yes.  I heard this may happen.  How many can we afford to take in?
-roxanne:Well, with our budget, we can take a few dozen to cover our losses from Atheria's invasion, but I have another idea as well.
+roxanne:Well, with our budget, we can take a few dozen to cover our losses from Taney's invasion, but I have another idea as well.
 @main@:What is it?
 roxanne:The castle town is pretty sparse, so I think a population injection of laborers could really help our own supply base and tax revenue.
 @main@:Interesting.  We could mark out some land near town for them.
 roxanne:Exactly what I was thinking.  Now, technically we don't own any of this land, but we are and have been the defacto lords of this corner of Thracia.
 @main@:Well, if we can get some people a new start, I'm all for it.
 roxanne:Excellent.  I'll start rounding up our forces to return to Castle Blair.
+
+### On the way back ###
+main:You ever feel like you just aren't cut out for something?
+gabriella:Yeah, why?
+main:I was talking to the leader of the slaves, and I realize we didn't think everything through.
+gabriella:Oh?  What do you mean?
+main:He asked me why we didn't contact the slaves before we attacked.  Maybe we could have had a much easier time if we did.  Also all the stuff about what we're going to do with the mine - I mean, we haven't even figured that out now.
+main:Luckily he was as overwhelmed by the situation as I was, because I didn't have answers for him.  Maybe I'm just not cut out for this leadership stuff.
+gabriella:Meh, I think we all feel like that sometimes.  At least it's all working out so far, so you don't seem too bad to me.
+main:When did you feel like this?
+gabriella:Well, I feel it now like you are.  I mean, here we are flying by the seats of our pants, er robes, but I never felt it more than my first days at the Mage's Guild.
+main:Oh?
+gabriella:I never wanted to learn magic, but it was either that or law.  My father wanted all of his kids to learn some trade so that when they came back, they could contribute their knowledge to the Merchant's Guild.
+main:I always thought it was kinda weird the heiress to the Merchant's Guild would be studying to be a mage.
+gabriella:I have a brother out there learning law in my stead, and another who's too young for all this.  Mom says they want him to learn medicine, but that's a long time from now.
+gabriella:Anyway, for the first few years learning magic, I really wanted to go home.  Everyone else came from a mage family or was a prodigy that already knew everything.  
+main:You still feel that way after passing the tests?
+gabriella:No, but I actually stopped feeling so bad after I met you.
+main:Me?  Really?
+gabriella:Yeah, someone else who knew nothing and was getting by with sheer force of will.  You seemed pretty confident, so I thought if you could do it, so could I.
+main:Weird considering you're my senior in the guild.
+gabriella:I dunno.  You just have this air about you, you know?  You make decisions and just go with them.  Most of the time they seem to work pretty well.
+main:Thanks I guess.  I just can't stop thinking about how much stuff I missed, we missed when we were planning this.  What if we had contacted the slaves beforehand?
+gabriella:Well, maybe one of the guards would have overheard and they would have prepared for us coming.  Maybe it was the right call not to contact them.
+main:Making the right decision for all the wrong reasons?  Accidenting into the correct strategy?  what if it wasn't?
+gabriella:Well, it's worked out so far.  I'm sure if you keep at it, one day you'll make the right decision for the right reason.  In the meantime, no one's the wiser.
+
+myra:The mine is back in business.  We're not producing much yet, but it should be enough income to cover our current money woes.
+@main@:Wait, who are those people outside?
+catelia:I don't know, but people are saying they're all around the castle.
+@main@:Look!  There's an army in front of the castle!
+myra:I think I can see seige equipment.  This isn't good.
+@main@:Whose flag is that?
+myra:Hmm, that standard has a yellow cross on red.  Looks like it's from The City.  Only Duke Grier could be bearing the flag of the Themata of Constance City.
+catelia:Wait, we're a Themata?  I thought Themata were large regions of the empire, not just one city.
+gabriella:Normally yes, but The City is important enough to be governed separately.
+@main@:Anyways, what are they doing here?
+myra:Your guess is as good as mine, but it looks like the Duke has come here to claim Castle Blair for himself.
+catelia:Can he just do that?
+gabriella:Well, technically, as a Duke, the land is already his.
+myra:Now hang on, if we're being technical, this land isn't his.  It belonged to Marquess Blair until Taney took it over.
+catelia:Semantics.
+gabriella:Well Blair was his vassal, so -
+@main@:Even if we don't technically own any of this land, we do control it.  Surely that's got to count for something.
+myra:We control this land by right of conquest?  Yeah, I think his buddies in the House of Lords would rule against us there.  Gabby and I are the only ones here of noble descent, and none of our families' lands are even near here.  We have no claim.
+catelia:I don't think we can just give this whole place up.
+@main@:If we give up the castle, we're giving up a lot of potential for power projection.  Without it we'd have no way to even bargain for a reduction in magic use.
+gabriella:Whether we "legitimately" own this place or not, we can do a lot of good here.  I hope the Duke can see that.
+myra:Our ideas are unsanctioned by the Guild and he's here with cannons.  I don't think this is going to be a peaceful interaction.
+catelia:Look!  Someone's coming out from the formation!  I think they mean to speak with us.
+@main@:Shoot.  This isn't good.  Cat, find Roxanne.  Tell her to start peparing the castle defenses.
+catelia:Got it.
+
+knight:Presenting his Lordship Duke Grier!
+grier:You there.  Are you @main@?
+@main@:I am.  To what do I owe the pleasure?
+grier:You see @main@, I hope to end this without bloodshed.  I'd hate to have to have to destroy this place before giving it back to it's rightful owner.
+@main@:Its rightful owner?
+grier:Yes, Marquess Blair has been without his castle for many years now, but these lands are still his.  I ask you to surrender this castle in the name of the Empire.
+@main@:I'm afraid we can't do that.  Our mission here is too important.
+grier:Yes, I've heard of it.  To be honest, I don't understand your magic theory nonsense, and I don't care.  Marquess Blair requests his property back, and you have no claim to it.
+@main@:...
+grier:Oh yes, and that means all of his property.  You think you can just steal his slaves and just get away with it?  No.  I am here to restore order to this region, and if you will not make this easy for me, I will have to begin firing.
+@main@:He owned that mine?  Never mind that - slavery is wrong, and we will fight here for their lives and freedom.
+grier:So be it.
+ :He gestures to the knight on his right who begins blowing on a horn.
+@main@:Alright, ring the bell for castle defense, we've got to break this seige!
+ :A dinging sound can be heard echoing through the castle.
+@main@:Looks like Catelia found Roxanne.  Let's get to work people!

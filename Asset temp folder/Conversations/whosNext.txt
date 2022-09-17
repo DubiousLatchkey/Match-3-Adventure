@@ -1,7 +1,7 @@
 roxanne:Welcome back @main@.  Were you successful?
 @main@:Yes.  Very successful.
 catelia:So the Inquisition resolution still stands?
-@main@:Yes.  Duchess Rehnquist thought she controlled everything in the House of Lords.  Well we sure showed her.
+@main@:Oh yeah.  Duchess Rehnquist thought she controlled everything in the House of Lords.  Well we sure showed her.
 jay:Amazing.  I didn't think anyone could stop her takeover of the House of Lords, but, clearly, I was wrong.
 myra:The plan seemed so far-fetched, and yet, here we are.
 gabriella:I kind of feel bad that we had to go against her.  After all, she did so much for us.
@@ -10,7 +10,7 @@ jay:You know...
 @main@:Yes, Jay?
 jay:With the 4 Thracian votes under your control, you are somewhat of a kingmaker now.
 @main@:What do you mean?
-jay:With the Cordissian and Rehnquistian factions divided as they are, you can almost choose if any legislation passes since they both need your votes.
+jay:With the Grierian and Rehnquistian factions divided as they are, you can almost choose if any legislation passes since they both need your votes.
 @main@:Huh.  I never thought about it like that.
 roxanne:By policing the Rehnquistian faction's lands, we should be able to switch most of the empire's legal use of Illis over to the precharged variety.  However...
 @main@:That's got to be enough.  Myra, what are the estimates?

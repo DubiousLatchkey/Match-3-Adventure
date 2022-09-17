@@ -1,0 +1,29 @@
+gabriella:...
+main:Hey...
+gabriella:Hey...
+main:About ready to leave?
+gabriella:Yep.
+main:Listen, I'm sorry -
+gabriella:No, I get it.
+main:...
+gabriella:I get magic is important.  I get the need for this enforcement.  I understand why you think this is the only way.
+gabriella:But I hope you understand why I just can't do it.  I know you aren't exactly on good terms with your parents, but I am.
+main: Haven't you been talking about how greedy your father is?
+gabriella: It's true, but that doesn't mean he isn't also there for the family - there for me.
+main:Pff.  I wish that was true for my family.  They kept me down - never supporting me for wanting to do anything other than just till or pick all day.
+gabriella:Maybe because they also cared for their family business.  Look, I don't know exactly what went on at your farm -
+main:My farm?
+gabriella:Your family farm.  Whatever.  The point is, my father appears so greedy because he wants to improve his family's livelihood.  Maybe your parents were the same.
+main:...
+gabriella:I know how much they've given me even if it isn't denominated in silver and gold, so I can't just repay that love with... violence.
+main:I... understand.
+gabriella:I hope you do.  You know, have you ever thought about going back to your parents with your new title and riches and... I don't know ... helping them out?
+main:I... guess I haven't.
+gabriella:It's just that I've been thinking about what family means to me.
+main:I mean I'm not even their lord, helping them would just enrich another lord - plus what about my suppposed claims to noble -
+gabriella:Does that matter?  In the end you're helping your family.  I'd bet they'd be glad just to see their only daughter - even if you had nothing. Look, just think about it ok?  I'm sure, well, pretty sure, they love you.
+main:...
+gabriella:So if my letter comes back and the news isn't what you want to hear...  you'll understand.  Goodbye @main@.
+main:Bye Gabby.
+ :With a whinny, her horse starts on a trot towards the capital.
+main:I'll think about it.

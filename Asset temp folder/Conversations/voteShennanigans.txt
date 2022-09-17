@@ -1,0 +1,40 @@
+grier:Well if it isn't the notorious "Lady Blair".
+@main@:Duke Grier.
+grier:And what, pray tell, does the Inquisition want from me now?  Are you here to ask me to just hand you control over my Illis?  Does your arrogance have no end?
+@main@:Actually, your Grace, I'm here to with a way for you to even the scales against Duchess Rehnquist.
+grier:...Really?
+grier:You expect me to believe that you, the one who had me humiliated in the House of Lords and on the battlefield, and owes everything to my archnemesis would turn on her?
+@main@:Yes.  I am here talking to you after all.
+grier:Bwahhahahaha!  There's no way that's true.
+@main@:My lord, I may owe my title to Lady Rehnquist, but I have always been loyal to the ideas of the Inquisition.
+grier:This is too perfect to be true.  Alright then, I'll humor you.  What is it you want from me?
+@main@:I'm sure you've noticed that the Inquisition has, so far, only exercised it's authority over the lords who vote with you.  That has always been the Duchess' perogative.  Unfortunately, Illis charging just seems to have moved to her lands.
+grier:So you want to go after her lords now as well?  Go on...
+@main@:The Inquisition believes that if we were to do this, she would immediately retaliate by removing our authority by revoking the decree that created us in the House of Lords and by seizing our arms.  Those 2 are fights we cannot win.  At least not alone.
+grier:Are you suggesting open civil war with Duchess Rehnquist?  The impertinence...
+@main@:All we're asking for is for more cannon to destroy Marchioness Ellsworth's castle, and your support in the House of Lords to maintain our authority.
+grier:Haven't you stolen enough of my cannons already?
+@main@:I personally apologize for that.  We're willing to give them back to you with the rest - should you be willing to go with this plan.
+grier:I cannot believe I am considering this.
+@main@:The only issue is how many votes we'll need.
+grier:Well... until Blair was deposed of his lands, Rehnquist and I stood at an even 35-35.  It was supposed to be 36-35, but luckily her last reconquest was not as successful as she hoped.  That became 35-34 when Taney showed up.  When you came along, that took the 4 Thracian votes away to give 39-31.  If I were to side with you, we would once again be back to a tie - and that's assuming a full House.
+@main@:However, if we were initiate this attack on Ellsworth a few days beforehand...  Well then.  She'd be indisposed wouldn't she?
+grier:A 35-34?  It would be good to win a vote again...
+main:Yes, it'd be a shame that Rehnquist would be unable to call in all of her lords - an abstain vote by default.
+grier:You know, when you walked into this room, I thought I hated you, but now... Maybe I just hate her.  Hmm... 
+@main@:The Inquisition stands only for the preservation of magic.  If that involves attacking Duchess Rehnquist, so be it.
+grier:You know I was talking to Rutledge the other day...
+@main@:We're aware the Mages Guild disagees with our assessment on the situation.
+grier:Actually, he said that you might have a point.  He disagrees with your theories for sure, but not, perhaps, on the end result.  He's taking the idea of the Death of Magic more seriously anyway.
+@main@:That's good to know.  Thank you, your Grace.
+grier:Don't thank me until Rehnquist is humiliated in the House of Lords.
+@main@:Are... you agreeing, milord?
+grier:I guess I am.  On two conditions.
+main:Name them.
+grier:First, get someone to vote in our favor in Ellsworth's place.  If we're... ahem, you're elminating her, it shouldn't be hard to encourage one of her proxies to see things from our perspective.  It should make the whole thing a little less of a farce.
+main:Done.  The other condition?
+grier:I want to be the one firing the first shot at Castle Ellsworth.
+@main@:As you wish.  I'll inform the Duchess we intend to enforce our authority on her territory as well.  When she files a motion to remove our authority, we will strike.
+grier:I still cannot believe your gall.  The sheer audacity to betray she who has helped you so much.
+@main@:...
+speaker:The question is that the resolution be passed.  Milords have voted.  There are 34 who say content, and 35 who say not content.  The resolution will not pass.

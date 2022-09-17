@@ -67,7 +67,8 @@ public class SpellSerializer : MonoBehaviour
         spells.spells[52] = new Spell("Field Attenuation", new int[] { 3, 1, 6 }, "shiftColor 3 mana\nshiftColor 4 mana\nshiftcolor 5 mana\nendTurn", "shifts non-mana pieces into mana pieces\nEnds turn");
         spells.spells[53] = new Spell("Eruption", new int[] { 6, 2, 4 }, "dealDamageEqualTo countRedManaPieces\nendTurn", "Deals 1 damage for each red mana piece on the board\nEnds turn");
         spells.spells[54] = new Spell("Omni Charm", new int[] { 3, 4, 4 }, "dealDamage 3\nheal 3\nrandomShift 1 -1\nrandomShift 1 7", "Deals 3 Damage, Heals 3, scores a random piece, and shifts one random piece into another type\nDoesn't end turn");
-
+        spells.spells[55] = new Spell("Blue Elemental Blast", new int[] { 0, 10, 0 }, "dealDamage 15\nendTurn", "Deals 15 Damage\nEnds Turn");
+        spells.spells[56] = new Spell("Amplify", new int[] { 1, 5, 2 }, "grantStatusEffect SpellDamageIncreaseEffect 5 8", "Adds 5 Damage to all spell damage dealt for the next 6 turns\nDoesn't end Turn ");
 
 
         spells.Save(Path.Combine(Application.persistentDataPath, "spells.xml"));
@@ -178,7 +179,7 @@ public class SpellContainer {
     public Spell[] spells;
 
     public SpellContainer() {
-        spells = new Spell[55];
+        spells = new Spell[57];
     }
 
     public void Save(string path) {

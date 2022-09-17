@@ -1,0 +1,7 @@
+main:Their lines are broken!  Let's press forward!
+myra:A bit more specificity would be appreciated!
+main:Right, you guys disable the cannons - I'm going for the Marquess!
+roxanne:Roger that.
+main:Catelia!  Did you see him?
+catelia:His troops are regrouping back there to defend him.
+main:We don't have much time then, quickly, before they reorganize!

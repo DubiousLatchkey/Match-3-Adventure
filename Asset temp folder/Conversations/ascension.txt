@@ -1,10 +1,48 @@
+main:I've returned, your Grace.
+rehnquist:Excellent. How did she do David?
+secretary:Adequately.
+rehnquist:Very well, we can procede as planned then.
+main:I've also brought Lord Blair, as requested.
+rehnquist:I see, bring him to me.
+ :At her request, @main@'s mercenaries bring the chained lord to the Duchess before backing away.
+rehnquist:John.  It's been too long.
+blair:Wilhelmina.  I should have suspected you were behind all this.
+rehnquist:What a laughable concept John.  I didn't have to do anything.  Your own incompetence saw your lands taken from you, and combined with your zeal for getting them back you've lost your freedom as well.
+blair:You have no idea what you're talking about.  The impertinence-
+rehnquist:Impertinence?  You stand before your better in chains and speak to me of impertinence?  You truly are a card John.
+blair:Enough of this mockery.  Ransom me back to Duke Grier if you must, but I will not be condescended to like a commoner whelp.
+rehnquist:Oh?  What made you think I was going to ransom you back?
+blair:I - er - what else could you want me for?  I'll never be another one of your puppets on the House floor if that's what you're after.
+ :Rehnquist laughs.
+rehnquist:You've always thought too highly of yourself John.  What use could I have for an incompetent like you?  A marquess with no lands, no army, no money, and now no favors to cash.  The only thing you have left is your title.
+rehnquist:Bestow it to @main@ here and renouce all claim you and your house have to it.
+ :Blair looks back at @main@ incredulously before answering
+blair:You can't be serious.  I would never do such an absurd thing.
+rehnquist:I wasn't asking.
+ :She begins to take a few steps towards him.
+blair:I...  I...
+ :Rehnquist stops inches away from Blair's chained form.
+blair:F-f-f-fine, but I want some assurances. Firstly, I want a promise that-
+ :His voice is cut off as Rehnquist, in one smooth movement, removes a dagger from in her dress and cuts Blair's throat.
+blair:Hrrk!
+ :In a spurt of blood, he collapses.  Blood begins to pool.
+main:...Was that really necessary?
+rehnquist:Oh no.  The renoucement doesn't really mean anything under duress.  Besides, his political allies would never accept it anyway.  
+ :She produces a hankerchief and begins to wipe the blood from the blade.  The other court members in the room look on with mild interest.
+rehnquist:What matters is we have the votes.  I was going to kill him anyway, but I thought I'd see him reveal himself for the coward he is first.
+ :@main@ bites her tongue at the misunderstanding.
+rehnquist:Regardless, this should serve as a lesson to you.  There is much to be lost by being my enemy.  Don't be like him.
+ :She gestures to the growing pool of blood with the now clean blade before reuniting it with its sheath.
+main:Of course, your Grace.
+rehnquist:Good.  Return in a week's time for your ascension.
+
 rehnquist:Take this.
  :She hands @main@ a very thick robe.
-@main@:Ah, these are my cermonial robes?
-rehnquist:Not just ceremonial.  They are the symbol of your power.
+@main@:These are my cermonial robes?
+rehnquist:Not just ceremonial.  They are a symbol of your power.
 @main@:Thank you.
  :@main@ slings on the heavy robes around her back.
-rehnquist:The ceremony will have you walk in, take an oath, and walk out.
+rehnquist:The ceremony will have you walk in, take an oath of peerage and fealty, and walk out.
 @main@:That's it?
 rehnquist:Basically.  The key here is that as many people as possible see the Empress recognize you as the rightful Marchioness Blair.
 rehnquist:Don't mess up.  
@@ -26,5 +64,199 @@ empress:Madam, will you preserve for the Lords, Guilds, and people peace and acc
 empress:And will you act in all of your judgements with equal and justice and benevolence, according to your power?
 @main@:I will.
 empress:Then take this diadem, and rise, Marchioness @main@ Blair.
-crowd:All hail Marchioness Blair, all hail Empress Nyala!
- :Trumpets blare as @main@ begins to leave.
+ :The empress slowly places the diadem on @main@'s head and waves a hand to the crowd in presentation.
+crowd:All hail Marchioness Blair, all hail Empress Frederica!
+ :Trumpets blare as the empress steps aside.  She is replaced by Duchess Rehnquist wielding her scepter.
+rehnquist:Will you pledge your fealty to me Marchioness?
+main:Yes, your Grace.
+secretary:Repeat after me:  "I, @main@ Blair, do solemnly swear"
+main:I, @main@ Blair, do solemnly swear
+secretary:"to observe my homage to Duchess Rehnquist through service, asset, and will"
+main:to observe my homage to Duchess Rehnquist though service, asset, and will
+secretary:"and to never act against her, for the title I owe to our soverign lady the Empress."
+main:"and to never act against her, for the title I owe to our soverign lady the Empress.
+rehnquist:In return, I bestow upon you my protection and this ring bearing the crest of your house.
+ :She produces a finely engraved signet ring.
+rehnquist:Let it be a symbol of your authority within your lands.
+ :She takes @main@'s hand, puts the ring on, and waves her scepter.
+crowd:All hail Marchioness Blair, all hail Duchess Rehnquist!
+ 
+tamsin:Congratulations, Lady Blair.
+main:Thanks Tamsin.  How does it feel to have to serve a Blair again?  I'm sure the name has a lot of baggage.
+tamsin:Perhaps.  Lord Blair was certainly everything that was wrong with the nobility, but his wife Lady Blair was much better.
+main:What was my predecessor like?
+tamsin:Well, she was originally one of Lord Blair's knights, but he took a liking to her.  Maybe it was just naivete, but she ended up reciprocating and marrying him.  
+main:Naivete?
+tamsin:She was always so innocent, like those righteous knights you read about in stories.  All the way up to when she gave her life for her leige when Taney attacked.
+main:Ah, an honorable death?
+tamsin:Well, not really.  Lord Blair ordered her to stay behind and guard his escape.
+main:Ooof.  That sounds like the opposite true love.
+tamsin:She did it without protest.  The rest of us found it highly distasteful.  You can thank that amongst a lot of other bad decisions he made as to why so many of his forces and staff agreed to join Taney afterwards.
+main:I was going to say "I'll try to live up to her name", but I guess none of the Blairs were really role model material.
+tamsin:Perhaps you will be the one to make the Blair name worth something.  I hope you don't mind me saying, but I hope you will do well by the common folk, being commonborn yourself, er, milady.
+main:I'll do my best.  You don't have to address me as "Lady" if you don't want to.
+tamsin:That would feel strange.  Besides, you'll need to keep up appearances to be acknowledged.
+main:Alright, but will I promise I'll try to to right by you.  
+
+roxanne:Marchioness Blair, I presume?
+@main@:Heh.  The name... still doesn't feel real.
+gabriella:Well, welcome to the aristocracy!
+catelia:I didn't think it was even possible for a commoner to ascend to nobility.  Then again, I don't really know much about court politics.
+gabriella:I think usually the oath of peerage is only done for when inducting foreign lords into the empire.
+myra:Well that's been the recent use of it.  Lady Rehnquist's wars of reconquest have meant that's happened a lot.
+roxanne:I suppose with enough power, anything is possible.
+main:You know something interesting though?  For the oath of peerage, the empress only made me say "I will", but the Duchess made me swear fealty by saying everything word for word.
+catelia:Like you mean your loyalty was more important than the title?
+myra:Ha, that's exactly what people say she's like.
+main:The Duchess?
+gabriella:Oh, you know, my father said something about how it was more important to keep the Duchess happy than the empress. I think she has a lot of influence in the imperial court.
+myra:Exactly.  She's been running most of the empire for as long as I can remember - I mean I mentioned how the wars of reconquest were her campaigns.
+roxanne:Not to interrupt but I think you have your first duty to preform as Marchioness.
+@main@:Really?  What's going on?
+roxanne:A knight showed up earlier requesting an audience with the new lady of the castle.
+@main@:But we've only just arrived back from the ceremony!
+gabriella:Ah, the responsibilities of the nobility.  My father goes to soooo many meetings.  I'll tell you that I'm not looking forward to that when I become the next Baroness Duvall.
+@main@:Alright, I'll meet him.
+
+ :A knight in full armor stands in courtyard.  When he sees @main@ approach, he kneels.
+@main@:...
+@main@:Oh!  You may rise Sir...
+jay:Jay.  I wish to swear myself into your service milady.
+@main@:I can't say that's what I was expecting to hear.  Tell me more about yourself.
+jay:I was a knight of Countess Iredell.  I've defected here to join your cause.
+@main@:Iredell...  Wait, but as one of my vassals, why would Lady Iredell oppose your service to me?
+jay:She does not recognize you as the rightful Marchioness, milady.  She is already beginning to muster forces against you.
+@main@:If you knew about my ascension before my own ceremony and began travelling here before it even happened, surely you know the reasons for the... um...  controversy surrounding me?
+jay:Frankly milady, I don't give a damn.
+@main@:Excuse me?
+jay:Apologies for my language, but I did not come here because I believe you are some lost child of Marquess Blair, but to make a difference.
+@main@:A difference.  That is what I've always wanted to do as well.
+jay:Well milady, I think you're doing an excellent job of that already.
+@main@:Oh?
+jay:Your ascension as a commoner of no status is the first of its case in my lifetime, and I hope it isn't the last.  I first heard of your exploits when you freed the slaves at the Mirran Mine.
+jay:I was actually tasked with retrieval of the slaves, but I don't want anything to do with that hideous blot.  I wish for a world where all unjust and unnecessary discrimination is abolished and that the time may soon come when all people are free and equal partakers of in political liberty.
+@main@:And so you have come to me.  Those are... lofty ideals.
+jay:Yes.  My former lady wishes to end your rule immediately, but I believe that you are the greatest hope for the Empire in this generation, and I will not take up arms against it.
+@main@:Wow.  You would betray your lord just to follow your ideals?  How can I be sure you won't do it again with me?
+jay:Do you seek a fairer world my lady?
+@main@:Yes, but that wasn't the reason I sought a title.
+jay:What was your reason? Power?  I-
+@main@:Not power.  Listen.  The way we are using magic now is straining the mana field.  If the Empire continues like this for much longer, magic will die.
+jay:I can't say I follow.  My expertise is in military strategy, not magical theory.
+@main@:Unless we can get enough influence to change magic policy throughout the empire, magic will cease to be.
+jay:Truly?
+@main@:That is what we here at Castle Blair believe.
+jay:Very well.  As long as you serve for the betterment of the common people, I will serve you.
+@main@:As you wish, Sir Jay.  I accept you into my service.
+
+@main@:So our first order of business is what to do about my, uh, new vassals.
+roxanne:I'll begin mobilizing our forces.
+gabriella:Wait!  We should try and negotiate first.  We can't just invade whoever we want all the time!
+jay:Actually, given that they are our vassals, we have every right to assert our control.
+catelia:And here I was thinking you were against hereditary rule.
+jay:I am, but that doesn't mean I'm not well versed in what would make us appear legitimate in this position.
+catelia:Well we're agreed there.  If what Jay said about Countess Iredell is right, I doubt she's just going to stop mobilizing if we ask her to.
+gabriella:That doesn't mean we shoudn't try.
+myra:Agreed.  If we have a meeting with all of the lords in Thracia, we'll be able to at least figure out who's going to be a problem.  Um, how many of them are there by the way?
+roxanne:I have a list somewhere of the lords in Thracia.  Many of them have tried to take this castle for themselves over the years.  The important ones are those that can vote in the House of Lords.  If we sway them, that should satisfy Lady Rehnquist.
+jay:I know them.  There are 3 Earls and Countesses in the Themata that vote in the House of Lords.  Lady Iredell is among them.
+@main@:Alright then, we need an approach to deal with each of them, and the lords as a whole.
+jay:It would be customary to impose some sort of tribute from each one.  The lords not bearing gifts at this meeting are going to be the ones we'll have to convince.
+gabriella:Hopefully we can use the carrot and not the stick here right?  What are they paying now?
+myra:I'm not sure, do you have an idea Jay?
+jay:Well, since the former lord Blair was usurped by Taney, Duke Grier took direct control over what are now our vassals.  He is the quintessence of noble excess, and demands taxes at a rate in excess to that of the Imperial rate.
+@main@:Ok, that's good, at least for us.  If we collect at the Imperial rate or less, they should be much more receptive to our rule.
+catelia:Man we're going to be collecting taxes now?  Geez.
+roxanne:We have already been taxing the lands around here, but at a much lower rate, and for our personal use.  You can imagine why we weren't paying the Empress.
+jay:The whole system of lower lords paying taxes to the next level above them is so disgusting.  At each layer, more is demanded so the middlemen can make a profit.
+catelia:Is that how it works?
+jay:Yes.  At least for now.  If I were in charge, I would make the Imprial government collect from all individually, this way -
+roxanne:Besides the point.  Look, if we have to pay the Imperial property tax now, we're going to need the money from our vassal lords.  I'll have to talk to our accountant about also changing what we collect locally and paying what we're due to the Duchess.
+@main@:I'm sure Lady Rehnquist will be willing to help us on that.  Send him to the capital to get some tax collectors, or at least the rates we need to be taxing on.
+myra:Alright, so the plan is to invite all of these lords and ladies here to establish their loyalties.
+jay:I can guarantee you Lady Iredell will not be swearing any allegiance.
+@main@:These are not mutually exclusive.  If she refuses to relent at the meeting, we'll mobilize, but we'll see how far we can get with a meeting first.
+@main@:Cat, we're going to need riders to deliver invitations.  Jay, can you help Myra write an invitation?
+jay:As you wish, milady.
+@main@:I'll see if I can get some of the mages to write more copies when you're done.
+
+earl:Well if it isn't the new Marchioness Blair.  My lady, I present to you a gift in hope our relationship will be long and prosperous.
+@main@:Ah, a scroll?
+earl:I heard you were a mage who values knowledge.  Hopefully we can move past Lord Grier and his untolerable rates?
+@main@:Thank you.  I think you'll be pleased with what I have to say later.
+countess:While I also detest that man's effect on my treasury, you are clearly not related to Marquess - ahem - John Blair.
+@main@:I have the Empress' will behind me - what else do you need?
+countess:...Very well.
+ :In the background, a noblewoman glares at Jay.  By her demeanor, it must be none other than Countess Iredell.
+@main@:Excuse me, but I must address all that are here.
+earl:Of course, I look forward to listening.
+ :@main@ lifts a spoon to her glass to get the present lords' attention.
+@main@:Good lords and ladies of Thracia.  I'm sure news of my ascension was surprising to all of you, but the Empress' word is law, and we are all her subjects.
+baron:I hear you're putting us under the dominion of Rehnquist now.  Is that true?
+@main@:Yes.
+ :There is some murmuring that quiets when @main@ begins to speak again.
+@main@:I understand some of your misgivings about the so-called usurpation of Lord Grier' lands, but don't worry, you have much to gain from this.
+baroness:But Rehnquist is an expansionist!  We can't afford another expansionary army, and besides, all of these new lands she's bringing into the Empire are overextending our reach!
+vicount:Well I, for one, am glad someone in this Empire wants to restore our traditional lands.
+@main@:Regardless, I think everyone will be glad to hear that your tax money will no longer subsidize Duke Grier' lavish parties.
+ :A grumbling of content ripples through the diners.
+@main@:And that I will charge only exactly what Imperial decree demands be paid to the Empress.
+earl:Hear hear!
+@main@:Those with vassals, I think it is only fair that you pass along some of your newfound savings as well.
+countess:...As you wish.  I accept your generosity, milady.
+iredell:Enough of this charade!
+ :Countess Iredell angrily stands from her seat.
+iredell:I'm disgusted that any of you are even considering this!  We all knew Marquess Blair in one form of another - and she is an imposter!
+ :The seated lords are silent.
+iredell:Mark my words @main@.  I will return, and next time, it will be with my army.
+ :Iredell angrily leaves accompanies by her vassals.
+earl:What are you going to do about this... unfortunate series of events Lady Blair?
+@main@:You heard her.  She rejected our Empress' will.  I will say this - serve under me, and you will see your treasuries grow, but defy me, and, well, you will see what happends to Lady Iredell soon.
+ :There is a moment of quiet.  The lords know not to speak, but none seem particularly scared of the threat.
+earl:Ah, well, good that none of us here are opposed to you.  A toast to your health, and to Thracia's success.
+lords:Long live Thracia!  Long live the Empire!  Long live Lady Blair!
+
+main:So, after that threat, I'm going to have to follow through on it.
+roxanne:Funds from the gifts from the vassals should help offset the monetary cost, but if this keeps up, we're going to have to start worrying about manpower attrition as well.
+catelia:"Manpower attrition" is a pretty sterile way to say deaths.
+roxanne:Looks the same on my tables.  Regardless, I recommend we offer the POWs we have employment and ransom the rest of Duke Grier's soldiers back to him.
+gabriella:That sounds like extortion - shouldn't we just release them?
+jay:It's standard practice.  The Duke doesn't care about their lives besides the labor they can offer.  It's a simple transaction to him.
+main:Do it.  Ugh.  At least give him a good price, we shouldn't try to make things even worse with him.
+main:Ok, back to our invasion of Castle Iredell.
+roxanne:Well, the former Lord Blair left behind a few sets of cannon during his failed seige.  Unfortunately, we don't have anyone who knows how to use them.
+jay:I do.  When I was called to serve in Lady Rehnquist's last war of reconquest I led an artillery battalion.  These new devices have drastically changed how seige warfare is undertaken.  You see -
+main:I think the important question here is could you train a group of men how to use them?
+jay:Yes milady.  I can do it in 2 weeks, but I worry about the time we're giving Lady Iredell to prepare defenses.
+main:Roxanne, how long will it take you to organize our forces for a seige on Iredell?
+roxanne:We can be ready to go in 2 days, but I recommend more time to practice joint operations with cavalry, artillery, and foot soldiers.
+main:Alright then, we'll start our march in a week.
+
+roxanne:We have a problem.
+main:Lay it on me.
+roxanne:Our scouts just returned, and there's an army drilling in front of the castle.
+jay:Lady Iredell must be preparing a seige of Castle Blair - actually I think that's a good thing.
+main:Really?
+jay:If she's preparing to go on the offensive, that means she isn't preparing anti-seige defenses.
+catelia:Ha! Lucky us - Iredell left the room before @main@ gave her threat.  She won't see us coming!
+roxanne:We're still going to have to march to the castle - we will be seen.
+catelia:Figure of speech geez.
+roxanne:The problem of the army remains.  The scouts say the numbers are roughly even with ours, so I don't doubt we can rout them given the initiative, but the problem is then also sucessfully seiging the castle.
+main:You're saying we need some sort of strategy to crush them so we can keep our strength up?
+roxanne:And it can't take too long.  We're stretching out funds as is keeping ourselves supplied.
+jay:I have an idea.  I served Countess Iredell for years.  I know what she's like.  You probably know she's... passionate about her beliefs, right?
+catelia:Well she's raising an army over this noble blood issue, so yeah.
+jay:It kind of carries over in her tactics.  She moves in to crush enemies decisively.  I've always recommended her to not overextend and slow down, but she's never listened to me.  My idea is we take advantage of that.
+jay:The broad strokes would be this: split our forces in half, lure the army away, and then attack from both sides.
+main:Hmm...  she'll take the bait?
+jay:You bet she will.  She'll see the numbers advantage and order a pursuit.  She doesn't have any idea how many troops we have, so she'll assume the first force is your whole army.
+main:Roxanne, your thoughts?
+roxanne:Logistically annoying, but it seems feasible - if they take the bait.  They know you and Jay are coming, so you two should take the diversionary force.
+main:Makes sense.  In that case, Gabby, can you lead the flanking force?
+gabriella:Me?  Wouldn't it make more sense for Roxanne to do it?
+main:Maybe, but there's no one I trust more here than you.
+gabriella:Aw.  I'd be honored to.
+
+jay:There's their perimeter.  We go in, attack, and retreat before they reorganize.
+main:Here goes nothing...
+ :The battle horn sounds and the diversionary force charges into battle.

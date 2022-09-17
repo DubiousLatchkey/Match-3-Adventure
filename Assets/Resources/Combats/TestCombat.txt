@@ -1,4 +1,3 @@
-enemy:0 0
-enemy:1 -1
+enemy:14 -1
 dialogue: sampleDialogue2
 companion: pleice

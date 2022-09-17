@@ -1,0 +1,66 @@
+ :A gilded horse crests a hill demarking the end of a small farming village.  Atop it rides @main@, dressed far differently from when she left.
+ :She passes two people who glance at her with a confused look.  @main@ recognizes them - it's the miller and her husband.  They haven't changed.
+ :@main@ wonders if they recognized her.
+ :She pulls the reins, signalling the horse to stop in front of a small cottage.
+ :As she dismounts, she doesn't see anyone outside.  With trepidation, she knocks on the door.
+main:Hello?
+ :Shuffling sounds can he heard from within.  Soon, the door is opened.
+main:...
+mom:@main@?  Is that... you?
+main:Hi Mom.
+ :Total shock covers her face as she looks @main@ up and down.
+mom:I... we... thought you were dead!
+mom:Oh my...  Peter come quick!  It's @main@!
+dad:What?
+mom:I'm serious!  Come now!
+dad:That's impossible!  She's -
+ :He stops abruptly as he sees @main@.
+main:Hi Dad.
+dad:But...  I... What are you wearing?  Is that your horse?
+main:It's... a long story.
+mom:Well?  Tell it!  Actually, wait.  Come join us for lunch!
+main:...Of course.
+ :@main@'s father suddenly tears up and embraces her in a hug.
+ :Not expecting the sign of physical affection, @main@ just stands there
+dad:...I've missed you.
+main:...
+dad:You didn't tell us you were going to leave!
+mom:You didn't tell anyone!  We looked for you for weeks after you disappeared!
+main:Yeah... I'm sorry.
+ :The trio eventually move to the table and @main@'s mother quickly moves to grab another bowl.
+dad:What have you been doing all this time?  Did you make it to the City?
+mom:Where did you get all this money from?  You look so clean - and the horse!
+main:Uh, yeah.  Um...  About that...  I'm a noble now.
+ :The shocked faces return as a pregnant silence fills the room, wordlessly demanding an answer
+main:It's not like we secretly have some noble blood or anything.  It was a political move by Duchess Rehnquist against Duke Grier.
+dad:I don't think that explains anything.  We don't even have a house name!
+main:I guess it doesn't.  Uh... Basically she recognized me as the rightful Marchioness Blair to get a majority in the House of Lords.
+mom:But why you!?
+main:Uh... yeah.  So I did make it to the City.  I did become an apprentice, but before I could become a member, the City was invaded.
+mom:Oh, we heard about that!  Nothing came of it, right?
+main:Yeah, thanks to me and my friends.  The one behind it controlled the lands of the former Marquess Blair, so we kind of inherited them, so to speak.
+mom:It feels like it should be a lot more complicated than that.
+main:It was, but that's the gist of it.
+dad:Wait a second.  Blair... Blair... that name sounds familiar...  Wait!  A few weeks ago, a few well armored people came into town under the authority of a new "Inquisition".  They read a decree by a Marchioness Blair.  Are you saying that's you?
+main:...Yeah.  I've got the signet ring and everything.
+ :She raises her hand to show it off.
+mom:So you must have learned to read and write if that was you then, right?
+main:It took a long time, but yeah.  I had to for the Mage's Guild.
+dad:I... I can't believe it.  This is like a dream!
+main:I know.  It feels a bit unreal to be back.
+ :Suddenly, the sound of crying in the room over catches everyone's attention.
+main:What is...
+mom:Oh, I'll get him.
+ :Realization strikes.
+main:...I have a brother?
+dad:It's just... After you left, there wasn't someone who could take over the farm anymore.  
+main:...I'm sorry I had to leave.  I needed to - still need to do something more.
+dad:...I understand.  I guess you really made a fool out of me.
+main:That doesn't change the hurt I caused you.  For that, I'm sorry.
+mom:Here he is!  Meet your sister!
+main:Hi... um, What's his name?
+mom:William.
+main:Hi William. Nice to meet you.  I'm @main@!
+ :She begins to tear up.
+dad:Are you ok there?
+main:Yeah...  Everything is going to be ok.

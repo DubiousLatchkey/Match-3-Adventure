@@ -38,6 +38,11 @@ public class EquippingController : MonoBehaviour {
         SpellContainer spells = SpellContainer.Load(System.IO.Path.Combine(Application.persistentDataPath, "spells.xml"));
         //int spellCount = 0;
         //Load in available spells
+
+        // TEMP: Setting spells for test combats
+        PlayerPrefs.SetInt("Blue Elemental Blast", 6); 
+        PlayerPrefs.SetInt("Amplify", 6);
+
         for (int i = 0; i < spells.spells.Length; i++) {
             int spellStatus = PlayerPrefs.GetInt(spells.spells[i].Name, 0);
             if (spellStatus != 0) {

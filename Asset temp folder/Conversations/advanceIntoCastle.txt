@@ -1,0 +1,66 @@
+jay:We've broken their first charge, but the foot soldiers are advancing - we're not going to hold against them long!
+ :Suddenly, another horn sounds in the distance.
+main:Looks like we won't have to.  Give the signal to the cavalry, it's time for a rout!
+ :Some of Iredell's forces glance behind them to see a second force advancing towards them.
+ :There's a mess of shouting as Iredell's troops stop advancing and begin to circle back to meet the new threat
+jay:They're pulling too many troops from the front.  This is our chance to crush their lines!
+main:You heard the man, advance!
+ :True to Jay's assessment, Gabriella's forces are stalled, but @main@'s advance through the, now rear, line.
+ :Many of Iredell's troops on the far side give a surprised look as they're approached from behind before surrendering.
+ :It's a victory with few managing to escape.
+main:Holy cow we did it.
+gabriella:@main@!
+main:Gabby!
+ :The two ruinite amidst the surrendering forces.
+main:You came at the perfect time!
+gabriella:I wasn't sure to go for it since you weren't in position yet, but I had to do it.
+main:I knew you would come through, sorry for dropping the ball there.
+roxanne:Yes, yes, it's great and all, but what are we going to do with all these POWs?
+main:...Right.  What are our options.
+roxanne:Well, we could return them to our territory, though we'd have to improvise holding cells.
+main:Also that would mean reducing our presence here.  Any other ideas?
+jay:If you're worried about manpower, you could just execute them all.
+main:Not helpful.
+jay:If that's too cruel you do the "blind all of them except one and let them go".
+gabriella:That's... even more cruel.
+jay:My point is that what Roxanne said is the only real option, so instead of contemplating letting them go or killing everyone, let's just cut to the chase and do it.
+main:While you may be right in this case, that kind of thinking isn't helpful.
+gabriella:Actually, letting them all go isn't a bad idea either.  It's the kind thing to do, wouldn't take any troops, and besides, think about what it would do for your reputation!
+jay:I think it would make you look weak.
+roxanne:It also means no ransom, and we're going to need the money.
+main:Hmm...  How are our losses?
+roxanne:Worse than what we hoped, but we should have enough for the seige and to send a small detachment home with the POWs.
+main:Ok then, let's go with the ransom option.
+
+roxanne:So how exactly do you plan for this seige to work?
+jay:We did this many times when we were reconquering the south.  These cannons will melt through the walls and we go in the moment the walls collapse to take advantage of the chaos.
+main:How long will that take?
+jay:We don't have as many cannons as I'm used to, but for an old castle like this?  Maybe 2 days of continuous bombardment?
+main:At least we don't be disturbed by her army.
+jay:True, but I don't think she's stupid enough to have left the castle completely defenseless.
+main:Actually, why didn't we use the cannons to flank her army?  Feels like it could have been useful.
+jay:These things aren't exactly accurate.  There's a reason they're only used to break walls, and even then only at close range.  I'd love to see the day when these can be used like that, but it isn't today.
+roxanne:And we'd use our limited powder and shot.
+main:Well then, let's get started.
+jay:I'll let you know when the time comes.
+
+ :The next day...
+main:Geez those things are loud.
+gabriella:Well, it's a testament to their power, right?
+main:Yeah.  I thought it was weird they put our tent so far away, but now I wish it was further.
+gabriella:I wonder why it wasn't so loud when they were drilling back at Castle Blair.
+main:Must be the walls.  Man, we'll have to fight this battle while our ears are ringing and they're just fine.
+gabriella:I don't think they'll be fine, I'm sure their sweating every moment a cannonball hits, I mean, I know I would be.  
+main:Good point.
+jay:My lady?  It's almost time.
+main:Then let's get this show on the road.
+
+artilleryman:Fire!
+ :The formation was ready.  Now it was a waiting game.
+artilleryman:Fire!
+ :@main@ looked on with anticipation, hoping each shot would be the last.
+artilleryman:Fire!
+ :Her mind began to wander - how close did the wall look to collapsing?
+artilleryman:Fire!
+ :A loud rumbling shook the air after the impact.  Soon it grew until it was clear the walls wouldn't hold.
+main:Now!

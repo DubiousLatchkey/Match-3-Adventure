@@ -1,0 +1,15 @@
+main:That's enough, retreat!
+ :Jay blows the horn signifying a retreat.
+
+main:Are they still on us?
+jay:Yep, and gaining.  We need to move faster if we're going to make the rendezvous.
+main:If we do that we'll tire the troops before the battle.  Besides, we need time to set up the fortifications.  We're not going to be able to encircle them if we can't hold a line.
+jay:But the plan -
+main:Is going to need to change based on our current circumstances.  Let's stop now and prepare the defense.  Keep the cavalry back for the encirclement.
+jay:Lady Duvall's not going to know to attack early.
+main:Gabby'll be watching us.  She's not a robot.  Once she sees us in trouble, she'll come.
+jay:Very well.  Pikemen, form up!  We're stopping early!
+main:Mages, we need to hold off the ones that break through!
+ :The soldiers form up in defensive positions.  Improvised barriers prepared earlier are brought forward to provide some defense against the cavalry.
+ :As soon as the formation is ready, the enemy cavalry begins to charge.
+jay:They're here!

@@ -1,0 +1,17 @@
+main:Alright, we've broken through!
+gabriella: Where to?
+main:We've got to find Jocelyn.  If we can make her surrender, we've won.
+roxanne:A group of the guards just went towards the main building.  I'd wager that's where she is.
+main:Got it.  I'll head there.  Gabby, find Catelia and start freeing slaves!
+gabriella:On it!
+|transition buildingExterior
+main:Is Jocelyn here?
+mage:She's locked herself inside.  We're getting ready to breach the door.
+main:Excellent.  On three.  One.
+mage:Two.
+main:Three!
+ :The door gives way under a magical burst of light and @main@ pushes in.
+jocelyn:... Well, well, well.  Couldn't leave well enough alone huh?  You naive moralist.
+main:Shut up.
+jocelyn:I'm not giving up all I have without a fight.
+main:Works for me.

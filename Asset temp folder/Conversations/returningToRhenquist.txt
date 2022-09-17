@@ -1,0 +1,35 @@
+main:I've returned, your Grace.
+rehnquist:Excellent. No trouble, I presume?
+main:It was manageable.  I've also brought Lord Blair, as requested.
+rehnquist:I see, bring him to me.
+ :At her request, @main@'s mercenaries bring the chained lord to the Duchess before backing away.
+rehnquist:John.  It's been too long.
+blair:Wilhelmina.  I should have suspected you were behind all this.
+rehnquist:What a laughable concept John.  I didn't have to do anything.  Your own incompetence saw your lands taken from you, and combined with your zeal for getting them back you lost your freedom as well.
+blair:You have no idea what you're talking about.  The impertinence-
+rehnquist:Impertinence?  You stand before your better in chains and speak to me of impertinence?  You truly are a card John.
+blair:Enough of this mockery.  Ransom me back to Duke Grier if you must, but I will not be condescended to like a commoner whelp.
+rehnquist:Oh?  What made you think I was going to ransom you back?
+blair:I - er - what else could you want me for?  I'll never be another one of your puppets on the House floor if that's what you're after.
+ :Rehnquist laughs.
+rehnquist:You've always thought too highly of yourself John.  What use could I have for an incompetent like you?  A marquess with no lands, no army, no money, and now no favors to cash.  The only thing you have left is your title.
+rehnquist:Bestow it to @main@ here and renouce all claim you and your house have to it.
+ :Blair looks back at @main@ incredulously before answering
+blair:You can't be serious.  I would never do such an absurd thing.
+rehnquist:I wasn't asking.
+ :She begins to take a few steps towards him.
+blair:I...  I...
+ :Rehnquist stops inches away from Blair's chained form.
+blair:F-f-f-fine, but I want some assurances. Firstly, I want a promise that-
+ :His voice is cut off as Rehnquist, in one smooth movement, removes a dagger from in her dress and cuts Blair's throat.
+blair:Hrrk!
+ :In a spurt of blood, he collapses.  Blood begins to pool.
+main:...Was that really necessary?
+rehnquist:Oh no.  The renoucement doesn't really mean anything under duress.  Besides, his political allies would never accept it anyway.  
+ :She produces a hankerchief and begins to wipe the blood from the blade.
+rehnquist:What matters is we have the votes.  I was going to kill him anyway, but I thought I'd see him reveal himself for the coward he is first.
+ :@main@ bites her tongue at the misunderstanding.
+rehnquist:Regardless, this should serve as a lesson to you.  There is much to be lost by being my enemy.  Don't be like him.
+ :She gestures to the growing pool of blood with the now clean blade before reuniting it with its sheath.
+main:Of course, your Grace.
+rehnquist:Good.  Return in a week's time for your ascension.

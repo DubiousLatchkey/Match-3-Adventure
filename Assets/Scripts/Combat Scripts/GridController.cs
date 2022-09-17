@@ -18,7 +18,7 @@ public class GridController : MonoBehaviour, PlayerController{
     public static bool extraTurn;
     public static string combatToLoad = "TestCombat";
 
-    private static float[] probabilities = { 20, 20, 20, 15, 20, 5 };
+    private static float[] probabilities = { 21, 21, 21, 15, 15, 7 };
 
     Spell currentSpell;
     List<Thing> grid;
@@ -122,7 +122,7 @@ public class GridController : MonoBehaviour, PlayerController{
                     break;
                 case ("hp"):
                     hp = i;
-                    health = PlayerPrefs.GetInt("hp", 100);
+                    health = PlayerPrefs.GetInt("hp", 50);
                     totalHealth = health;
                     hp.text = health.ToString() + " out of " + totalHealth.ToString();
                     break;
@@ -506,12 +506,16 @@ public class GridController : MonoBehaviour, PlayerController{
                 if (i is DamageIncreaseEffect) {
                     amount = ((DamageIncreaseEffect)i).modifyDamage(amount);
                 }
+                else if (i is SpellDamageIncreaseEffect) {
+                    amount = ((SpellDamageIncreaseEffect)i).modifyDamage(amount);
+                }
             }
             //Player effects
             foreach (StatusEffect i in statusEffects) {
                 if (i is DamageReductionEffect) {
                     amount = ((DamageReductionEffect)i).modifyDamage(amount);
                 }
+              
             }
             return (int)(amount * enemyController.damageMultiplier);
         }
@@ -534,7 +538,7 @@ public class GridController : MonoBehaviour, PlayerController{
                     amount = ((DamageReductionEffect)i).modifyDamage(amount);
                 }
             }
-            return amount;
+            return (int)(amount * enemyController.damageMultiplier);
         }
         else if (damageType == DamageType.statusEffectDamage) {
             //Weapon effects
@@ -2274,6 +2278,27 @@ public class DamageBuff : StatusEffect, DamageIncreaseEffect {
     }
 }
 
+public class SpellDamageBuff : StatusEffect, SpellDamageIncreaseEffect
+{
+    int added;
+
+    public SpellDamageBuff(GameObject i, bool ap, int t, int p) : base(i, ap, t) {
+        added = p;
+        i.GetComponent<Image>().sprite = Resources.Load<Sprite>("StatusEffects/DamageBuff");
+    }
+
+    public int modifyDamage(int preProcessedDamage) {
+        int processedDamage = preProcessedDamage >= 0 ? preProcessedDamage + added : preProcessedDamage;
+        return processedDamage;
+    }
+
+    public override string updateIndicator() {
+        string tooltip = "Adds " + added + " to spell damage dealt\nTurns Remaining: " + getTurns();
+        tooltipHandler.setText(tooltip);
+        return tooltip;
+    }
+}
+
 public class DoubleDamage : StatusEffect, DamageIncreaseEffect
 {
     //potency unused
@@ -2391,6 +2416,17 @@ public interface DamageReductionEffect : TemporaryEffect {
 
 //Effects that increase damage dealt
 public interface DamageIncreaseEffect : TemporaryEffect {
+    int modifyDamage(int preProcessedDamage);
+}
+
+//Effects that increase spell damage dealt
+public interface SpellDamageIncreaseEffect : TemporaryEffect
+{
+    int modifyDamage(int preProcessedDamage);
+}
+
+public interface SpellDamageDecreaseEffect : TemporaryEffect
+{
     int modifyDamage(int preProcessedDamage);
 }
 

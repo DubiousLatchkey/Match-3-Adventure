@@ -588,8 +588,8 @@ public class EnemyController : MonoBehaviour, PlayerController
         }
         else {
             Move move = (Move)action;
-            gameObject.GetComponent<GridController>().GetThing(move.originLocation).getObject().GetComponent<ThingController>().speed = 2f;
-            gameObject.GetComponent<GridController>().GetThing(move.swapLocation).getObject().GetComponent<ThingController>().speed = 2f;
+            gameObject.GetComponent<GridController>().GetThing(move.originLocation).getObject().GetComponent<ThingController>().setSpeed(2f);
+            gameObject.GetComponent<GridController>().GetThing(move.swapLocation).getObject().GetComponent<ThingController>().setSpeed(2f);
             gameObject.GetComponent<GridController>().swap(move.originLocation, move.swapLocation);
             gameObject.GetComponent<GridController>().selectPiece(move.originLocation);
             gameObject.GetComponent<GridController>().selectPiece(move.swapLocation);

@@ -128,6 +128,18 @@ public class Spell {
         Tooltip = tooltip;
     }
 
+    public Spell(string spellText)
+    {
+        string[] spellTextArray = spellText.Split(',');
+        Name = spellTextArray[0];
+        string[] costStringArray = spellTextArray[1].Split(' ');
+        Costs = new int[] {int.Parse(costStringArray[0]), int.Parse(costStringArray[1]), int.Parse(costStringArray[2]) };
+        Parameters = spellTextArray[2];
+        Tooltip = spellTextArray[3];
+        Type = spellType.Damage;
+    }
+
+
     public Spell() {
         Name = "Default";
         Costs = new int[] { 0, 0, 0 };
@@ -143,7 +155,8 @@ public class Spell {
         }
         return sum;
     }
-    
+
+
 }
 
 public enum spellType {

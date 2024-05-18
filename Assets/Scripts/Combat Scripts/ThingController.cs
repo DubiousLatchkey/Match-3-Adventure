@@ -9,7 +9,8 @@ using UnityEngine.UI;
 public class ThingController : MonoBehaviour, IEndDragHandler, IDragHandler
 {
     Vector3 target;
-    public float speed = 10.0f;
+    float speed;
+    public float baseSpeed = 10f;
     bool moving;
     AudioSource audio;
     public Light2D light;
@@ -20,6 +21,7 @@ public class ThingController : MonoBehaviour, IEndDragHandler, IDragHandler
     {
         target = gameObject.transform.position;
         audio = GetComponent<AudioSource>();
+        speed = baseSpeed;
         //moving = false;
     }
 
@@ -32,7 +34,7 @@ public class ThingController : MonoBehaviour, IEndDragHandler, IDragHandler
             moving = true;
         }
         else {
-            speed = 5.0f;
+            speed = baseSpeed / 2;
             moving = false;
         }
 
@@ -55,6 +57,10 @@ public class ThingController : MonoBehaviour, IEndDragHandler, IDragHandler
             }
         }
 
+    }
+
+    public void setSpeed(float newSpeed) {
+        speed = newSpeed;
     }
 
     //Takes in values 0 - 5 to assign what piece to use based on type value 
@@ -154,8 +160,8 @@ public class ThingController : MonoBehaviour, IEndDragHandler, IDragHandler
                     if (!GridController.madeMove) { GridController.madeMove = true; }
                     moving = true;
                     GameObject.Find("Grid").GetComponent<GridController>().turnOffSpells();
-                    speed = 2.5f;
-                    gameObject.transform.parent.gameObject.GetComponent<GridController>().GetThing(swapIndex).getObject().GetComponent<ThingController>().speed = 2.5f;
+                    speed = baseSpeed / 4f;
+                    gameObject.transform.parent.gameObject.GetComponent<GridController>().GetThing(swapIndex).getObject().GetComponent<ThingController>().setSpeed(baseSpeed / 4f);
                     gameObject.transform.parent.gameObject.GetComponent<GridController>().selectPiece(index, Color.white);
                     gameObject.transform.parent.gameObject.GetComponent<GridController>().selectPiece(swapIndex, Color.white);
                     gameObject.transform.parent.gameObject.GetComponent<GridController>().swap(index, swapIndex);

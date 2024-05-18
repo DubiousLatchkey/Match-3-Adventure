@@ -72,6 +72,7 @@ public class GridController : MonoBehaviour, PlayerController{
     public GameObject enemyPaperback;
     public GameObject backdrop;
     public GameObject targetingIndicator;
+    public TextAsset spellTexts;
 
     // Start is called before the first frame update
     void Start() {
@@ -91,6 +92,7 @@ public class GridController : MonoBehaviour, PlayerController{
         moves = new List<Move>();
         extraTurn = false;
         skydrop.sprite = Resources.Load<Sprite>("Backgrounds/" + PlayerPrefs.GetString("background", "bg"));
+        spellTexts = Resources.Load<TextAsset>("spells");
         typeCounts = new Dictionary<int, int>{
             { 0, 0 },
             { 1, 0 },
@@ -205,14 +207,20 @@ public class GridController : MonoBehaviour, PlayerController{
         equippedSpells = new List<Button>();
         SpellContainer spells = SpellContainer.Load(Path.Combine(Application.persistentDataPath, "spells.xml"));
         equippedSpells = new List<Button>(new Button[5]);
+        //Add spells from spells in text form (compatibility between new an old systems)
+        List<Spell> spellsList = new List<Spell>(spells.spells);
+        string[] spellsFromText = spellTexts.text.Split('\n');
+        foreach (string spellText in spellsFromText){
+            spellsList.Add(new Spell(spellText) );
+        }
 
-        for (int i = 0; i < spells.spells.Length; i++) {
+        for (int i = 0; i < spellsList.Count; i++) {
             //Debug.Log(PlayerPrefs.GetInt(spells.spells[i].Name, 0));
-            int spellStatus = PlayerPrefs.GetInt(spells.spells[i].Name, 0);
+            int spellStatus = PlayerPrefs.GetInt(spellsList[i].Name, 0);
             if (spellStatus > 0 && spellStatus < 6) { //1 -5 for order of spells, 6 for available but not equipped
                 //equippedSpells.Add(Instantiate(Resources.Load<Button>("SpellButton"), GameObject.Find("paperback").transform));
                 equippedSpells[spellStatus - 1] = (Instantiate(Resources.Load<Button>("SpellButton"), GameObject.Find("paperback").transform));
-                equippedSpells[spellStatus - 1].GetComponent<SpellButtonHandler>().setSpell(spells.spells[i]);
+                equippedSpells[spellStatus - 1].GetComponent<SpellButtonHandler>().setSpell(spellsList[i]);
 
                 //equippedSpells[spellStatus - 1].transform.localScale = new Vector3(0.02f, 0.02f);
                 //equippedSpells[spellStatus - 1].transform.localPosition = new Vector3(0, -(spellStatus - 1), 0);
@@ -671,7 +679,7 @@ public class GridController : MonoBehaviour, PlayerController{
         caster.setMana((int)colorType.yellow, caster.getMana((int)colorType.yellow) - spell.Costs[(int)colorType.yellow]);
         makeSplashText("Casting " + spell.Name, isTurn);
 
-        List<string> spellParameters = new List<string>(spell.Parameters.Split('\n'));
+        List<string> spellParameters = new List<string>(spell.Parameters.Split( '\n', '+' ));
 
         foreach (string parameter in spellParameters) {
             List<string> actionAndParameters = new List<string>(parameter.Split(' '));
@@ -833,6 +841,17 @@ public class GridController : MonoBehaviour, PlayerController{
                                 grid[i].setIsSuperPiece(false);
                                 grid[i].getObject().GetComponent<ThingController>().assignPiece(int.Parse(actionAndParameters[2]));
                             }
+                        }
+                    }
+                    break;
+                case "randomDestruction":
+                    //Spells with this parameter give all pieces a probabilaty of being destroyed equal to parameter 1 divided by 10
+                    //Debug.Log("casting random destruction");
+                    float probability = float.Parse(actionAndParameters[1]) / 10;
+                    Debug.Log(probability);
+                    for (int i = 0; i < BOARDLENGTH * BOARDLENGTH; i++){
+                        if (UnityEngine.Random.Range(0f, 1f) < probability) { 
+                            toDestroy.Add(i);
                         }
                     }
                     break;
@@ -1145,11 +1164,18 @@ public class GridController : MonoBehaviour, PlayerController{
             ParticleSystem.MainModule puffGenerator = smokePuff.GetComponent<ParticleSystem>().main;
             puffGenerator.startColor = matchingColors[grid[i].getType()];
 
+            // Leave behind a colored square to show what piece type was destroyed
+            GameObject matchIdentifier = Instantiate(Resources.Load<GameObject>("MatchIdentifier"));
+            matchIdentifier.GetComponent<Image>().color = matchingColors[grid[i].getType()];
+            matchIdentifier.transform.SetParent(gameObject.transform);
+            matchIdentifier.transform.position = grid[i].getObject().transform.position;
+
             grid[i].setType(-1);
             grid[i].setIsSuperPiece(false);
             grid[i].getObject().GetComponent<ThingController>().light.gameObject.SetActive(false);
             grid[i].getObject().GetComponent<Image>().color = Color.white;
             grid[i].getObject().GetComponent<ThingController>().assignPiece(-1);
+            
         }
 
         //Check castability of spells
@@ -1199,7 +1225,7 @@ public class GridController : MonoBehaviour, PlayerController{
                 for (int j = i + BOARDLENGTH; j < BOARDLENGTH * BOARDLENGTH; j += BOARDLENGTH) {
                     
                     if (grid[j].getType() != -1) {
-                        grid[j].getObject().GetComponent<ThingController>().speed = 10f;
+                        grid[j].getObject().GetComponent<ThingController>().setSpeed(8f);
                         swap(i, j);
                         //Debug.Log(i + " " + j);
                         break;
@@ -1238,7 +1264,7 @@ public class GridController : MonoBehaviour, PlayerController{
 
             grid[i].getObject().GetComponent<ThingController>().assignPiece(randType);
 
-            grid[i].getObject().GetComponent<ThingController>().speed = 50f;
+            grid[i].getObject().GetComponent<ThingController>().setSpeed(50f);
             
         }
 

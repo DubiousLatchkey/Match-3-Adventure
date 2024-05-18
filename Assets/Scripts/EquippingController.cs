@@ -18,6 +18,8 @@ public class EquippingController : MonoBehaviour {
     List<GameObject> availableWeapons;
     List<slot> equippedWeapons;
 
+    public TextAsset spellTexts;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,21 +36,30 @@ public class EquippingController : MonoBehaviour {
         equippedWeapons.Add(new slot(GameObject.Find("equippedWeaponSlot")));
         availableSpellAnchor = GameObject.Find("availableSpellsList");
         equippedSpellAnchor = GameObject.Find("equippedSpellsList");
+        spellTexts = Resources.Load<TextAsset>("spells");
 
         SpellContainer spells = SpellContainer.Load(System.IO.Path.Combine(Application.persistentDataPath, "spells.xml"));
         //int spellCount = 0;
         //Load in available spells
+        //Add spells from spells in text form (compatibility between new an old systems)
+        List<Spell> spellsList = new List<Spell>(spells.spells);
+        string[] spellsFromText = spellTexts.text.Split('\n');
+        foreach (string spellText in spellsFromText)
+        {
+            spellsList.Add(new Spell(spellText));
+        }
 
         // TEMP: Setting spells for test combats
         PlayerPrefs.SetInt("Blue Elemental Blast", 6); 
-        PlayerPrefs.SetInt("Amplify", 6);
+        PlayerPrefs.SetInt("Field Disruption", 6);
+        PlayerPrefs.SetInt("Coin Flip", 6);
 
-        for (int i = 0; i < spells.spells.Length; i++) {
-            int spellStatus = PlayerPrefs.GetInt(spells.spells[i].Name, 0);
+        for (int i = 0; i < spellsList.Count; i++) {
+            int spellStatus = PlayerPrefs.GetInt(spellsList[i].Name, 0);
             if (spellStatus != 0) {
                 availableSpells.Add(Instantiate(Resources.Load<Button>("SpellButton"), availableSpellAnchor.transform));
                 //Debug.Log(spells.spells[i].Name + " " + availableSpells.Count);
-                availableSpells[availableSpells.Count - 1].GetComponent<SpellButtonHandler>().setSpell(spells.spells[i]);
+                availableSpells[availableSpells.Count - 1].GetComponent<SpellButtonHandler>().setSpell(spellsList[i]);
                 availableSpells[availableSpells.Count - 1].GetComponent<DragToSpotBehavior>().isSpell = true;
                 //spellCount++;
             }

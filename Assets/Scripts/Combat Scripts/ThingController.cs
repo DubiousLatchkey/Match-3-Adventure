@@ -15,6 +15,9 @@ public class ThingController : MonoBehaviour, IEndDragHandler, IDragHandler
     AudioSource audio;
     public Light2D light;
     bool isIncreasingLightIntensity;
+    float accelerationFactor;
+    public float accelerationConstant = 1f;
+    bool toAccelerate = false;
 
     // Start is called before the first frame update
     void Start()
@@ -36,9 +39,14 @@ public class ThingController : MonoBehaviour, IEndDragHandler, IDragHandler
         else {
             speed = baseSpeed / 2;
             moving = false;
+            accelerationFactor = 0;
+            toAccelerate = false;
         }
-
-        float step = speed * Time.deltaTime; // calculate distance to move
+        if (toAccelerate)
+        {
+            accelerationFactor += Time.deltaTime * accelerationConstant;
+        }
+        float step = speed * Time.deltaTime + accelerationFactor; // calculate distance to move
         //float step = Vector3.Distance(transform.position, target) / 10;
         transform.position = Vector3.MoveTowards(transform.position, target, step);
 
@@ -61,6 +69,10 @@ public class ThingController : MonoBehaviour, IEndDragHandler, IDragHandler
 
     public void setSpeed(float newSpeed) {
         speed = newSpeed;
+    }
+
+    public void accelerateForNextMove() {
+        toAccelerate = true;
     }
 
     //Takes in values 0 - 5 to assign what piece to use based on type value 

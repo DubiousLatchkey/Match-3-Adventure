@@ -1158,11 +1158,13 @@ public class GridController : MonoBehaviour, PlayerController{
             generateParticles(i, grid[i].getType());
 
             //Make a smoke cloud
+            /*
             GameObject smokePuff = Instantiate(Resources.Load<GameObject>("SmokePuff"));
             smokePuff.transform.position = grid[i].getObject().transform.position;
             smokePuff.transform.Translate(new Vector3(0, 0, -2));
             ParticleSystem.MainModule puffGenerator = smokePuff.GetComponent<ParticleSystem>().main;
             puffGenerator.startColor = matchingColors[grid[i].getType()];
+            */
 
             // Leave behind a colored square to show what piece type was destroyed
             GameObject matchIdentifier = Instantiate(Resources.Load<GameObject>("MatchIdentifier"));
@@ -1225,6 +1227,7 @@ public class GridController : MonoBehaviour, PlayerController{
                 for (int j = i + BOARDLENGTH; j < BOARDLENGTH * BOARDLENGTH; j += BOARDLENGTH) {
                     
                     if (grid[j].getType() != -1) {
+                        grid[j].getObject().GetComponent<ThingController>().accelerateForNextMove();
                         grid[j].getObject().GetComponent<ThingController>().setSpeed(8f);
                         swap(i, j);
                         //Debug.Log(i + " " + j);

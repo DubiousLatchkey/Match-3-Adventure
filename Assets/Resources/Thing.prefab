@@ -240,6 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseSpeed: 10
   light: {fileID: 1471834756224838088}
+  accelerationConstant: 0.2
 --- !u!82 &-8684629690287080603
 AudioSource:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ public class FadeController : MonoBehaviour
     float fadeSpeed = 0.01f;
     const float fadeOutValue = 150;
     bool scheduledForDeletion = false;
+    float time = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -26,11 +27,13 @@ public class FadeController : MonoBehaviour
     {
         if (scheduledForDeletion) {
             if (image.color.a <= 0) {
+                //Debug.Log("Deleting Object");
                 Destroy(gameObject);
             }
-            Color color = image.color;
-            color.a -= 0.1f;
-            image.color = color;
+            time += Time.deltaTime * fadeSpeed * 2;
+            Color endColor = new Color(image.color.r, image.color.g, image.color.b, 0);
+            image.color = Color.Lerp(image.color, endColor, time);
+            //image.color = color;
         }
         else if (fadingIn && !compareColorValues(image.color, fadeIn)) {
             image.color = getFadeColor();

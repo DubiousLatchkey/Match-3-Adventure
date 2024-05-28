@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class DialogueController : MonoBehaviour
 {
-    public static string dialogueToLoad = "sampleDialogue";
+    public static string dialogueToLoad = "3_004_iredellSeige";
     public static bool isSkipping = false;
     public GameObject fadeObject;
     public GameObject backgound;
@@ -446,17 +446,19 @@ public class DialogueController : MonoBehaviour
                 //Fade and move out character, followed by deletion
                 FadeController fadeController = characters[actionAndParameters[1]].GetComponent<FadeController>();
                 MoveToTargetBehavior targetBehavior = characters[actionAndParameters[1]].GetComponent<MoveToTargetBehavior>();
+                actionAndParameters[2] = actionAndParameters[2].Trim();
                 if (actionAndParameters[2] == "right") {
-                    targetBehavior.setTarget(new Vector3(1000, 0) + characters[actionAndParameters[1]].transform.localPosition);
+                    targetBehavior.setTarget(new Vector3(3, 0) + characters[actionAndParameters[1]].transform.position);
+                    //targetBehavior.setTarget(characters[actionAndParameters[1]].transform.position + characters[actionAndParameters[1]].transform.right * 100, 1.5f);
                 }
                 else if (actionAndParameters[2] == "left") {
-                    targetBehavior.setTarget(new Vector3(-1000, 0) + characters[actionAndParameters[1]].transform.localPosition);
+                    targetBehavior.setTarget(new Vector3(-3, 0) + characters[actionAndParameters[1]].transform.position);
                 }
                 else if (actionAndParameters[2] == "down") {
-                    targetBehavior.setTarget(new Vector3(0, -1000) + characters[actionAndParameters[1]].transform.localPosition);
+                    //targetBehavior.setTarget(new Vector3(characters[actionAndParameters[1]].transform.position.x, (-10 + baseYAxisOffset) * positionalMultiplier), 0.001f);
+                    targetBehavior.setTarget(new Vector3(0, -3) + characters[actionAndParameters[1]].transform.position);
                 }
-                targetBehavior.setInitialDistance(Vector3.Distance(characters[actionAndParameters[1]].transform.localPosition, targetBehavior.getTarget()));
-                targetBehavior.setSpeed(5);
+                targetBehavior.setSpeed(0.05f);
                 fadeController.scheduleForDeletion();
                 characters.Remove(actionAndParameters[1]);
                 break;

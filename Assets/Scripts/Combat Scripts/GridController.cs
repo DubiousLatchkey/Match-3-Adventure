@@ -1228,7 +1228,7 @@ public class GridController : MonoBehaviour, PlayerController{
                     
                     if (grid[j].getType() != -1) {
                         grid[j].getObject().GetComponent<ThingController>().accelerateForNextMove();
-                        grid[j].getObject().GetComponent<ThingController>().setSpeed(8f);
+                        grid[j].getObject().GetComponent<ThingController>().setSpeed(5f);
                         swap(i, j);
                         //Debug.Log(i + " " + j);
                         break;
@@ -1267,7 +1267,7 @@ public class GridController : MonoBehaviour, PlayerController{
 
             grid[i].getObject().GetComponent<ThingController>().assignPiece(randType);
 
-            grid[i].getObject().GetComponent<ThingController>().setSpeed(50f);
+            grid[i].getObject().GetComponent<ThingController>().setSpeed(40f);
             
         }
 

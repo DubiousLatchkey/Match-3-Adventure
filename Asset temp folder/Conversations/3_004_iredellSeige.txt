@@ -1,0 +1,109 @@
+|maria -14 -1, gabriella -7 -1, ann 7 -1, jay 14 -1, maria -21 -1
+|setBackground warRoom
+ann:Welcome, Jay.  Everyone, this is Sir Jay. Jay, this is everyone.
+ :He nods
+jay:I'm here to be of service.
+maria:A knight?  My aunt has a few sworn in her service, I believe.  Maria of the Mage's Guild, pleased to meet you.
+jay:Of which house do you hail?
+maria:Curtis, though you may not have heard of them.  Their lands are rather far from here.
+jay:I can't say I have.
+|swap clarissa maria
+clarissa:I'm more interested to know why you're here to be of service.
+jay:Short answer, I'm betraying Iredell.
+clarissa:That's convenient.  Right when we need someone with experience conducting warfare you show up at our door.
+jay:You need battlefield experience?  How are things run now?
+gabriella:Mercenaries mostly.  There are -
+clarissa:Don't say anything else.  He could be a spy - or an assassin.
+gabriella:Hey, don't look a gift horse in the mouth.
+ann:Let's back up.  These are Clarissa and Gabby.
+gabriella:Nice to meet you, Sir Jay.
+jay:Short for Gabriella, I presume?
+gabriella:Yep.  Gabriella Duvall, at your service.
+jay:Duvall?  As in the merchant's guild?
+gabriella:That's the one.  My older brother is the heir, I'm just the spare.
+jay:A flaw inherent with the system of nobility and inherited titles.
+maria:A philosopher, are we?
+jay:I suppose.  The reason I seek to betray Iredell is to support your cause, which I believe will be able to effect change in our societal system for the common born.
+clarissa:It still sounds awfully convenient.
+jay:I brought as much of the treasury as I could carry on my horse if that will convince you.
+clarissa:...
+clarissa:Perhaps.
+ann:Well, now that introductions are out of the way, Jay we need your military knowledge.  If we are going to make Iredell vote with us and Rehnquist, what would we have to do?
+jay:I would say that would require some small scale warfare.  Seiging her castle, storming the gates, and then threatening direct control of her lands if she doesn't cooperate.
+gabriella:That's a little... harsh.  Couldn't we just negotiate with her?
+jay:In theory, yes.  In practice, it's not going to happen.  You've already seen Iredell is a traditionalist.  There's no way anything less than a blade to the throat will convince her to recognize Ann as Marchioness Blair.
+jay:Also I just betrayed her and stole a bunch of her treasury.  She'll probably want revenge - sorry "justice".
+gabriella:Hmm...  regardless I hope this won't be too destructive.
+clarissa:Or expensive.  We're barely keeping up on costs now, but to transport food and supplies to Castle Iredell and lay seige?  We're going to be cutting things close, especially if the seige takes too long.
+ann:How long do seiges usually last?
+jay:A while.  However, I know the situation in the castle, so I estimate starving them out will take no longer than 4 months.
+gabriella:4 months!  That's just downright cruel!  I can't imagine basically living without fresh food for that long.
+jay:If we're efficient at blocking the secret ways to get food in and destroy the more vulnerable stocks, I can get that down to 2.
+clarissa:We can't afford that.
+jay:Well, you said your forces were mostly mercenaries, so I doubt they are trained in building seige towers or other weapons like that.  Do you have any engineers?
+ann:I can't say we do.
+|swap clarissa maria
+maria:Ahem, aren't we forgetting something?
+ann:What?
+maria:Oh, I don't know, maybe a recent innovation in seige warfare?
+ann:Right!  Jay, we recently stole a bunch of cannons from Grier - how does that change things?
+jay:You have cannons?  That changes everything!  I was with Rehnquist's army during the first reconquest war, and they changed everything.  They are what enabled the war to even be possible.  Cannons can bring down walls in days.
+gabriella:While that sounds more destructive, it seems much kinder than starving them out.
+jay:Paradoxically, a greater weapon leads to less war.
+gabriella:That can't always be true.  If we were to take this example to its logical conclusion, both sides would have a weapon that could wipe out the other instantly.  Would that lead to more peace?
+jay:Logically, neither side could use it without risking their own loss.  Seems like it would prevent war.
+gabriella:Maybe you're right.  Doesn't sound great to live under though.  Its like the sword over the head of the king in that old story.
+|swap clarissa maria
+clarissa:Philosphy aside, this is a much more reasonable plan that I can get behind.  We barely know how to fire the cannons though.
+jay:That I can help with.  We just need cannonballs and crystal powder.
+ann:Lucky for us we own a mine.  The cannonballs we will need more of though.  We can commission them from local blacksmiths I suppose.  The money you brought will help.
+jay:Money well spent if it deals with Lady Iredell. 
+|transition hallwayLord
+|translate ann -7 1
+|translate clarissa 7 1
+|exit maria down
+|exit jay down
+|translate gabriella 21 -1
+ann:Clarissa, I was thinking.
+clarissa:Yes, milady?
+ann:Still not used to that.  Right, sorry, I wanted to ask your thoughts on this: why pay blacksmiths to make the cannonballs when we could just order them to do it?  I'm a Marchioness now, right?  Did the old Marquess Blair ever do something like that?
+clarissa:As bad as he was, that was something even he avoided doing.  It would work in the short term, but would have negative long term reprecussions.
+ann:How so?
+clarissa:You are able to make your subjects work as your noble self deems, but if you don't pay the smiths, they can't put food on the table.  If they can't do that, they're liable to find new work that does allow them to do that.
+ann:Not to mention the damaged to relationships and reputation.  Right, thanks for thinking through this with me.
+clarissa:Always at your service.
+|swap gabriella clarissa
+gabriella:You weren't really thinking of doing that, were you?
+ann:No, well, what if we didn't have the money?  We're going to need a lot of cannonballs.  
+gabriella:Just buy fewer!  We'll make do with what we have.  There are other ways we could get money too.  We could wait for more income from the mine or sell something - there are lots of better ideas than conscripting the smiths.
+ann:Right, of course.  I just wanted to know the practical implications of if we had to.
+gabriella:At least it's still an if...
+|transition castleExteriorIredell
+|translate ann -14 -1
+|enter jay 14 -1
+|translate gabriella -7 -1
+|translate clarissa 7 -1
+ :3 weeks later
+ann:This is the castle?
+jay:Castle Iredell - my home for the past ten years.  Technically, I guess, I was off at war for five of them.
+gabriella:Speaking of, what were the old lands like?
+jay:Backward mostly.  No great nation has taken the place of the old empire, so many of the battles were small, relatively speaking.  Local lords, principalities, and the such.
+ann:I would have imagined something more grand.
+gabriella:Yeah I thought Lady Rehnquist wanted to make it all the way to the Old Capital - that should have been quite the sight.
+jay:We never made it to the Old Capital.  The Duchess wanted to take some time to consolidate control over the new lands before retaking the Old Capital.  However, then those in Duke Grier's clique in the House of Lords, like my former leige, realized the new nobles would be loyal to Rehnquist and started to withdraw support, hence why I'm not currently in the Old Lands.
+clarissa:What I'm hearing is that means we should expect a fully mobilized army back from the first war because they haven't been sent to the second.
+jay:Luckily, no.  Lady Iredell demobilized the soldiers from her lands immediately after they returned.  She didn't trust the conscripts to be loyal after fighting under someone else for years.
+gabriella:Seems a little paranoid...
+jay:I supported the decision.  You know how devious Rehnquist can be.  I didn't know she was even back from the front until Milady's ascension, and look at how she schemes even now making us do her dirty work.
+ann:Not to mention the whole thing with Taney.  Gotta respect the ambition.
+gabriella:I suppose so.
+clarissa:Not going to speak ill of your leige lady?
+ann:Look, I get she's not to be trusted, and I don't, but she is the reason we're able to have any legitimacy at all.  Besides, she was willing to elevate me to nobility so I can't say she's all bad.
+jay:Agreed.  Despite her... pragmatic approach to morality, I would say she is far preferable to Grier.  Him and the rest of the traditionalists I can't stand.  At least Rehnquist sees the practical nature of reform.
+clarissa:Returning to the more immediate concern, are we within cannon range yet?
+jay:It will do, but I would wager Lady Iredell will be sending her forces out to confront us soon.
+clarissa:In that case, I'll ready the soldiers.
+ann:Jay, you're the expert.  Am I right in saying that a rout here will give us free reign to fire on the castle?
+jay:Yes.  They'll probably overpower us conventionally given time, but I just need you to hold them off long enough until I can get the artillery crew ready to fire.  The guns should be enough to force them back into the castle.
+ann:To battle then.
+|

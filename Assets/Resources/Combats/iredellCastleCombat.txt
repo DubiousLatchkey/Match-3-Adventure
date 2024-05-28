@@ -1,0 +1,2 @@
+enemy:
+dialogue: 3_005_iredellCastleAdvance

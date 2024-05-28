@@ -50,7 +50,6 @@ public class EquippingController : MonoBehaviour {
         }
 
         // TEMP: Setting spells for test combats
-        PlayerPrefs.SetInt("Blue Elemental Blast", 6); 
         PlayerPrefs.SetInt("Field Disruption", 6);
         PlayerPrefs.SetInt("Coin Flip", 6);
 

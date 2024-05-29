@@ -1,2 +1,2 @@
-enemy:
+enemy: Iredellian Soldier
 dialogue: 3_005_iredellCastleAdvance

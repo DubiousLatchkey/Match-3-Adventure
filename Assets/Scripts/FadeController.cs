@@ -30,7 +30,7 @@ public class FadeController : MonoBehaviour
                 //Debug.Log("Deleting Object");
                 Destroy(gameObject);
             }
-            time += Time.deltaTime * fadeSpeed * 2;
+            time += Time.deltaTime * fadeSpeed * 2  ;
             Color endColor = new Color(image.color.r, image.color.g, image.color.b, 0);
             image.color = Color.Lerp(image.color, endColor, time);
             //image.color = color;

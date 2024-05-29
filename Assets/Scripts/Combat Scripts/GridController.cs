@@ -92,7 +92,6 @@ public class GridController : MonoBehaviour, PlayerController{
         moves = new List<Move>();
         extraTurn = false;
         skydrop.sprite = Resources.Load<Sprite>("Backgrounds/" + PlayerPrefs.GetString("background", "bg"));
-        spellTexts = Resources.Load<TextAsset>("spells");
         typeCounts = new Dictionary<int, int>{
             { 0, 0 },
             { 1, 0 },
@@ -209,10 +208,7 @@ public class GridController : MonoBehaviour, PlayerController{
         equippedSpells = new List<Button>(new Button[5]);
         //Add spells from spells in text form (compatibility between new an old systems)
         List<Spell> spellsList = new List<Spell>(spells.spells);
-        string[] spellsFromText = spellTexts.text.Split('\n');
-        foreach (string spellText in spellsFromText){
-            spellsList.Add(new Spell(spellText) );
-        }
+        spellsList.AddRange(SpellSerializer.loadSpells());
 
         for (int i = 0; i < spellsList.Count; i++) {
             //Debug.Log(PlayerPrefs.GetInt(spells.spells[i].Name, 0));
@@ -1969,8 +1965,8 @@ public interface PlayerController {
 }
 
 public class Combat {
-    List<int> enemies;
-    List<int> weapons;
+    List<string> enemies;
+    List<string> weapons;
     List<string> portraits;
     List<string> tutorials;
     string nextDialogue;
@@ -1982,48 +1978,66 @@ public class Combat {
     public Combat(string combatFile) {
         TextAsset combat = Resources.Load<TextAsset>("Combats/" + combatFile);
         List<string> lines = new List<string>(combat.text.Split('\n'));
-        enemies = new List<int>();
-        weapons = new List<int>();
+        enemies = new List<string>();
+        weapons = new List<string>();
         portraits = new List<string>();
         tutorials = new List<string>();
 
         foreach (string line in lines) {
             string[] lineParts = line.Split(':');
-            if (lineParts[0] == "enemy") {
-                string[] enemyParts = lineParts[1].Split(' ');
-                enemies.Add(int.Parse(enemyParts[0]));
-                weapons.Add(int.Parse(enemyParts[1]));
-                if (enemyParts.Length > 2) { portraits.Add(enemyParts[2].Trim()); }
-                else { portraits.Add(""); }
+            if (lineParts[0] == "enemy")
+            {
+                string[] enemyNames = lineParts[1].Split(',');
+                foreach (string name in enemyNames)
+                {
+                    enemies.Add(name.Trim());
+                }
+
+                //enemies.Add(int.Parse(enemyParts[0]));
+                //weapons.Add(int.Parse(enemyParts[1]));
+                //if (enemyNames.Length > 2) { portraits.Add(enemyParts[2].Trim()); }
+                //else { portraits.Add(""); }
+                portraits.Add("");
             }
-            else if (lineParts[0] == "dialogue") {
+            else if (lineParts[0] == "weapons") {
+                string[] weaponNames = lineParts[1].Split(',');
+                foreach (string name in weaponNames)
+                {
+                    weapons.Add(name.Trim());
+                }
+            }
+            else if (lineParts[0] == "dialogue")
+            {
                 nextDialogue = lineParts[1].Trim();
             }
-            else if (lineParts[0] == "solo") {
+            else if (lineParts[0] == "solo")
+            {
                 isSolo = true;
                 soloArguments = lineParts[1];
             }
-            else if (lineParts[0] == "companion") {
+            else if (lineParts[0] == "companion")
+            {
                 companion = lineParts[1].Trim();
             }
-            else if (lineParts[0] == "tutorial") {
+            else if (lineParts[0] == "tutorial")
+            {
                 tutorials.Add(lineParts[1].Trim());
             }
         }
         round = 0;
     }
 
-    public int getEnemy(int round) {
+    public string getEnemy(int round) {
         if (round >= enemies.Count) {
-            return -1;
+            return "";
         }
         else {
             return enemies[round];
         }
     }
-    public int getWeapon(int round) {
+    public string getWeapon(int round) {
         if (round >= enemies.Count) {
-            return -1;
+            return "";
         }
         else {
             return weapons[round];

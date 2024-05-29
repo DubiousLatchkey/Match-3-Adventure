@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class DialogueController : MonoBehaviour
 {
-    public static string dialogueToLoad = "3_004_iredellSeige";
+    public static string dialogueToLoad = "3_005_iredellCastleAdvance";
     public static bool isSkipping = false;
     public GameObject fadeObject;
     public GameObject backgound;
@@ -438,7 +438,7 @@ public class DialogueController : MonoBehaviour
                 textLinkedMoveLengths.Add(actionAndParameters[1], int.Parse(actionAndParameters[5]));
                 break;
             case ("moveTo"):
-                //Moves parameter 1 to coordinates parameters 3 and 4 at speed parameter 2
+                //Moves parameter 1 to coordinates parameters 3 and 4 at speed parameter 2 over parameter 5 dialogue lines
                 moveTo(actionAndParameters[1], float.Parse(actionAndParameters[2]), float.Parse(actionAndParameters[3]), float.Parse(actionAndParameters[4]));
                 textLinkedMoveLengths.Add(actionAndParameters[1], int.Parse(actionAndParameters[5]));
                 break;

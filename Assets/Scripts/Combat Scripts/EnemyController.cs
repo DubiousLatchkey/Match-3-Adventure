@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -50,11 +51,15 @@ public class EnemyController : MonoBehaviour, PlayerController
     List<StatusEffect> statusEffects;
     Etcetera extraStatusEffects;
 
+    List<Spell> spellList;
+    List<Enemy> enemyList;
+    Dictionary<string, Enemy> enemyDictionary;
+
     // Start is called before the first frame update
     void Start()
     {
         SpellContainer spells = SpellContainer.Load(Path.Combine(Application.persistentDataPath, "spells.xml"));
-
+        enemyDictionary = loadEnemiesToDictionary();
         //Make enemy data
         EnemyContainer enemies = new EnemyContainer();
         enemies.enemies[0] = new Enemy("Wizard Adept", new int[] {5, 2, 10 }, new Spell[] { spells.spells[0], spells.spells[2]}, 100, 10, 10, 10, 0.5f);
@@ -77,9 +82,11 @@ public class EnemyController : MonoBehaviour, PlayerController
 
         combat = new Combat(GridController.combatToLoad);
         if (!combat.getIsSolo()) {
-            enemy = EnemyContainer.Load(Path.Combine(Application.persistentDataPath, "enemies.xml")).enemies[combat.getEnemy(0)];
+            //enemy = EnemyContainer.Load(Path.Combine(Application.persistentDataPath, "enemies.xml")).enemies[combat.getEnemy(0)];
+            enemy = enemyDictionary[combat.getEnemy(0)];
         }
         else {
+            // I forget what this does
             List<string> soloArguments = new List<string>(combat.getSoloArguments().Split(' '));
             enemy = new Enemy(string.Join(" ", soloArguments.GetRange(2, soloArguments.Count - 2)).Trim(), new int[] { 0, 0, 0 }, new Spell[0], int.Parse(soloArguments[1]), 0, 0, 0, 0);
         }
@@ -197,6 +204,8 @@ public class EnemyController : MonoBehaviour, PlayerController
 
         //Get weapon
         weapon = new Weapon();
+        weaponObject = GameObject.Find("enemyWeapon");
+        /*
         WeaponContainer weapons = WeaponContainer.Load(Path.Combine(Application.persistentDataPath, "weapons.xml"));
         if (combat.getWeapon(0) != -1) {
             weapon = weapons.Weapons[combat.getWeapon(0)];
@@ -210,6 +219,9 @@ public class EnemyController : MonoBehaviour, PlayerController
             weaponObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Button");
             weaponObject.SetActive(false);
         }
+        */
+        weaponObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Button");
+        weaponObject.SetActive(false);
 
     }
 
@@ -676,10 +688,10 @@ public class EnemyController : MonoBehaviour, PlayerController
 
                 currentRound++;
                 combat.advanceRound();
-                int next = combat.getEnemy(combat.getRound());
+                string next = combat.getEnemy(combat.getRound());
 
                 //loadEnemy();
-                if (next == -1) {
+                if (next == "") {
                     //Send to new scene
                     DialogueController.dialogueToLoad = combat.getNextDialogue();
                     resultsScreenHandler.setWin();
@@ -722,7 +734,8 @@ public class EnemyController : MonoBehaviour, PlayerController
 
     public void loadEnemy() {
         //Load next enemy
-        enemy = EnemyContainer.Load(Path.Combine(Application.persistentDataPath, "enemies.xml")).enemies[combat.getEnemy(currentRound)];
+        //enemy = EnemyContainer.Load(Path.Combine(Application.persistentDataPath, "enemies.xml")).enemies[combat.getEnemy(currentRound)];
+        enemy = enemyDictionary[combat.getEnemy(currentRound)];
 
         madeMove = false;
         redMana = 0;
@@ -788,6 +801,7 @@ public class EnemyController : MonoBehaviour, PlayerController
         }
 
         weapon = new Weapon();
+        /*
         WeaponContainer weapons = WeaponContainer.Load(Path.Combine(Application.persistentDataPath, "weapons.xml"));
         if (combat.getWeapon(currentRound) != -1) {
             weapon = weapons.Weapons[combat.getWeapon(currentRound)];
@@ -800,6 +814,9 @@ public class EnemyController : MonoBehaviour, PlayerController
             weaponObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Button");
             weaponObject.SetActive(false);
         }
+        */
+        weaponObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Button");
+        weaponObject.SetActive(false);
     }
 
     public bool checkCosts(int[] costs) {
@@ -945,6 +962,29 @@ public class EnemyController : MonoBehaviour, PlayerController
             multiplierBar.setPercentageFilled((damageMultiplier - 1) / (GridController.maxMultiplier - 1f));
         }
     }
+
+    public static List<Enemy> loadEnemies() {
+        List<Enemy> enemiesList = new List<Enemy>();
+        TextAsset enemyTexts = Resources.Load<TextAsset>("enemies");
+        string[] enemiesFromText = enemyTexts.text.Split('\n');
+        foreach (string enemyText in enemiesFromText)
+        {
+            enemiesList.Add(new Enemy(enemyText));
+        }
+
+        return enemiesList;
+    }
+
+    public static Dictionary<string, Enemy> loadEnemiesToDictionary()
+    {
+        List<Enemy> enemiesList = loadEnemies();
+        Dictionary<string, Enemy> enemyDictionary;
+
+        enemyDictionary = enemiesList.ToDictionary(x => x.Name , x => x);
+
+        return enemyDictionary;
+    }
+
 }
 
 public class Enemy {
@@ -990,6 +1030,29 @@ public class Enemy {
         failRate = fail;
 
     }
+
+    public Enemy(string enemyText) {
+        string[] enemyTextArray = enemyText.Split(',');
+        Name = enemyTextArray[0];
+        string[] priorties = enemyTextArray[1].Trim().Split(' ');
+        Priorities = new int[] { int.Parse(priorties[0]), int.Parse(priorties[1]), int.Parse(priorties[2]) };
+        Health = int.Parse(enemyTextArray[2]);
+        string[] maxes = enemyTextArray[3].Trim().Split(' ');
+        maxRedMana = int.Parse(maxes[0]);
+        maxBlueMana = int.Parse(maxes[1]);
+        maxYellowMana = int.Parse(maxes[2]);
+        failRate = float.Parse(enemyTextArray[4]);
+
+        Dictionary<string, Spell> spellsDictionary = SpellSerializer.loadSpellsIntoDictionary();
+        List<Spell> spells = new List<Spell>();
+        for (int i = 5; i < enemyTextArray.Length; i++) {
+            spells.Add(spellsDictionary[enemyTextArray[i].Trim()]);
+        }
+        Spells = spells.ToArray();
+
+    }
+
+
     public Enemy() {
         Name = "Default";
         Priorities = new int[] { 0, 0, 0, };

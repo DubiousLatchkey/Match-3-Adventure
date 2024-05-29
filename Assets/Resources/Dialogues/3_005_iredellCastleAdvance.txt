@@ -1,2 +1,20 @@
-
+|ann -6 -1,iredellianSoldier 7 -1
 |setBackground castleExteriorIredell
+ :The sound of cannonfire overpoweringly blasts over the din of combat.
+ann:Just a little bit more...
+ :A horn sounds in between salvos.
+iredellianSoldier:Retreat!
+|exit iredellianSoldier right
+ann:Yes!  Let them retreat - we don't want to get into range of their castle defenses!
+ :The fighting begins to wane as Ann's forces allow Iredell's to return to the relative safety of the castle.
+|moveTo ann 0.5 7 -1 1
+|enter jay -6 -1
+jay:What did I tell you?  Game changers.
+ann:Indeed you did Jay, but this is only just beginning.  How long to bring down the walls?
+jay:I can't say for certain, but I would say at least a day of continuous fire.  The castle is relatively old.
+ann:Well then, you may begin firing when ready.
+jay:As you wish Milady.
+|exit jay left
+|enter gabriella -7 -1
+gabriella:The cannons - they were terribly loud.
+ann:I know, the only solace I had was that I knew they were on our side.

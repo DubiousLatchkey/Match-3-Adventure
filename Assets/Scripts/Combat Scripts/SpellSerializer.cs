@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml.Serialization;
 using UnityEngine;
 
@@ -79,6 +80,29 @@ public class SpellSerializer : MonoBehaviour
     {
         
     }
+
+    public static List<Spell> loadSpells() {
+        List<Spell> spellsList = new List<Spell>();
+        TextAsset spellTexts = Resources.Load<TextAsset>("spells");
+
+        string[] spellsFromText = spellTexts.text.Split('\n');
+        foreach (string spellText in spellsFromText)
+        {
+            spellsList.Add(new Spell(spellText));
+        }
+
+        return spellsList;
+    }
+    public static Dictionary<string, Spell> loadSpellsIntoDictionary()
+    {
+        Dictionary<string, Spell> spellsDictionary;
+        List<Spell> spellsList = loadSpells();
+
+        spellsDictionary = spellsList.ToDictionary(x => x.Name, x => x);
+
+        return spellsDictionary;
+    }
+
 }
 
 public class Spell {

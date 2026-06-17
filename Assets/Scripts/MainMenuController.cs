@@ -36,7 +36,7 @@ public class MainMenuController : MonoBehaviour
 
     public void resumeGame() {
         //TODO: Start game without making save data
-        if(PlayerPrefs.GetInt("savedGameExists", 0) == 1) {
+        if(SaveGameService.GetInt("savedGameExists", 0) == 1) {
             //PLACEHOLDER: To be replaced with resuming to specific location
             //SceneManager.LoadScene("CombatScene", LoadSceneMode.Single);
             DialogueController.dialogueToLoad = "revelation";
@@ -46,40 +46,7 @@ public class MainMenuController : MonoBehaviour
     }
 
     public void newGame() {
-        //TODO: Start game and make save data
-        //Placeholder spells
-        PlayerPrefs.SetInt("Enflame", 0);
-        PlayerPrefs.SetInt("Fireball", 0);
-        PlayerPrefs.SetInt("Aether", 0);
-        PlayerPrefs.SetInt("Rebase", 0);
-        PlayerPrefs.SetInt("Ethereal Vivisection", 0);
-        PlayerPrefs.SetInt("Toxic Deluge", 0);
-        PlayerPrefs.SetInt("Clean Slate", 0);
-        PlayerPrefs.SetInt("Swords to Plowshares", 0);
-        PlayerPrefs.SetInt("Balance", 0);
-        PlayerPrefs.SetInt("Restore", 0);
-        PlayerPrefs.SetInt("Mana Drain", 0);
-        PlayerPrefs.SetInt("Kinetic Barrier", 0);
-        PlayerPrefs.SetInt("Cantrip", 0);
-        PlayerPrefs.SetInt("Fiery Transfusion", 0);
-        PlayerPrefs.SetInt("Precision Strike", 0);
-        PlayerPrefs.SetInt("Invigorate", 0);
-        PlayerPrefs.SetInt("Explosive Outburst", 0);
-
-        PlayerPrefs.SetInt("Warrior's Staff", 0);
-        PlayerPrefs.SetInt("Mage Rapier", 0);
-        PlayerPrefs.SetInt("Spellslinger's Device", 0);
-        PlayerPrefs.SetInt("Scarlet Staff", 0);
-        PlayerPrefs.SetInt("Crimson Staff", 0);
-        PlayerPrefs.SetInt("Amplifying Staff", 0);
-
-
-        //Base values
-        PlayerPrefs.SetInt("hp", 100);
-        PlayerPrefs.SetInt("maxRedMana", 10);
-        PlayerPrefs.SetInt("maxBlueMana", 10);
-        PlayerPrefs.SetInt("maxYellowMana", 10);
-        PlayerPrefs.SetInt("savedGameExists", 1);
+        SaveGameService.NewGame(SpellContentLoader.LoadSpells(), WeaponContentLoader.LoadWeapons());
 
         //Intro
         DialogueController.dialogueToLoad = "opening";

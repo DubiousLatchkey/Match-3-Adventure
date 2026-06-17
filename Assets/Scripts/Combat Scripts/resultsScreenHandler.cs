@@ -60,13 +60,15 @@ public class resultsScreenHandler : MonoBehaviour
             hasLost = false;
             hasWon = false;
 
-            EnemyController enemyController = GameObject.Find("Grid").GetComponent<EnemyController>();
+            CombatSceneRefs refs = CombatSceneRefs.Instance;
+            EnemyController enemyController = refs != null ? refs.Enemy : GameObject.Find("Grid").GetComponent<EnemyController>();
+            GridController gridController = refs != null ? refs.Grid : GameObject.Find("Grid").GetComponent<GridController>();
 
             if (enemyController.combat.getCompanion() == "none") {
                 ScriptController.unPauseGame();
                 enemyController.currentRound = 0;
                 enemyController.loadEnemy();
-                GameObject.Find("Grid").GetComponent<GridController>().resetPlayer();
+                gridController.resetPlayer();
                 GridController.isTurn = true;
                 GridController.madeMove = false;
             }
@@ -74,7 +76,7 @@ public class resultsScreenHandler : MonoBehaviour
                 DialogueController.writeDialogueVariable("companion", enemyController.combat.getCompanion());
                 DialogueController.writeDialogueVariable("companionChangeoverDialogue", DialogueController.getCompanionDialogue(enemyController.combat.getCompanion()));
                 DialogueController.dialogueToLoad = "changeover";
-                GameObject.Find("Grid").GetComponent<GridController>().loadCompanion(enemyController.combat.getCompanion());
+                gridController.loadCompanion(enemyController.combat.getCompanion());
                 SceneManager.LoadScene("DialogueScene", LoadSceneMode.Additive);
                 GridController.isTurn = true;
                 GridController.madeMove = false;
@@ -90,8 +92,11 @@ public class resultsScreenHandler : MonoBehaviour
             ScriptController.unPauseGame();
             GridController.isTurn = true;
             GridController.madeMove = false;
-            GameObject.Find("Grid").GetComponent<EnemyController>().loadEnemy();
-            GameObject.Find("Grid").GetComponent<GridController>().inBetweenRoundEffects();
+            CombatSceneRefs refs = CombatSceneRefs.Instance;
+            EnemyController enemyController = refs != null ? refs.Enemy : GameObject.Find("Grid").GetComponent<EnemyController>();
+            GridController gridController = refs != null ? refs.Grid : GameObject.Find("Grid").GetComponent<GridController>();
+            enemyController.loadEnemy();
+            gridController.inBetweenRoundEffects();
         }
         
     }

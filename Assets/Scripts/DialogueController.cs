@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class DialogueController : MonoBehaviour
 {
-    public static string dialogueToLoad = "3_005_iredellCastleAdvance";
+    public static string dialogueToLoad = "3_007_iredellConfrontation";
     public static bool isSkipping = false;
     public GameObject fadeObject;
     public GameObject backgound;
@@ -22,6 +22,7 @@ public class DialogueController : MonoBehaviour
 
     private bool wasCutOff = false;
     private List<string> lines;
+    private List<DialogueScriptLine> scriptLines;
     private int linePosition = 0;
     private IDictionary<string, GameObject> characters;
 
@@ -42,6 +43,7 @@ public class DialogueController : MonoBehaviour
     private Image fadeImage;
 
     IEnumerator textDisplay;
+    DialogueCommandRunner commandRunner;
     IDictionary<string, int> textLinkedMoveLengths;
     Text lineOfDialogue;
     Text nameText;
@@ -58,7 +60,7 @@ public class DialogueController : MonoBehaviour
         textLinkedMoveLengths = new Dictionary<string, int>();
 
         //Get all variables
-        dialogueVariables.Add("main", PlayerPrefs.GetString("name", "Rachel"));
+        dialogueVariables.Add("main", SaveGameService.GetString("name", "Rachel"));
         if (File.Exists(Path.Combine(Application.persistentDataPath, "dialogueVariables.txt"))) {
             string varText = File.ReadAllText(Path.Combine(Application.persistentDataPath, "dialogueVariables.txt"));
             foreach (string i in varText.Split('\n')) {
@@ -70,6 +72,8 @@ public class DialogueController : MonoBehaviour
         }
 
         lines = new List<string>();
+        scriptLines = new List<DialogueScriptLine>();
+        commandRunner = new DialogueCommandRunner(this);
         foreach (Text i in gameObject.GetComponentsInChildren<Text>()) {
             switch (i.name) {
                 case ("DialogueText"):
@@ -85,13 +89,10 @@ public class DialogueController : MonoBehaviour
         TextAsset dialogueAsset = Resources.Load<TextAsset>("Dialogues/"+ dialogueToLoad);
         string dialogue = dialogueAsset.text;
 
-        foreach (string i in dialogueVariables.Keys) {
-            dialogue = dialogue.Replace("@" + i + "@", dialogueVariables[i]);
-        }
-
-        lines = new List<string>(dialogue.Split('\n'));
-        foreach (string line in lines) {
-            Debug.Log(line);
+        scriptLines = new DialogueScriptParser().Parse(dialogue, dialogueVariables);
+        foreach (DialogueScriptLine line in scriptLines) {
+            lines.Add(line.RawText);
+            Debug.Log(line.RawText);
         }
 
         //Load Characters
@@ -103,7 +104,7 @@ public class DialogueController : MonoBehaviour
         fadeImage = fadeObject.GetComponent<Image>();
         fadeImage.enabled = false;
         displayImage.SetActive(false);
-        backgound.GetComponent<Image>().sprite = Resources.Load<Sprite>("Backgrounds/" + PlayerPrefs.GetString("background", "classroomPlaceholder"));
+        backgound.GetComponent<Image>().sprite = Resources.Load<Sprite>("Backgrounds/" + SaveGameService.GetString("background", "classroomPlaceholder"));
         advanceDialogue();
 
     }
@@ -205,7 +206,7 @@ public class DialogueController : MonoBehaviour
                     }
                 }
             }
-            logText = logText.Replace("Main:", PlayerPrefs.GetString("name", "Rachel") + ":");
+            logText = logText.Replace("Main:", SaveGameService.GetString("name", "Rachel") + ":");
             log.GetComponent<Text>().text = logText;
             log.transform.parent.parent.gameObject.SetActive(true);
             */
@@ -217,7 +218,7 @@ public class DialogueController : MonoBehaviour
 
     //Trigger on click of background, advances dialogue
     public void advanceDialogue() {
-        if (linePosition >= lines.Count) {
+        if (linePosition >= scriptLines.Count) {
             //Shouldn't be reachable
             Debug.Log("This isn't Kansas anymore");
             return;
@@ -260,8 +261,9 @@ public class DialogueController : MonoBehaviour
         textDisplay = displayText();
 
         //Parse commands, else display dialogue
-        if (lines[linePosition][0] == '|') {
-            performAction(lines[linePosition].Substring(1, lines[linePosition].Length - 1));
+        DialogueScriptLine scriptLine = scriptLines[linePosition];
+        if (scriptLine.Type == DialogueScriptLineType.Command) {
+            commandRunner.Execute(scriptLine.Command);
 
             //Keep going until find next line
             linePosition++;
@@ -272,19 +274,20 @@ public class DialogueController : MonoBehaviour
 
 
             //Assign name
-            string name = lines[linePosition].Split(':')[0];
+            string name = scriptLine.Speaker;
             //Change focus to speaker, could be more efficient, but meh
             foreach (KeyValuePair<string, GameObject> entry in characters) {
                 if (entry.Key == name) {
                     //entry.Value.GetComponent<Image>().color = new Color32(255, 255, 225, 255);
                     entry.Value.GetComponent<FadeController>().setFadeIn();
+                    entry.Value.transform.SetAsLastSibling();
                 }
                 else{
                     //entry.Value.GetComponent<Image>().color = new Color32(150, 150, 150, 255);
                     entry.Value.GetComponent<FadeController>().setFadeOut();
                 }
             }
-            if (name == "main") { name = PlayerPrefs.GetString("name", "Rachel"); }
+            if (name == "main") { name = SaveGameService.GetString("name", "Rachel"); }
          
             nameText.text = char.ToUpper(name[0]) + name.Substring(1);
             if (name == " ") { //For narration
@@ -294,7 +297,7 @@ public class DialogueController : MonoBehaviour
                 namePlate.SetActive(true);
             }
 
-            currentLine = lines[linePosition].Split(':')[1];
+            currentLine = scriptLine.Text;
             currentLine = currentLine.Substring(textStartIndex);
 
             //Add text to log
@@ -387,8 +390,7 @@ public class DialogueController : MonoBehaviour
 
     //Initializes characters into scene
     public void loadCharacters() {
-        string line = lines[linePosition];
-        line = line.Substring(1, line.Length - 1);
+        string line = scriptLines[linePosition].Command;
 
         //Split line into characters and their information
         List<string> characterNames = new List<string>(line.Split(','));
@@ -520,19 +522,19 @@ public class DialogueController : MonoBehaviour
                 //Fade to black, change backgrounds, and go back
                 fadeImage.enabled = true;
                 nextBackground = Resources.Load<Sprite>("Backgrounds/" + actionAndParameters[1].Trim());
-                PlayerPrefs.SetString("background", actionAndParameters[1].Trim());
+                SaveGameService.SetString("background", actionAndParameters[1].Trim());
                 StartCoroutine(FadeToBlack());
                 break;
             case ("setBackground"):
                 //Set background with no transition to parameter 1
                 backgound.GetComponent<Image>().sprite = Resources.Load<Sprite>("Backgrounds/" + actionAndParameters[1].Trim());
-                PlayerPrefs.SetString("background", actionAndParameters[1].Trim());
+                SaveGameService.SetString("background", actionAndParameters[1].Trim());
                 break;
             case ("setPrefValue"):
                 //Set player prefs key (Combination of all parameters except first and last) to last parameter
                 string key = string.Join(" ", actionAndParameters.GetRange(1, actionAndParameters.Count - 2));
                 //Debug.Log(key);
-                PlayerPrefs.SetInt(key, int.Parse(actionAndParameters[actionAndParameters.Count - 1]));
+                SaveGameService.SetInt(key, int.Parse(actionAndParameters[actionAndParameters.Count - 1]));
                 break;
             case ("playMusic"):
                 //Play music with name made from all non-zero parameters

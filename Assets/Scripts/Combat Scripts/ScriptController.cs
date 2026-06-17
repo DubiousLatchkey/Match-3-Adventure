@@ -12,6 +12,14 @@ public class ScriptController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        CombatSceneRefs refs = CombatSceneRefs.Instance;
+        if (refs != null) {
+            gridController = refs.Grid;
+            enemyController = refs.Enemy;
+            resultsScreenHandler = refs.ResultsScreen;
+            return;
+        }
+
         gridController = GameObject.Find("Grid").GetComponent<GridController>();
         enemyController = GameObject.Find("Grid").GetComponent<EnemyController>();
         resultsScreenHandler = GameObject.Find("resultsScreen").GetComponent<resultsScreenHandler>();

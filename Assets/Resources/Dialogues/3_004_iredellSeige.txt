@@ -110,4 +110,4 @@ ann:Jay, you're the expert.  Am I right in saying that a rout here will give us 
 jay:Yes.  They'll probably overpower us conventionally given time, but I just need you to hold them off long enough until I can get the artillery crew ready to fire.  The guns should be enough to force them back into the castle.
 ann:To battle then.
 gabriella:I believe in us!
-|combat iredellCastleCombat
+|combat 3_004_iredellSeigeCombat

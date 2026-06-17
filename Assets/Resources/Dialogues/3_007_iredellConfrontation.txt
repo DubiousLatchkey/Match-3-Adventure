@@ -1,0 +1,272 @@
+|iredellianSoldier -6 -1,jay 30 -1,ann 7 -1
+|setBackground hallwayLord
+iredellianSoldier:Urgh...
+|exit iredellianSoldier left
+|moveTo ann 0.5 -6 -1 1
+|moveTo jay 0.5 7 -1 1
+ann:That should do it for this side.  If you're here, I assume you have the other side under control?
+jay:That is correct.  With the exits cut off, including the secret passageway on my side, we can force Iredell to surrender.
+ann:Do you think she'll give up?
+jay:Tactically, that would be her best move.  Whether she will... well that I won't speculate on.
+|transition castleCourtyardIredell
+|enter gabriella -12 -1
+|translate ann 0 -1
+|translate jay -6 -1
+ :The castle quiets as groups of Iredell's soldiers are slowly rounded up.
+gabriella:So, how do we get her to, y'know, talk with us?
+ann:Let me try this.
+ann:Lady Iredell, your leige commands you surrender!
+|enter iredell 8 -1
+ :Iredell steps into view from amongst her remaining forces.
+iredell:You dare invoke my oath of allegiance?
+ann:Yeah, I had a feeling that would get you to talk.
+iredell:I have nothing to say to you, Pretender.  Lord Blair was a friend of mine, so don't you dare attempt to invoke his authority.  Let it be known that you aren't fooling anyone you baseborn wretch!
+jay:By saying such you defy the will of the Empress, Lady Iredell.  Your impertinence is grounds enough to justify our actions.
+iredell:Sir Jay.  Don't you stand there and lecture ME on loyalty to the crown, traitor.
+jay:Oh I'd say this is a long time coming.
+ann:Enough.  You've lost this battle Iredell.  Surrender now and swear you will vote as I decree in the House of Lords.
+iredell:Never.
+ :She spits on the ground
+ann:Then you've decided your own fate.  Wheel in the guns girls!
+gabriella:What!?
+ :Clarissa arrives from beyond the castle walls with an artillery crew and begins to take aim at the main hall.
+iredell:Wait, wait, wait!
+ann:Oh, now you want to talk?  I don't know, seems disingenuous.
+ :The crew finishes loading the powder and slides a cannonball down the barrel.
+iredell:Yes!  We can negotiate!
+jay:Is this not a bit rash, Milady?
+ann:Why?  She has kids, right?  I'm sure we can find a controllable regent.
+jay:I can't argue with that.
+gabriella:Still, Ann, you can't just murder a noble!  It's... inauspicious.
+ann:I'd imagine its going to be quite inauspicious... for her!
+ :The artillery crew finishes ramming the cannon ball in and a soldier begins to prime the torch hole.
+iredell:Grr... A plague on your house!  All of your houses!
+ann:Sorry, I can't hear you.  Was that an "I surrender"?
+ :A soldier with a fresh coal approaches to fire the cannon.
+iredell:...
+iredell:Fine!  I surrender!  I surrender!
+ann:Hold fire.
+ :The soldier steps back from the cannon.
+ann:Have your soldiers throw down their arms.
+iredell:...You heard her.
+ :The soldiers obey, Ann's own moving forward to take posession of the weapons.
+ann:Look Iredell, I know this is humilitating for you, so I'm not going to make you kneel and profess your loyalty to me in front of everyone.  Just promise me you'll vote as I ask and we'll get out of your hair.
+gabriella:Uh, Ann?  Retainers and staff will look to her for guidance.  A public declaration of loyalty is usually very important.
+jay:I concur with Gabriella, Milady.  We'll need more insurance than just her word.
+iredell:Jay.  To think just a month ago you were my trusted servant. I-
+ :She seems to consider her position before continuing.
+iredell:Fine.  I promise.  I'll be voting by proxy though.
+ann:Fair enough.
+jay:You really should make sure she can't just threaten us again though, Milady.
+ann:That's reasonable.  Lady Iredell, we will be holding onto your surrendered soldiers as prisoners.
+gabriella:There should be a way for them to be returned over time too.
+ann:And we will organize their return in batches in return for payment as reparations.
+iredell:Very well...
+ann:Then we're done here.
+|exit ann left
+|exit gabriella left
+iredell:To think I was so worried Rehnquist would use my rank and file to usurp me.  Turns out I should have been worried about you instead.
+jay:Oh you should have been worried about me for a lot longer than that Hannah.  The oath I swore to you was a bunch of empty words.  I serve the people of the Empire, not its nobility.
+iredell:You were a radical this whole time?  I thought we were friends, Jay.
+jay:You thought wrong.
+|transition castleExteriorIredell
+|exit iredell down
+|translate jay -13 -1
+|enter ann -6 -1
+|enter gabriella 6 -1
+|enter clarissa 13 -1
+gabriella:Ann, we need to talk.
+gabriella:What the heck was that?  The stunt with the cannon?
+ann:It was a negotiating tactic.  
+gabriella:A negotiating tactic!?  You can't just threaten grotesque violence like that!
+ann:Well, she was still a combatant - she didn't surrender yet, remember?
+gabriella:It just felt... I don't know.  For a second you felt a little, tyrannical?
+jay:It did seem a like a spontaneous decision.  I recognized you were demonstrating you were willing to take drastic actions, but it came across a bit unhinged.
+ann:Look, she wasn't going to just acknowledge me as Marchioness Blair.  You yourself said the only thing that would convince her was a blade to the neck, right?
+jay:That I did, and I stand by those words.  I do think a strong hand was needed, but perhaps we could have shown a bit more of a unified front.
+ann:Alright, that's fair.  Next time we'll plan our approach to these conversations beforehand.
+gabriella:I'm still not convinced a strong hand was the best approach.  The Duchess wants us to get these nobles on her side.  Yes, she'll vote with us for now, but she'll be looking for a way out.  There was probably a more amicable way we could have approached the situation that could have had a better long term result.
+ann:You remember what she was like when we invited her to Castle Blair, right?  The chances she would have given up without a direct threat were slim to none.  I mean, Jay, you've known her for much longer than any of us, right?  What do you think?
+jay:In my years of service under her, she consistently acted against peerage reform.  Frankly, I'm a bit surprised we didn't have to kill her.
+gabriella:(Sigh) Just... maybe we can try to move towards reconciliation so she doesn't start plotting revenge.  I don't know.
+gabriella:Clarissa, you haven't said anything.  What do you think?
+clarissa:What is there to say?  It's all the same to me.  Whether we killed Lady Iredell or not, the result is the same - we won.
+gabriella:But it is different!  You were the one with the artillery crew ready to turn her and her troops to dust!
+clarissa:So?  I don't really care about her.  She's not my family or my friend.  Besides, Jay doesn't make her sound like a paragon of virtue.
+gabriella:But she has a family too.  You didn't feel anything when threatening her with a cannon?
+clarissa:Are you ignoring all the people we actually killed before we entered the castle and didn't just threaten?
+gabriella:No, but, that's different.
+clarissa:Different how?  She's a noble and therefore her life is worth more?
+gabriella:Not like that.  She was the one behind all of the soldiers we fought.  As their lady, they are just following her.  If she stops, they all do.
+ann:Hang on, commoners have free will too.  Any one of them could have chosen to throw down their arms at any time.
+gabriella:I suppose...
+ann:If I didn't want to fight, I wouldn't.
+gabriella:I don't think you're most people.  You left your whole world to make it in the big city.  I think we both know most people wouldn't do that.
+clarissa:I would say the group dynamic in armies is strong enough that most would not leave if we just asked - at least in most cases.
+gabriella:Exactly.  Wait, your're agreeing with me?
+clarissa:I can hold multiple ideas at once.
+gabriella:Well, my point is that, killing her is different from killing the others.  She does have the power to influence her people, as you just agreed, and therefore a more... dignified surrender could have saved lives.
+clarissa:Two things.  Number one, she was only going to surrender when she was tactically defeated, meaning it wouldn't have saved lives at that point, and, number two, I don't think reduction of bloodshed was one of our stated goals. 
+gabriella:Isn't it always implied?
+jay:I feel like it just the natural result from the fact most people don't want to murder other people.
+clarissa:Ehh, I think if you've already committed to murder as an implement, it doesn't make a moral difference to kill one in every 10 soldiers or one in every 5.  Lady Iredell is just another obstacle in our goal that we've decided is worth killing over.
+ann:Yeah, but there is a pretty big practical difference.  That's twice as many funerals.
+gabriella:And therefore you should try and minimize death if you can.
+clarissa:From a practical perspective, of course there is a difference.  I was speaking from a moral perspective.
+gabriella:Oh come on, what if one of your family members was in the army?  I'll bet it would be moral to reduce bloodshed then?
+clarissa:If, let's say, my son joined the army in a few years, I would definitely advocate for less violence on all sides.  However, I wouldn't be motivated by the moral argument but the practical one, because I am reducing the risk to my son's life, which I do cherish greatly.
+gabriella:How... pragmatic.
+clarissa:Of course I would advocate morally for peace and non-violence before that, but if inflicting death is already proscribed to be acceptable, I don't see how the volume of deaths affects things much morally.
+gabriella:I guess we'll just have to agree to disagree on that part.  As for the part where she wouldn't have surrendered until then anyway, I would say maybe.  It was at least worth trying to to offer her better terms earlier - it doesn't cost us anything really.
+ann:That's true.
+gabriella:We assumed she wouldn't budge, but we don't truly know what's going on in her heart.  Maybe she would have accepted during the bombardment.
+jay:I doubt it.
+gabriella:I guess you have a unique perspective here Sir Jay, so I won't argue with your conclusion, but in the future, I think we should exercise more restraint and not threaten anyone with death by cannon unless we really have no other options.
+ann:I'm sorry I didn't consult all of you first, but I still think it was the best option.
+gabriella:Well at least we've settled the matter.
+|transition warRoom
+|enter maria 30 -1
+ :Back at Castle Blair
+|swap maria clarissa
+maria:From the sounds of things, you were successfui?
+ann:Yes we were.  Rehnquist has her supermajority.
+jay:I would guess then that she'll call for a now legally binding round of conscription and return to the front in the Old Lands.
+maria:Ah, she'll be leaving then?  Once she does it will be hard to enact any legislation.
+ann:Then I think it's time to talk about what we want out of this legislative session.  This... distraction with Iredell has meant we haven't been able to focus on preventing the death of magic.  We need to propose something to Duchess Rehnquist that will be able to systemically change in the amount of mana being channeled.  Importantly, it has to be something she will agree to.
+jay:This is the goal you mentioned when we first met, right?  Can someone explain what needs to happen in layman's terms to me?
+maria:Well, the idea is that mana is a field that is everywhere.  However, it is not equally strong everywhere.  Whenever a mage channels mana, it gets weaker.  If you channel too much, magic goes away locally, temporarily.  The theory is that this could happen on a universal scale.
+jay:What would it take to cause a total collapse?
+maria:I've actually been looking into that while you've been gone, and according to my observations and the most accepted models, at least from our mages, we're only 6 months out from the death of all magic.
+jay:6 months!? 
+gabriella:The estimate shortened again?
+maria:Unfortunately, yes.  I think it's because of economic growth.  More development has meant more infrastructure, which has led to -
+ann:the need for more mana to power it, which means more mages channeling it.  Got it.
+maria:Precisely.
+ann:Ok, then we need something bold and sweeping to get this problem under control.
+gabriella:Why don't we just ask Rehnquist to pass a law that puts a cap on all mana channeling?
+maria:If properly enforced, that would successfully be able to keep field collapse at bay.
+ann:I'm pretty sure you'd have better luck getting blood out of a stone than getting her to sign that.  It's not that we just have to convince her this is an issue, we have to convince her that it's worth whipping her faction into voting for it too.
+jay:Sorry, why would she be so opposed to it?
+maria:Modern infrastructure is reliant on mana for our lights and even heating in the big cities.  Magic, and therefore channeling mana, also has widespread applications in labor.  Capping channeling is capping economic growth.
+jay:I see, so the main conflict is that, I guess the mages themselves, are a resource enriching a lot of people.  However, if they exploit this resource too much, they'll lose it.
+gabriella:Right.  We're not saying stop using magic, but we can't keep using more and more or else we'll lose it.
+ann:If the Duchess is going to agree to something, it's going to have to be beneficial to her.
+gabriella:I don't know, she feels like someone who thinks in the long term.  She might take to it.
+gabriella:What?  Why are you guys looking at me like that?
+ann:It just feels like there's so much benefit to not following the law when you think everyone else is.  It would give cheaters an unfair advantage.
+gabriella:So it needs an enforcement system.
+jay:Are there any alternatives to mages?  I know crystals are related to magic somehow.
+maria:Well, crystals are like holders of magic.  Mages can channel magic into them and they can then be used as sources of mana by machinery.
+ann:Naturally occuring crystals also contain mana already in them.  Chaneling magic into crystals is mostly for after they are depleted.
+jay:Isn't that the solution then?  Just only use fresh crystals.
+ann:Two problems with that.  First, there aren't enough crystals being mined to totally replace professional channelers.  We do want to expand the mine in our territory to help, but we can't do everything.
+|swap clarissa maria
+clarissa:I can confirm that.  Also, according to my sales numbers, people are still using channelers in addition to the crystals we mine.  Any solution will have to depress demand for mana, because as we increase supply, its just growing the market as a whole.  Mana remains a limiting factor for the economy.
+ann:Thanks Clarissa.  Second, because it hurts the tax base and puts mages out of jobs, no one would vote for it.
+jay:Quite a dilemma then.
+ann:You can say that again.  If someone has legislative experience, now would be a great time for them to just show up at our door.  Someone whose been planning to betray their lord for a long time maybe?
+jay:Very funny.
+gabriella:You have to admit it was really timely for us.
+ :There is a silence.
+clarissa:I don't have legislative experience per say, but I did sometimes read the bills from the House of Lords under the former Lord Blair for compliance reasons.
+|swap maria gabriella
+maria:More than the rest of us can say.
+clarissa:I feel though we're looking at this from the wrong perspective.  The specific policy instrument isn't going to change the problems we face.  Whether we use Ms. Duvall's cap and trade scheme -
+|swap maria gabriella
+gabriella:My what?
+clarissa:Cap and trade scheme.  It's what you said where we would legislate a maximum number of, I assume, work hours of channeling in the empire and distribute them to the lords who could then buy and sell the permits to do so to each other.
+gabriella:I only said the first part...
+clarissa:Usually the second part is implied.  Anyway, regardless if we use a cap and trade scheme, a tax, or an outright ban, economic output will be stymied, cheats will benefit, and therefore the Duchess will not vote for it.
+jay:So then, what?  We go prospecting for crystals to try and hit a motherlode?
+|swap maria gabriella
+maria:That could technically work.  Flood the market with a better alternative.  I'd rather not base the fate of all magic in the world on that chance though.
+ann:The point seems moot anyway, since it will take time to build out this theoretical mine to produce enough pre-charged crystals that it can displace the channeling abilities of mages.
+clarissa:My point is, we shouldn't think about this from the perspective of minimizing damage to the economy.  The economy will be damaged no matter what we do.  We need Duchess Rehnquist to agree to vote on something that will have a negative short-term effect.  Let's reason with that in mind.
+ann:Oh, I get it.
+|swap maria gabriella
+gabriella:For an epiphany, you don't sound very excited.
+ann:It's 'cause, well ... just listen to this.  Clarissa, you said that we need Rehnquist to vote on something that has a negative effect.
+clarissa:Yes.
+ann:What would make her vote for something bad?  If the bad stuff didn't affect her and only affected her enemies.
+jay:Ok... OH.  Now that's devious.  Devious enough to rival Lady Rehnquist herself.
+clarissa:What are you proposing, exactly?
+ann: So hear me out - we propose a full ban on channeling -
+gabriella:Which Clarissa just said wouldn't work?
+ann:But we promise the Duchess we will only enforce the law on the lords in Grier's orbit.
+gabriella:Oh.  Wow.
+clarissa:A perversion of all the law is supposed to stand for - that I absolutely agree she will be on board with.
+jay:Eugh.  It does seem like something in her wheelhouse.  She was willing to make a mockery of nobility by recognizing you, so what's another step right?
+jay:That being said, equality under the law  is the part I actually agree with, so, for that reason, I can't condone this.
+gabriella:The level of deception...  And for what?  30 percent of the empire?
+|swap maria jay
+maria:Maybe territory wise, but mana wise, the City does disproportionately contribute to mana channeling.  The Mage's Guild is headquartered there, of course, but also in terms of population and industry it is the biggest in the empire.  As Duke Grier's seat of power, it would be subject to enforcement.
+maria:It would be the charade of the century for sure.
+gabriella:But even if Grier's nobles complied and assuming they control 50 percent of the mana, which is generous, there would still be another 50 percent to go.  It would buy us time but not solve the problem.
+ann:I guess then we'll have to betray Rehnquist somewhere down the line.
+clarissa:What a helpfully vague timeline.
+ann:Well, we can't beat her in a straight fight, yet.  If we build an enforcement arm that stops people from channeling and punishes nobles who are breaking the law, we could eventually build up enough have a shot against the limited forces still in the empire's main lands.
+|swap maria jay
+jay:And then eventually Lady Rehnquist will return from the front in the Old Lands with the rest of the army and destroy us.
+ann:So it's a balancing act.  On the one hand we have to build up as much strength as possible to defeat the soldiers still here, and on the other, if we are too slow, Rehnquist's conquests will complete, and she'll have us all hanged for treason.
+jay:Quite the tightrope.  Morally and practically.
+jay:Hmm...  If we do eventually reach full enforcement, I'm ok with this plan.
+gabriella:It feels pretty distateful, but I don't see a better way.
+clarissa:I don't see a problem with it.
+|swap maria jay
+maria:If it works, it works.
+ann:Then we are agreed.  Unless someone has a better idea?
+ :The room is quiet
+clarissa:The plan needs more detail.  We're going to need to spend more time hashing out the specifics of this "enforcement arm" we've taken for granted.
+maria:I have some ideas for that.
+|transition hallwayLord
+|translate maria 30 -1
+|translate jay 30 -1
+|translate clarissa 30 -1
+|translate ann -6 -1
+|enter rehnquist 7 -1
+ :2 weeks of planning and one conscription law vote later
+rehnquist:Thank you for bringing the Thracian lords to heel.  I'll admit I had my doubts about you at first, but you have held up your end of the bargain, Ann - or perhaps I should be calling you Lady Blair?
+ann:Whatever you prefer, Milady.
+rehnquist:You look like you have something on your mind.  What is it?
+ann:I have a request.
+rehnquist:Oh?  It seems your ambition knows no bounds.  I like it.  You remind me of myself when I was younger.
+ann:I think we had very different upbringingings -
+rehnquist:Ha! Quite the spine on you to try and correct your leige for something so trivial.  You do remind me of myself.  Did you know I was born fourth in line to the Rehnquist Duchy?  I had to kill all my older siblings to get to where I am today.
+rehnquist:But that's a story for another time.  Name your request.
+ann:This conscription - it's dealt a major blow to the forces Duke Grier can amass.
+rehnquist:Yes, today was quite the political victory.
+ann:I have a proposal that will capitalize on this to further hurt him.
+rehnquist:I'm all ears.
+ann:You know I'm a mage like Taney was.  Like she did, it is the belief of myself and my staff that the current rate of magic use is unsustainable and will lead to total field collapse in a few months.
+rehnquist:Yes, the schism.  If you're about to ask for a ban on channeling mana, forget it.
+ann:I am, but here's my proposal.  Give me the power to enforce it and I will only enforce it on Grier's lands.  If we work together, we can keep the ruse that it applies to everyone up long enough for you to leave the empire with the troops we just forced him to give to you so that by the time he sees the inequality, he no longer has the forces to stop us.
+rehnquist:My my, now that is quite the scheme.  Have you been planning this?
+ann:Yes Milady.  Here's a copy of the document we would like to be passed in the House.
+ :Rehnquist takes the scroll and begins skimming it.
+rehnquist:...
+rehnquist:I love it.  I knew taking a risk on you would pay off.  It seems you've crafted this specifically to my taste and are volunteering to do all the work.  It's almost suspiciously good.
+ann:I'll take that as a compliment.  The empire needs magic regulation yesterday, but I knew I needed your approval, so my friends and I figured out a way to make sure you benefitted.
+rehnquist:You have wise friends.  Let me give you some advice I've learned over the years.  Your inner circle - keep them close.  It doesn't matter if they are your staff, your retinue, or your family - always maintain a positive, close relationship and you will reap the rewards of their company.
+ann:I'll be sure to keep that in mind.
+rehnquist:A mage inquisition...  I should have thought of this myself years ago.
+|transition hallwayLord
+|translate ann 12 -1
+|translate 7 -1
+|enter grier -6 -1
+grier:This is a blantant abuse of power!  Rehnquist and her majority clearly seek to hurt me specifically.  The Mage's Guild is an integral part of the empire that just to happens to be located in my city.  Besides, this "theory" is nothing but the ramblings of a dead woman - a dead traitor.  I have it on good authority from Archmage Rutledge that it is nothing but hogwash.
+rehnquist:Please. Duke Grier, this house is well aware of your victim complex at this point.  You act as if this doesn't hurt me as well.  My mages say the dear Archmage is no neutral abritrator.  He'll tell you whatever's convenient to secure funding from you, besides, we all have a responsibility to the future of the empire and our children.  
+grier:Bah, I've learned that whenever you start making appeals to reason to never agree to whatever scheme you've cooked up.
+rehnquist:You wound me, my lord.
+grier:Don't patronize me with your feigned offense.  We both know your reputation is earned.
+rehnquist:This is a legitimate national security concern, Duke.  Don't let your ego blind you to that.  Magic is how the Empire has maintained its power and influence over generations.  Do not jeapordize it over a bit of lost growth.
+grier:Grr... Tell me, who would you have lead this "Inquisition"?
+rehnquist:Why don't we hold a vote?  I nominate Marchioness Blair.
+grier:You...  Of all the lords and ladies, you pick the pretender?
+ann:With respect, that isn't how the Empress sees it.  I'm ready to vote.
+speaker:If debate has concluded, we shall procede to voting.  All those in favor of the formation of an Inquisition headed by Marchioness Blair?
+ :A resounding "Aye" ripples from Rehquist's side of the bench.
+speaker:All opposed?
+ :A quiter "Nay" arises from Grier's smaller faction.
+speaker:By acclaimation, the "Ayes" have it.  A levy will be enacted and mana channeling banned as of one fortnight from today.  All enforcement shall occur at the discretion of Marchioness Blair and her Inquisition.
+ann:I humbly accept this responsibility for the Empress and her Empire.
+grier:This isn't over, Duchess...

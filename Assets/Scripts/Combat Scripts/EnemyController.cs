@@ -54,36 +54,104 @@ public class EnemyController : MonoBehaviour, PlayerController
     List<Spell> spellList;
     List<Enemy> enemyList;
     Dictionary<string, Enemy> enemyDictionary;
+    bool isInitialized;
+    CombatantRuntime combatant;
+
+    private void Awake() {
+        EnsureRuntimeCollections();
+    }
+
+    private void EnsureRuntimeCollections() {
+        if (statusEffects == null) {
+            statusEffects = new List<StatusEffect>();
+        }
+        if (extraStatusEffects == null) {
+            extraStatusEffects = new Etcetera(null, false);
+        }
+        if (availableActions == null) {
+            availableActions = new List<Action>();
+        }
+        if (equippedSpells == null) {
+            equippedSpells = new List<Button>();
+        }
+        if (weapon == null) {
+            weapon = new Weapon();
+        }
+        if (combatant == null) {
+            combatant = new CombatantRuntime(new CombatantState(), GetCombatantView(), includeMaxManaInText: true);
+        }
+        else if (combatant.View == null) {
+            combatant.SetView(GetCombatantView());
+        }
+    }
+
+    private CombatantView GetCombatantView() {
+        CombatSceneRefs refs = CombatSceneRefs.Instance;
+        CombatantView view = refs != null ? refs.EnemyCombatantView : null;
+        if (view == null) {
+            Transform holder = transform.Find("EnemyCombatantView");
+            if (holder == null) {
+                holder = new GameObject("EnemyCombatantView").transform;
+                holder.SetParent(transform, false);
+            }
+            view = holder.GetComponent<CombatantView>();
+            if (view == null) {
+                view = holder.gameObject.AddComponent<CombatantView>();
+            }
+        }
+        return view;
+    }
+
+    private void SetCombatantFallbacks() {
+        CombatantView view = combatant.View;
+        if (view == null) {
+            return;
+        }
+
+        Transform spellParent = CombatSceneRefs.Instance != null ? CombatSceneRefs.Instance.EnemySpellParent : null;
+        Transform statusParent = CombatSceneRefs.Instance != null ? CombatSceneRefs.Instance.EnemyPortrait : null;
+        view.SetFallbacks(name, hp, redManaTextBox, blueManaTextBox, yellowManaTextBox, multiplier,
+            healthBar, redBar, blueBar, yellowBar, multiplierBar, portrait, spellParent, statusParent);
+    }
+
+    private void SyncFieldsFromCombatant() {
+        CombatantState state = combatant.State;
+        currentHealth = state.Health;
+        redMana = state.RedMana;
+        blueMana = state.BlueMana;
+        yellowMana = state.YellowMana;
+        damageMultiplier = state.DamageMultiplier;
+        weapon = state.Weapon;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        InitializeCombatState();
+    }
+
+    private void InitializeCombatState()
+    {
+        if (isInitialized) {
+            return;
+        }
+
+        EnsureRuntimeCollections();
         SpellContainer spells = SpellContainer.Load(Path.Combine(Application.persistentDataPath, "spells.xml"));
         enemyDictionary = loadEnemiesToDictionary();
         //Make enemy data
-        EnemyContainer enemies = new EnemyContainer();
-        enemies.enemies[0] = new Enemy("Wizard Adept", new int[] {5, 2, 10 }, new Spell[] { spells.spells[0], spells.spells[2]}, 100, 10, 10, 10, 0.5f);
-        enemies.enemies[1] = new Enemy("Wizard Superior", new int[] { 6, 2, 7 }, new Spell[] { spells.spells[0], spells.spells[1], spells.spells[2] }, 150, 12, 12, 12, 0.2f);
-        enemies.enemies[2] = new Enemy("Deranged Hermit", new int[] { 10, 0, 10 }, new Spell[] { spells.spells[1], spells.spells[2] }, 150, 8, 8, 8, 0.7f);
-        enemies.enemies[3] = new Enemy("Arcane Elemental", new int[] { 10, 5, 5 }, new Spell[] { spells.spells[0]}, 50, 8, 5, 5, 0.7f);
-        enemies.enemies[4] = new Enemy("Raider", new int[] { 5, 5, 5 }, new Spell[] {  }, 50, 0, 0, 0, 0.5f);
-        enemies.enemies[5] = new Enemy("Exchange Thief", new int[] { 3, 10, 7 }, new Spell[] { spells.spells[12], spells.spells[20] }, 80, 5, 8, 5, 0.7f);
-        enemies.enemies[6] = new Enemy("Servant of Necromancy", new int[] { 3, 10, 3 }, new Spell[] { spells.spells[2], spells.spells[12] }, 80, 8, 10, 8, 0.5f);
-        enemies.enemies[7] = new Enemy("Ephran, Exchange Head", new int[] { 10, 3, 8 }, new Spell[] { spells.spells[30], spells.spells[31] }, 100, 10, 10, 10, 0.3f);
-        enemies.enemies[8] = new Enemy("City Guard", new int[] { 7, 10, 3 }, new Spell[] { spells.spells[15] }, 80, 9, 9, 9, 0.4f);
-        enemies.enemies[9] = new Enemy("Skeleton", new int[] { 10, 3, 7 }, new Spell[] { spells.spells[6] }, 80, 10, 10, 10, 0.5f);
-        enemies.enemies[10] = new Enemy("Atheria's Guard", new int[] { 10, 3, 7 }, new Spell[] { spells.spells[12], spells.spells[10] }, 80, 10, 10, 10, 0.25f);
-        enemies.enemies[11] = new Enemy("Atheria, Necromancer General", new int[] { 10, 3, 7 }, new Spell[] { spells.spells[10], spells.spells[8], spells.spells[1] }, 150, 15, 15, 15, 0.05f);
-        enemies.enemies[12] = new Enemy("Roxanne, Atheria's Right Hand", new int[] { 10, 3, 7 }, new Spell[] { spells.spells[10] }, 100, 10, 10, 10, 0.1f);
-        enemies.enemies[13] = new Enemy("Atherian Mage", new int[] { 10, 3, 7 }, new Spell[] { spells.spells[0] }, 100, 10, 10, 10, 0.2f);
-        enemies.enemies[14] = new Enemy("Earlygame Enemy", new int[] { 5, 10, 5 }, new Spell[] { spells.spells[55] }, 30, 15, 15, 15, 0.4f);
+        EnemyContainer enemies = BuildLegacyEnemies(spells);
 
         enemies.Save(Path.Combine(Application.persistentDataPath, "enemies.xml"));
 
         combat = new Combat(GridController.combatToLoad);
-        if (!combat.getIsSolo()) {
+        Enemy debugEnemy;
+        if (DebugCombatRuntime.TryGetEnemyOverride(out debugEnemy)) {
+            enemy = debugEnemy;
+        }
+        else if (!combat.getIsSolo()) {
             //enemy = EnemyContainer.Load(Path.Combine(Application.persistentDataPath, "enemies.xml")).enemies[combat.getEnemy(0)];
-            enemy = enemyDictionary[combat.getEnemy(0)];
+            enemy = ResolveEnemy(combat.getEnemy(0), enemies);
         }
         else {
             // I forget what this does
@@ -102,7 +170,7 @@ public class EnemyController : MonoBehaviour, PlayerController
 
         statusEffects = new List<StatusEffect>();
         extraStatusEffects = new Etcetera(null, false);
-        foreach (Text i in GameObject.FindObjectsOfType<Text>()) {
+        foreach (Text i in FindObjectsByType<Text>(FindObjectsSortMode.None)) {
             switch (i.name) {
                 case ("enemyRedMana"):
                     redManaTextBox = i;
@@ -132,7 +200,7 @@ public class EnemyController : MonoBehaviour, PlayerController
             }
         }
 
-        foreach (Image i in FindObjectsOfType<Image>()) {
+        foreach (Image i in FindObjectsByType<Image>(FindObjectsSortMode.None)) {
             switch (i.name) {
                 case ("enemyHealthBarFilled"):
                     healthBar = i.GetComponent<BarHandler>();
@@ -156,6 +224,11 @@ public class EnemyController : MonoBehaviour, PlayerController
         blueBar.setInitialPercentageFilled(0);
         yellowBar.setInitialPercentageFilled(0);
         multiplierBar.setInitialPercentageFilled((damageMultiplier - 1) / (GridController.maxMultiplier - 1f));
+        SetCombatantFallbacks();
+        combatant.SetIdentity(enemy.Name + " (" + (currentRound + 1) + "/" + combat.getTotalRounds().ToString() + ")",
+            enemy.Health, enemy.maxRedMana, enemy.maxBlueMana, enemy.maxYellowMana);
+        combatant.State.Weapon = weapon;
+        SyncFieldsFromCombatant();
 
         setRedMana(0);
         setBlueMana(0);
@@ -222,10 +295,47 @@ public class EnemyController : MonoBehaviour, PlayerController
         */
         weaponObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Button");
         weaponObject.SetActive(false);
+        combatant.State.Weapon = weapon;
+        SyncFieldsFromCombatant();
+        isInitialized = true;
 
     }
 
+    private EnemyContainer BuildLegacyEnemies(SpellContainer spells) {
+        EnemyContainer enemies = new EnemyContainer();
+        enemies.enemies[0] = new Enemy("Wizard Adept", new int[] {5, 2, 10 }, new Spell[] { spells.spells[0], spells.spells[2]}, 100, 10, 10, 10, 0.5f);
+        enemies.enemies[1] = new Enemy("Wizard Superior", new int[] { 6, 2, 7 }, new Spell[] { spells.spells[0], spells.spells[1], spells.spells[2] }, 150, 12, 12, 12, 0.2f);
+        enemies.enemies[2] = new Enemy("Deranged Hermit", new int[] { 10, 0, 10 }, new Spell[] { spells.spells[1], spells.spells[2] }, 150, 8, 8, 8, 0.7f);
+        enemies.enemies[3] = new Enemy("Arcane Elemental", new int[] { 10, 5, 5 }, new Spell[] { spells.spells[0]}, 50, 8, 5, 5, 0.7f);
+        enemies.enemies[4] = new Enemy("Raider", new int[] { 5, 5, 5 }, new Spell[] {  }, 50, 0, 0, 0, 0.5f);
+        enemies.enemies[5] = new Enemy("Exchange Thief", new int[] { 3, 10, 7 }, new Spell[] { spells.spells[12], spells.spells[20] }, 80, 5, 8, 5, 0.7f);
+        enemies.enemies[6] = new Enemy("Servant of Necromancy", new int[] { 3, 10, 3 }, new Spell[] { spells.spells[2], spells.spells[12] }, 80, 8, 10, 8, 0.5f);
+        enemies.enemies[7] = new Enemy("Ephran, Exchange Head", new int[] { 10, 3, 8 }, new Spell[] { spells.spells[30], spells.spells[31] }, 100, 10, 10, 10, 0.3f);
+        enemies.enemies[8] = new Enemy("City Guard", new int[] { 7, 10, 3 }, new Spell[] { spells.spells[15] }, 80, 9, 9, 9, 0.4f);
+        enemies.enemies[9] = new Enemy("Skeleton", new int[] { 10, 3, 7 }, new Spell[] { spells.spells[6] }, 80, 10, 10, 10, 0.5f);
+        enemies.enemies[10] = new Enemy("Atheria's Guard", new int[] { 10, 3, 7 }, new Spell[] { spells.spells[12], spells.spells[10] }, 80, 10, 10, 10, 0.25f);
+        enemies.enemies[11] = new Enemy("Atheria, Necromancer General", new int[] { 10, 3, 7 }, new Spell[] { spells.spells[10], spells.spells[8], spells.spells[1] }, 150, 15, 15, 15, 0.05f);
+        enemies.enemies[12] = new Enemy("Roxanne, Atheria's Right Hand", new int[] { 10, 3, 7 }, new Spell[] { spells.spells[10] }, 100, 10, 10, 10, 0.1f);
+        enemies.enemies[13] = new Enemy("Atherian Mage", new int[] { 10, 3, 7 }, new Spell[] { spells.spells[0] }, 100, 10, 10, 10, 0.2f);
+        enemies.enemies[14] = new Enemy("Earlygame Enemy", new int[] { 5, 10, 5 }, new Spell[] { spells.spells[55] }, 30, 15, 15, 15, 0.4f);
+        return enemies;
+    }
+
+    private Enemy ResolveEnemy(string key, EnemyContainer legacyEnemies) {
+        if (enemyDictionary.ContainsKey(key)) {
+            return enemyDictionary[key];
+        }
+
+        int legacyEnemyId;
+        if (int.TryParse(key, out legacyEnemyId) && legacyEnemyId >= 0 && legacyEnemyId < legacyEnemies.enemies.Length) {
+            return legacyEnemies.enemies[legacyEnemyId];
+        }
+
+        throw new KeyNotFoundException("Could not resolve enemy '" + key + "' from named enemies or legacy enemy ids.");
+    }
+
     public void handleStatusEffects() {
+        EnsureRuntimeCollections();
         /*
         foreach (EffectEveryTurn i in effectsEveryTurn) {
             i.performEffect();
@@ -251,12 +361,14 @@ public class EnemyController : MonoBehaviour, PlayerController
     }
 
     public void addStatusEffect(StatusEffect effect) {
+        EnsureRuntimeCollections();
         statusEffects.Add(effect);
         statusEffects.Sort((a, b) => a.getTurns().CompareTo(b.getTurns()));
         displayStatusEffects();
     }
 
     private void displayStatusEffects() {
+        EnsureRuntimeCollections();
         if (extraStatusEffects.getIndicator()) {
             Destroy(extraStatusEffects.getIndicator());
             extraStatusEffects.clearIndicator();
@@ -287,6 +399,7 @@ public class EnemyController : MonoBehaviour, PlayerController
     }
 
     public List<StatusEffect> GetStatusEffects() {
+        EnsureRuntimeCollections();
         return statusEffects;
     }
 
@@ -334,6 +447,8 @@ public class EnemyController : MonoBehaviour, PlayerController
     }
     */
     public void scoreByAmount(Dictionary<int, int> typeCounts) {
+        EnsureRuntimeCollections();
+        InitializeCombatState();
         if (typeCounts[0] != 0) {
             int real = (int)weapon.manaEffect(0, redMana + typeCounts[0]);
             string amount = real > 0 ? "+" + (real - redMana) : real.ToString();
@@ -369,22 +484,25 @@ public class EnemyController : MonoBehaviour, PlayerController
         }
         if (typeCounts[5] != 0 && damageMultiplier + weapon.manaEffect(5, 0.2f * typeCounts[5]) <= GridController.maxMultiplier) {
             float real = weapon.manaEffect(5, 0.2f * typeCounts[5]);
-            damageMultiplier += real;
+            setMultiplier(damageMultiplier + real);
             GridController.makeSplashText("Multiplier +" + real, GridController.isTurn, Color.white);
             gameObject.GetComponent<GridController>().playManaSound(5);
         }
         else if(damageMultiplier + weapon.manaEffect(5, 0.2f * typeCounts[5]) > GridController.maxMultiplier) {
             GridController.makeSplashText("Multiplier +" + (GridController.maxMultiplier - damageMultiplier), GridController.isTurn, Color.white);
-            damageMultiplier = GridController.maxMultiplier;
+            setMultiplier(GridController.maxMultiplier);
             gameObject.GetComponent<GridController>().playManaSound(5);
         }
-        multiplier.text = damageMultiplier.ToString() + "x";
-        multiplierBar.setPercentageFilled((damageMultiplier - 1) / (GridController.maxMultiplier - 1f));
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (DebugCombatRuntime.DisableEnemyActions && !GridController.isTurn) {
+            madeMove = true;
+            return;
+        }
+
         if (!GridController.transitioning && !GridController.isTurn && !madeMove && gameObject.GetComponent<GridController>().isValidMoveTime()) {
             if (!doingTurn) {
                 doingTurn = true;
@@ -615,11 +733,14 @@ public class EnemyController : MonoBehaviour, PlayerController
 
     //All done damage goes through here
     public int applyModifiersToDamageDone(int amount, DamageType damageType) {
+        EnsureRuntimeCollections();
+        InitializeCombatState();
         GridController gridController = gameObject.GetComponent<GridController>();
+        Weapon playerWeapon = gridController.weapon ?? new Weapon();
 
         if (damageType == DamageType.spellDamage) {
             //Apply weapon effects
-            amount = gridController.weapon.spellDamageEffect() + amount;
+            amount = playerWeapon.spellDamageEffect() + amount;
             //May have defensive weapons later
 
             //Apply status effects
@@ -643,7 +764,7 @@ public class EnemyController : MonoBehaviour, PlayerController
         else if (damageType == DamageType.matchDamage) {
             //May apply nonlinear formula to damage
             //Weapon effects
-            amount = (int)gridController.weapon.manaEffect(3, 2 * amount);
+            amount = (int)playerWeapon.manaEffect(3, 2 * amount);
             //May have defensive weapons later
 
             //Apply status effects
@@ -676,12 +797,13 @@ public class EnemyController : MonoBehaviour, PlayerController
     }
 
     public void dealDamage(int amount) {
-        if (currentHealth - amount <= enemy.Health) {
-            currentHealth -= amount;
+        InitializeCombatState();
+        if (combatant.State.Health - amount <= combatant.State.MaxHealth) {
+            combatant.SetHealth(combatant.State.Health - amount);
+            SyncFieldsFromCombatant();
             if (currentHealth <= 0) {
-                hp.text = "0" + " out of " + enemy.Health.ToString();
-                healthBar.setPercentageFilled(0);
-                currentHealth = 0;
+                combatant.SetHealth(0);
+                SyncFieldsFromCombatant();
 
                 //win
                 Debug.Log("You win");
@@ -705,17 +827,12 @@ public class EnemyController : MonoBehaviour, PlayerController
                     ScriptController.pauseGame();
 
                 }
-                
-
-                
-                
             }
         }
         else {
-            currentHealth = enemy.Health;
+            combatant.SetHealth(combatant.State.MaxHealth);
+            SyncFieldsFromCombatant();
         }
-        hp.text = currentHealth.ToString() + " out of " + enemy.Health.ToString();
-        healthBar.setPercentageFilled(currentHealth / (enemy.Health + 0f));
     }
 
     public int processDamage(int preProcessedDamage) {
@@ -735,7 +852,8 @@ public class EnemyController : MonoBehaviour, PlayerController
     public void loadEnemy() {
         //Load next enemy
         //enemy = EnemyContainer.Load(Path.Combine(Application.persistentDataPath, "enemies.xml")).enemies[combat.getEnemy(currentRound)];
-        enemy = enemyDictionary[combat.getEnemy(currentRound)];
+        SpellContainer spells = SpellContainer.Load(Path.Combine(Application.persistentDataPath, "spells.xml"));
+        enemy = ResolveEnemy(combat.getEnemy(currentRound), BuildLegacyEnemies(spells));
 
         madeMove = false;
         redMana = 0;
@@ -755,6 +873,10 @@ public class EnemyController : MonoBehaviour, PlayerController
         multiplier.text = damageMultiplier.ToString() + "x";
         name.text = enemy.Name + " (" + (currentRound + 1) + "/" + combat.getTotalRounds().ToString() + ")";
         hp.text = currentHealth.ToString() + " out of " + enemy.Health.ToString();
+        combatant.SetIdentity(enemy.Name + " (" + (currentRound + 1) + "/" + combat.getTotalRounds().ToString() + ")",
+            enemy.Health, enemy.maxRedMana, enemy.maxBlueMana, enemy.maxYellowMana);
+        combatant.State.Weapon = weapon;
+        SyncFieldsFromCombatant();
 
         if (combat.getPortrait(combat.getRound()) != "") {
             portrait.sprite = Resources.Load<Sprite>("Characters/" + combat.getPortrait(combat.getRound()));
@@ -763,7 +885,6 @@ public class EnemyController : MonoBehaviour, PlayerController
             portrait.sprite = Resources.Load<Sprite>("Characters/" + enemy.Name + "Normal");
         }
 
-        SpellContainer spells = SpellContainer.Load(Path.Combine(Application.persistentDataPath, "spells.xml"));
         foreach (Button i in equippedSpells) {
             Destroy(i.gameObject);
         }
@@ -817,6 +938,8 @@ public class EnemyController : MonoBehaviour, PlayerController
         */
         weaponObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Button");
         weaponObject.SetActive(false);
+        combatant.State.Weapon = weapon;
+        SyncFieldsFromCombatant();
     }
 
     public bool checkCosts(int[] costs) {
@@ -888,81 +1011,47 @@ public class EnemyController : MonoBehaviour, PlayerController
     }
 
     public void decrementMultiplier() {
-        if (damageMultiplier > 1f) {
-            damageMultiplier -= 0.1f;
-            damageMultiplier = (float)System.Math.Round(damageMultiplier, 1);
-        }
-        else {
-            damageMultiplier = 1;
-        }
-        multiplierBar.setPercentageFilled((damageMultiplier - 1) / (GridController.maxMultiplier - 1.0f));
-        multiplier.text = damageMultiplier.ToString() + "x";
+        EnsureRuntimeCollections();
+        combatant.DecrementMultiplier(0.1f);
+        SyncFieldsFromCombatant();
     }
-
     public void setMana(int id, int mana) {
-        switch (id) {
-            case (0):
-                setRedMana(mana);
-                break;
-            case (1):
-                setBlueMana(mana);
-                break;
-            case (2):
-                setYellowMana(mana);
-                break;
-        }
+        EnsureRuntimeCollections();
+        combatant.SetMana(id, mana);
+        SyncFieldsFromCombatant();
     }
     public int getMana(int id) {
-        switch (id) {
-            case (0):
-                return getRedMana();
-            case (1):
-                return getBlueMana();
-            case (2):
-                return getYellowMana();
-        }
-        return 0;
+        EnsureRuntimeCollections();
+        return combatant.GetMana(id);
     }
 
     public int getRedMana() {
-        return redMana;
+        EnsureRuntimeCollections();
+        return combatant.GetMana((int)colorType.red);
     }
     public int getBlueMana() {
-        return blueMana;
+        EnsureRuntimeCollections();
+        return combatant.GetMana((int)colorType.blue);
     }
     public int getYellowMana() {
-        return yellowMana;
+        EnsureRuntimeCollections();
+        return combatant.GetMana((int)colorType.yellow);
     }
     public void setYellowMana(int mana) {
-        //Debug.Log(mana + " " +enemy.maxYellowMana + " " +(mana > enemy.maxYellowMana));
-
-        yellowMana = mana > enemy.maxYellowMana ? enemy.maxYellowMana : mana;
-        yellowMana = yellowMana >= 0 ? yellowMana : 0;
-        yellowBar.setPercentageFilled(yellowMana / (enemy.maxYellowMana + 0f));
-        yellowManaTextBox.text = yellowMana.ToString() + "/" + enemy.maxYellowMana.ToString();
+        setMana((int)colorType.yellow, mana);
     }
     public void setBlueMana(int mana) {
-        blueMana = mana > enemy.maxBlueMana ? enemy.maxBlueMana : mana;
-        blueMana = blueMana >= 0 ? blueMana : 0;
-        blueBar.setPercentageFilled(blueMana / (enemy.maxBlueMana + 0f));
-        blueManaTextBox.text = blueMana.ToString() + "/" + enemy.maxBlueMana.ToString();
+        setMana((int)colorType.blue, mana);
     }
     public void setRedMana(int mana) {
-        redMana = mana > enemy.maxRedMana ? enemy.maxRedMana : mana;
-        redMana = redMana >= 0 ? redMana : 0;
-        redBar.setPercentageFilled(redMana / (enemy.maxRedMana + 0f));
-        redManaTextBox.text = redMana.ToString() + "/" + enemy.maxRedMana.ToString();
+        setMana((int)colorType.red, mana);
     }
 
     public void setMultiplier(float amount) {
-        amount = amount > GridController.maxMultiplier ? GridController.maxMultiplier : amount;
-        if (amount >= 1) {
-            damageMultiplier = amount;
-            multiplier.text = damageMultiplier.ToString() + "x";
-            multiplierBar.setPercentageFilled((damageMultiplier - 1) / (GridController.maxMultiplier - 1f));
-        }
+        EnsureRuntimeCollections();
+        combatant.SetMultiplier(amount);
+        SyncFieldsFromCombatant();
     }
-
     public static List<Enemy> loadEnemies() {
         List<Enemy> enemiesList = new List<Enemy>();
         TextAsset enemyTexts = Resources.Load<TextAsset>("enemies");
@@ -983,151 +1072,6 @@ public class EnemyController : MonoBehaviour, PlayerController
         enemyDictionary = enemiesList.ToDictionary(x => x.Name , x => x);
 
         return enemyDictionary;
-    }
-
-}
-
-public class Enemy {
-
-    [XmlAttribute("name")]
-    public string Name;
-
-    [XmlAttribute("failRate")]
-    public float failRate;
-
-    [XmlAttribute("maxRedMana")]
-    public int maxRedMana;
-    [XmlAttribute("maxBlueMana")]
-    public int maxBlueMana;
-    [XmlAttribute("maxYellowMana")]
-    public int maxYellowMana;
-
-    [XmlArray("priorities")]
-    [XmlArrayItem("priority")]
-    public int[] Priorities = new int[3];
-
-
-    [XmlArray("spells")]
-    [XmlArrayItem("spell")]
-    public Spell[] Spells;
-
-    /*
-    [XmlAttribute("spellType")]
-    public spellType Type;
-    */
-
-    [XmlAttribute("hp")]
-    public int Health;
-
-    public Enemy(string n, int[] p, Spell[] s, int h, int r, int b, int y, float fail) {
-        Name = n;
-        Priorities = p;
-        Health = h;
-        Spells = s;
-        maxRedMana = r;
-        maxBlueMana = b;
-        maxYellowMana = y;
-        failRate = fail;
-
-    }
-
-    public Enemy(string enemyText) {
-        string[] enemyTextArray = enemyText.Split(',');
-        Name = enemyTextArray[0];
-        string[] priorties = enemyTextArray[1].Trim().Split(' ');
-        Priorities = new int[] { int.Parse(priorties[0]), int.Parse(priorties[1]), int.Parse(priorties[2]) };
-        Health = int.Parse(enemyTextArray[2]);
-        string[] maxes = enemyTextArray[3].Trim().Split(' ');
-        maxRedMana = int.Parse(maxes[0]);
-        maxBlueMana = int.Parse(maxes[1]);
-        maxYellowMana = int.Parse(maxes[2]);
-        failRate = float.Parse(enemyTextArray[4]);
-
-        Dictionary<string, Spell> spellsDictionary = SpellSerializer.loadSpellsIntoDictionary();
-        List<Spell> spells = new List<Spell>();
-        for (int i = 5; i < enemyTextArray.Length; i++) {
-            spells.Add(spellsDictionary[enemyTextArray[i].Trim()]);
-        }
-        Spells = spells.ToArray();
-
-    }
-
-
-    public Enemy() {
-        Name = "Default";
-        Priorities = new int[] { 0, 0, 0, };
-        Health = 100;
-        Spells = new Spell[0];
-
-    }
-
-}
-
-[XmlRoot("EnemyContainer")]
-public class EnemyContainer {
-
-    [XmlArray("Enemies")]
-    [XmlArrayItem("Enemy")]
-    public Enemy[] enemies;
-
-    public EnemyContainer() {
-        enemies = new Enemy[15];
-    }
-
-    public void Save(string path) {
-        var serializer = new XmlSerializer(typeof(EnemyContainer));
-        using (var stream = new FileStream(path, FileMode.Create)) {
-            serializer.Serialize(stream, this);
-        }
-    }
-
-    public static EnemyContainer Load(string path) {
-        var serializer = new XmlSerializer(typeof(EnemyContainer));
-        using (var stream = new FileStream(path, FileMode.Open)) {
-            return serializer.Deserialize(stream) as EnemyContainer;
-        }
-    }
-
-    //Loads the xml directly from the given string. Useful in combination with www.text.
-    public static EnemyContainer LoadFromText(string text) {
-        var serializer = new XmlSerializer(typeof(EnemyContainer));
-        return serializer.Deserialize(new StringReader(text)) as EnemyContainer;
-    }
-}
-
-public class Action {
-    int priority = 0;
-
-    public int getPriority() {
-        return priority;
-    }
-    public void setPriority(int priority) {
-        this.priority = priority;
-    }
-}
-
-public class spellAction : Action {
-    Spell spell;
-    public spellAction(Spell spell) {
-        this.spell = spell;
-    }
-    public Spell getSpell() {
-        return spell;
-    }
-}
-
-public class Move : Action{
-
-    public int originLocation;
-    public int swapLocation;
-    public int matchLength;
-    public int type;
-
-    public Move(int origin, int swap, int length, int t) {
-        originLocation = origin;
-        swapLocation = swap;
-        matchLength = length;
-        type = t;
     }
 
 }

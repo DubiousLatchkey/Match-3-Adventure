@@ -1,0 +1,100 @@
+{
+  "weapons": [
+    {
+      "id": "warrior_s_staff",
+      "index": 0,
+      "name": "Warrior's Staff",
+      "effects": [
+        0,
+        1,
+        0
+      ],
+      "type": "eot",
+      "tooltip": "Does 1 damage per turn"
+    },
+    {
+      "id": "mage_rapier",
+      "index": 1,
+      "name": "Mage Rapier",
+      "effects": [
+        3,
+        2,
+        0
+      ],
+      "type": "mana",
+      "tooltip": "Does 2 extra damage per sword match"
+    },
+    {
+      "id": "spellslinger_s_device",
+      "index": 2,
+      "name": "Spellslinger's Device",
+      "effects": [
+        0,
+        2,
+        0
+      ],
+      "type": "cast",
+      "tooltip": "Does 2 damage on spell cast"
+    },
+    {
+      "id": "scarlet_staff",
+      "index": 3,
+      "name": "Scarlet Staff",
+      "effects": [
+        0,
+        1,
+        0
+      ],
+      "type": "mana",
+      "tooltip": "Red mana matches gain an extra 1"
+    },
+    {
+      "id": "crimson_staff",
+      "index": 4,
+      "name": "Crimson Staff",
+      "effects": [
+        1,
+        1,
+        0
+      ],
+      "type": "eot",
+      "tooltip": "Adds 1 red mana per turn"
+    },
+    {
+      "id": "amplifying_staff",
+      "index": 5,
+      "name": "Amplifying Staff",
+      "effects": [
+        2,
+        0,
+        0
+      ],
+      "type": "spellDamage",
+      "tooltip": "Spells do 2 more damage (before multiplier)"
+    },
+    {
+      "id": "illis_infused_lance",
+      "index": 6,
+      "name": "Illis-infused Lance",
+      "effects": [
+        3,
+        1,
+        0
+      ],
+      "type": "mana",
+      "tooltip": "Does 1 extra damage per sword match"
+    },
+    {
+      "id": "staff_of_reanimation",
+      "index": 7,
+      "name": "Staff of Reanimation",
+      "effects": [
+        4,
+        2,
+        0
+      ],
+      "type": "eot",
+      "tooltip": "Heals 2 health per turn"
+    }
+  ]
+}

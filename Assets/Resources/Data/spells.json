@@ -1,0 +1,712 @@
+{
+  "spells": [
+    {
+      "id": "fireball",
+      "index": 0,
+      "name": "Fireball",
+      "costs": [
+        7,
+        0,
+        0
+      ],
+      "parameters": "dealDamage 10",
+      "tooltip": "Deals 10 damage\nDoesn't end turn"
+    },
+    {
+      "id": "aether",
+      "index": 1,
+      "name": "Aether",
+      "costs": [
+        0,
+        6,
+        0
+      ],
+      "parameters": "dealDamage 5\nheal 5",
+      "tooltip": "Deals 5 damage and heals 5\nDoesn't end turn"
+    },
+    {
+      "id": "rebase",
+      "index": 2,
+      "name": "Rebase",
+      "costs": [
+        0,
+        0,
+        7
+      ],
+      "parameters": "destroySetLine 0 1\nendTurn ",
+      "tooltip": "Scores bottom row\nEnds turn"
+    },
+    {
+      "id": "ethereal_vivisection",
+      "index": 3,
+      "name": "Ethereal Vivisection",
+      "costs": [
+        1,
+        1,
+        6
+      ],
+      "parameters": "destroySquare 1\nendTurn ",
+      "tooltip": "Destroys 3x3 grid around target space\nEnds turn"
+    },
+    {
+      "id": "toxic_deluge",
+      "index": 4,
+      "name": "Toxic Deluge",
+      "costs": [
+        0,
+        1,
+        0
+      ],
+      "parameters": "inflictStatusEffect Poison 3 5 spellFlash\nendTurn ",
+      "tooltip": "Poisons opponent, dealing 3 damage per turn for 5 turns\nEnds turn"
+    },
+    {
+      "id": "clean_slate",
+      "index": 5,
+      "name": "Clean Slate",
+      "costs": [
+        0,
+        0,
+        10
+      ],
+      "parameters": "destroyAllPiecesOfType 0\ndestroyAllPiecesOfType 1\ndestroyAllPiecesOfType 2\ndestroyAllPiecesOfType 3\ndestroyAllPiecesOfType 4\n destroyAllPiecesOfType 5\nendTurn ",
+      "tooltip": "Reshuffles entire board\nEnds turn"
+    },
+    {
+      "id": "swords_to_plowshares",
+      "index": 6,
+      "name": "Swords to Plowshares",
+      "costs": [
+        7,
+        0,
+        5
+      ],
+      "parameters": "shiftColor 3 -1\nendTurn ",
+      "tooltip": "Scores all sword pieces\nEnds turn"
+    },
+    {
+      "id": "balance",
+      "index": 7,
+      "name": "Balance",
+      "costs": [
+        0,
+        6,
+        5
+      ],
+      "parameters": "balance \nendTurn",
+      "tooltip": "Adds up players' mana of each type and redistributes equally\nEnds turn"
+    },
+    {
+      "id": "restore",
+      "index": 8,
+      "name": "Restore",
+      "costs": [
+        0,
+        6,
+        0
+      ],
+      "parameters": "heal 10\nendTurn ",
+      "tooltip": "Heals 10 health\nEnds turn"
+    },
+    {
+      "id": "mana_drain",
+      "index": 9,
+      "name": "Mana Drain",
+      "costs": [
+        0,
+        5,
+        2
+      ],
+      "parameters": "stealMana all 3\nendTurn",
+      "tooltip": "Steals 3 mana of each color\nEnds turn"
+    },
+    {
+      "id": "barrier",
+      "index": 10,
+      "name": "Barrier",
+      "costs": [
+        1,
+        5,
+        2
+      ],
+      "parameters": "grantStatusEffect Shield 2 6\nendTurn ",
+      "tooltip": "Prevents 2 of each instance of damage for the next 6 turns\nEnds turn"
+    },
+    {
+      "id": "cantrip",
+      "index": 11,
+      "name": "Cantrip",
+      "costs": [
+        0,
+        1,
+        0
+      ],
+      "parameters": "dealDamage 0",
+      "tooltip": "Does 0 Damage\nDoesn't end turn"
+    },
+    {
+      "id": "enflame",
+      "index": 12,
+      "name": "Enflame",
+      "costs": [
+        4,
+        0,
+        0
+      ],
+      "parameters": "dealDamage 6\nendTurn",
+      "tooltip": "Deals 6 damage\nEnds turn"
+    },
+    {
+      "id": "fiery_transfusion",
+      "index": 13,
+      "name": "Fiery Transfusion",
+      "costs": [
+        0,
+        4,
+        4
+      ],
+      "parameters": "addMana 0 5",
+      "tooltip": "Generates 5 red mana\nDoesn't end turn"
+    },
+    {
+      "id": "precision_strike",
+      "index": 14,
+      "name": "Precision Strike",
+      "costs": [
+        4,
+        5,
+        2
+      ],
+      "parameters": "shiftTarget 3\nendTurn",
+      "tooltip": "Changes target piece into a sword\nEnds turn"
+    },
+    {
+      "id": "invigorate",
+      "index": 15,
+      "name": "Invigorate",
+      "costs": [
+        3,
+        6,
+        0
+      ],
+      "parameters": "grantStatusEffect DamageBuff 2 6\nendTurn ",
+      "tooltip": "Grants 2 extra damage per attack for 6 turns\nEnds turn"
+    },
+    {
+      "id": "explosive_outburst",
+      "index": 16,
+      "name": "Explosive Outburst",
+      "costs": [
+        3,
+        7,
+        0
+      ],
+      "parameters": "dealDamageEqualTo getRedMana\nsetMana 0 0\nendTurn ",
+      "tooltip": "Deals damage equal to red mana and drains red mana to zero\nEnds turn"
+    },
+    {
+      "id": "play_with_fire",
+      "index": 17,
+      "name": "Play with Fire",
+      "costs": [
+        5,
+        2,
+        5
+      ],
+      "parameters": "randomShift 7 3\nendTurn",
+      "tooltip": "Turns 7 random pieces into swords\nEnds turn"
+    },
+    {
+      "id": "shared_torment",
+      "index": 18,
+      "name": "Shared Torment",
+      "costs": [
+        5,
+        3,
+        0
+      ],
+      "parameters": "dealDamage 7\nheal -7\nendTurn",
+      "tooltip": "Deals 7 damage to each player\nEnds turn"
+    },
+    {
+      "id": "life_and_death",
+      "index": 19,
+      "name": "Life and Death",
+      "costs": [
+        2,
+        7,
+        3
+      ],
+      "parameters": "dealDamageEqualTo countHeartPiecesTimes2\ndestroyAllPiecesOfType 4\nendTurn",
+      "tooltip": "Destroys all heart pieces and deals 2 damage for each piece destroyed\nEnds turn"
+    },
+    {
+      "id": "draining_chill",
+      "index": 20,
+      "name": "Draining Chill",
+      "costs": [
+        2,
+        5,
+        0
+      ],
+      "parameters": "dealDamage 3\nheal 5\nendTurn",
+      "tooltip": "Deals 3 damage and heals 5\nEnds turn"
+    },
+    {
+      "id": "burst_of_life",
+      "index": 21,
+      "name": "Burst of Life",
+      "costs": [
+        5,
+        8,
+        0
+      ],
+      "parameters": "dealDamageEqualTo tenthOfHealth\nendTurn",
+      "tooltip": "Does 1 damage for every 10 points of your health\nEnds turn"
+    },
+    {
+      "id": "nightingale_s_boon",
+      "index": 22,
+      "name": "Nightingale's Boon",
+      "costs": [
+        2,
+        6,
+        1
+      ],
+      "parameters": "grantStatusEffect HealingBuff 2 6\nendTurn",
+      "tooltip": "Grants 2 additional health per healing for 6 turns\nEnds turn"
+    },
+    {
+      "id": "breath_of_vitality",
+      "index": 23,
+      "name": "Breath of Vitality",
+      "costs": [
+        0,
+        8,
+        6
+      ],
+      "parameters": "shiftColor 4 -1\nendTurn",
+      "tooltip": "Scores all heart pieces\nEnds turn"
+    },
+    {
+      "id": "cleansing_wave",
+      "index": 24,
+      "name": "Cleansing wave",
+      "costs": [
+        0,
+        5,
+        0
+      ],
+      "parameters": "cleanse player\ncleanse enemy",
+      "tooltip": "Removes all status effects from both players\nEnds turn"
+    },
+    {
+      "id": "pillar_of_destruction",
+      "index": 25,
+      "name": "Pillar of Destruction",
+      "costs": [
+        0,
+        1,
+        7
+      ],
+      "parameters": "destroyColumn random",
+      "tooltip": "Score a random column\nEnds turn"
+    },
+    {
+      "id": "bounty_of_mana",
+      "index": 26,
+      "name": "Bounty of Mana",
+      "costs": [
+        2,
+        8,
+        6
+      ],
+      "parameters": "grantStatusEffect ScoreBuff 2 5",
+      "tooltip": "Grants additional 2 to all piece scoring for 5 turns\nEnds turn"
+    },
+    {
+      "id": "timeshift",
+      "index": 27,
+      "name": "Timeshift",
+      "costs": [
+        0,
+        3,
+        4
+      ],
+      "parameters": "grantExtraTurn ",
+      "tooltip": "Grants an extra turn (Does not stack with 4 and 5 in a rows)\nDoesn't end turn"
+    },
+    {
+      "id": "flurry_warp",
+      "index": 28,
+      "name": "Flurry Warp",
+      "costs": [
+        3,
+        3,
+        6
+      ],
+      "parameters": "randomShift 9 -1\nendTurn ",
+      "tooltip": "Score 9 random pieces\nEnds turn"
+    },
+    {
+      "id": "warp",
+      "index": 29,
+      "name": "Warp",
+      "costs": [
+        0,
+        4,
+        5
+      ],
+      "parameters": "destroySquare 0",
+      "tooltip": "Score target piece\nDoesn't end turn"
+    },
+    {
+      "id": "distortion_strike",
+      "index": 30,
+      "name": "Distortion Strike",
+      "costs": [
+        0,
+        4,
+        4
+      ],
+      "parameters": "dealDamage 4\nrandomShift 1 -1",
+      "tooltip": "Deals 4 damage and scores a random piece \nEnds turn"
+    },
+    {
+      "id": "icy_transfusion",
+      "index": 31,
+      "name": "Icy Transfusion",
+      "costs": [
+        4,
+        0,
+        4
+      ],
+      "parameters": "addMana 1 5",
+      "tooltip": "Generates 5 blue mana\nDoesn't end turn"
+    },
+    {
+      "id": "slow",
+      "index": 32,
+      "name": "Slow",
+      "costs": [
+        0,
+        6,
+        4
+      ],
+      "parameters": "inflictStatusEffect AttackDebuff 2 6\nendTurn",
+      "tooltip": "Inflicts -2 damage per foe's attack for 6 turns\nEnds turn"
+    },
+    {
+      "id": "icicle_spear",
+      "index": 33,
+      "name": "Icicle Spear",
+      "costs": [
+        0,
+        8,
+        5
+      ],
+      "parameters": "dealDamageEqualTo countBlueManaPieces\nendTurn",
+      "tooltip": "Deals 1 damage for each blue mana piece on the board\nEnds turn"
+    },
+    {
+      "id": "blueshift",
+      "index": 34,
+      "name": "Blueshift",
+      "costs": [
+        3,
+        6,
+        5
+      ],
+      "parameters": "shiftColor 0 1",
+      "tooltip": "Turns all red mana pieces into blue mana pieces\nEnds turn"
+    },
+    {
+      "id": "doubling_boon",
+      "index": 35,
+      "name": "Doubling Boon",
+      "costs": [
+        0,
+        7,
+        2
+      ],
+      "parameters": "grantStatusEffect doubleDamage 2 1",
+      "tooltip": "Grants double damage for 1 turn\nDoesn't end turn"
+    },
+    {
+      "id": "power_surge",
+      "index": 36,
+      "name": "Power Surge",
+      "costs": [
+        3,
+        5,
+        3
+      ],
+      "parameters": "setMultiplier 2",
+      "tooltip": "Maxes out damage multiplier\nDoesn't end turn"
+    },
+    {
+      "id": "lock",
+      "index": 37,
+      "name": "Lock",
+      "costs": [
+        3,
+        1,
+        6
+      ],
+      "parameters": "inflictStatusEffect AttackDebuff 6 3\nendTurn",
+      "tooltip": "Inflicts -6 damage per foe's attack for 3 turns\nEnds turn"
+    },
+    {
+      "id": "seal",
+      "index": 38,
+      "name": "Seal",
+      "costs": [
+        3,
+        2,
+        5
+      ],
+      "parameters": "inflictStatusEffect Seal 1 4\nendTurn",
+      "tooltip": "Inflicts inability to cast spells for 4 turns\nEnds turn"
+    },
+    {
+      "id": "persistent_flame",
+      "index": 39,
+      "name": "Persistent Flame",
+      "costs": [
+        4,
+        1,
+        5
+      ],
+      "parameters": "inflictStatusEffect Burn 1 7\nendTurn",
+      "tooltip": "Inflicts 1 damage on foe per turn\nEnds turn"
+    },
+    {
+      "id": "staggering_blow",
+      "index": 40,
+      "name": "Staggering Blow",
+      "costs": [
+        5,
+        0,
+        5
+      ],
+      "parameters": "dealDamage 5\ninflictStatusEffect Seal 1 2\nendTurn",
+      "tooltip": "Deals 5 damage and inflicts inability to cast spells for 2 turns\nEnds turn"
+    },
+    {
+      "id": "lightning_storm",
+      "index": 41,
+      "name": "Lightning Storm",
+      "costs": [
+        5,
+        0,
+        7
+      ],
+      "parameters": "shiftColor 2 -1\nendTurn",
+      "tooltip": "Scores all yellow mana pieces\nEnds turn"
+    },
+    {
+      "id": "ionize",
+      "index": 42,
+      "name": "Ionize",
+      "costs": [
+        6,
+        3,
+        5
+      ],
+      "parameters": "shiftColor 1 2\nendTurn",
+      "tooltip": "Turns all blue mana pieces into yellow mana pieces\nEnds turn"
+    },
+    {
+      "id": "stonewall",
+      "index": 43,
+      "name": "Stonewall",
+      "costs": [
+        3,
+        1,
+        7
+      ],
+      "parameters": "grantStatusEffect Shield 7 3\nendTurn",
+      "tooltip": "Grants -7 damage from foes attacks for 3 turns\nnEnds turn"
+    },
+    {
+      "id": "discharge",
+      "index": 44,
+      "name": "Discharge",
+      "costs": [
+        3,
+        0,
+        4
+      ],
+      "parameters": "dealDamage 10\ngrantStatusEffect attackDebuff 6 3\nendTurn",
+      "tooltip": "Deals 10 damage and inflicts -6 damage per self's attack for 3 turns\nEnds turn"
+    },
+    {
+      "id": "cross_blitz",
+      "index": 45,
+      "name": "Cross Blitz",
+      "costs": [
+        8,
+        0,
+        6
+      ],
+      "parameters": "dealDamageEqualTo countMultiplierPiecesTimes2\ndestroyAllPiecesOfType 5\nendTurn",
+      "tooltip": "Destroys all multiplier pieces and deals 2 damage for each piece destroyed\nEnds turn"
+    },
+    {
+      "id": "mass_polymorph",
+      "index": 46,
+      "name": "Mass polymorph",
+      "costs": [
+        3,
+        0,
+        7
+      ],
+      "parameters": "randomShift 10 7\nendTurn",
+      "tooltip": "Shifts ten random pieces into another type\nEnds turn"
+    },
+    {
+      "id": "melt",
+      "index": 47,
+      "name": "Melt",
+      "costs": [
+        5,
+        0,
+        3
+      ],
+      "parameters": "dealDamageEqualTo countIfFewerThan8Blues\nendTurn",
+      "tooltip": "Deals 5 damage.  Deals 8 damage instead if there are fewer than 8 blue mana pieces on the board\nEnds turn"
+    },
+    {
+      "id": "the_four_winds",
+      "index": 48,
+      "name": "The Four Winds",
+      "costs": [
+        6,
+        0,
+        4
+      ],
+      "parameters": "dealDamageEqualTo fiveIfCornersAreDifferent\nscore 0\nscore 7\nscore 63\nscore 56\nendTurn",
+      "tooltip": "Scores the corner pieces and deals 5 damage if those pieces were all different\nEnds turn"
+    },
+    {
+      "id": "set_ablaze",
+      "index": 49,
+      "name": "Set Ablaze",
+      "costs": [
+        3,
+        3,
+        6
+      ],
+      "parameters": "randomShift 6 1\nendTurn",
+      "tooltip": "Shifts 6 random pieces into red mana pieces\nEnds turn"
+    },
+    {
+      "id": "enrage",
+      "index": 50,
+      "name": "Enrage",
+      "costs": [
+        8,
+        2,
+        2
+      ],
+      "parameters": "grantStatusEffect damageBuffBasedOnMana 0 5\nendTurn",
+      "tooltip": "Grants extra damage equal to a quarter of red mana for 5 turns\nEnds turn"
+    },
+    {
+      "id": "stun",
+      "index": 51,
+      "name": "Stun",
+      "costs": [
+        6,
+        1,
+        6
+      ],
+      "parameters": "dealDamage 3\ninflictStatusEffect NegativeScoring 1 5\nendTurn",
+      "tooltip": "Deals 3 damage and inflicts -1 to all foe's scoring for 5 turns\nEnds turn"
+    },
+    {
+      "id": "field_attenuation",
+      "index": 52,
+      "name": "Field Attenuation",
+      "costs": [
+        3,
+        1,
+        6
+      ],
+      "parameters": "shiftColor 3 mana\nshiftColor 4 mana\nshiftcolor 5 mana\nendTurn",
+      "tooltip": "shifts non-mana pieces into mana pieces\nEnds turn"
+    },
+    {
+      "id": "eruption",
+      "index": 53,
+      "name": "Eruption",
+      "costs": [
+        6,
+        2,
+        4
+      ],
+      "parameters": "dealDamageEqualTo countRedManaPieces\nendTurn",
+      "tooltip": "Deals 1 damage for each red mana piece on the board\nEnds turn"
+    },
+    {
+      "id": "omni_charm",
+      "index": 54,
+      "name": "Omni Charm",
+      "costs": [
+        3,
+        4,
+        4
+      ],
+      "parameters": "dealDamage 3\nheal 3\nrandomShift 1 -1\nrandomShift 1 7",
+      "tooltip": "Deals 3 Damage, Heals 3, scores a random piece, and shifts one random piece into another type\nDoesn't end turn"
+    },
+    {
+      "id": "blue_elemental_blast",
+      "index": 55,
+      "name": "Blue Elemental Blast",
+      "costs": [
+        0,
+        10,
+        0
+      ],
+      "parameters": "dealDamage 15\nendTurn",
+      "tooltip": "Deals 15 Damage\nEnds Turn"
+    },
+    {
+      "id": "amplify",
+      "index": 56,
+      "name": "Amplify",
+      "costs": [
+        1,
+        5,
+        2
+      ],
+      "parameters": "grantStatusEffect SpellDamageIncreaseEffect 5 8",
+      "tooltip": "Adds 5 Damage to all spell damage dealt for the next 6 turns\nDoesn't end Turn "
+    },
+    {
+      "id": "coin_flip",
+      "index": 57,
+      "name": "Coin Flip",
+      "costs": [
+        0,
+        0,
+        10
+      ],
+      "parameters": "randomDestruction 5\nendTurn",
+      "tooltip": "All pieces have a 50% chance to be destroyed.  Ends the turn."
+    },
+    {
+      "id": "field_disruption",
+      "index": 58,
+      "name": "Field Disruption",
+      "costs": [
+        10,
+        0,
+        0
+      ],
+      "parameters": "dealDamage 20\nendTurn",
+      "tooltip": "Deals 20 Damage.  Ends the turn"
+    }
+  ]
+}

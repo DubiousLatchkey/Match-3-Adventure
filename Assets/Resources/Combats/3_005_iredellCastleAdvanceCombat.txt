@@ -1,0 +1,2 @@
+enemy: Iredellian Soldier
+dialogue: 3_006_iredellCastleCourtyard

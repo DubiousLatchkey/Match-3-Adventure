@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Experimental.Rendering.Universal;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 public class ThingController : MonoBehaviour, IEndDragHandler, IDragHandler
@@ -18,6 +18,18 @@ public class ThingController : MonoBehaviour, IEndDragHandler, IDragHandler
     float accelerationFactor;
     public float accelerationConstant = 1f;
     bool toAccelerate = false;
+
+    void Awake() {
+        EventSystem eventSystem = GetComponent<EventSystem>();
+        if (eventSystem != null) {
+            Destroy(eventSystem);
+        }
+
+        BaseInputModule inputModule = GetComponent<BaseInputModule>();
+        if (inputModule != null) {
+            Destroy(inputModule);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()

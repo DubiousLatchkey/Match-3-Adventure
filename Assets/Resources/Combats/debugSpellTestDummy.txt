@@ -1,0 +1,2 @@
+enemy: Spell Test Dummy
+dialogue: sampleDialogue2

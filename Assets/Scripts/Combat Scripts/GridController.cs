@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 public class GridController : MonoBehaviour, PlayerController{
@@ -73,10 +73,86 @@ public class GridController : MonoBehaviour, PlayerController{
     public GameObject backdrop;
     public GameObject targetingIndicator;
     public TextAsset spellTexts;
+    CombatantRuntime combatant;
+
+    private void Awake() {
+        EnsureRuntimeCollections();
+    }
+
+    private void EnsureRuntimeCollections() {
+        if (statusEffects == null) {
+            statusEffects = new List<StatusEffect>();
+        }
+        if (extraStatusEffects == null) {
+            extraStatusEffects = new Etcetera(null, false);
+        }
+        if (moves == null) {
+            moves = new List<Move>();
+        }
+        if (toDelete == null) {
+            toDelete = new SortedSet<int>();
+        }
+        if (toDestroy == null) {
+            toDestroy = new SortedSet<int>();
+        }
+        if (weapon == null) {
+            weapon = new Weapon();
+        }
+        if (combatant == null) {
+            combatant = new CombatantRuntime(new CombatantState(), GetCombatantView(), includeMaxManaInText: true);
+        }
+        else if (combatant.View == null) {
+            combatant.SetView(GetCombatantView());
+        }
+    }
+
+    private CombatantView GetCombatantView() {
+        CombatSceneRefs refs = CombatSceneRefs.Instance;
+        CombatantView view = refs != null ? refs.PlayerCombatantView : null;
+        if (view == null) {
+            Transform holder = transform.Find("PlayerCombatantView");
+            if (holder == null) {
+                holder = new GameObject("PlayerCombatantView").transform;
+                holder.SetParent(transform, false);
+            }
+            view = holder.GetComponent<CombatantView>();
+            if (view == null) {
+                view = holder.gameObject.AddComponent<CombatantView>();
+            }
+        }
+        return view;
+    }
+
+    private void SetCombatantFallbacks() {
+        CombatantView view = combatant.View;
+        if (view == null) {
+            return;
+        }
+
+        Transform spellParent = paperback != null ? paperback.transform : null;
+        Transform statusParent = portrait != null ? portrait.transform : null;
+        view.SetFallbacks(name, hp, redManaTextBox, blueManaTextBox, yellowManaTextBox, multiplier,
+            healthBar, redBar, blueBar, yellowBar, multiplierBar, portrait, spellParent, statusParent);
+    }
+
+    private void SyncFieldsFromCombatant() {
+        CombatantState state = combatant.State;
+        health = state.Health;
+        totalHealth = state.MaxHealth;
+        redMana = state.RedMana;
+        blueMana = state.BlueMana;
+        yellowMana = state.YellowMana;
+        maxRedMana = state.MaxRedMana;
+        maxBlueMana = state.MaxBlueMana;
+        maxYellowMana = state.MaxYellowMana;
+        damageMultiplier = state.DamageMultiplier;
+        weapon = state.Weapon;
+    }
 
     // Start is called before the first frame update
     void Start() {
         //Initialization
+        EnsureRuntimeCollections();
         isCasting = false;
         transitioning = false;
         currentSpell = null;
@@ -91,7 +167,7 @@ public class GridController : MonoBehaviour, PlayerController{
         extraStatusEffects = new Etcetera(null, false);
         moves = new List<Move>();
         extraTurn = false;
-        skydrop.sprite = Resources.Load<Sprite>("Backgrounds/" + PlayerPrefs.GetString("background", "bg"));
+        skydrop.sprite = Resources.Load<Sprite>("Backgrounds/" + SaveGameService.GetString("background", "bg"));
         typeCounts = new Dictionary<int, int>{
             { 0, 0 },
             { 1, 0 },
@@ -109,7 +185,7 @@ public class GridController : MonoBehaviour, PlayerController{
         matchingColors.Add(4, Color.magenta);
         matchingColors.Add(5, Color.gray);
 
-        foreach (Text i in FindObjectsOfType<Text>()) {
+        foreach (Text i in FindObjectsByType<Text>(FindObjectsSortMode.None)) {
 
             switch (i.name) {
                 case ("redMana"):
@@ -123,7 +199,7 @@ public class GridController : MonoBehaviour, PlayerController{
                     break;
                 case ("hp"):
                     hp = i;
-                    health = PlayerPrefs.GetInt("hp", 50);
+                    health = SaveGameService.GetInt("hp", 50);
                     totalHealth = health;
                     hp.text = health.ToString() + " out of " + totalHealth.ToString();
                     break;
@@ -139,7 +215,7 @@ public class GridController : MonoBehaviour, PlayerController{
 
         }
 
-        foreach (Image i in FindObjectsOfType<Image>()) {
+        foreach (Image i in FindObjectsByType<Image>(FindObjectsSortMode.None)) {
             switch (i.name) {
                 case ("healthBarFilled"):
                     healthBar = i.GetComponent<BarHandler>();
@@ -153,15 +229,15 @@ public class GridController : MonoBehaviour, PlayerController{
                     break;
                 case ("redBarFilled"):
                     redBar = i.GetComponent<BarHandler>();
-                    maxRedMana = PlayerPrefs.GetInt("maxRedMana", 10);
+                    maxRedMana = SaveGameService.GetInt("maxRedMana", 10);
                     break;
                 case ("blueBarFilled"):
                     blueBar = i.GetComponent<BarHandler>();
-                    maxBlueMana = PlayerPrefs.GetInt("maxBlueMana", 10);
+                    maxBlueMana = SaveGameService.GetInt("maxBlueMana", 10);
                     break;
                 case ("yellowBarFilled"):
                     yellowBar = i.GetComponent<BarHandler>();
-                    maxYellowMana = PlayerPrefs.GetInt("maxYellowMana", 10);
+                    maxYellowMana = SaveGameService.GetInt("maxYellowMana", 10);
                     break;
                 case ("multiplierBarFilled"):
                     multiplierBar = i.GetComponent<BarHandler>();
@@ -173,11 +249,10 @@ public class GridController : MonoBehaviour, PlayerController{
         yellowBar.setInitialPercentageFilled(0);
         multiplierBar.setInitialPercentageFilled((damageMultiplier - 1) / (maxMultiplier - 1f));
 
-        setRedMana(0);
-        setBlueMana(0);
-        setYellowMana(0);
-
-        name.text = PlayerPrefs.GetString("name", "Rachel");
+        SetCombatantFallbacks();
+        combatant.SetIdentity(SaveGameService.GetString("name", "Rachel"), health, maxRedMana, maxBlueMana, maxYellowMana);
+        combatant.State.Weapon = weapon;
+        SyncFieldsFromCombatant();
 
         targetingIndicator.SetActive(false);
 
@@ -196,6 +271,8 @@ public class GridController : MonoBehaviour, PlayerController{
             newThing.transform.SetParent(GameObject.Find("Grid").transform);
             Transform parent = newThing.GetComponentInParent<ThingController>().gameObject.transform;
             newThing.transform.localPosition = new Vector3((i - yIndex * BOARDLENGTH), (yIndex), 1);
+            newThing.GetComponent<Image>().color = Color.white;
+            newThing.GetComponent<ThingController>().light.gameObject.SetActive(false);
             newThing.GetComponent<ThingController>().assignPiece(randType);
 
         }
@@ -206,13 +283,11 @@ public class GridController : MonoBehaviour, PlayerController{
         equippedSpells = new List<Button>();
         SpellContainer spells = SpellContainer.Load(Path.Combine(Application.persistentDataPath, "spells.xml"));
         equippedSpells = new List<Button>(new Button[5]);
-        //Add spells from spells in text form (compatibility between new an old systems)
         List<Spell> spellsList = new List<Spell>(spells.spells);
-        spellsList.AddRange(SpellSerializer.loadSpells());
 
         for (int i = 0; i < spellsList.Count; i++) {
-            //Debug.Log(PlayerPrefs.GetInt(spells.spells[i].Name, 0));
-            int spellStatus = PlayerPrefs.GetInt(spellsList[i].Name, 0);
+            //Debug.Log(SaveGameService.GetInt(spells.spells[i].Name, 0));
+            int spellStatus = SaveGameService.GetInt(spellsList[i].Name, 0);
             if (spellStatus > 0 && spellStatus < 6) { //1 -5 for order of spells, 6 for available but not equipped
                 //equippedSpells.Add(Instantiate(Resources.Load<Button>("SpellButton"), GameObject.Find("paperback").transform));
                 equippedSpells[spellStatus - 1] = (Instantiate(Resources.Load<Button>("SpellButton"), GameObject.Find("paperback").transform));
@@ -241,7 +316,7 @@ public class GridController : MonoBehaviour, PlayerController{
         weapon = new Weapon();
         WeaponContainer weapons = WeaponContainer.Load(Path.Combine(Application.persistentDataPath, "weapons.xml"));
         foreach (Weapon i in weapons.Weapons) {
-            if (PlayerPrefs.GetInt(i.Name, 0) == 2) { //2 for equipped, 1 for own but not equipped, 0 for not owned
+            if (SaveGameService.GetInt(i.Name, 0) == 2) { //2 for equipped, 1 for own but not equipped, 0 for not owned
                 weapon = i;
                 break;
             }
@@ -263,6 +338,7 @@ public class GridController : MonoBehaviour, PlayerController{
 
     //Converts numbers from 0-1 into piece types
     public int assignType(float randomValue) {
+        randomValue *= 100f;
         float runningProbability = 0;
         for (int i = 0; i < probabilities.Length; i++) {
             runningProbability += probabilities[i];
@@ -297,11 +373,11 @@ public class GridController : MonoBehaviour, PlayerController{
 
     public void resetPlayer() {
 
-        maxRedMana = PlayerPrefs.GetInt("maxRedMana", 10);
-        maxBlueMana = PlayerPrefs.GetInt("maxBlueMana", 10);
-        maxYellowMana = PlayerPrefs.GetInt("maxYellowMana", 10);
-        totalHealth = PlayerPrefs.GetInt("hp", 100);
-        name.text = PlayerPrefs.GetString("name", "Rachel");
+        maxRedMana = SaveGameService.GetInt("maxRedMana", 10);
+        maxBlueMana = SaveGameService.GetInt("maxBlueMana", 10);
+        maxYellowMana = SaveGameService.GetInt("maxYellowMana", 10);
+        totalHealth = SaveGameService.GetInt("hp", 100);
+        name.text = SaveGameService.GetString("name", "Rachel");
 
         health = totalHealth;
         redMana = 0;
@@ -320,6 +396,9 @@ public class GridController : MonoBehaviour, PlayerController{
         blueBar.setInitialPercentageFilled(blueMana / (maxBlueMana + 0f));
         yellowBar.setInitialPercentageFilled(yellowMana / (maxYellowMana + 0f));
         multiplierBar.setInitialPercentageFilled((damageMultiplier - 1) / (maxMultiplier - 1f));
+        combatant.SetIdentity(SaveGameService.GetString("name", "Rachel"), totalHealth, maxRedMana, maxBlueMana, maxYellowMana);
+        combatant.State.Weapon = weapon;
+        SyncFieldsFromCombatant();
 
         foreach (StatusEffect i in statusEffects) {
             Destroy(i.indicator);
@@ -342,8 +421,8 @@ public class GridController : MonoBehaviour, PlayerController{
         equippedSpells = new List<Button>(new Button[5]);
 
         for (int i = 0; i < spells.spells.Length; i++) {
-            //Debug.Log(PlayerPrefs.GetInt(spells.spells[i].Name, 0));
-            int spellStatus = PlayerPrefs.GetInt(spells.spells[i].Name, 0);
+            //Debug.Log(SaveGameService.GetInt(spells.spells[i].Name, 0));
+            int spellStatus = SaveGameService.GetInt(spells.spells[i].Name, 0);
             if (spellStatus > 0 && spellStatus < 6) { //1 -5 for order of spells, 6 for available but not equipped
                 //equippedSpells.Add(Instantiate(Resources.Load<Button>("SpellButton"), GameObject.Find("paperback").transform));
                 equippedSpells[spellStatus - 1] = (Instantiate(Resources.Load<Button>("SpellButton"), GameObject.Find("paperback").transform));
@@ -372,7 +451,7 @@ public class GridController : MonoBehaviour, PlayerController{
         weapon = new Weapon();
         WeaponContainer weapons = WeaponContainer.Load(Path.Combine(Application.persistentDataPath, "weapons.xml"));
         foreach (Weapon i in weapons.Weapons) {
-            if (PlayerPrefs.GetInt(i.Name, 0) == 2) { //2 for equipped, 1 for own but not equipped, 0 for not owned
+            if (SaveGameService.GetInt(i.Name, 0) == 2) { //2 for equipped, 1 for own but not equipped, 0 for not owned
                 weapon = i;
                 break;
             }
@@ -385,6 +464,8 @@ public class GridController : MonoBehaviour, PlayerController{
             weaponObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Button");
             weaponObject.SetActive(false);
         }
+        combatant.State.Weapon = weapon;
+        SyncFieldsFromCombatant();
 
     }
 
@@ -398,6 +479,8 @@ public class GridController : MonoBehaviour, PlayerController{
         }
         healthBar.setPercentageFilled(health / (totalHealth + 0f));
         hp.text = health.ToString() + " out of " + totalHealth.ToString();
+        combatant.SetHealth(health);
+        SyncFieldsFromCombatant();
         madeMove = false;
         isTurn = true;
         turnOnSpells();
@@ -424,6 +507,8 @@ public class GridController : MonoBehaviour, PlayerController{
         damageMultiplier = 1;
         multiplier.text = damageMultiplier.ToString() + "x";
         multiplierBar.setInitialPercentageFilled(0);
+        combatant.SetIdentity(char.ToUpper(companion.name[0]) + companion.name.Substring(1), totalHealth, maxRedMana, maxBlueMana, maxYellowMana);
+        SyncFieldsFromCombatant();
 
         SpellContainer spells = SpellContainer.Load(Path.Combine(Application.persistentDataPath, "spells.xml"));
         foreach (Button i in equippedSpells) {
@@ -466,6 +551,8 @@ public class GridController : MonoBehaviour, PlayerController{
             weaponObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Button");
             weaponObject.SetActive(false);
         }
+        combatant.State.Weapon = weapon;
+        SyncFieldsFromCombatant();
 
         turnOnSpells();
     }
@@ -484,6 +571,7 @@ public class GridController : MonoBehaviour, PlayerController{
     }
 
     public List<StatusEffect> GetStatusEffects() {
+        EnsureRuntimeCollections();
         return statusEffects;
     }
 
@@ -497,11 +585,13 @@ public class GridController : MonoBehaviour, PlayerController{
 
     //All take damage goes through here
     public int applyModifiersToDamageDone(int amount, DamageType damageType) {
+        EnsureRuntimeCollections();
         EnemyController enemyController = gameObject.GetComponent<EnemyController>();
+        Weapon enemyWeapon = enemyController.weapon ?? new Weapon();
 
         if (damageType == DamageType.spellDamage) {
             //Apply weapon effects
-            amount = enemyController.weapon.spellDamageEffect() + amount;
+            amount = enemyWeapon.spellDamageEffect() + amount;
             //May have defensive weapons later
 
             //Apply status effects
@@ -526,7 +616,7 @@ public class GridController : MonoBehaviour, PlayerController{
         else if (damageType == DamageType.matchDamage) {
             //May apply nonlinear formula to damage
             //Weapon effects
-            amount = (int)enemyController.weapon.manaEffect(3, 2 * amount);
+            amount = (int)enemyWeapon.manaEffect(3, 2 * amount);
             //May have defensive weapons later
 
             //Apply status effects
@@ -558,12 +648,13 @@ public class GridController : MonoBehaviour, PlayerController{
     }
 
     public void dealDamage(int damage) {
-        if (health - damage <= totalHealth) {
-            health -= damage;
+        EnsureRuntimeCollections();
+        if (combatant.State.Health - damage <= combatant.State.MaxHealth) {
+            combatant.SetHealth(combatant.State.Health - damage);
+            SyncFieldsFromCombatant();
             if (health <= 0) {
-                health = 0;
-                hp.text = health.ToString() + " out of " + totalHealth.ToString();
-                healthBar.setPercentageFilled(health / (totalHealth + 0f));
+                combatant.SetHealth(0);
+                SyncFieldsFromCombatant();
 
                 //lose
                 Debug.Log("You lose");
@@ -573,10 +664,9 @@ public class GridController : MonoBehaviour, PlayerController{
             }
         }
         else {
-            health = totalHealth;
+            combatant.SetHealth(combatant.State.MaxHealth);
+            SyncFieldsFromCombatant();
         }
-        hp.text = health.ToString() + " out of " + totalHealth.ToString();
-        healthBar.setPercentageFilled(health / (totalHealth + 0f));
     }
 
     public GameObject getPortrait() {
@@ -594,73 +684,42 @@ public class GridController : MonoBehaviour, PlayerController{
     }
 
     public void setMana(int id, int mana) {
-        switch (id) {
-            case (0):
-                setRedMana(mana);
-                break;
-            case (1):
-                setBlueMana(mana);
-                break;
-            case (2):
-                setYellowMana(mana);
-                break;
-        }
+        EnsureRuntimeCollections();
+        combatant.SetMana(id, mana);
+        SyncFieldsFromCombatant();
     }
 
     public int getMana(int id) {
-        switch (id) {
-            case (0):
-                return getRedMana();
-            case (1):
-                return getBlueMana();
-            case (2):
-                return getYellowMana();
-        }
-        return 0;
+        EnsureRuntimeCollections();
+        return combatant.GetMana(id);
     }
 
     public void setYellowMana(int mana) {
-        mana = mana > maxYellowMana ? maxYellowMana : mana;
-        yellowMana = mana >= 0 ? mana : 0;
-        yellowBar.setPercentageFilled(yellowMana / (maxYellowMana + 0f));
-        yellowManaTextBox.text = yellowMana.ToString() + "/" + maxYellowMana.ToString();
+        setMana((int)colorType.yellow, mana);
     }
     public void setBlueMana(int mana) {
-        mana = mana > maxBlueMana ? maxBlueMana : mana;
-        blueMana = mana >= 0 ? mana : 0;
-        blueBar.setPercentageFilled(blueMana / (maxBlueMana + 0f));
-        blueManaTextBox.text = blueMana.ToString() + "/" + maxBlueMana.ToString();
+        setMana((int)colorType.blue, mana);
     }
     public void setRedMana(int mana) {
-        if (mana > maxRedMana) {
-            redMana = maxRedMana;
-        }
-        else if (mana < 0) {
-            redMana = 0;
-        }
-        else {
-            redMana = mana;
-        }
-        redBar.setPercentageFilled(redMana / (maxRedMana + 0f));
-        redManaTextBox.text = redMana.ToString() + "/" + maxRedMana.ToString();
+        setMana((int)colorType.red, mana);
     }
 
     public void setMultiplier(float amount) {
-        amount = amount > maxMultiplier ? maxMultiplier : amount;
-        if (amount >= 1) {
-            damageMultiplier = amount;
-            multiplier.text = damageMultiplier.ToString() + "x";
-            multiplierBar.setPercentageFilled((damageMultiplier - 1) / (maxMultiplier - 1f));
-        }
+        EnsureRuntimeCollections();
+        combatant.SetMultiplier(amount);
+        SyncFieldsFromCombatant();
     }
     public int getRedMana() {
-        return redMana;
+        EnsureRuntimeCollections();
+        return combatant.GetMana((int)colorType.red);
     }
     public int getBlueMana() {
-        return blueMana;
+        EnsureRuntimeCollections();
+        return combatant.GetMana((int)colorType.blue);
     }
     public int getYellowMana() {
-        return yellowMana;
+        EnsureRuntimeCollections();
+        return combatant.GetMana((int)colorType.yellow);
     }
 
     //A player casts a spell assuming has ability to pay
@@ -675,11 +734,12 @@ public class GridController : MonoBehaviour, PlayerController{
         caster.setMana((int)colorType.yellow, caster.getMana((int)colorType.yellow) - spell.Costs[(int)colorType.yellow]);
         makeSplashText("Casting " + spell.Name, isTurn);
 
-        List<string> spellParameters = new List<string>(spell.Parameters.Split( '\n', '+' ));
+        new SpellEffectRunner((parameter) => ExecuteSpellCommand(parameter, spell, caster, target)).Execute(spell);
+    }
 
-        foreach (string parameter in spellParameters) {
-            List<string> actionAndParameters = new List<string>(parameter.Split(' '));
-            switch (actionAndParameters[0]) {
+    public void ExecuteSpellCommand(string parameter, Spell spell, PlayerController caster, PlayerController target) {
+        List<string> actionAndParameters = new List<string>(parameter.Split(' '));
+        switch (actionAndParameters[0]) {
                 case "dealDamage":
                     //Spells with this parameter deal parameter 1 of damage to the enemy
                     target.dealDamage(target.applyModifiersToDamageDone(int.Parse(actionAndParameters[1]), DamageType.spellDamage));
@@ -854,10 +914,9 @@ public class GridController : MonoBehaviour, PlayerController{
                 default:
                     Debug.Log("Hmm, bad parameter");
                     break;
-            }
         }
     }
-    private int countHeartPiecesTimes2() {
+    public int countHeartPiecesTimes2() {
         int sum = 0;
         foreach (Thing i in grid) {
             if (i.getType() == (int)type.health) {
@@ -866,10 +925,10 @@ public class GridController : MonoBehaviour, PlayerController{
         }
         return 2 * sum;
     }
-    private int tenthOfHealth() {
+    public int tenthOfHealth() {
         return health % 10;
     }
-    private int countHeartPieces() {
+    public int countHeartPieces() {
         int sum = 0;
         foreach (Thing i in grid) {
             if (i.getType() == (int)type.health) {
@@ -878,7 +937,7 @@ public class GridController : MonoBehaviour, PlayerController{
         }
         return sum;
     }
-    private int countRedManaPieces() {
+    public int countRedManaPieces() {
         int sum = 0;
         foreach (Thing i in grid) {
             if (i.getType() == (int)type.red) {
@@ -887,7 +946,7 @@ public class GridController : MonoBehaviour, PlayerController{
         }
         return sum;
     }
-    private int countBlueManaPieces() {
+    public int countBlueManaPieces() {
         int sum = 0;
         foreach (Thing i in grid) {
             if (i.getType() == (int)type.blue) {
@@ -896,7 +955,7 @@ public class GridController : MonoBehaviour, PlayerController{
         }
         return sum;
     }
-    private int countYellowManaPieces() {
+    public int countYellowManaPieces() {
         int sum = 0;
         foreach (Thing i in grid) {
             if (i.getType() == (int)type.yellow) {
@@ -905,7 +964,7 @@ public class GridController : MonoBehaviour, PlayerController{
         }
         return sum;
     }
-    private int countDamagePieces() {
+    public int countDamagePieces() {
         int sum = 0;
         foreach (Thing i in grid) {
             if (i.getType() == (int)type.damage) {
@@ -914,7 +973,7 @@ public class GridController : MonoBehaviour, PlayerController{
         }
         return sum;
     }
-    private int countMultiplierPieces() {
+    public int countMultiplierPieces() {
         int sum = 0;
         foreach (Thing i in grid) {
             if (i.getType() == (int)type.multiplier) {
@@ -1591,17 +1650,15 @@ public class GridController : MonoBehaviour, PlayerController{
             }
             if (typeCounts[5] != 0 && damageMultiplier + weapon.manaEffect(5, 0.2f * typeCounts[5]) <= maxMultiplier) {
                 float real = weapon.manaEffect(5, 0.2f * typeCounts[5]);
-                damageMultiplier += real;
+                setMultiplier(damageMultiplier + real);
                 makeSplashText("Multiplier +" + real, isTurn, Color.white);
                 playManaSound(5);
             }
             else if(damageMultiplier + weapon.manaEffect(5, 0.2f * typeCounts[5]) > maxMultiplier) {
                 makeSplashText("Multiplier +" + (maxMultiplier - damageMultiplier), isTurn, Color.white);
-                damageMultiplier = maxMultiplier;
+                setMultiplier(maxMultiplier);
                 playManaSound(5);
             }
-            multiplier.text = damageMultiplier.ToString() + "x";
-            multiplierBar.setPercentageFilled((damageMultiplier - 1) / (maxMultiplier - 1f));
         }
         else {
             gameObject.GetComponent<EnemyController>().scoreByAmount(typeCounts);
@@ -1673,124 +1730,17 @@ public class GridController : MonoBehaviour, PlayerController{
     }
 
     public List<Move> movesAtPoint(int i) {
-        List<Move> moves = new List<Move>();
-        int type = grid[i].getType();
-
-        List<int> pieces = new List<int>();
-        //Look Left Vertical
-        if (i % BOARDLENGTH != 0) {
-            
-            //Look up left
-            pieces.AddRange(movesAtPointHelperVertical (i, BOARDLENGTH, BOARDLENGTH - 1, type));
-            //Look down left
-            pieces.AddRange(movesAtPointHelperVertical(i, -BOARDLENGTH, -BOARDLENGTH - 1, type));
-            if (pieces.Count >= 2) {
-                moves.Add(new Move(i, i - 1, pieces.Count + 1, type));
-            }
-            pieces.Clear();
-        }
-        //Look Right Vertical
-        if (i % BOARDLENGTH != 7) {
-            //Look up right
-            pieces.AddRange(movesAtPointHelperVertical(i, BOARDLENGTH, BOARDLENGTH + 1, type));
-            //look down right
-            pieces.AddRange(movesAtPointHelperVertical(i, -BOARDLENGTH, -BOARDLENGTH + 1, type));
-            if (pieces.Count >= 2) {
-                moves.Add(new Move(i, i + 1, pieces.Count + 1, type));
-            }
-            pieces.Clear();
-        }
-
-        //Look Top Horizontal
-        if (i < BOARDLENGTH * BOARDLENGTH - BOARDLENGTH) {
-            int displacement = 7;
-            //look up left
-            while (i + displacement >= (i / BOARDLENGTH + 1) * (BOARDLENGTH) && grid[i + displacement].getType() == type) {
-                pieces.Add(i + displacement);
-                displacement -= 1;
-            }
-            //look up right
-            displacement = 9;
-            while (i + displacement < (i / BOARDLENGTH + 2) * (BOARDLENGTH) && grid[i + displacement].getType() == type ) {
-                pieces.Add(i + displacement);
-                displacement += 1;
-            }
-            if (pieces.Count >= 2) {
-                moves.Add(new Move(i, i + BOARDLENGTH, pieces.Count + 1, type));
-            }
-            pieces.Clear();
-        }
-        //Look Bottom Horizontal
-        if (i >= BOARDLENGTH) {
-            int displacement = -9;
-            //look down left
-            while (i + displacement >= (i / BOARDLENGTH - 1) * BOARDLENGTH && grid[i + displacement].getType() == type) {
-                pieces.Add(i + displacement);
-                displacement -= 1;
-            }
-            //look down right
-            displacement = -7;
-            while (i + displacement < (i / BOARDLENGTH) * BOARDLENGTH && grid[i + displacement].getType() == type) {
-                pieces.Add(i + displacement);
-                displacement += 1;
-            }
-            if (pieces.Count >= 2) {
-                moves.Add(new Move(i, i - BOARDLENGTH, pieces.Count + 1, type));
-            }
-            pieces.Clear();
-        }
-
-        //Look up
-        if (getLowerHorizontalBound(i) < BOARDLENGTH * BOARDLENGTH - 3 * BOARDLENGTH) {
-            int displacement = BOARDLENGTH * 2;
-            while (i + displacement < BOARDLENGTH * BOARDLENGTH && grid[i + displacement].getType() == type) {
-                pieces.Add(i + displacement);
-                displacement += BOARDLENGTH;
-            }
-            if (pieces.Count >= 2) {
-                moves.Add(new Move(i, i + BOARDLENGTH, pieces.Count + 1, type));
-            }
-            pieces.Clear();
-        }
-        //Look down
-        if (getLowerHorizontalBound(i) >= 3 * BOARDLENGTH) {
-            int displacement = -BOARDLENGTH * 2;
-            while (i + displacement >= 0 && grid[i + displacement].getType() == type) {
-                pieces.Add(i + displacement);
-                displacement -=BOARDLENGTH;
-            }
-            if (pieces.Count >= 2) {
-                moves.Add(new Move(i, i - BOARDLENGTH, pieces.Count + 1, type));
-            }
-            pieces.Clear();
-        }
-        //Look right
-        if (getUpperHorizontalBound(i) >= i + 3) {
-            int displacement = 2;
-            while (i + displacement < getUpperHorizontalBound(i) && grid[i + displacement].getType() == type) {
-                pieces.Add(i + displacement);
-                displacement += 1;
-            }
-            if (pieces.Count >= 2) {
-                moves.Add(new Move(i, i + 1, pieces.Count + 1, type));
-            }
-            pieces.Clear();
-        }
-        //Look left
-        if (getLowerHorizontalBound(i) <= i - 3) {
-            int displacement = -2;
-            while (i + displacement >= getLowerHorizontalBound(i) && grid[i + displacement].getType() == type) {
-                pieces.Add(i + displacement);
-                displacement -= 1;
-            }
-            if (pieces.Count >= 2) {
-                moves.Add(new Move(i, i - 1, pieces.Count + 1, type));
-            }
-            pieces.Clear();
-        }
-
-        return moves;
+        return CreateMatchBoard().FindMovesAtPoint(i);
     }
+
+    private MatchBoard CreateMatchBoard() {
+        List<int> types = new List<int>(grid.Count);
+        foreach (Thing thing in grid) {
+            types.Add(thing.getType());
+        }
+        return new MatchBoard(types, BOARDLENGTH);
+    }
+
     //Returns the position of the first grid element in the row
     private int getLowerHorizontalBound(int position) {
         return (position / BOARDLENGTH) * BOARDLENGTH;
@@ -1899,589 +1849,4 @@ public class GridController : MonoBehaviour, PlayerController{
 
     }
 
-}
-
-public class Thing {
-    private GameObject boardPiece;
-    private int type;
-    private bool isSuperPiece;
-
-    public Thing(ref GameObject bp, int t) {
-        boardPiece = bp;
-        type = t;
-        isSuperPiece = false;
-    }
-
-    public ref GameObject getObject() {
-        return ref boardPiece;
-    }
-
-    public int getType() {
-        return type;
-    }
-
-    public void setObject(ref GameObject bp) {
-        boardPiece = bp;
-    }
-
-    public void setType(int t) {
-        type = t;
-    }
-
-    public void setIsSuperPiece(bool pieceStatus) {
-        isSuperPiece = pieceStatus;
-    }
-
-    public bool getIsSuperPiece() {
-        return isSuperPiece;
-    }
-
-}
-
-public enum DamageType {
-    spellDamage,
-    matchDamage,
-    statusEffectDamage
-}
-
-public enum colorType { 
-    red,
-    blue,
-    yellow,
-    damage,
-    health,
-    multiplier
-}
-
-//Interface for dealing with players, AI or human
-public interface PlayerController {
-    int applyModifiersToDamageDone(int amount, DamageType damageType);
-    void dealDamage(int damage);
-    GameObject getPortrait();
-    void setMana(int id, int mana);
-    void setMultiplier(float amount);
-    int getMana(int id);
-    void addStatusEffect(StatusEffect effect);
-}
-
-public class Combat {
-    List<string> enemies;
-    List<string> weapons;
-    List<string> portraits;
-    List<string> tutorials;
-    string nextDialogue;
-    int round;
-    bool isSolo = false;
-    string soloArguments = "";
-    string companion = "none";
-
-    public Combat(string combatFile) {
-        TextAsset combat = Resources.Load<TextAsset>("Combats/" + combatFile);
-        List<string> lines = new List<string>(combat.text.Split('\n'));
-        enemies = new List<string>();
-        weapons = new List<string>();
-        portraits = new List<string>();
-        tutorials = new List<string>();
-
-        foreach (string line in lines) {
-            string[] lineParts = line.Split(':');
-            if (lineParts[0] == "enemy")
-            {
-                string[] enemyNames = lineParts[1].Split(',');
-                foreach (string name in enemyNames)
-                {
-                    enemies.Add(name.Trim());
-                }
-
-                //enemies.Add(int.Parse(enemyParts[0]));
-                //weapons.Add(int.Parse(enemyParts[1]));
-                //if (enemyNames.Length > 2) { portraits.Add(enemyParts[2].Trim()); }
-                //else { portraits.Add(""); }
-                portraits.Add("");
-            }
-            else if (lineParts[0] == "weapons") {
-                string[] weaponNames = lineParts[1].Split(',');
-                foreach (string name in weaponNames)
-                {
-                    weapons.Add(name.Trim());
-                }
-            }
-            else if (lineParts[0] == "dialogue")
-            {
-                nextDialogue = lineParts[1].Trim();
-            }
-            else if (lineParts[0] == "solo")
-            {
-                isSolo = true;
-                soloArguments = lineParts[1];
-            }
-            else if (lineParts[0] == "companion")
-            {
-                companion = lineParts[1].Trim();
-            }
-            else if (lineParts[0] == "tutorial")
-            {
-                tutorials.Add(lineParts[1].Trim());
-            }
-        }
-        round = 0;
-    }
-
-    public string getEnemy(int round) {
-        if (round >= enemies.Count) {
-            return "";
-        }
-        else {
-            return enemies[round];
-        }
-    }
-    public string getWeapon(int round) {
-        if (round >= enemies.Count) {
-            return "";
-        }
-        else {
-            return weapons[round];
-        }
-    }
-
-    public string getPortrait(int round) {
-        if (round >= enemies.Count) {
-            return "";
-        }
-        else {
-            return portraits[round];
-        }
-    }
-
-    public void advanceRound() {
-        round++;
-    }
-
-    public int getRound() {
-        return round;
-    }
-
-    public bool getIsSolo() {
-        return isSolo;
-    }
-
-    public string getSoloArguments() {
-        return soloArguments;
-    }
-
-    public string getNextDialogue() {
-        return nextDialogue;
-    }
-
-    public int getTotalRounds() {
-        if (!isSolo) {
-            return enemies.Count;
-        }
-        else {
-            return 1;
-        }
-    }
-
-    public string getCompanion() {
-        return companion;
-    }
-
-    public void removeCompanion() {
-        companion = "none";
-    }
-
-    public List<string> getTutorials() {
-        return tutorials;
-    }
-
-}
-
-public class Companion{
-    public string name;
-    public string companionChangeoverDialogue;
-    public int hp;
-    public int maxRedMana;
-    public int maxBlueMana;
-    public int maxYellowMana;
-    public int weapon;
-    public int[] spells;
-
-    public Companion(string name, string companionChangeoverDialogue, int hp, int maxRedMana, int maxBlueMana, int maxYellowMana, int weapon, int[] spells) {
-        this.name = name;
-        this.companionChangeoverDialogue = companionChangeoverDialogue;
-        this.hp = hp;
-        this.maxRedMana = maxRedMana;
-        this.maxBlueMana = maxBlueMana;
-        this.maxYellowMana = maxYellowMana;
-        this.weapon = weapon;
-        this.spells = spells;
-    }
-}
-
-public class StatusEffect : TemporaryEffect {
-
-    public GameObject indicator;
-    public bool affectedParty; //false is enemy, true for player
-    public TooltipHandler tooltipHandler;
-    int turns;
-
-
-    public StatusEffect(GameObject i, bool ap, int t) {
-        indicator = i;
-        affectedParty = ap;
-        turns = t;
-        tooltipHandler = i.GetComponent<TooltipHandler>();
-        if (affectedParty) {
-            tooltipHandler.setPosition(new Vector3(100, 0f));
-        }
-        else {
-            tooltipHandler.setPosition(new Vector3(-100, 0f));
-        }
-        updateIndicator();
-    }
-
-    public void decrementTurns() {
-        setTurns(getTurns() - 1);
-    }
-
-    public bool getAffectedParty() {
-        return affectedParty;
-    }
-
-    public GameObject getIndicator() {
-        return indicator;
-    }
-
-    public int getTurns() {
-        return turns;
-    }
-
-    public void setTurns(int turns) {
-        this.turns = turns;
-    }
-
-    public virtual string updateIndicator() {
-        return "";
-    }
-}
-
-//Defines all extra status effects that don't have space to display
-public class Etcetera{
-
-    public List<StatusEffect> extraStatusEffects;
-    bool affectedParty; //True for player, false for enemy
-    GameObject indicator;
-    public TooltipHandler tooltipHandler;
-
-    public Etcetera(GameObject i, bool ap) {
-        extraStatusEffects = new List<StatusEffect>();
-        indicator = i;
-        affectedParty = ap;
-
-        if (i) { 
-            tooltipHandler = i.GetComponent<TooltipHandler>();
-            if (affectedParty) {
-                tooltipHandler.setPosition(new Vector3(2.3f, 0f));
-            }
-            else {
-                tooltipHandler.setPosition(new Vector3(-2.3f, 0f));
-            }
-        }
-    }
-
-    public void updateIndicator() {
-        string tooltip = "";
-        foreach (StatusEffect i in extraStatusEffects) {
-            tooltip += i.updateIndicator() + "\n";
-        }
-        tooltipHandler.setText(tooltip);
-    }
-
-    public void enqueue(StatusEffect effect) {
-        //Adds a new status effect to this queue
-        extraStatusEffects.Add(effect);
-        
-    }
-
-    public GameObject getIndicator() {
-        return indicator;
-    }
-
-    public void clearIndicator() {
-        indicator = null;
-    }
-
-
-    public void clear() {
-        extraStatusEffects.Clear();
-    }
-
-}
-
-public class Poison : StatusEffect, EffectEveryTurn {
-
-    int damage;
-
-    public Poison(GameObject i, bool ap, int t, int damage) : base(i, ap, t) {
-        this.damage = damage;
-        i.GetComponent<Image>().sprite = Resources.Load<Sprite>("StatusEffects/Poison");
-    }
-
-    public void performEffect() {
-        Debug.Log("Dealing Poison damage");
-        if (affectedParty) {
-            GameObject.Find("Grid").GetComponent<GridController>().dealDamage(GameObject.Find("Grid").GetComponent<GridController>().applyModifiersToDamageDone(damage, DamageType.statusEffectDamage));
-            GridController.makeSplashText(damage + " Poison Damage", true);
-        }
-        else {
-            GameObject.Find("Grid").GetComponent<EnemyController>().dealDamage(GameObject.Find("Grid").GetComponent<EnemyController>().applyModifiersToDamageDone(damage, DamageType.statusEffectDamage));
-            GridController.makeSplashText(damage + " Poison Damage", false);
-        }
-    }
-
-    public override string updateIndicator() {
-        string tooltip = "Damage per turn: " + damage + "\nTurns Remaining: " + getTurns();
-        tooltipHandler.setText(tooltip);
-        return tooltip;
-    }
-
-}
-
-public class Seal : StatusEffect, EffectEveryTurn
-{
-    //potency unused
-    public Seal(GameObject i, bool ap, int t, int p) : base(i, ap, t) {
-        i.GetComponent<Image>().sprite = Resources.Load<Sprite>("StatusEffects/Seal");
-    }
-
-    public void performEffect() {
-        //Doesn't have actual effect, turning on spells checks for existence of seal
-
-        if (affectedParty) {
-            GameObject.Find("Grid").GetComponent<GridController>().turnOffSpells();
-            //GameObject.Find("Grid").GetComponent<GridController>().dealDamage(GameObject.Find("Grid").GetComponent<GridController>().applyModifiersToDamageDone(damage, DamageType.statusEffectDamage));
-            //GridController.makeSplashText(damage + " Poison Damage", true);
-        }
-        else {
-            //GameObject.Find("Grid").GetComponent<EnemyController>().dealDamage(GameObject.Find("Grid").GetComponent<EnemyController>().applyModifiersToDamageDone(damage, DamageType.statusEffectDamage));
-            //GridController.makeSplashText(damage + " Poison Damage", false);
-        }
-    }
-
-    public override string updateIndicator() {
-        string tooltip = "Prevents spell use\nTurns Remaining: " + getTurns();
-        tooltipHandler.setText(tooltip);
-        return tooltip;
-    }
-
-}
-
-public class Shield : StatusEffect, DamageReductionEffect {
-
-    int prevented;
-
-    public Shield(GameObject i, bool ap, int t, int p) : base(i, ap, t) {
-        prevented = p;
-        i.GetComponent<Image>().sprite = Resources.Load<Sprite>("StatusEffects/Shield");
-
-    }
-
-    public int modifyDamage(int preProcessedDamage) {
-        int processedDamage = preProcessedDamage;
-        if (preProcessedDamage >= 0) {
-            processedDamage = preProcessedDamage - prevented >= 0 ? preProcessedDamage - prevented : preProcessedDamage;
-        }
-        return processedDamage;
-    }
-
-    public override string updateIndicator() {
-        string tooltip = "Prevents " + prevented + " damage taken\nTurns Remaining: " + getTurns();
-        tooltipHandler.setText(tooltip);
-        return tooltip;
-    }
-}
-
-public class DamageBuff : StatusEffect, DamageIncreaseEffect {
-    int added;
-
-    public DamageBuff(GameObject i, bool ap, int t, int p) : base(i, ap, t) {
-        added = p;
-        i.GetComponent<Image>().sprite = Resources.Load<Sprite>("StatusEffects/DamageBuff");
-    }
-
-    public int modifyDamage(int preProcessedDamage) {
-        int processedDamage = preProcessedDamage >= 0 ? preProcessedDamage + added : preProcessedDamage;
-        return processedDamage;
-    }
-
-    public override string updateIndicator() {
-        string tooltip = "Adds " + added + " to damage dealt\nTurns Remaining: " + getTurns();
-        tooltipHandler.setText(tooltip);
-        return tooltip;
-    }
-}
-
-public class SpellDamageBuff : StatusEffect, SpellDamageIncreaseEffect
-{
-    int added;
-
-    public SpellDamageBuff(GameObject i, bool ap, int t, int p) : base(i, ap, t) {
-        added = p;
-        i.GetComponent<Image>().sprite = Resources.Load<Sprite>("StatusEffects/DamageBuff");
-    }
-
-    public int modifyDamage(int preProcessedDamage) {
-        int processedDamage = preProcessedDamage >= 0 ? preProcessedDamage + added : preProcessedDamage;
-        return processedDamage;
-    }
-
-    public override string updateIndicator() {
-        string tooltip = "Adds " + added + " to spell damage dealt\nTurns Remaining: " + getTurns();
-        tooltipHandler.setText(tooltip);
-        return tooltip;
-    }
-}
-
-public class DoubleDamage : StatusEffect, DamageIncreaseEffect
-{
-    //potency unused
-    public DoubleDamage(GameObject i, bool ap, int t, int p) : base(i, ap, t) {
-        i.GetComponent<Image>().sprite = Resources.Load<Sprite>("StatusEffects/DoubleDamage");
-    }
-
-    public int modifyDamage(int preProcessedDamage) {
-        int processedDamage = preProcessedDamage >= 0 ? preProcessedDamage * 2 : preProcessedDamage;
-        return processedDamage;
-    }
-
-    public override string updateIndicator() {
-        string tooltip = "Doubles damage dealt\nTurns Remaining: " + getTurns();
-        tooltipHandler.setText(tooltip);
-        return tooltip;
-    }
-}
-public class DamageDebuff : StatusEffect, DamageIncreaseEffect
-{
-    int subtracted;
-
-    public DamageDebuff(GameObject i, bool ap, int t, int p) : base(i, ap, t) {
-        subtracted = p;
-        i.GetComponent<Image>().sprite = Resources.Load<Sprite>("StatusEffects/DamageDebuff");
-    }
-
-    public int modifyDamage(int preProcessedDamage) {
-        int processedDamage = preProcessedDamage >= 0 ? preProcessedDamage - subtracted : preProcessedDamage;
-        processedDamage = processedDamage >= 0 ? processedDamage : preProcessedDamage;
-        return processedDamage;
-    }
-
-    public override string updateIndicator() {
-        string tooltip = "Subtracts " + subtracted + " to damage dealt\nTurns Remaining: " + getTurns();
-        tooltipHandler.setText(tooltip);
-        return tooltip;
-    }
-}
-
-public class DoublingSeason : StatusEffect, ScoreChangeEffect {
-    //potency unused
-    public DoublingSeason(GameObject i, bool ap, int t, int p) : base(i, ap, t) {
-        i.GetComponent<Image>().sprite = Resources.Load<Sprite>("StatusEffects/DoublingSeason");
-    }
-
-    public int modifyScore(int preProcessedScore, int type) {
-        if (type < 3 || type == 5) {
-            return 2 * preProcessedScore;
-        }
-        return preProcessedScore;
-    }
-    public override string updateIndicator() {
-        string tooltip = "Doubles mana and multiplier gain\nTurns Remaining: " + getTurns();
-        tooltipHandler.setText(tooltip);
-        return tooltip;
-    }
-}
-
-public class ScoreReductionEffect : StatusEffect, ScoreChangeEffect
-{
-    int subtracted;
-
-    public ScoreReductionEffect(GameObject i, bool ap, int t, int p) : base(i, ap, t) {
-        subtracted = p;
-        i.GetComponent<Image>().sprite = Resources.Load<Sprite>("StatusEffects/ScoreReduction");
-    }
-
-    public int modifyScore(int preProcessedScore, int type) {
-        if (type < 3 || type == 5) {
-            return preProcessedScore - subtracted >= 0 ? preProcessedScore - subtracted : preProcessedScore;
-        }
-        return preProcessedScore;
-    }
-    public override string updateIndicator() {
-        string tooltip = "Reduces mana and multiplier gain by "+subtracted +"\nTurns Remaining: " + getTurns();
-        tooltipHandler.setText(tooltip);
-        return tooltip;
-    }
-}
-
-public class HealingBuff : StatusEffect, ScoreChangeEffect {
-    int added;
-
-    public HealingBuff(GameObject i, bool ap, int t, int p) : base(i, ap, t) {
-        added = p;
-        i.GetComponent<Image>().sprite = Resources.Load<Sprite>("StatusEffects/HealingBuff");
-    }
-
-    public int modifyScore(int preProcessedScore, int type) {
-        if (type == 4) {
-            return added + preProcessedScore;
-        }
-        return preProcessedScore;
-    }
-    public override string updateIndicator() {
-        string tooltip = "Adds " + added + " to healing done\nTurns Remaining: " + getTurns();
-        tooltipHandler.setText(tooltip);
-        return tooltip;
-    }
-}
-
-
-
-
-//Effects that decay and have effects every turn
-public interface EffectEveryTurn : TemporaryEffect {
-    void performEffect();
-}
-
-//Effects that decrease damage taken
-public interface DamageReductionEffect : TemporaryEffect {
-    int modifyDamage(int preProcessedDamage);
-}
-
-//Effects that increase damage dealt
-public interface DamageIncreaseEffect : TemporaryEffect {
-    int modifyDamage(int preProcessedDamage);
-}
-
-//Effects that increase spell damage dealt
-public interface SpellDamageIncreaseEffect : TemporaryEffect
-{
-    int modifyDamage(int preProcessedDamage);
-}
-
-public interface SpellDamageDecreaseEffect : TemporaryEffect
-{
-    int modifyDamage(int preProcessedDamage);
-}
-
-public interface ScoreChangeEffect : TemporaryEffect {
-    int modifyScore(int preProcessedScore, int type);
-}
-
-
-//Effects that decay, but don't necessarily have effects that trigger every turn
-public interface TemporaryEffect {
-    bool getAffectedParty();
-    int getTurns();
-    void decrementTurns();
-    GameObject getIndicator();
 }

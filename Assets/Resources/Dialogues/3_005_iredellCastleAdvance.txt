@@ -16,5 +16,52 @@ ann:Well then, you may begin firing when ready.
 jay:As you wish Milady.
 |exit jay left
 |enter gabriella -7 -1
-gabriella:The cannons - they were terribly loud.
-ann:I know, the only solace I had was that I knew they were on our side.
+gabriella:Are you hearing that sound?  Actually, I think my ears are ringing...
+ann:Yeah, it was crazy loud.  Each barrage made me fear for my life even though I knew they were on our side.
+gabriella:I can't imagine how it would have felt for them.
+|transition castleExteriorIredell
+|translate gabriella -30 -1
+|enter clarissa -6 -1
+ :Steady salvos ring in the background.  One after another, cannonballs sink holes into the walls of Castle Iredell, accruing more and more damage.
+ann:And so begins the waiting game...
+clarissa:Perhaps, but I would contend that this is the most interesting part.
+ann:Why?  Jay said it'll take a whole day of constant fire, which means we know nothing interesting is going to happen until afternoon tomorrow at least.
+clarissa:Interesting is a matter of perspective.  For you, perhaps leading our troops into battle is the more "interesting" part, but for me, I'm watching weeks of work pay off.
+ann:We've all been working hard these last weeks to get our forces here, so I would say we're all watching our work pay off.  I had to learn artillery drills and run formations.
+clarissa:Yes, but that's an incremental skill with an arguably guaranteed outcome.  I'm watching a gamble play out.
+ann:A gamble in that we're engaging in dubiously sanctioned warfare?
+clarissa:That's true, but we're all making that gamble.  My gamble is far more... specific.  Each time I hear the cannons go off, that's one closer to depletion of our stocks.  I'm seeing if my logistical planning is working, because it's too late to go back and order more cannonballs.
+ann:Ah, the bean counting game.
+clarissa:I made all my calculations with Sir Jay's estimates plus a bit of margin for error.  I wonder, though, if that margin is enough.  You may wonder if we can win the battle of swords and spears, but I wonder if the ratio of powder to cannonballs is correct.  I'll be checking with the crews on that tonight.
+ann:You really enjoy that, huh.
+clarissa:It's what I'm good at.
+ann:That wasn't a yes.
+clarissa:Oh I do enjoy it.  After all, we could instead have ordered double the amount of powder and cannonballs, but that would have delayed us a week and forced us to commit more resources to transport.  The balancing act is quite an interesting problem, but I understand that that may not be a popular opinion.
+ann:Regardless of popularity, I am thankful you think that way right now.
+clarissa:So, you're not thankful for the work I did, but to the cosmic dice of the universe for shaping my personality?
+ann:Hey, I'm thankful to you too to be clear.
+clarissa:I know, I jest.  It's nice to know you appreciate my work.  Marquess Blair always took me for granted.  Taney was better, but, in hindsight, not by much.  Maybe it's because you're a commoner like me, but you don't feel as distant as they did.
+ann:Well not anymore, technically.
+clarissa:And we're trying to get Lady Iredell to recognize that, yes, but you know what I mean.
+ann:That I do.  
+|transition castleExteriorIredell
+|translate clarissa -30 -1
+|enter jay 7 -1
+|translate ann -12 -1
+|translate gabriella -6 -1
+ :The next afternoon...
+ann:How long now?
+jay:Not long.  They just withdrew the archers from the parapets - that means they think it's about to break.
+gabriella:Phew.  The tension of just waiting and not knowing was starting to get to me.
+jay:This is nothing.  There were fortifications in the old lands that were built more recently that took weeks of continuous fire to break down.
+gabriella:Well I'm glad I wasn't there.
+jay:Yes, the artillery crews thought they were close the whole last week of this one seige, but we ended up just standing in formation for days until it finally broke.
+ann:Youch.
+jay:The longer it goes, the more your nerve is worn down.  I hope it is soon, because with these mercenaries, I can't guarantee their discipline.
+ann:Well, they get paid the same either way, so -
+ :Suddenly, the roar of stones falling overshadows all other sounds as a large section of Castle Iredell crumbles in a grand display of dust and debris.
+jay:You should order the attack.
+ann:Always me, huh.
+jay:As Marchioness, it is your duty and right.
+ann:Then onwards, to victory!
+|combat 3_005_iredellCastleAdvanceCombat

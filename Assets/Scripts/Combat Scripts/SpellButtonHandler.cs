@@ -45,13 +45,14 @@ public class SpellButtonHandler : MonoBehaviour
 
         Debug.Log("Casting: " + spell.Name);
         //Check Costs and cast spell
-        GridController gridController = GameObject.Find("Grid").GetComponent<GridController>();
-        EnemyController enemyController = GameObject.Find("Grid").GetComponent<EnemyController>();
+        CombatSceneRefs refs = CombatSceneRefs.Instance;
+        GridController gridController = refs != null ? refs.Grid : GameObject.Find("Grid").GetComponent<GridController>();
+        EnemyController enemyController = refs != null ? refs.Enemy : GameObject.Find("Grid").GetComponent<EnemyController>();
 
-        if (gameObject.tag == "player" && GameObject.Find("Grid").GetComponent<GridController>().checkCosts(spell.Costs)) {
+        if (gameObject.tag == "player" && gridController.checkCosts(spell.Costs)) {
             gridController.castSpell(spell, gridController, enemyController);
         }
-        else if (gameObject.tag == "enemy" && GameObject.Find("Grid").GetComponent<EnemyController>().checkCosts(spell.Costs)) {
+        else if (gameObject.tag == "enemy" && enemyController.checkCosts(spell.Costs)) {
             gridController.castSpell(spell, enemyController, gridController);
         }
     }

@@ -1,0 +1,7 @@
+|ann -6 -1,jay 7 -1
+|setBackground castleCourtyardIredell
+jay:They're retreating to the main hall, or at least those are the defense plans I drew up for the Countess.
+ann:It really is lucky we have you here, huh?
+jay:Absolutely.  I've been roughly planning how I would do this for a long time.  We just need to cut off the 2 main hallways.  I'll take the right, you take the left, er, if you so wish, Milady.
+ann:I'm not going to go against your advice for invading your own home.  Let's do it.
+|combat 3_006_iredellCastleCourtyardCombat

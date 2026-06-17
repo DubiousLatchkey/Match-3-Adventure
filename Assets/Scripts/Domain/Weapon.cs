@@ -1,6 +1,4 @@
-﻿using System.IO;
-using System.Xml.Serialization;
-using UnityEngine;
+﻿using UnityEngine;
 
 public enum WeaponType {
     eot, //Effects: [0=damage - 1-3 = red-blue-green mana - 4=healing, amount, TBD]
@@ -14,17 +12,12 @@ public enum WeaponType {
 
 public class Weapon {
 
-    [XmlAttribute("name")]
     public string Name;
 
-    [XmlArray("effects")]
-    [XmlArrayItem("effect")]
     public int[] Effects = new int[3];
 
-    [XmlAttribute("weaponType")]
     public WeaponType Type;
 
-    [XmlAttribute("tooltip")]
     public string Tooltip;
 
     public Weapon(string n, int[] e, WeaponType t, string tt) {
@@ -120,43 +113,3 @@ public class Weapon {
 
 }
 
-[XmlRoot("WeaponCollection")]
-public class WeaponContainer {
-    [XmlArray("Weapons")]
-    [XmlArrayItem("Weapon")]
-    public Weapon[] Weapons;
-
-    public WeaponContainer() {
-        Weapons = new Weapon[8];
-    }
-
-    public WeaponContainer(int count) {
-        Weapons = new Weapon[count];
-    }
-
-    public void Save(string path) {
-        var serializer = new XmlSerializer(typeof(WeaponContainer));
-        using (var stream = new FileStream(path, FileMode.Create)) {
-            serializer.Serialize(stream, this);
-        }
-    }
-
-    public static WeaponContainer Load(string path) {
-        WeaponContainer resourceContainer = WeaponContentLoader.LoadContainer();
-        if (resourceContainer.Weapons.Length > 0) {
-            return resourceContainer;
-        }
-
-        var serializer = new XmlSerializer(typeof(WeaponContainer));
-        using (var stream = new FileStream(path, FileMode.Open)) {
-            return serializer.Deserialize(stream) as WeaponContainer;
-        }
-    }
-
-    //Loads the xml directly from the given string. Useful in combination with www.text.
-    public static WeaponContainer LoadFromText(string text) {
-        var serializer = new XmlSerializer(typeof(WeaponContainer));
-        return serializer.Deserialize(new StringReader(text)) as WeaponContainer;
-    }
-
-}

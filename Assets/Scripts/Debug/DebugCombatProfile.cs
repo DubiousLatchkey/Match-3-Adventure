@@ -9,9 +9,10 @@ public sealed class DebugCombatProfile : ScriptableObject {
     public int maxYellowMana = 99;
     public string equippedWeaponName = "";
     public string[] equippedSpellNames = new string[] {
-        "Fireball",
-        "Coin Flip",
-        "Field Disruption"
+        "Swap",
+        "The Four Winds",
+        "Crooked Gale",
+        "Gathering Storm"
     };
 
     [Header("Dummy Enemy")]

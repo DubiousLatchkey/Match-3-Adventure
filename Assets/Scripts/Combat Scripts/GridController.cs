@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -21,6 +20,11 @@ public class GridController : MonoBehaviour, PlayerController{
     private static float[] probabilities = { 21, 21, 21, 15, 15, 7 };
 
     Spell currentSpell;
+    PlayerController currentSpellCaster;
+    PlayerController currentSpellTarget;
+    List<string> pendingSpellParameters;
+    int pendingSpellParameterIndex;
+    int lastSpellDestroyedCount;
     List<Thing> grid;
     public const int BOARDLENGTH = 8;
     public const float maxMultiplier = 2f;
@@ -61,6 +65,7 @@ public class GridController : MonoBehaviour, PlayerController{
 
     List<Button> equippedSpells;
     List<StatusEffect> statusEffects;
+    List<int> selectedSpellTargets;
     Etcetera extraStatusEffects;
 
     public Weapon weapon;
@@ -94,6 +99,9 @@ public class GridController : MonoBehaviour, PlayerController{
         }
         if (toDestroy == null) {
             toDestroy = new SortedSet<int>();
+        }
+        if (selectedSpellTargets == null) {
+            selectedSpellTargets = new List<int>();
         }
         if (weapon == null) {
             weapon = new Weapon();
@@ -156,6 +164,11 @@ public class GridController : MonoBehaviour, PlayerController{
         isCasting = false;
         transitioning = false;
         currentSpell = null;
+        currentSpellCaster = null;
+        currentSpellTarget = null;
+        pendingSpellParameters = null;
+        pendingSpellParameterIndex = 0;
+        lastSpellDestroyedCount = 0;
         turnNumber = 0;
         toDelete = new SortedSet<int>();
         toDestroy = new SortedSet<int>();
@@ -164,6 +177,7 @@ public class GridController : MonoBehaviour, PlayerController{
         grid = new List<Thing>();
         audio = GetComponent<AudioSource>();
         statusEffects = new List<StatusEffect>();
+        selectedSpellTargets = new List<int>();
         extraStatusEffects = new Etcetera(null, false);
         moves = new List<Move>();
         extraTurn = false;
@@ -281,12 +295,10 @@ public class GridController : MonoBehaviour, PlayerController{
 
         //Getting and assigning spells
         equippedSpells = new List<Button>();
-        SpellContainer spells = SpellContainer.Load(Path.Combine(Application.persistentDataPath, "spells.xml"));
+        List<Spell> spellsList = SpellContentLoader.LoadSpells();
         equippedSpells = new List<Button>(new Button[5]);
-        List<Spell> spellsList = new List<Spell>(spells.spells);
 
         for (int i = 0; i < spellsList.Count; i++) {
-            //Debug.Log(SaveGameService.GetInt(spells.spells[i].Name, 0));
             int spellStatus = SaveGameService.GetInt(spellsList[i].Name, 0);
             if (spellStatus > 0 && spellStatus < 6) { //1 -5 for order of spells, 6 for available but not equipped
                 //equippedSpells.Add(Instantiate(Resources.Load<Button>("SpellButton"), GameObject.Find("paperback").transform));
@@ -314,8 +326,8 @@ public class GridController : MonoBehaviour, PlayerController{
 
         //Get weapon
         weapon = new Weapon();
-        WeaponContainer weapons = WeaponContainer.Load(Path.Combine(Application.persistentDataPath, "weapons.xml"));
-        foreach (Weapon i in weapons.Weapons) {
+        List<Weapon> weapons = WeaponContentLoader.LoadWeapons();
+        foreach (Weapon i in weapons) {
             if (SaveGameService.GetInt(i.Name, 0) == 2) { //2 for equipped, 1 for own but not equipped, 0 for not owned
                 weapon = i;
                 break;
@@ -417,16 +429,15 @@ public class GridController : MonoBehaviour, PlayerController{
 
         //Getting and assigning spells
         equippedSpells = new List<Button>();
-        SpellContainer spells = SpellContainer.Load(Path.Combine(Application.persistentDataPath, "spells.xml"));
+        List<Spell> spells = SpellContentLoader.LoadSpells();
         equippedSpells = new List<Button>(new Button[5]);
 
-        for (int i = 0; i < spells.spells.Length; i++) {
-            //Debug.Log(SaveGameService.GetInt(spells.spells[i].Name, 0));
-            int spellStatus = SaveGameService.GetInt(spells.spells[i].Name, 0);
+        for (int i = 0; i < spells.Count; i++) {
+            int spellStatus = SaveGameService.GetInt(spells[i].Name, 0);
             if (spellStatus > 0 && spellStatus < 6) { //1 -5 for order of spells, 6 for available but not equipped
                 //equippedSpells.Add(Instantiate(Resources.Load<Button>("SpellButton"), GameObject.Find("paperback").transform));
                 equippedSpells[spellStatus - 1] = (Instantiate(Resources.Load<Button>("SpellButton"), GameObject.Find("paperback").transform));
-                equippedSpells[spellStatus - 1].GetComponent<SpellButtonHandler>().setSpell(spells.spells[i]);
+                equippedSpells[spellStatus - 1].GetComponent<SpellButtonHandler>().setSpell(spells[i]);
 
                 //equippedSpells[spellStatus - 1].transform.localScale = new Vector3(0.02f, 0.02f);
                 //equippedSpells[spellStatus - 1].transform.localPosition = new Vector3(0, -(spellStatus - 1), 0);
@@ -449,8 +460,8 @@ public class GridController : MonoBehaviour, PlayerController{
 
         //Get weapon
         weapon = new Weapon();
-        WeaponContainer weapons = WeaponContainer.Load(Path.Combine(Application.persistentDataPath, "weapons.xml"));
-        foreach (Weapon i in weapons.Weapons) {
+        List<Weapon> weapons = WeaponContentLoader.LoadWeapons();
+        foreach (Weapon i in weapons) {
             if (SaveGameService.GetInt(i.Name, 0) == 2) { //2 for equipped, 1 for own but not equipped, 0 for not owned
                 weapon = i;
                 break;
@@ -510,7 +521,7 @@ public class GridController : MonoBehaviour, PlayerController{
         combatant.SetIdentity(char.ToUpper(companion.name[0]) + companion.name.Substring(1), totalHealth, maxRedMana, maxBlueMana, maxYellowMana);
         SyncFieldsFromCombatant();
 
-        SpellContainer spells = SpellContainer.Load(Path.Combine(Application.persistentDataPath, "spells.xml"));
+        List<Spell> spells = SpellContentLoader.LoadSpells();
         foreach (Button i in equippedSpells) {
             Destroy(i.gameObject);
         }
@@ -519,7 +530,7 @@ public class GridController : MonoBehaviour, PlayerController{
         for (int i = 0; i < companion.spells.Length; i++) {
             //equippedSpells[i].transform.SetParent(GameObject.Find("Canvas").transform);
             equippedSpells.Add(Instantiate(Resources.Load<Button>("SpellButton"), GameObject.Find("paperback").transform));
-            equippedSpells[equippedSpells.Count - 1].GetComponent<SpellButtonHandler>().setSpell(spells.spells[companion.spells[i]]);
+            equippedSpells[equippedSpells.Count - 1].GetComponent<SpellButtonHandler>().setSpell(spells[companion.spells[i]]);
             //equippedSpells[i].transform.localScale = new Vector3(0.02f, 0.02f);
             equippedSpells[i].transform.localPosition = new Vector3(0, -i, 0);
             equippedSpells[i].gameObject.tag = "player";
@@ -538,9 +549,9 @@ public class GridController : MonoBehaviour, PlayerController{
         }
 
         weapon = new Weapon();
-        WeaponContainer weapons = WeaponContainer.Load(Path.Combine(Application.persistentDataPath, "weapons.xml"));
+        List<Weapon> weapons = WeaponContentLoader.LoadWeapons();
         if (companion.weapon != -1) {
-            weapon = weapons.Weapons[companion.weapon];
+            weapon = weapons[companion.weapon];
         }
 
         if (weapon.Type != WeaponType.none) {
@@ -734,10 +745,23 @@ public class GridController : MonoBehaviour, PlayerController{
         caster.setMana((int)colorType.yellow, caster.getMana((int)colorType.yellow) - spell.Costs[(int)colorType.yellow]);
         makeSplashText("Casting " + spell.Name, isTurn);
 
-        new SpellEffectRunner((parameter) => ExecuteSpellCommand(parameter, spell, caster, target)).Execute(spell);
+        ExecuteSpellParameters(spell, caster, target, SpellEffectRunner.ParseParameters(spell), 0);
     }
 
-    public void ExecuteSpellCommand(string parameter, Spell spell, PlayerController caster, PlayerController target) {
+    private void ExecuteSpellParameters(Spell spell, PlayerController caster, PlayerController target, List<string> parameters, int startIndex) {
+        for (int i = startIndex; i < parameters.Count; i++) {
+            if (ExecuteSpellCommand(parameters[i], spell, caster, target)) {
+                pendingSpellParameters = parameters;
+                pendingSpellParameterIndex = i + 1;
+                return;
+            }
+        }
+
+        pendingSpellParameters = null;
+        pendingSpellParameterIndex = 0;
+    }
+
+    public bool ExecuteSpellCommand(string parameter, Spell spell, PlayerController caster, PlayerController target) {
         List<string> actionAndParameters = new List<string>(parameter.Split(' '));
         switch (actionAndParameters[0]) {
                 case "dealDamage":
@@ -778,20 +802,22 @@ public class GridController : MonoBehaviour, PlayerController{
                     break;
                 case "destroySquare":
                     //Spells with this parameter score a square of size parameter 1
-                    beginCasting();
-                    selectedPiece = null;
-                    currentSpell = spell;
-                    this.actionAndParameters = parameter;
-                    turnOffSpells();
-                    break;
+                    beginCasting(parameter, spell, caster, target);
+                    return true;
                 case ("shiftTarget"):
                     //Spells with this parameter shift a target piece to type parameter 1
-                    beginCasting();
-                    selectedPiece = null;
-                    currentSpell = spell;
-                    this.actionAndParameters = parameter;
-                    turnOffSpells();
-                    break;
+                    beginCasting(parameter, spell, caster, target);
+                    return true;
+                case ("swapTargets"):
+                    //Spells with this parameter use two selected board pieces together.
+                    beginCasting(parameter, spell, caster, target);
+                    return true;
+                case ("destroyTargetLShape"):
+                    beginCasting(parameter, spell, caster, target);
+                    return true;
+                case ("destroyContiguousChunk"):
+                    beginCasting(parameter, spell, caster, target);
+                    return true;
                 case "randomShift":
                     //Spells with this parameter change parameter 1 random pieces into type parameter 2 (if parameter 2 is -1, score them, and if parameter 2 is 7, the piece is random)
                     List<int> randomNumbers = new List<int>();
@@ -915,6 +941,7 @@ public class GridController : MonoBehaviour, PlayerController{
                     Debug.Log("Hmm, bad parameter");
                     break;
         }
+        return false;
     }
     public int countHeartPiecesTimes2() {
         int sum = 0;
@@ -982,11 +1009,29 @@ public class GridController : MonoBehaviour, PlayerController{
         }
         return sum;
     }
+    public int countUniqueCornerTypesTimes5() {
+        HashSet<int> cornerTypes = new HashSet<int>();
+        cornerTypes.Add(grid[0].getType());
+        cornerTypes.Add(grid[BOARDLENGTH - 1].getType());
+        cornerTypes.Add(grid[BOARDLENGTH * (BOARDLENGTH - 1)].getType());
+        cornerTypes.Add(grid[BOARDLENGTH * BOARDLENGTH - 1].getType());
+        return cornerTypes.Count * 5;
+    }
+    public int getLastSpellDestroyedCountTimes5() {
+        return lastSpellDestroyedCount * 5;
+    }
 
-    private void beginCasting(string actionAndParameters="") {
+    private void beginCasting(string actionAndParameters, Spell spell, PlayerController caster, PlayerController target) {
         this.actionAndParameters = actionAndParameters;
+        currentSpell = spell;
+        currentSpellCaster = caster;
+        currentSpellTarget = target;
+        selectedSpellTargets.Clear();
+        selectedPiece = null;
         isCasting = true;
         targetingIndicator.SetActive(true);
+        turnOffSpells();
+        makeSplashText("Select a target (Esc/right click to cancel)", isTurn);
     }
 
     public void addStatusEffect(StatusEffect effect) {
@@ -1030,10 +1075,11 @@ public class GridController : MonoBehaviour, PlayerController{
     public void actionBasedOnPiece(ThingController thingController) {
         if (currentSpell != null) {
             List<string> parameters = new List<string>(actionAndParameters.Split(' '));
-            actionAndParameters = "";
-            targetingIndicator.SetActive(false);
-            turnOnSpells();
-            
+            if (parameters[0] == "swapTargets") {
+                handleSwapTargets(thingController);
+                return;
+            }
+
             switch (parameters[0]) {
                 case ("destroyLines"):
                     //Destroy selected lines
@@ -1070,13 +1116,9 @@ public class GridController : MonoBehaviour, PlayerController{
                             }
                         }
 
-                        //Pass turn
-                        madeMove = true;
-
-                        currentSpell = null;
-                        selectedPiece = null;
-
+                        lastSpellDestroyedCount = positions.Count;
                         toDelete.UnionWith(positions);
+                        CompleteTargetedSpellCommand();
                     }
                     break;
                 case ("shiftTarget"):
@@ -1089,14 +1131,198 @@ public class GridController : MonoBehaviour, PlayerController{
                     destroyEffect.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                     destroyEffect.GetComponent<SpellFlashHandler>().speed = 2;
 
-                    //Pass turn
-                    madeMove = true;
-                    currentSpell = null;
-                    selectedPiece = null;
+                    CompleteTargetedSpellCommand();
+                    break;
+                case ("destroyTargetLShape"):
+                    index = getIndex(thingController.gameObject);
+                    positions = FindLShapeContaining(index);
+                    if (positions.Count == 0) {
+                        KeepCastingAfterInvalidTarget("No L shape there. Esc/right click to cancel.");
+                        return;
+                    }
+
+                    lastSpellDestroyedCount = positions.Count;
+                    toDelete.UnionWith(positions);
+                    CompleteTargetedSpellCommand();
+                    break;
+                case ("destroyContiguousChunk"):
+                    index = getIndex(thingController.gameObject);
+                    positions = FindContiguousChunk(index);
+                    if (positions.Count == 0) {
+                        KeepCastingAfterInvalidTarget("No valid chunk there. Esc/right click to cancel.");
+                        return;
+                    }
+
+                    lastSpellDestroyedCount = positions.Count;
+                    toDelete.UnionWith(positions);
+                    CompleteTargetedSpellCommand();
                     break;
             }
         }
+    }
+
+    private void handleSwapTargets(ThingController thingController) {
+        int index = getIndex(thingController.gameObject);
+        if (index < 0) {
+            return;
+        }
+
+        if (selectedSpellTargets.Count == 0) {
+            selectedSpellTargets.Add(index);
+            selectedPiece = thingController;
+            selectPiece(index, Color.cyan);
+            makeSplashText("Select a second piece", isTurn);
+            return;
+        }
+
+        int firstIndex = selectedSpellTargets[0];
+        if (firstIndex == index) {
+            makeSplashText("Select a different piece", isTurn);
+            return;
+        }
+
+        selectedSpellTargets.Clear();
+        actionAndParameters = "";
+        targetingIndicator.SetActive(false);
+
+        selectPiece(index, Color.cyan);
+        swap(firstIndex, index);
+
+        CompleteTargetedSpellCommand();
+    }
+
+    private void CompleteTargetedSpellCommand() {
+        Spell spell = currentSpell;
+        PlayerController caster = currentSpellCaster;
+        PlayerController target = currentSpellTarget;
+        List<string> parameters = pendingSpellParameters;
+        int nextIndex = pendingSpellParameterIndex;
+
+        ClearCurrentSpellCast();
+
+        if (parameters != null && spell != null && caster != null && target != null) {
+            ExecuteSpellParameters(spell, caster, target, parameters, nextIndex);
+        }
+
+        if (!isCasting && isTurn && !madeMove) {
+            turnOnSpells();
+        }
+    }
+
+    private void KeepCastingAfterInvalidTarget(string message) {
+        isCasting = true;
+        targetingIndicator.SetActive(true);
+        makeSplashText(message, isTurn);
+    }
+
+    private void CancelCurrentSpellCast() {
+        if (currentSpell != null && currentSpellCaster != null) {
+            for (int i = 0; i < currentSpell.Costs.Length; i++) {
+                currentSpellCaster.setMana(i, currentSpellCaster.getMana(i) + currentSpell.Costs[i]);
+            }
+        }
+
+        ClearCurrentSpellCast();
+        turnOnSpells();
+        makeSplashText("Spell cancelled", isTurn);
+    }
+
+    private void ClearCurrentSpellCast() {
+        actionAndParameters = "";
+        selectedSpellTargets.Clear();
+        selectedPiece = null;
+        currentSpell = null;
+        currentSpellCaster = null;
+        currentSpellTarget = null;
+        pendingSpellParameters = null;
+        pendingSpellParameterIndex = 0;
         isCasting = false;
+        targetingIndicator.SetActive(false);
+    }
+
+    private List<int> FindLShapeContaining(int targetIndex) {
+        List<int> result = new List<int>();
+        if (targetIndex < 0 || targetIndex >= grid.Count) {
+            return result;
+        }
+
+        int[] firstOffsets = new int[] { BOARDLENGTH, 1, -BOARDLENGTH, -1 };
+        int[] secondOffsets = new int[] { 1, -BOARDLENGTH, -1, BOARDLENGTH };
+
+        for (int elbow = 0; elbow < grid.Count; elbow++) {
+            int type = grid[elbow].getType();
+            if (type < 0) {
+                continue;
+            }
+
+            for (int i = 0; i < firstOffsets.Length; i++) {
+                int first = elbow + firstOffsets[i];
+                int second = elbow + secondOffsets[i];
+                if (!IsNeighbor(elbow, first, firstOffsets[i]) || !IsNeighbor(elbow, second, secondOffsets[i])) {
+                    continue;
+                }
+
+                if (grid[first].getType() == type && grid[second].getType() == type) {
+                    result = new List<int> { elbow, first, second };
+                    if (result.Contains(targetIndex)) {
+                        return result;
+                    }
+                }
+            }
+        }
+
+        return new List<int>();
+    }
+
+    private List<int> FindContiguousChunk(int targetIndex) {
+        List<int> chunk = new List<int>();
+        if (targetIndex < 0 || targetIndex >= grid.Count) {
+            return chunk;
+        }
+
+        int type = grid[targetIndex].getType();
+        if (type < 0) {
+            return chunk;
+        }
+
+        Queue<int> frontier = new Queue<int>();
+        HashSet<int> visited = new HashSet<int>();
+        frontier.Enqueue(targetIndex);
+        visited.Add(targetIndex);
+
+        while (frontier.Count > 0) {
+            int current = frontier.Dequeue();
+            chunk.Add(current);
+
+            foreach (int offset in new int[] { BOARDLENGTH, -BOARDLENGTH, 1, -1 }) {
+                int neighbor = current + offset;
+                if (visited.Contains(neighbor) || !IsNeighbor(current, neighbor, offset)) {
+                    continue;
+                }
+
+                if (grid[neighbor].getType() == type) {
+                    visited.Add(neighbor);
+                    frontier.Enqueue(neighbor);
+                }
+            }
+        }
+
+        return chunk;
+    }
+
+    private bool IsNeighbor(int origin, int candidate, int offset) {
+        if (candidate < 0 || candidate >= BOARDLENGTH * BOARDLENGTH) {
+            return false;
+        }
+
+        if (offset == 1) {
+            return origin % BOARDLENGTH != BOARDLENGTH - 1;
+        }
+        if (offset == -1) {
+            return origin % BOARDLENGTH != 0;
+        }
+
+        return true;
     }
 
     public void turnOnSpells() {
@@ -1794,6 +2020,11 @@ public class GridController : MonoBehaviour, PlayerController{
     // Update is called once per frame
     void LateUpdate()
     {
+        if (isCasting && (Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))) {
+            CancelCurrentSpellCast();
+            return;
+        }
+
         if (isValidMoveTime()) {
             checkForMatches();
         }

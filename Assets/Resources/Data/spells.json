@@ -581,12 +581,12 @@
       "index": 48,
       "name": "The Four Winds",
       "costs": [
-        6,
         0,
-        4
+        0,
+        7
       ],
-      "parameters": "dealDamageEqualTo fiveIfCornersAreDifferent\nscore 0\nscore 7\nscore 63\nscore 56\nendTurn",
-      "tooltip": "Scores the corner pieces and deals 5 damage if those pieces were all different\nEnds turn"
+      "parameters": "dealDamageEqualTo countUniqueCornerTypesTimes5",
+      "tooltip": "Deals 5 damage for each unique piece type in the corners\nDoesn't end turn"
     },
     {
       "id": "set_ablaze",
@@ -707,6 +707,42 @@
       ],
       "parameters": "dealDamage 20\nendTurn",
       "tooltip": "Deals 20 Damage.  Ends the turn"
+    },
+    {
+      "id": "swap",
+      "index": 59,
+      "name": "Swap",
+      "costs": [
+        0,
+        3,
+        0
+      ],
+      "parameters": "swapTargets\nendTurn",
+      "tooltip": "Select two board pieces to swap them\nEnds turn"
+    },
+    {
+      "id": "crooked_gale",
+      "index": 60,
+      "name": "Crooked Gale",
+      "costs": [
+        0,
+        0,
+        5
+      ],
+      "parameters": "destroyTargetLShape\ndealDamage 7\nendTurn",
+      "tooltip": "Destroys a same-type L shape of three pieces and deals 7 damage\nEnds turn"
+    },
+    {
+      "id": "gathering_storm",
+      "index": 61,
+      "name": "Gathering Storm",
+      "costs": [
+        0,
+        0,
+        7
+      ],
+      "parameters": "destroyContiguousChunk\ndealDamageEqualTo getLastSpellDestroyedCountTimes5\nendTurn",
+      "tooltip": "Destroys a contiguous same-type chunk and deals 5 damage per piece\nEnds turn"
     }
   ]
 }

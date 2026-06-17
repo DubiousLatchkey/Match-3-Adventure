@@ -19,9 +19,10 @@ MonoBehaviour:
   maxYellowMana: 99
   equippedWeaponName: 
   equippedSpellNames:
-  - Fireball
-  - Coin Flip
-  - Field Disruption
+  - Swap
+  - The Four Winds
+  - Crooked Gale
+  - Gathering Storm
   enemyName: Spell Test Dummy
   enemyHp: 999
   enemyMaxRedMana: 0

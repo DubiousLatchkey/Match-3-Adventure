@@ -1,8 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -51,8 +48,6 @@ public class EnemyController : MonoBehaviour, PlayerController
     List<StatusEffect> statusEffects;
     Etcetera extraStatusEffects;
 
-    List<Spell> spellList;
-    List<Enemy> enemyList;
     Dictionary<string, Enemy> enemyDictionary;
     bool isInitialized;
     CombatantRuntime combatant;
@@ -137,12 +132,7 @@ public class EnemyController : MonoBehaviour, PlayerController
         }
 
         EnsureRuntimeCollections();
-        SpellContainer spells = SpellContainer.Load(Path.Combine(Application.persistentDataPath, "spells.xml"));
-        enemyDictionary = loadEnemiesToDictionary();
-        //Make enemy data
-        EnemyContainer enemies = BuildLegacyEnemies(spells);
-
-        enemies.Save(Path.Combine(Application.persistentDataPath, "enemies.xml"));
+        enemyDictionary = EnemyContentLoader.LoadEnemiesByKey();
 
         combat = new Combat(GridController.combatToLoad);
         Enemy debugEnemy;
@@ -150,8 +140,7 @@ public class EnemyController : MonoBehaviour, PlayerController
             enemy = debugEnemy;
         }
         else if (!combat.getIsSolo()) {
-            //enemy = EnemyContainer.Load(Path.Combine(Application.persistentDataPath, "enemies.xml")).enemies[combat.getEnemy(0)];
-            enemy = ResolveEnemy(combat.getEnemy(0), enemies);
+            enemy = ResolveEnemy(combat.getEnemy(0));
         }
         else {
             // I forget what this does
@@ -241,18 +230,6 @@ public class EnemyController : MonoBehaviour, PlayerController
             portrait.sprite = Resources.Load<Sprite>("Characters/" + enemy.Name + "Normal");
         }
 
-
-        //SpellContainer spells = SpellContainer.Load(Path.Combine(Application.persistentDataPath, "spells.xml"));
-
-        /*
-        for (int i = 0; i < spells.spells.Length; i++) {
-            //Debug.Log(i.Effects[0] + " " + i.Costs[0]);
-            if (enemy.Spells[i]) {
-                equippedSpells.Add(Instantiate(Resources.Load<Button>("SpellButton"), GameObject.Find("Canvas").transform));
-                equippedSpells[equippedSpells.Count - 1].GetComponent<SpellButtonHandler>().setSpell(spells.spells[i]);
-            }
-        }
-        */
         for (int i = 0; i < enemy.Spells.Length; i++) {
             //equippedSpells[i].transform.SetParent(GameObject.Find("Canvas").transform);
             equippedSpells.Add(Instantiate(Resources.Load<Button>("SpellButton"), GameObject.Find("enemyPaperback").transform));
@@ -276,14 +253,34 @@ public class EnemyController : MonoBehaviour, PlayerController
         averageYellowManaCost /= spellCount;
 
         //Get weapon
+        weaponObject = GameObject.Find("enemyWeapon");
+        LoadEnemyWeapon();
+        combatant.State.Weapon = weapon;
+        SyncFieldsFromCombatant();
+        isInitialized = true;
+
+    }
+
+    private void LoadEnemyWeapon() {
         weapon = new Weapon();
-        weaponObject = GameObject.Find("enemyWeapon");
-        /*
-        WeaponContainer weapons = WeaponContainer.Load(Path.Combine(Application.persistentDataPath, "weapons.xml"));
-        if (combat.getWeapon(0) != -1) {
-            weapon = weapons.Weapons[combat.getWeapon(0)];
+        string weaponKey = combat.getWeapon(currentRound);
+        List<Weapon> weapons = WeaponContentLoader.LoadWeapons();
+
+        int weaponIndex;
+        if (int.TryParse(weaponKey, out weaponIndex)) {
+            if (weaponIndex >= 0 && weaponIndex < weapons.Count) {
+                weapon = weapons[weaponIndex];
+            }
         }
-        weaponObject = GameObject.Find("enemyWeapon");
+        else if (!string.IsNullOrWhiteSpace(weaponKey)) {
+            foreach (Weapon candidate in weapons) {
+                if (candidate.Name == weaponKey) {
+                    weapon = candidate;
+                    break;
+                }
+            }
+        }
+
         if (weapon.Type != WeaponType.none) {
             weaponObject.SetActive(true);
             weaponObject.GetComponent<WeaponButtonHandler>().setWeapon(weapon);
@@ -292,46 +289,14 @@ public class EnemyController : MonoBehaviour, PlayerController
             weaponObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Button");
             weaponObject.SetActive(false);
         }
-        */
-        weaponObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Button");
-        weaponObject.SetActive(false);
-        combatant.State.Weapon = weapon;
-        SyncFieldsFromCombatant();
-        isInitialized = true;
-
     }
 
-    private EnemyContainer BuildLegacyEnemies(SpellContainer spells) {
-        EnemyContainer enemies = new EnemyContainer();
-        enemies.enemies[0] = new Enemy("Wizard Adept", new int[] {5, 2, 10 }, new Spell[] { spells.spells[0], spells.spells[2]}, 100, 10, 10, 10, 0.5f);
-        enemies.enemies[1] = new Enemy("Wizard Superior", new int[] { 6, 2, 7 }, new Spell[] { spells.spells[0], spells.spells[1], spells.spells[2] }, 150, 12, 12, 12, 0.2f);
-        enemies.enemies[2] = new Enemy("Deranged Hermit", new int[] { 10, 0, 10 }, new Spell[] { spells.spells[1], spells.spells[2] }, 150, 8, 8, 8, 0.7f);
-        enemies.enemies[3] = new Enemy("Arcane Elemental", new int[] { 10, 5, 5 }, new Spell[] { spells.spells[0]}, 50, 8, 5, 5, 0.7f);
-        enemies.enemies[4] = new Enemy("Raider", new int[] { 5, 5, 5 }, new Spell[] {  }, 50, 0, 0, 0, 0.5f);
-        enemies.enemies[5] = new Enemy("Exchange Thief", new int[] { 3, 10, 7 }, new Spell[] { spells.spells[12], spells.spells[20] }, 80, 5, 8, 5, 0.7f);
-        enemies.enemies[6] = new Enemy("Servant of Necromancy", new int[] { 3, 10, 3 }, new Spell[] { spells.spells[2], spells.spells[12] }, 80, 8, 10, 8, 0.5f);
-        enemies.enemies[7] = new Enemy("Ephran, Exchange Head", new int[] { 10, 3, 8 }, new Spell[] { spells.spells[30], spells.spells[31] }, 100, 10, 10, 10, 0.3f);
-        enemies.enemies[8] = new Enemy("City Guard", new int[] { 7, 10, 3 }, new Spell[] { spells.spells[15] }, 80, 9, 9, 9, 0.4f);
-        enemies.enemies[9] = new Enemy("Skeleton", new int[] { 10, 3, 7 }, new Spell[] { spells.spells[6] }, 80, 10, 10, 10, 0.5f);
-        enemies.enemies[10] = new Enemy("Atheria's Guard", new int[] { 10, 3, 7 }, new Spell[] { spells.spells[12], spells.spells[10] }, 80, 10, 10, 10, 0.25f);
-        enemies.enemies[11] = new Enemy("Atheria, Necromancer General", new int[] { 10, 3, 7 }, new Spell[] { spells.spells[10], spells.spells[8], spells.spells[1] }, 150, 15, 15, 15, 0.05f);
-        enemies.enemies[12] = new Enemy("Roxanne, Atheria's Right Hand", new int[] { 10, 3, 7 }, new Spell[] { spells.spells[10] }, 100, 10, 10, 10, 0.1f);
-        enemies.enemies[13] = new Enemy("Atherian Mage", new int[] { 10, 3, 7 }, new Spell[] { spells.spells[0] }, 100, 10, 10, 10, 0.2f);
-        enemies.enemies[14] = new Enemy("Earlygame Enemy", new int[] { 5, 10, 5 }, new Spell[] { spells.spells[55] }, 30, 15, 15, 15, 0.4f);
-        return enemies;
-    }
-
-    private Enemy ResolveEnemy(string key, EnemyContainer legacyEnemies) {
+    private Enemy ResolveEnemy(string key) {
         if (enemyDictionary.ContainsKey(key)) {
             return enemyDictionary[key];
         }
 
-        int legacyEnemyId;
-        if (int.TryParse(key, out legacyEnemyId) && legacyEnemyId >= 0 && legacyEnemyId < legacyEnemies.enemies.Length) {
-            return legacyEnemies.enemies[legacyEnemyId];
-        }
-
-        throw new KeyNotFoundException("Could not resolve enemy '" + key + "' from named enemies or legacy enemy ids.");
+        throw new KeyNotFoundException("Could not resolve enemy '" + key + "' from enemy content.");
     }
 
     public void handleStatusEffects() {
@@ -851,9 +816,7 @@ public class EnemyController : MonoBehaviour, PlayerController
 
     public void loadEnemy() {
         //Load next enemy
-        //enemy = EnemyContainer.Load(Path.Combine(Application.persistentDataPath, "enemies.xml")).enemies[combat.getEnemy(currentRound)];
-        SpellContainer spells = SpellContainer.Load(Path.Combine(Application.persistentDataPath, "spells.xml"));
-        enemy = ResolveEnemy(combat.getEnemy(currentRound), BuildLegacyEnemies(spells));
+        enemy = ResolveEnemy(combat.getEnemy(currentRound));
 
         madeMove = false;
         redMana = 0;
@@ -889,15 +852,6 @@ public class EnemyController : MonoBehaviour, PlayerController
             Destroy(i.gameObject);
         }
         equippedSpells.Clear();
-        /*
-        for (int i = 0; i < spells.spells.Length; i++) {
-            //Debug.Log(i.Effects[0] + " " + i.Costs[0]);
-            if (enemy.Spells[i]) {
-                equippedSpells.Add(Instantiate(Resources.Load<Button>("SpellButton"), GameObject.Find("Canvas").transform));
-                equippedSpells[equippedSpells.Count - 1].GetComponent<SpellButtonHandler>().setSpell(spells.spells[i]);
-            }
-        }
-        */
         for (int i = 0; i < enemy.Spells.Length; i++) {
             //equippedSpells[i].transform.SetParent(GameObject.Find("Canvas").transform);
             equippedSpells.Add(Instantiate(Resources.Load<Button>("SpellButton"), GameObject.Find("enemyPaperback").transform));
@@ -921,23 +875,7 @@ public class EnemyController : MonoBehaviour, PlayerController
             extraStatusEffects.clear();
         }
 
-        weapon = new Weapon();
-        /*
-        WeaponContainer weapons = WeaponContainer.Load(Path.Combine(Application.persistentDataPath, "weapons.xml"));
-        if (combat.getWeapon(currentRound) != -1) {
-            weapon = weapons.Weapons[combat.getWeapon(currentRound)];
-        }
-        if (weapon.Type != WeaponType.none) {
-            weaponObject.SetActive(true);
-            weaponObject.GetComponent<WeaponButtonHandler>().setWeapon(weapon);
-        }
-        else {
-            weaponObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Button");
-            weaponObject.SetActive(false);
-        }
-        */
-        weaponObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Button");
-        weaponObject.SetActive(false);
+        LoadEnemyWeapon();
         combatant.State.Weapon = weapon;
         SyncFieldsFromCombatant();
     }
@@ -1052,26 +990,4 @@ public class EnemyController : MonoBehaviour, PlayerController
         combatant.SetMultiplier(amount);
         SyncFieldsFromCombatant();
     }
-    public static List<Enemy> loadEnemies() {
-        List<Enemy> enemiesList = new List<Enemy>();
-        TextAsset enemyTexts = Resources.Load<TextAsset>("enemies");
-        string[] enemiesFromText = enemyTexts.text.Split('\n');
-        foreach (string enemyText in enemiesFromText)
-        {
-            enemiesList.Add(new Enemy(enemyText));
-        }
-
-        return enemiesList;
-    }
-
-    public static Dictionary<string, Enemy> loadEnemiesToDictionary()
-    {
-        List<Enemy> enemiesList = loadEnemies();
-        Dictionary<string, Enemy> enemyDictionary;
-
-        enemyDictionary = enemiesList.ToDictionary(x => x.Name , x => x);
-
-        return enemyDictionary;
-    }
-
 }

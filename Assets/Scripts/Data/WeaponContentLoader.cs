@@ -26,6 +26,7 @@ public static class WeaponContentLoader {
 
         TextAsset text = Resources.Load<TextAsset>("Data/weapons");
         if (text == null) {
+            Debug.LogError("Missing weapon data resource at Assets/Resources/Data/weapons.json");
             cachedWeapons = new List<Weapon>();
             return new List<Weapon>(cachedWeapons);
         }
@@ -43,12 +44,4 @@ public static class WeaponContentLoader {
         return new List<Weapon>(cachedWeapons);
     }
 
-    public static WeaponContainer LoadContainer() {
-        List<Weapon> weapons = LoadWeapons();
-        WeaponContainer container = new WeaponContainer(weapons.Count);
-        for (int i = 0; i < weapons.Count; i++) {
-            container.Weapons[i] = weapons[i];
-        }
-        return container;
-    }
 }

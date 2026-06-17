@@ -18,8 +18,6 @@ public class EquippingController : MonoBehaviour {
     List<GameObject> availableWeapons;
     List<slot> equippedWeapons;
 
-    public TextAsset spellTexts;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -36,12 +34,10 @@ public class EquippingController : MonoBehaviour {
         equippedWeapons.Add(new slot(GameObject.Find("equippedWeaponSlot")));
         availableSpellAnchor = GameObject.Find("availableSpellsList");
         equippedSpellAnchor = GameObject.Find("equippedSpellsList");
-        spellTexts = Resources.Load<TextAsset>("spells");
 
-        SpellContainer spells = SpellContainer.Load(System.IO.Path.Combine(Application.persistentDataPath, "spells.xml"));
         //int spellCount = 0;
         //Load in available spells
-        List<Spell> spellsList = new List<Spell>(spells.spells);
+        List<Spell> spellsList = SpellContentLoader.LoadSpells();
 
         // TEMP: Setting spells for test combats
         SaveGameService.SetInt("Field Disruption", 6);
@@ -85,14 +81,14 @@ public class EquippingController : MonoBehaviour {
         }
         
 
-        WeaponContainer weapons = WeaponContainer.Load(System.IO.Path.Combine(Application.persistentDataPath, "weapons.xml"));
+        List<Weapon> weapons = WeaponContentLoader.LoadWeapons();
 
         //Load in weapon buttons in to available weapons
-        for (int i = 0; i < weapons.Weapons.Length; i++) {
-            int weaponStatus = SaveGameService.GetInt(weapons.Weapons[i].Name, 0);
+        for (int i = 0; i < weapons.Count; i++) {
+            int weaponStatus = SaveGameService.GetInt(weapons[i].Name, 0);
             if (weaponStatus != 0) {
                 availableWeapons.Add(Instantiate(Resources.Load<GameObject>("WeaponButton"), availableWeaponsList.transform));
-                availableWeapons[availableWeapons.Count - 1].GetComponent<WeaponButtonHandler>().setWeapon(weapons.Weapons[i]);
+                availableWeapons[availableWeapons.Count - 1].GetComponent<WeaponButtonHandler>().setWeapon(weapons[i]);
                 availableWeapons[availableWeapons.Count - 1].GetComponent<DragToSpotBehavior>().enabled = true;
                 availableWeapons[availableWeapons.Count - 1].GetComponent<DragToSpotBehavior>().isSpell = false;
                 //availableWeapons[availableWeapons.Count - 1].transform.localScale = new Vector3(0.5f, 0.5f);

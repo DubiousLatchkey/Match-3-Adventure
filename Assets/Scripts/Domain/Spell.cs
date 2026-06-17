@@ -1,26 +1,15 @@
-﻿using System.IO;
-using System.Xml.Serialization;
+﻿public class Spell {
 
-public class Spell {
-
-    [XmlAttribute("name")]
     public string Name;
 
-    [XmlArray("costs")]
-    [XmlArrayItem("cost")]
     public int[] Costs = new int[6];
 
-    [XmlArray("effects")]
-    [XmlArrayItem("effect")]
     public int[] Effects = new int[3];
 
-    [XmlAttribute("spellType")]
     public spellType Type;
 
-    [XmlAttribute("tooltip")]
     public string Tooltip;
 
-    [XmlAttribute("parameters")]
     public string Parameters;
 
     public Spell(string n, int[] c, int[] e, spellType t, string tt) {
@@ -47,18 +36,6 @@ public class Spell {
         Parameters = parameters;
         Tooltip = tooltip;
     }
-
-    public Spell(string spellText)
-    {
-        string[] spellTextArray = spellText.Split(',');
-        Name = spellTextArray[0];
-        string[] costStringArray = spellTextArray[1].Split(' ');
-        Costs = new int[] {int.Parse(costStringArray[0]), int.Parse(costStringArray[1]), int.Parse(costStringArray[2]) };
-        Parameters = spellTextArray[2];
-        Tooltip = spellTextArray[3];
-        Type = spellType.Damage;
-    }
-
 
     public Spell() {
         Name = "Default";
@@ -105,43 +82,3 @@ public enum spellType {
     ExtraTurn,
 }
 
-[XmlRoot("SpellCollection")]
-public class SpellContainer {
-    [XmlArray("Spells")]
-    [XmlArrayItem("Spell")]
-    public Spell[] spells;
-
-    public SpellContainer() {
-        spells = new Spell[57];
-    }
-
-    public SpellContainer(int count) {
-        spells = new Spell[count];
-    }
-
-    public void Save(string path) {
-        var serializer = new XmlSerializer(typeof(SpellContainer));
-        using (var stream = new FileStream(path, FileMode.Create)) {
-            serializer.Serialize(stream, this);
-        }
-    }
-
-    public static SpellContainer Load(string path) {
-        SpellContainer resourceContainer = SpellContentLoader.LoadContainer();
-        if (resourceContainer.spells.Length > 0) {
-            return resourceContainer;
-        }
-
-        var serializer = new XmlSerializer(typeof(SpellContainer));
-        using (var stream = new FileStream(path, FileMode.Open)) {
-            return serializer.Deserialize(stream) as SpellContainer;
-        }
-    }
-
-    //Loads the xml directly from the given string. Useful in combination with www.text.
-    public static SpellContainer LoadFromText(string text) {
-        var serializer = new XmlSerializer(typeof(SpellContainer));
-        return serializer.Deserialize(new StringReader(text)) as SpellContainer;
-    }
-
-}

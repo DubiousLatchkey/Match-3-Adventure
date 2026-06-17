@@ -27,7 +27,8 @@ public static class SpellContentLoader {
 
         TextAsset text = Resources.Load<TextAsset>("Data/spells");
         if (text == null) {
-            cachedSpells = SpellSerializer.loadSpellsFromTextResource();
+            Debug.LogError("Missing spell data resource at Assets/Resources/Data/spells.json");
+            cachedSpells = new List<Spell>();
             return new List<Spell>(cachedSpells);
         }
 
@@ -40,15 +41,6 @@ public static class SpellContentLoader {
         }
 
         return new List<Spell>(cachedSpells);
-    }
-
-    public static SpellContainer LoadContainer() {
-        List<Spell> spells = LoadSpells();
-        SpellContainer container = new SpellContainer(spells.Count);
-        for (int i = 0; i < spells.Count; i++) {
-            container.spells[i] = spells[i];
-        }
-        return container;
     }
 
     public static Dictionary<string, Spell> LoadSpellsByName() {

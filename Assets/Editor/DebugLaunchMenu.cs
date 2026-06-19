@@ -31,6 +31,10 @@ public static class DebugLaunchMenu {
     }
 
     private static void PlayProfile(DebugCombatProfile profile) {
+        if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) {
+            return;
+        }
+
         ApplyProfileToSave(profile);
         DebugCombatRuntime.ApplyProfile(profile);
         GridController.combatToLoad = profile.combatId;

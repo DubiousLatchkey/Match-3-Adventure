@@ -44,108 +44,55 @@ public sealed class MatchBoard {
     public List<Move> FindMovesAtPoint(int i) {
         List<Move> moves = new List<Move>();
         int type = types[i];
+        if (!ThingTypes.IsMovable(type)) {
+            return moves;
+        }
 
-        List<int> pieces = new List<int>();
         if (i % BoardLength != 0) {
-            pieces.AddRange(MovesAtPointHelperVertical(i, BoardLength, BoardLength - 1, type));
-            pieces.AddRange(MovesAtPointHelperVertical(i, -BoardLength, -BoardLength - 1, type));
-            if (pieces.Count >= 2) {
-                moves.Add(new Move(i, i - 1, pieces.Count + 1, type));
-            }
-            pieces.Clear();
+            AddMoveIfSwapMatches(moves, i, i - 1);
         }
-
         if (i % BoardLength != BoardLength - 1) {
-            pieces.AddRange(MovesAtPointHelperVertical(i, BoardLength, BoardLength + 1, type));
-            pieces.AddRange(MovesAtPointHelperVertical(i, -BoardLength, -BoardLength + 1, type));
-            if (pieces.Count >= 2) {
-                moves.Add(new Move(i, i + 1, pieces.Count + 1, type));
-            }
-            pieces.Clear();
+            AddMoveIfSwapMatches(moves, i, i + 1);
         }
-
-        if (i < BoardLength * BoardLength - BoardLength) {
-            int displacement = BoardLength - 1;
-            while (i + displacement >= (i / BoardLength + 1) * BoardLength && types[i + displacement] == type) {
-                pieces.Add(i + displacement);
-                displacement -= 1;
-            }
-            displacement = BoardLength + 1;
-            while (i + displacement < (i / BoardLength + 2) * BoardLength && types[i + displacement] == type) {
-                pieces.Add(i + displacement);
-                displacement += 1;
-            }
-            if (pieces.Count >= 2) {
-                moves.Add(new Move(i, i + BoardLength, pieces.Count + 1, type));
-            }
-            pieces.Clear();
-        }
-
         if (i >= BoardLength) {
-            int displacement = -BoardLength - 1;
-            while (i + displacement >= (i / BoardLength - 1) * BoardLength && types[i + displacement] == type) {
-                pieces.Add(i + displacement);
-                displacement -= 1;
-            }
-            displacement = -BoardLength + 1;
-            while (i + displacement < (i / BoardLength) * BoardLength && types[i + displacement] == type) {
-                pieces.Add(i + displacement);
-                displacement += 1;
-            }
-            if (pieces.Count >= 2) {
-                moves.Add(new Move(i, i - BoardLength, pieces.Count + 1, type));
-            }
-            pieces.Clear();
+            AddMoveIfSwapMatches(moves, i, i - BoardLength);
         }
-
-        if (GetLowerHorizontalBound(i) < BoardLength * BoardLength - 3 * BoardLength) {
-            int displacement = BoardLength * 2;
-            while (i + displacement < BoardLength * BoardLength && types[i + displacement] == type) {
-                pieces.Add(i + displacement);
-                displacement += BoardLength;
-            }
-            if (pieces.Count >= 2) {
-                moves.Add(new Move(i, i + BoardLength, pieces.Count + 1, type));
-            }
-            pieces.Clear();
-        }
-
-        if (GetLowerHorizontalBound(i) >= 3 * BoardLength) {
-            int displacement = -BoardLength * 2;
-            while (i + displacement >= 0 && types[i + displacement] == type) {
-                pieces.Add(i + displacement);
-                displacement -= BoardLength;
-            }
-            if (pieces.Count >= 2) {
-                moves.Add(new Move(i, i - BoardLength, pieces.Count + 1, type));
-            }
-            pieces.Clear();
-        }
-
-        if (GetUpperHorizontalBound(i) >= i + 3) {
-            int displacement = 2;
-            while (i + displacement < GetUpperHorizontalBound(i) && types[i + displacement] == type) {
-                pieces.Add(i + displacement);
-                displacement += 1;
-            }
-            if (pieces.Count >= 2) {
-                moves.Add(new Move(i, i + 1, pieces.Count + 1, type));
-            }
-            pieces.Clear();
-        }
-
-        if (GetLowerHorizontalBound(i) <= i - 3) {
-            int displacement = -2;
-            while (i + displacement >= GetLowerHorizontalBound(i) && types[i + displacement] == type) {
-                pieces.Add(i + displacement);
-                displacement -= 1;
-            }
-            if (pieces.Count >= 2) {
-                moves.Add(new Move(i, i - 1, pieces.Count + 1, type));
-            }
+        if (i < types.Length - BoardLength) {
+            AddMoveIfSwapMatches(moves, i, i + BoardLength);
         }
 
         return moves;
+    }
+
+    private void AddMoveIfSwapMatches(List<Move> moves, int origin, int swap) {
+        if (!ThingTypes.IsMovable(types[swap])) {
+            return;
+        }
+
+        MatchBoard candidate = new MatchBoard(types, BoardLength);
+        candidate.Swap(origin, swap);
+        List<int> matches = candidate.FindMatches();
+        if (matches.Count == 0) {
+            return;
+        }
+
+        int matchType = candidate.GetBestMatchedType(matches, origin, swap);
+        moves.Add(new Move(origin, swap, matches.Count, matchType));
+    }
+
+    private int GetBestMatchedType(List<int> matches, int origin, int swap) {
+        if (matches.Contains(origin) && ThingTypes.CanStartMatch(types[origin])) {
+            return types[origin];
+        }
+        if (matches.Contains(swap) && ThingTypes.CanStartMatch(types[swap])) {
+            return types[swap];
+        }
+        foreach (int index in matches) {
+            if (ThingTypes.CanStartMatch(types[index])) {
+                return types[index];
+            }
+        }
+        return ThingTypes.Wildcard;
     }
 
     public Dictionary<int, int> CountTypes(IEnumerable<int> indexes) {
@@ -155,7 +102,11 @@ public sealed class MatchBoard {
             { 2, 0 },
             { 3, 0 },
             { 4, 0 },
-            { 5, 0 }
+            { 5, 0 },
+            { 6, 0 },
+            { 7, 0 },
+            { 8, 0 },
+            { 9, 0 }
         };
 
         foreach (int index in indexes) {
@@ -171,36 +122,42 @@ public sealed class MatchBoard {
 
     private void AddMatchesFrom(int index, int increment, SortedSet<int> matches) {
         int type = types[index];
-        if (type == -1) {
+        if (!ThingTypes.CanStartMatch(type)) {
             return;
         }
 
         HashSet<int> potentialDeletion = new HashSet<int>();
-        int extension = 0;
-        while ((index + extension) % BoardLength < BoardLength - 1 && index + extension < BoardLength * BoardLength) {
-            if (types[index + extension] == type) {
-                potentialDeletion.Add(index + extension);
-                extension += increment;
-            }
-            else {
-                break;
-            }
-        }
-
-        extension = 0;
-        while ((index + extension) % BoardLength > 0 && index + extension > 0) {
-            if (types[index + extension] == type) {
-                potentialDeletion.Add(index + extension);
-                extension -= increment;
-            }
-            else {
-                break;
-            }
-        }
+        AddMatchingLine(index, index, type, increment, potentialDeletion);
+        AddMatchingLine(index, index - increment, type, -increment, potentialDeletion);
 
         if (potentialDeletion.Count >= 3) {
             matches.UnionWith(potentialDeletion);
         }
+    }
+
+    private void AddMatchingLine(int origin, int start, int matchType, int increment, HashSet<int> matches) {
+        int position = start;
+        int originRow = origin / BoardLength;
+        while (IsInScanBounds(position, increment, originRow)) {
+            if (!ThingTypes.CanMatchAs(types[position], matchType)) {
+                break;
+            }
+
+            matches.Add(position);
+            position += increment;
+        }
+    }
+
+    private bool IsInScanBounds(int position, int increment, int startRow) {
+        if (position < 0 || position >= Count) {
+            return false;
+        }
+
+        if (increment == 1 || increment == -1) {
+            return position / BoardLength == startRow;
+        }
+
+        return true;
     }
 
     private int GetLowerHorizontalBound(int position) {
@@ -211,12 +168,4 @@ public sealed class MatchBoard {
         return ((position / BoardLength) + 1) * BoardLength;
     }
 
-    private List<int> MovesAtPointHelperVertical(int i, int increment, int displacement, int type) {
-        List<int> pieces = new List<int>();
-        while (i + displacement < BoardLength * BoardLength && i + displacement >= 0 && types[i + displacement] == type) {
-            pieces.Add(i + displacement);
-            displacement += increment;
-        }
-        return pieces;
-    }
 }

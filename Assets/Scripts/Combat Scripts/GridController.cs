@@ -17,7 +17,17 @@ public class GridController : MonoBehaviour, PlayerController{
     public static bool extraTurn;
     public static string combatToLoad = "TestCombat";
 
-    private static float[] probabilities = { 21, 21, 21, 15, 15, 7 };
+    private static readonly int[] generatedTypes = {
+        ThingTypes.Red,
+        ThingTypes.Blue,
+        ThingTypes.Yellow,
+        ThingTypes.Damage,
+        ThingTypes.RainbowMana,
+        ThingTypes.Null,
+        ThingTypes.Brick,
+        ThingTypes.Wildcard
+    };
+    private static readonly float[] probabilities = { 19, 19, 19, 14, 9, 10, 5, 5 };
 
     Spell currentSpell;
     PlayerController currentSpellCaster;
@@ -60,6 +70,7 @@ public class GridController : MonoBehaviour, PlayerController{
     BarHandler blueBar;
     BarHandler yellowBar;
     BarHandler multiplierBar;
+    Button cancelTargetButtonComponent;
     Image background;
     Image enemyBackground;
 
@@ -77,6 +88,7 @@ public class GridController : MonoBehaviour, PlayerController{
     public GameObject enemyPaperback;
     public GameObject backdrop;
     public GameObject targetingIndicator;
+    [SerializeField] private GameObject cancelTargetButton;
     public TextAsset spellTexts;
     CombatantRuntime combatant;
 
@@ -188,7 +200,11 @@ public class GridController : MonoBehaviour, PlayerController{
             { 2, 0 },
             { 3, 0 },
             { 4, 0 },
-            { 5, 0 }
+            { 5, 0 },
+            { 6, 0 },
+            { 7, 0 },
+            { 8, 0 },
+            { 9, 0 }
         };
 
         matchingColors = new Dictionary<int, Color>();
@@ -198,6 +214,10 @@ public class GridController : MonoBehaviour, PlayerController{
         matchingColors.Add(3, Color.black);
         matchingColors.Add(4, Color.magenta);
         matchingColors.Add(5, Color.gray);
+        matchingColors.Add(6, new Color(0.45f, 0.45f, 0.45f));
+        matchingColors.Add(7, new Color(0.2f, 0.2f, 0.2f));
+        matchingColors.Add(8, new Color(0.8f, 1f, 1f));
+        matchingColors.Add(9, Color.white);
 
         foreach (Text i in FindObjectsByType<Text>(FindObjectsSortMode.None)) {
 
@@ -269,6 +289,8 @@ public class GridController : MonoBehaviour, PlayerController{
         SyncFieldsFromCombatant();
 
         targetingIndicator.SetActive(false);
+        SetupCancelTargetButton();
+        SetCancelTargetButtonVisible(false);
 
         //Make board
         int yIndex = 0;
@@ -355,10 +377,10 @@ public class GridController : MonoBehaviour, PlayerController{
         for (int i = 0; i < probabilities.Length; i++) {
             runningProbability += probabilities[i];
             if (randomValue < runningProbability) {
-                return i;
+                return generatedTypes[i];
             }
         }
-        return 5;
+        return generatedTypes[generatedTypes.Length - 1];
     }
 
     public void hide() {
@@ -801,7 +823,16 @@ public class GridController : MonoBehaviour, PlayerController{
                     }
                     break;
                 case "destroySquare":
-                    //Spells with this parameter score a square of size parameter 1
+                case "scoreSquare":
+                    //Spells with this parameter affect a square of size parameter 1.
+                    beginCasting(parameter, spell, caster, target);
+                    return true;
+                case "targetShape":
+                    // targetShape [target|adjacent|cross|diagonalMatches|square2x2|matchingSquare2x2] [score|destroy|count]
+                    beginCasting(parameter, spell, caster, target);
+                    return true;
+                case "rotateSquare":
+                    // rotateSquare [clockwise|counterclockwise]
                     beginCasting(parameter, spell, caster, target);
                     return true;
                 case ("shiftTarget"):
@@ -819,7 +850,7 @@ public class GridController : MonoBehaviour, PlayerController{
                     beginCasting(parameter, spell, caster, target);
                     return true;
                 case "randomShift":
-                    //Spells with this parameter change parameter 1 random pieces into type parameter 2 (if parameter 2 is -1, score them, and if parameter 2 is 7, the piece is random)
+                    //Spells with this parameter change parameter 1 random pieces into type parameter 2 (if parameter 2 is 7, the piece is random)
                     List<int> randomNumbers = new List<int>();
                     while (randomNumbers.Count < int.Parse(actionAndParameters[1])) {
                         int randomNumber = UnityEngine.Random.Range(0, grid.Count);
@@ -828,10 +859,7 @@ public class GridController : MonoBehaviour, PlayerController{
                         }
                     }
                     foreach (int i in randomNumbers) {
-                        if (actionAndParameters[2] == "2") {
-                            toDelete.Add(i);
-                        }
-                        else if (actionAndParameters[2] == "7") {
+                        if (actionAndParameters[2] == "7") {
                             int randType = UnityEngine.Random.Range(0, 5);
                             grid[i].setType(randType);
                             grid[i].setIsSuperPiece(false);
@@ -845,6 +873,18 @@ public class GridController : MonoBehaviour, PlayerController{
                         }
                         flash = Instantiate(Resources.Load<GameObject>("spellFlash"), grid[i].getObject().transform);
                         flash.transform.localScale.Set(0.5f, 0.5f, 0.5f);
+                    }
+                    break;
+                case "randomPieces":
+                    // randomPieces [count] [score|destroy]
+                    List<int> randomPieces = GetRandomBoardPositions(int.Parse(actionAndParameters[1]));
+                    if (actionAndParameters[2] == "score") {
+                        lastSpellDestroyedCount = randomPieces.Count;
+                        toDelete.UnionWith(randomPieces);
+                    }
+                    else if (actionAndParameters[2] == "destroy") {
+                        lastSpellDestroyedCount = randomPieces.Count;
+                        toDestroy.UnionWith(randomPieces);
                     }
                     break;
                 case "grantExtraTurn":
@@ -912,7 +952,7 @@ public class GridController : MonoBehaviour, PlayerController{
                     }
                     break;
                 case "shiftColor":
-                    //Spells with this parameter shift the color of all pieces of type parameter 1 into pieces of type parameter 2
+                    //Spells with this parameter shift the color of all pieces of type parameter 1 into pieces of type parameter 2. -1 scores pieces.
                     for (int i = 0; i < BOARDLENGTH * BOARDLENGTH; i++) {
                         if (grid[i].getType() == int.Parse(actionAndParameters[1])) {
                             if (int.Parse(actionAndParameters[2]) == -1) {
@@ -1021,6 +1061,50 @@ public class GridController : MonoBehaviour, PlayerController{
         return lastSpellDestroyedCount * 5;
     }
 
+    public int getLastSpellDestroyedCountTimes4() {
+        return lastSpellDestroyedCount * 4;
+    }
+
+    private void SetupCancelTargetButton() {
+        if (cancelTargetButton == null) {
+            cancelTargetButton = FindSceneGameObject("cancelTargetButton");
+        }
+        if (cancelTargetButton == null) {
+            Debug.LogWarning("Missing cancelTargetButton reference on GridController. Assign it in the CombatScene Inspector.");
+            return;
+        }
+
+        cancelTargetButtonComponent = cancelTargetButton.GetComponent<Button>();
+        if (cancelTargetButtonComponent == null) {
+            Debug.LogWarning("cancelTargetButton is missing a Button component. Targeting cancel UI will be unavailable.");
+            return;
+        }
+
+        cancelTargetButtonComponent.onClick.RemoveListener(CancelCurrentSpellCast);
+        cancelTargetButtonComponent.onClick.AddListener(CancelCurrentSpellCast);
+    }
+
+    private GameObject FindSceneGameObject(string objectName) {
+        GameObject found = GameObject.Find(objectName);
+        if (found != null) {
+            return found;
+        }
+
+        foreach (GameObject candidate in Resources.FindObjectsOfTypeAll<GameObject>()) {
+            if (candidate.name == objectName && candidate.scene.IsValid()) {
+                return candidate;
+            }
+        }
+
+        return null;
+    }
+
+    private void SetCancelTargetButtonVisible(bool visible) {
+        if (cancelTargetButton != null) {
+            cancelTargetButton.SetActive(visible);
+        }
+    }
+
     private void beginCasting(string actionAndParameters, Spell spell, PlayerController caster, PlayerController target) {
         this.actionAndParameters = actionAndParameters;
         currentSpell = spell;
@@ -1030,8 +1114,9 @@ public class GridController : MonoBehaviour, PlayerController{
         selectedPiece = null;
         isCasting = true;
         targetingIndicator.SetActive(true);
+        SetCancelTargetButtonVisible(true);
         turnOffSpells();
-        makeSplashText("Select a target (Esc/right click to cancel)", isTurn);
+        makeSplashText("Select a target", isTurn);
     }
 
     public void addStatusEffect(StatusEffect effect) {
@@ -1094,32 +1179,49 @@ public class GridController : MonoBehaviour, PlayerController{
                     */
                     break;
                 case ("destroySquare"):
+                case ("scoreSquare"):
                     int index = getIndex(thingController.gameObject);
                     List<int> positions = new List<int>();
 
                     if (currentSpell.Effects[0] == 0) {
-                        for (int i = -int.Parse(parameters[1]); i <= int.Parse(parameters[1]); i++) {
-                            if (index + i * BOARDLENGTH < 0 || index + i * BOARDLENGTH > BOARDLENGTH * BOARDLENGTH) {
-                                continue;
-                            }
-                            for (int j = -int.Parse(parameters[1]); j <= int.Parse(parameters[1]); j++) {
-                                if (index + i * BOARDLENGTH + j >= 0 && index + i * BOARDLENGTH + j < BOARDLENGTH * BOARDLENGTH) {
-                                    if (index + i * BOARDLENGTH + j >= ((index + i * BOARDLENGTH) / BOARDLENGTH) * BOARDLENGTH && index + i * BOARDLENGTH + j < ((index + (i + 1) * BOARDLENGTH) / BOARDLENGTH) * BOARDLENGTH) {
-                                        positions.Add(index + i * BOARDLENGTH + j);
-                                        //Debug.Log(index + i * BOARDLENGTH + j);
-                                    }
-                                }
-                                if (index + j % 8 == 7) {
-                                    //Debug.Log("Reached edge");
-                                    break;
-                                }
-                            }
-                        }
+                        positions = GetCenteredSquarePositions(index, int.Parse(parameters[1]));
 
                         lastSpellDestroyedCount = positions.Count;
-                        toDelete.UnionWith(positions);
+                        if (parameters[0] == "scoreSquare") {
+                            toDelete.UnionWith(positions);
+                        }
+                        else {
+                            toDestroy.UnionWith(positions);
+                        }
                         CompleteTargetedSpellCommand();
                     }
+                    break;
+                case ("targetShape"):
+                    index = getIndex(thingController.gameObject);
+                    positions = GetTargetShapePositions(index, parameters[1]);
+                    if (positions.Count == 0 && parameters[2] != "count") {
+                        KeepCastingAfterInvalidTarget("No valid shape there.");
+                        return;
+                    }
+
+                    lastSpellDestroyedCount = positions.Count;
+                    if (parameters[2] == "score") {
+                        toDelete.UnionWith(positions);
+                    }
+                    else if (parameters[2] == "destroy") {
+                        toDestroy.UnionWith(positions);
+                    }
+                    CompleteTargetedSpellCommand();
+                    break;
+                case ("rotateSquare"):
+                    index = getIndex(thingController.gameObject);
+                    if (!CanUseTopLeftSquare(index)) {
+                        KeepCastingAfterInvalidTarget("Target must be above the bottom row and left of the right row.");
+                        return;
+                    }
+
+                    RotateSquare2x2(index, parameters[1] == "clockwise");
+                    CompleteTargetedSpellCommand();
                     break;
                 case ("shiftTarget"):
                     index = getIndex(thingController.gameObject);
@@ -1137,7 +1239,7 @@ public class GridController : MonoBehaviour, PlayerController{
                     index = getIndex(thingController.gameObject);
                     positions = FindLShapeContaining(index);
                     if (positions.Count == 0) {
-                        KeepCastingAfterInvalidTarget("No L shape there. Esc/right click to cancel.");
+                        KeepCastingAfterInvalidTarget("No L shape there.");
                         return;
                     }
 
@@ -1149,7 +1251,7 @@ public class GridController : MonoBehaviour, PlayerController{
                     index = getIndex(thingController.gameObject);
                     positions = FindContiguousChunk(index);
                     if (positions.Count == 0) {
-                        KeepCastingAfterInvalidTarget("No valid chunk there. Esc/right click to cancel.");
+                        KeepCastingAfterInvalidTarget("No valid chunk there.");
                         return;
                     }
 
@@ -1238,6 +1340,7 @@ public class GridController : MonoBehaviour, PlayerController{
         pendingSpellParameterIndex = 0;
         isCasting = false;
         targetingIndicator.SetActive(false);
+        SetCancelTargetButtonVisible(false);
     }
 
     private List<int> FindLShapeContaining(int targetIndex) {
@@ -1308,6 +1411,157 @@ public class GridController : MonoBehaviour, PlayerController{
         }
 
         return chunk;
+    }
+
+    private List<int> GetCenteredSquarePositions(int centerIndex, int radius) {
+        List<int> positions = new List<int>();
+        int centerRow = centerIndex / BOARDLENGTH;
+        int centerColumn = centerIndex % BOARDLENGTH;
+
+        for (int row = centerRow - radius; row <= centerRow + radius; row++) {
+            if (row < 0 || row >= BOARDLENGTH) {
+                continue;
+            }
+
+            for (int column = centerColumn - radius; column <= centerColumn + radius; column++) {
+                if (column >= 0 && column < BOARDLENGTH) {
+                    positions.Add(row * BOARDLENGTH + column);
+                }
+            }
+        }
+
+        return positions;
+    }
+
+    private List<int> GetTargetShapePositions(int targetIndex, string shape) {
+        List<int> positions = new List<int>();
+        if (targetIndex < 0 || targetIndex >= grid.Count) {
+            return positions;
+        }
+
+        switch (shape) {
+            case "target":
+                positions.Add(targetIndex);
+                break;
+            case "adjacent":
+                positions.Add(targetIndex);
+                foreach (int offset in new int[] { BOARDLENGTH, -BOARDLENGTH, 1, -1 }) {
+                    int neighbor = targetIndex + offset;
+                    if (IsNeighbor(targetIndex, neighbor, offset)) {
+                        positions.Add(neighbor);
+                    }
+                }
+                break;
+            case "cross":
+                int rowStart = getLowerHorizontalBound(targetIndex);
+                int rowEnd = getUpperHorizontalBound(targetIndex);
+                for (int i = rowStart; i < rowEnd; i++) {
+                    positions.Add(i);
+                }
+                for (int i = targetIndex % BOARDLENGTH; i < BOARDLENGTH * BOARDLENGTH; i += BOARDLENGTH) {
+                    positions.Add(i);
+                }
+                break;
+            case "diagonalMatches":
+                int targetType = grid[targetIndex].getType();
+                foreach (int offset in new int[] { BOARDLENGTH + 1, BOARDLENGTH - 1, -BOARDLENGTH + 1, -BOARDLENGTH - 1 }) {
+                    int diagonal = targetIndex + offset;
+                    if (IsDiagonalNeighbor(targetIndex, diagonal) && grid[diagonal].getType() == targetType) {
+                        positions.Add(diagonal);
+                    }
+                }
+                break;
+            case "square2x2":
+                if (CanUseTopLeftSquare(targetIndex)) {
+                    positions.Add(targetIndex);
+                    positions.Add(targetIndex + 1);
+                    positions.Add(targetIndex - BOARDLENGTH);
+                    positions.Add(targetIndex - BOARDLENGTH + 1);
+                }
+                break;
+            case "matchingSquare2x2":
+                positions.AddRange(FindMatchingSquare2x2Containing(targetIndex));
+                break;
+        }
+
+        return new List<int>(new HashSet<int>(positions));
+    }
+
+    private bool CanUseTopLeftSquare(int topLeftIndex) {
+        return topLeftIndex >= BOARDLENGTH &&
+            topLeftIndex % BOARDLENGTH < BOARDLENGTH - 1;
+    }
+
+    private List<int> FindMatchingSquare2x2Containing(int targetIndex) {
+        List<int> positions = new List<int>();
+        int targetType = grid[targetIndex].getType();
+        if (targetType < 0) {
+            return positions;
+        }
+
+        foreach (int topLeft in new int[] { targetIndex, targetIndex - 1, targetIndex + BOARDLENGTH, targetIndex + BOARDLENGTH - 1 }) {
+            if (!CanUseTopLeftSquare(topLeft)) {
+                continue;
+            }
+
+            int topRight = topLeft + 1;
+            int bottomLeft = topLeft - BOARDLENGTH;
+            int bottomRight = bottomLeft + 1;
+            if (grid[topLeft].getType() == targetType &&
+                grid[topRight].getType() == targetType &&
+                grid[bottomLeft].getType() == targetType &&
+                grid[bottomRight].getType() == targetType) {
+                positions.Add(topLeft);
+                positions.Add(topRight);
+                positions.Add(bottomLeft);
+                positions.Add(bottomRight);
+                return positions;
+            }
+        }
+
+        return positions;
+    }
+
+    private bool IsDiagonalNeighbor(int origin, int candidate) {
+        if (candidate < 0 || candidate >= BOARDLENGTH * BOARDLENGTH) {
+            return false;
+        }
+
+        return Math.Abs((origin / BOARDLENGTH) - (candidate / BOARDLENGTH)) == 1 &&
+            Math.Abs((origin % BOARDLENGTH) - (candidate % BOARDLENGTH)) == 1;
+    }
+
+    private void RotateSquare2x2(int topLeftIndex, bool clockwise) {
+        int topRight = topLeftIndex + 1;
+        int bottomLeft = topLeftIndex - BOARDLENGTH;
+        int bottomRight = bottomLeft + 1;
+
+        if (clockwise) {
+            swap(topLeftIndex, bottomLeft);
+            swap(bottomLeft, bottomRight);
+            swap(bottomRight, topRight);
+        }
+        else {
+            swap(topLeftIndex, topRight);
+            swap(topRight, bottomRight);
+            swap(bottomRight, bottomLeft);
+        }
+    }
+
+    private List<int> GetRandomBoardPositions(int count) {
+        List<int> availablePositions = new List<int>();
+        for (int i = 0; i < grid.Count; i++) {
+            availablePositions.Add(i);
+        }
+
+        List<int> positions = new List<int>();
+        while (positions.Count < count && availablePositions.Count > 0) {
+            int randomIndex = UnityEngine.Random.Range(0, availablePositions.Count);
+            positions.Add(availablePositions[randomIndex]);
+            availablePositions.RemoveAt(randomIndex);
+        }
+
+        return positions;
     }
 
     private bool IsNeighbor(int origin, int candidate, int offset) {
@@ -1393,10 +1647,7 @@ public class GridController : MonoBehaviour, PlayerController{
     public void checkForMatches() {
 
         //Find Matches
-        //toDelete = new SortedSet<int>();
-        for (int i = 0; i < BOARDLENGTH * BOARDLENGTH; i++) {
-            checkForMatchesHelper(i, GetThing(i).getType());
-        }
+        toDelete.UnionWith(CreateMatchBoard().FindMatches());
         //Check for 4+ in a rows (and checks if isn't first turn)
         if ((madeMove || EnemyController.madeMove) && !extraTurn && areFourOrMoreInARows()) {
             Debug.Log("4+ in a row");
@@ -1408,13 +1659,30 @@ public class GridController : MonoBehaviour, PlayerController{
         //Do superPiece handling
         handleSuperPieces(new List<int>());
 
+        //Check if there are still moves, otherwise refresh board
+        if (toDelete.Count == 0 && toDestroy.Count == 0) {
+            List<Move> moves = new List<Move>();
+            for (int i = 0; i < BOARDLENGTH * BOARDLENGTH; i++) {
+                moves.AddRange(movesAtPoint(i));
+            }
+            if (moves.Count == 0) {
+                for (int i = 0; i < BOARDLENGTH * BOARDLENGTH; i++) {
+                    toDestroy.Add(i);
+                }
+            }
+        }
+
         typeCounts = new Dictionary<int, int>{
             { 0, 0 },
             { 1, 0 },
             { 2, 0 },
             { 3, 0 },
             { 4, 0 },
-            { 5, 0 }
+            { 5, 0 },
+            { 6, 0 },
+            { 7, 0 },
+            { 8, 0 },
+            { 9, 0 }
         };
         //Calculate gained amounts
         if (madeMove || EnemyController.madeMove) {
@@ -1425,41 +1693,22 @@ public class GridController : MonoBehaviour, PlayerController{
             }
         }
         scoreByAmount(typeCounts);
+
+        // Destroy-only spell effects remove pieces without scoring them, then gravity handles the empty spaces.
+        foreach (int i in toDestroy) {
+            if (toDelete.Contains(i)) {
+                continue;
+            }
+            DestroyBoardPieceAt(i, false);
+        }
         
         //Destroy Matches
         foreach (int i in toDelete) {
-
-            //Make explosion for superpieces
-            if (grid[i].getIsSuperPiece()) {
-                GameObject sound = Instantiate(Resources.Load<GameObject>("sound effect"));
-                sound.GetComponent<SoundEffectHandler>().play("explosion");
-            }
-
-            //Make particle trail
-            generateParticles(i, grid[i].getType());
-
-            //Make a smoke cloud
-            /*
-            GameObject smokePuff = Instantiate(Resources.Load<GameObject>("SmokePuff"));
-            smokePuff.transform.position = grid[i].getObject().transform.position;
-            smokePuff.transform.Translate(new Vector3(0, 0, -2));
-            ParticleSystem.MainModule puffGenerator = smokePuff.GetComponent<ParticleSystem>().main;
-            puffGenerator.startColor = matchingColors[grid[i].getType()];
-            */
-
-            // Leave behind a colored square to show what piece type was destroyed
-            GameObject matchIdentifier = Instantiate(Resources.Load<GameObject>("MatchIdentifier"));
-            matchIdentifier.GetComponent<Image>().color = matchingColors[grid[i].getType()];
-            matchIdentifier.transform.SetParent(gameObject.transform);
-            matchIdentifier.transform.position = grid[i].getObject().transform.position;
-
-            grid[i].setType(-1);
-            grid[i].setIsSuperPiece(false);
-            grid[i].getObject().GetComponent<ThingController>().light.gameObject.SetActive(false);
-            grid[i].getObject().GetComponent<Image>().color = Color.white;
-            grid[i].getObject().GetComponent<ThingController>().assignPiece(-1);
-            
+            DestroyBoardPieceAt(i, true);
         }
+
+        toDelete.Clear();
+        toDestroy.Clear();
 
         //Check castability of spells
         if (isTurn) {
@@ -1477,25 +1726,12 @@ public class GridController : MonoBehaviour, PlayerController{
             gameObject.GetComponent<EnemyController>().checkAllCosts();
         }
 
-        //Check if there are still moves, otherwise refresh board
-        if (toDelete.Count == 0 && toDestroy.Count == 0) {
-            List<Move> moves = new List<Move>();
-            for (int i = 0; i < BOARDLENGTH * BOARDLENGTH; i++) {
-                moves.AddRange(movesAtPoint(i));
-            }
-            if (moves.Count == 0) {
-                for (int i = 0; i < BOARDLENGTH * BOARDLENGTH; i++) {
-                    toDestroy.Add(i);
-                }
-            }
-        }
-
         //Passing turns
-        if (toDelete.Count == 0 && isTurn && madeMove) {
+        if (toDelete.Count == 0 && toDestroy.Count == 0 && !HasEmptyPieces() && isTurn && madeMove) {
             passTurn();
             return;
         }
-        else if (toDelete.Count == 0 && !isTurn && EnemyController.madeMove) {
+        else if (toDelete.Count == 0 && toDestroy.Count == 0 && !HasEmptyPieces() && !isTurn && EnemyController.madeMove) {
             passTurn();
             return;
         }
@@ -1526,7 +1762,6 @@ public class GridController : MonoBehaviour, PlayerController{
                 toDelete.Add(i);
             }
         }
-        toDelete.UnionWith(toDestroy);
 
         foreach (int i in toDelete) {
             //Delete objects and send them away
@@ -1536,7 +1771,7 @@ public class GridController : MonoBehaviour, PlayerController{
             grid[i].getObject().transform.Translate(new Vector3(distance, 0f, distance));
             grid[i].getObject().transform.rotation = Quaternion.identity;
 
-            int randType = (int)UnityEngine.Random.Range(0.0f, 6.0f);
+            int randType = assignType(UnityEngine.Random.value);
             grid[i].setType(randType);
             if (randType == 3) { //Make super sword pieces, may do this for more later
                 if (UnityEngine.Random.value < 0.1) {
@@ -1554,6 +1789,42 @@ public class GridController : MonoBehaviour, PlayerController{
 
         toDelete.Clear();
         toDestroy.Clear();
+    }
+
+    private bool HasEmptyPieces() {
+        foreach (Thing thing in grid) {
+            if (thing.getType() == ThingTypes.Empty) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private void DestroyBoardPieceAt(int index, bool scorePiece) {
+        if (grid[index].getType() == ThingTypes.Empty) {
+            return;
+        }
+
+        if (grid[index].getIsSuperPiece()) {
+            GameObject sound = Instantiate(Resources.Load<GameObject>("sound effect"));
+            sound.GetComponent<SoundEffectHandler>().play("explosion");
+        }
+
+        if (scorePiece) {
+            generateParticles(index, grid[index].getType());
+        }
+
+        GameObject matchIdentifier = Instantiate(Resources.Load<GameObject>("MatchIdentifier"));
+        matchIdentifier.GetComponent<Image>().color = matchingColors[grid[index].getType()];
+        matchIdentifier.transform.SetParent(gameObject.transform);
+        matchIdentifier.transform.position = grid[index].getObject().transform.position;
+
+        grid[index].setType(ThingTypes.Empty);
+        grid[index].setIsSuperPiece(false);
+        grid[index].getObject().GetComponent<ThingController>().light.gameObject.SetActive(false);
+        grid[index].getObject().GetComponent<Image>().color = Color.white;
+        grid[index].getObject().GetComponent<ThingController>().assignPiece(ThingTypes.Empty);
     }
 
     //Adds super piece explosion to toDelete, and runs again if the new list contains more super pieces
@@ -1602,46 +1873,36 @@ public class GridController : MonoBehaviour, PlayerController{
 
     private bool areFourOrMoreInARows() {
         foreach (int i in toDelete) {
-            int matchLength = 0;
             int matchColor = grid[i].getType();
-            //Count to the left
-            int counter = -1;
-            while (i + counter >= getLowerHorizontalBound(i) && grid[i + counter].getType() == matchColor) {
-                matchLength++;
-                counter--;
+            if (!ThingTypes.CanStartMatch(matchColor)) {
+                continue;
             }
-            //Count to the right
-            counter = 1;
-            while (i + counter < getUpperHorizontalBound(i) && grid[i + counter].getType() == matchColor) {
-                matchLength++;
-                counter++;
-            }
-            //Check for 4+
-            if (matchLength >= 3) {
+            if (CountMatchingNeighbors(i, matchColor, -1, getLowerHorizontalBound(i), -1) +
+                CountMatchingNeighbors(i, matchColor, 1, getUpperHorizontalBound(i), 1) >= 3) {
                 makeSpashText("Extra turn", grid[i].getObject().transform.position, Color.white, 24);
                 return true;
             }
 
-            //Count up
-            matchLength = 0;
-            counter = BOARDLENGTH;
-            while (i + counter < BOARDLENGTH * BOARDLENGTH && grid[i + counter].getType() == matchColor) {
-                matchLength++;
-                counter += BOARDLENGTH;
-            }
-            //Count down
-            counter = -BOARDLENGTH;
-            while (i + counter >= 0 && grid[i + counter].getType() == matchColor) {
-                matchLength++;
-                counter -= BOARDLENGTH;
-            }
-            //Check for 4+ in this direction
-            if (matchLength >= 3) {
+            if (CountMatchingNeighbors(i, matchColor, -BOARDLENGTH, 0, -1) +
+                CountMatchingNeighbors(i, matchColor, BOARDLENGTH, BOARDLENGTH * BOARDLENGTH, 1) >= 3) {
                 makeSpashText("Extra turn", grid[i].getObject().transform.position, Color.white, 24);
                 return true;
             }
         }
         return false;
+    }
+
+    private int CountMatchingNeighbors(int index, int matchColor, int increment, int exclusiveBound, int direction) {
+        int matchLength = 0;
+        int position = index + increment;
+        while ((direction < 0 && position >= exclusiveBound) || (direction > 0 && position < exclusiveBound)) {
+            if (!ThingTypes.CanMatchAs(grid[position].getType(), matchColor)) {
+                break;
+            }
+            matchLength++;
+            position += increment;
+        }
+        return matchLength;
     }
 
     private void look(int index, int type, int increment) {
@@ -1862,6 +2123,24 @@ public class GridController : MonoBehaviour, PlayerController{
                 makeManaSplashText(amount, isTurn, 2);
                 playManaSound(2);
             }
+            if (typeCounts[9] != 0) {
+                int amount = typeCounts[9];
+                int realRed = (int)weapon.manaEffect(0, redMana + amount);
+                int realBlue = (int)weapon.manaEffect(1, blueMana + amount);
+                int realYellow = (int)weapon.manaEffect(2, yellowMana + amount);
+                string redAmount = realRed > 0 ? "+" + (realRed - redMana) : realRed.ToString();
+                string blueAmount = realBlue > 0 ? "+" + (realBlue - blueMana) : realBlue.ToString();
+                string yellowAmount = realYellow > 0 ? "+" + (realYellow - yellowMana) : realYellow.ToString();
+                setRedMana(realRed);
+                setBlueMana(realBlue);
+                setYellowMana(realYellow);
+                makeManaSplashText(redAmount, isTurn, 0);
+                makeManaSplashText(blueAmount, isTurn, 1);
+                makeManaSplashText(yellowAmount, isTurn, 2);
+                playManaSound(0);
+                playManaSound(1);
+                playManaSound(2);
+            }
             if (typeCounts[3] != 0) {
                 int real = gameObject.GetComponent<EnemyController>().applyModifiersToDamageDone(typeCounts[3], DamageType.matchDamage);
                 gameObject.GetComponent<EnemyController>().dealDamage(real);
@@ -1953,6 +2232,14 @@ public class GridController : MonoBehaviour, PlayerController{
             }
         }
         return true;
+    }
+
+    public bool isBoardSettledForInput() {
+        if (!isValidMoveTime() || HasEmptyPieces() || toDelete.Count > 0 || toDestroy.Count > 0) {
+            return false;
+        }
+
+        return CreateMatchBoard().FindMatches().Count == 0;
     }
 
     public List<Move> movesAtPoint(int i) {

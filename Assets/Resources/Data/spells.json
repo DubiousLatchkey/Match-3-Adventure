@@ -345,7 +345,7 @@
         3,
         6
       ],
-      "parameters": "randomShift 9 -1\nendTurn ",
+      "parameters": "randomPieces 9 score\nendTurn ",
       "tooltip": "Score 9 random pieces\nEnds turn"
     },
     {
@@ -357,7 +357,7 @@
         4,
         5
       ],
-      "parameters": "destroySquare 0",
+      "parameters": "scoreSquare 0",
       "tooltip": "Score target piece\nDoesn't end turn"
     },
     {
@@ -369,7 +369,7 @@
         4,
         4
       ],
-      "parameters": "dealDamage 4\nrandomShift 1 -1",
+      "parameters": "dealDamage 4\nrandomPieces 1 score\nendTurn",
       "tooltip": "Deals 4 damage and scores a random piece \nEnds turn"
     },
     {
@@ -657,7 +657,7 @@
         4,
         4
       ],
-      "parameters": "dealDamage 3\nheal 3\nrandomShift 1 -1\nrandomShift 1 7",
+      "parameters": "dealDamage 3\nheal 3\nrandomPieces 1 score\nrandomShift 1 7",
       "tooltip": "Deals 3 Damage, Heals 3, scores a random piece, and shifts one random piece into another type\nDoesn't end turn"
     },
     {
@@ -743,6 +743,138 @@
       ],
       "parameters": "destroyContiguousChunk\ndealDamageEqualTo getLastSpellDestroyedCountTimes5\nendTurn",
       "tooltip": "Destroys a contiguous same-type chunk and deals 5 damage per piece\nEnds turn"
+    },
+    {
+      "id": "cruciform_collapse",
+      "index": 62,
+      "name": "Cruciform Collapse",
+      "costs": [
+        9,
+        0,
+        3
+      ],
+      "parameters": "targetShape cross destroy\nendTurn",
+      "tooltip": "Destroys the target's row and column\nEnds turn"
+    },
+    {
+      "id": "resonant_x",
+      "index": 63,
+      "name": "Resonant X",
+      "costs": [
+        2,
+        0,
+        7
+      ],
+      "parameters": "targetShape diagonalMatches count\ndealDamageEqualTo getLastSpellDestroyedCountTimes4\nendTurn",
+      "tooltip": "Deals 4 damage for each diagonally adjacent piece matching the target\nEnds turn"
+    },
+    {
+      "id": "pinpoint_annihilation",
+      "index": 64,
+      "name": "Pinpoint Annihilation",
+      "costs": [
+        3,
+        0,
+        0
+      ],
+      "parameters": "targetShape target destroy\nendTurn",
+      "tooltip": "Destroys target piece\nEnds turn"
+    },
+    {
+      "id": "wide_ruin",
+      "index": 65,
+      "name": "Wide Ruin",
+      "costs": [
+        12,
+        0,
+        4
+      ],
+      "parameters": "randomPieces 32 destroy\nendTurn",
+      "tooltip": "Destroys 32 random pieces\nEnds turn"
+    },
+    {
+      "id": "scattered_ruin",
+      "index": 66,
+      "name": "Scattered Ruin",
+      "costs": [
+        8,
+        0,
+        2
+      ],
+      "parameters": "randomPieces 16 destroy\nendTurn",
+      "tooltip": "Destroys 16 random pieces\nEnds turn"
+    },
+    {
+      "id": "splinter_ruin",
+      "index": 67,
+      "name": "Splinter Ruin",
+      "costs": [
+        5,
+        0,
+        1
+      ],
+      "parameters": "randomPieces 8 destroy\nendTurn",
+      "tooltip": "Destroys 8 random pieces\nEnds turn"
+    },
+    {
+      "id": "quadrant_sunder",
+      "index": 68,
+      "name": "Quadrant Sunder",
+      "costs": [
+        6,
+        1,
+        5
+      ],
+      "parameters": "targetShape matchingSquare2x2 destroy\ndealDamage 12\nendTurn",
+      "tooltip": "Destroys a same-type 2x2 square containing the target and deals 12 damage\nEnds turn"
+    },
+    {
+      "id": "clockwise_cant",
+      "index": 69,
+      "name": "Clockwise Cant",
+      "costs": [
+        0,
+        4,
+        1
+      ],
+      "parameters": "rotateSquare clockwise\nendTurn",
+      "tooltip": "Rotates a 2x2 square clockwise with the target as top left\nEnds turn"
+    },
+    {
+      "id": "counterclockwise_cant",
+      "index": 70,
+      "name": "Counterclockwise Cant",
+      "costs": [
+        0,
+        4,
+        1
+      ],
+      "parameters": "rotateSquare counterclockwise\nendTurn",
+      "tooltip": "Rotates a 2x2 square counterclockwise with the target as top left\nEnds turn"
+    },
+    {
+      "id": "ethereal_incision",
+      "index": 71,
+      "name": "Ethereal Incision",
+      "costs": [
+        2,
+        1,
+        3
+      ],
+      "parameters": "targetShape target score\nendTurn",
+      "tooltip": "Scores target piece\nEnds turn"
+    },
+    {
+      "id": "ethereal_excision",
+      "index": 72,
+      "name": "Ethereal Excision",
+      "costs": [
+        4,
+        1,
+        5
+      ],
+      "parameters": "targetShape adjacent score\nendTurn",
+      "tooltip": "Scores target piece and orthogonally adjacent pieces\nEnds turn"
     }
   ]
 }

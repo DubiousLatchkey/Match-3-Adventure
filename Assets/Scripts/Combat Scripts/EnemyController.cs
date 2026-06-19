@@ -435,6 +435,24 @@ public class EnemyController : MonoBehaviour, PlayerController
             GridController.makeManaSplashText(amount, GridController.isTurn, 2);
             gameObject.GetComponent<GridController>().playManaSound(2);
         }
+        if (typeCounts.ContainsKey((int)colorType.rainbowMana) && typeCounts[(int)colorType.rainbowMana] != 0) {
+            int amount = typeCounts[(int)colorType.rainbowMana];
+            int realRed = (int)weapon.manaEffect(0, redMana + amount);
+            int realBlue = (int)weapon.manaEffect(1, blueMana + amount);
+            int realYellow = (int)weapon.manaEffect(2, yellowMana + amount);
+            string redAmount = realRed > 0 ? "+" + (realRed - redMana) : realRed.ToString();
+            string blueAmount = realBlue > 0 ? "+" + (realBlue - blueMana) : realBlue.ToString();
+            string yellowAmount = realYellow > 0 ? "+" + (realYellow - yellowMana) : realYellow.ToString();
+            setRedMana(realRed);
+            setBlueMana(realBlue);
+            setYellowMana(realYellow);
+            GridController.makeManaSplashText(redAmount, GridController.isTurn, 0);
+            GridController.makeManaSplashText(blueAmount, GridController.isTurn, 1);
+            GridController.makeManaSplashText(yellowAmount, GridController.isTurn, 2);
+            gameObject.GetComponent<GridController>().playManaSound(0);
+            gameObject.GetComponent<GridController>().playManaSound(1);
+            gameObject.GetComponent<GridController>().playManaSound(2);
+        }
         if (typeCounts[3] != 0) {
             int real = gameObject.GetComponent<GridController>().applyModifiersToDamageDone(typeCounts[3], DamageType.matchDamage);
             gameObject.GetComponent<GridController>().dealDamage(real);
@@ -468,7 +486,7 @@ public class EnemyController : MonoBehaviour, PlayerController
             return;
         }
 
-        if (!GridController.transitioning && !GridController.isTurn && !madeMove && gameObject.GetComponent<GridController>().isValidMoveTime()) {
+        if (!GridController.transitioning && !GridController.isTurn && !madeMove && gameObject.GetComponent<GridController>().isBoardSettledForInput()) {
             if (!doingTurn) {
                 doingTurn = true;
                 //Pass turn immediately if is a solo fight
@@ -650,6 +668,11 @@ public class EnemyController : MonoBehaviour, PlayerController
                 case (int)colorType.multiplier:
                     if (damageMultiplier >= 1.9) { runningPrioritySum -= 2; }
                     runningPrioritySum++;
+                    break;
+                case (int)colorType.rainbowMana:
+                    if (averageRedManaCost > redMana || averageBlueManaCost > blueMana || averageYellowManaCost > yellowMana) {
+                        runningPrioritySum += 2;
+                    }
                     break;
             }
 
@@ -946,6 +969,10 @@ public class EnemyController : MonoBehaviour, PlayerController
         else {
             priorities.Add(-10);
         }
+        priorities.Add(0);
+        priorities.Add(-10);
+        priorities.Add(0);
+        priorities.Add(Mathf.Max(totalRedCosts - redMana, totalBlueCosts - blueMana, totalYellowCosts - yellowMana));
     }
 
     public void decrementMultiplier() {

@@ -37,6 +37,45 @@ public class Thing {
 
 }
 
+public static class ThingTypes {
+    public const int Empty = -1;
+    public const int Red = 0;
+    public const int Blue = 1;
+    public const int Yellow = 2;
+    public const int Damage = 3;
+    public const int Health = 4;
+    public const int Multiplier = 5;
+    public const int Null = 6;
+    public const int Brick = 7;
+    public const int Wildcard = 8;
+    public const int RainbowMana = 9;
+
+    public static bool IsMana(int type) {
+        return type == Red || type == Blue || type == Yellow;
+    }
+
+    public static bool IsMovable(int type) {
+        return type != Empty && type != Brick;
+    }
+
+    public static bool CanMatchAs(int type, int matchType) {
+        if (type == Empty || type == Brick) {
+            return false;
+        }
+        if (IsMana(matchType)) {
+            return type == matchType || type == Wildcard;
+        }
+        if (matchType == RainbowMana) {
+            return type == RainbowMana || type == Wildcard;
+        }
+        return type == matchType;
+    }
+
+    public static bool CanStartMatch(int type) {
+        return type != Empty && type != Brick && type != Wildcard;
+    }
+}
+
 public enum DamageType {
     spellDamage,
     matchDamage,
@@ -49,7 +88,11 @@ public enum colorType {
     yellow,
     damage,
     health,
-    multiplier
+    multiplier,
+    nullTile,
+    brick,
+    wildcard,
+    rainbowMana
 }
 
 //Interface for dealing with players, AI or human

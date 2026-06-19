@@ -18,6 +18,8 @@ public class ThingController : MonoBehaviour, IEndDragHandler, IDragHandler
     float accelerationFactor;
     public float accelerationConstant = 1f;
     bool toAccelerate = false;
+    bool isWildcard;
+    Image image;
 
     void Awake() {
         EventSystem eventSystem = GetComponent<EventSystem>();
@@ -36,6 +38,7 @@ public class ThingController : MonoBehaviour, IEndDragHandler, IDragHandler
     {
         target = gameObject.transform.position;
         audio = GetComponent<AudioSource>();
+        image = GetComponent<Image>();
         speed = baseSpeed;
         //moving = false;
     }
@@ -62,6 +65,10 @@ public class ThingController : MonoBehaviour, IEndDragHandler, IDragHandler
         //float step = Vector3.Distance(transform.position, target) / 10;
         transform.position = Vector3.MoveTowards(transform.position, target, step);
 
+        if (isWildcard) {
+            image.color = Color.HSVToRGB(Mathf.Repeat(Time.time * 0.25f, 1f), 0.65f, 1f);
+        }
+
     }
 
     void FixedUpdate() {
@@ -87,36 +94,60 @@ public class ThingController : MonoBehaviour, IEndDragHandler, IDragHandler
         toAccelerate = true;
     }
 
-    //Takes in values 0 - 5 to assign what piece to use based on type value 
+    //Takes in type values to assign what piece to use based on type value 
     public void assignPiece(int type) {
+        isWildcard = type == ThingTypes.Wildcard;
+        image = image != null ? image : GetComponent<Image>();
 
         switch (type) {
-            case (0):
+            case (ThingTypes.Red):
                 //gameObject.GetComponent<Image>().color = new Color(255, 0, 0);
+                gameObject.GetComponent<Image>().color = Color.white;
                 gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("redOrb");
                 break;
-            case (1):
+            case (ThingTypes.Blue):
                 //gameObject.GetComponent<Image>().color = new Color(255, 255, 255);
+                gameObject.GetComponent<Image>().color = Color.white;
                 gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("blueOrb");
                 break;
-            case (2):
+            case (ThingTypes.Yellow):
                 //gameObject.GetComponent<Image>().color = new Color(255, 255, 0);
+                gameObject.GetComponent<Image>().color = Color.white;
                 gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("yellowOrb");
                 break;
-            case (3):
+            case (ThingTypes.Damage):
                 //gameObject.GetComponent<Image>().color = new Color(255, 0, 255);
+                gameObject.GetComponent<Image>().color = Color.white;
                 gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("directDamage");
                 break;
-            case (4):
+            case (ThingTypes.Health):
                 //gameObject.GetComponent<Image>().color = new Color(0, 255, 255);
+                gameObject.GetComponent<Image>().color = Color.white;
                 gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("heart");
                 break;
-            case (-1):
+            case (ThingTypes.Empty):
                 //gameObject.GetComponent<Image>().color = new Color(0, 0, 0);
                 break;
-            case (5):
+            case (ThingTypes.Multiplier):
                 //gameObject.GetComponent<Image>().color = new Color(0, 255, 0);
+                gameObject.GetComponent<Image>().color = Color.white;
                 gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("damageMultiplier");
+                break;
+            case (ThingTypes.Null):
+                gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("nullTile");
+                gameObject.GetComponent<Image>().color = Color.white;
+                break;
+            case (ThingTypes.Brick):
+                gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("brick");
+                gameObject.GetComponent<Image>().color = Color.white;
+                break;
+            case (ThingTypes.Wildcard):
+                gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("yellowOrb");
+                gameObject.GetComponent<Image>().color = Color.HSVToRGB(Mathf.Repeat(Time.time * 0.25f, 1f), 0.65f, 1f);
+                break;
+            case (ThingTypes.RainbowMana):
+                gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("rainbowMana");
+                gameObject.GetComponent<Image>().color = Color.white;
                 break;
         }
 
@@ -125,7 +156,7 @@ public class ThingController : MonoBehaviour, IEndDragHandler, IDragHandler
     public void OnEndDrag(PointerEventData eventData) {
         Debug.Log("Oh this is such a drag");
 
-        if(!GridController.isTurn || !gameObject.transform.parent.gameObject.GetComponent<GridController>().isValidMoveTime()){
+        if(!GridController.isTurn || !gameObject.transform.parent.gameObject.GetComponent<GridController>().isBoardSettledForInput()){
             Debug.Log("Not your turn");
             return;
         }
@@ -138,6 +169,11 @@ public class ThingController : MonoBehaviour, IEndDragHandler, IDragHandler
             return;
         }
 
+        int index = gameObject.transform.parent.gameObject.GetComponent<GridController>().getIndex(gameObject);
+        if (!ThingTypes.IsMovable(gameObject.transform.parent.gameObject.GetComponent<GridController>().GetThing(index).getType())) {
+            return;
+        }
+
         audio.Play();
 
         //Get dragged direction
@@ -145,7 +181,6 @@ public class ThingController : MonoBehaviour, IEndDragHandler, IDragHandler
         float xMagnitude = Math.Abs(dragDirectionVector.x);
         float yMagnitude = Math.Abs(dragDirectionVector.y);
         int swapIndex = 0;
-        int index = gameObject.transform.parent.gameObject.GetComponent<GridController>().getIndex(gameObject);
 
         //Debug.Log((eventData.position - eventData.pressPosition).magnitude);
 
@@ -175,7 +210,10 @@ public class ThingController : MonoBehaviour, IEndDragHandler, IDragHandler
         }
 
         //Get other object and swap
-        if (swapIndex >= 0 && swapIndex <= GridController.BOARDLENGTH * GridController.BOARDLENGTH) {
+        if (swapIndex >= 0 && swapIndex < GridController.BOARDLENGTH * GridController.BOARDLENGTH) {
+            if (!ThingTypes.IsMovable(gameObject.transform.parent.gameObject.GetComponent<GridController>().GetThing(swapIndex).getType())) {
+                return;
+            }
             //Check valid move or not
             foreach (Move i in moves) {
                 if ((i.originLocation == index && i.swapLocation == swapIndex) || (i.originLocation == swapIndex && i.swapLocation == index)) {
@@ -252,5 +290,9 @@ blue,
 yellow,
 damage,
 health,
-multiplier
+multiplier,
+nullTile,
+brick,
+wildcard,
+rainbowMana
 }

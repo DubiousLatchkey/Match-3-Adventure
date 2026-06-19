@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c00fd398db1f3294ab623bcc12d93819, type: 3}
+  m_Name: NewSpellShapesRotation
+  m_EditorClassIdentifier: Assembly-CSharp::DebugCombatProfile
+  combatId: debugNewSpellShapesRotation
+  playerHp: 999
+  maxRedMana: 99
+  maxBlueMana: 99
+  maxYellowMana: 99
+  equippedWeaponName: 
+  equippedSpellNames:
+  - Resonant X
+  - Quadrant Sunder
+  - Clockwise Cant
+  - Counterclockwise Cant
+  enemyName: Spell Test Dummy
+  enemyHp: 999
+  enemyMaxRedMana: 0
+  enemyMaxBlueMana: 0
+  enemyMaxYellowMana: 0
+  enemyPriorities: {x: 0, y: 0, z: 0}
+  enemyFailRate: 1
+  enemySpellNames: []
+  disableEnemyActions: 0

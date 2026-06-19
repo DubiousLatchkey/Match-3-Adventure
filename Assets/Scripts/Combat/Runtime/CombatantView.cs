@@ -50,6 +50,18 @@ public sealed class CombatantView : MonoBehaviour {
         this.portrait = this.portrait != null ? this.portrait : portrait;
         this.spellParent = this.spellParent != null ? this.spellParent : spellParent;
         this.statusParent = this.statusParent != null ? this.statusParent : statusParent;
+
+        SetMultiplierVisible(false);
+    }
+
+    public void SetMultiplierVisible(bool visible) {
+        if (multiplierText != null) {
+            multiplierText.gameObject.SetActive(visible);
+        }
+        if (multiplierBar != null) {
+            Transform barRoot = multiplierBar.transform.parent != null ? multiplierBar.transform.parent : multiplierBar.transform;
+            barRoot.gameObject.SetActive(visible);
+        }
     }
 
     public void SyncName(CombatantState state) {

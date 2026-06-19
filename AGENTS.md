@@ -33,7 +33,10 @@ Build scenes are configured in `ProjectSettings/EditorBuildSettings.asset`:
 
 - `GridController.movesAtPoint` delegates board move-search logic to `MatchBoard`.
 - `GridController.castSpell` delegates spell parameter iteration to `SpellEffectRunner`; individual command cases still live in `GridController.ExecuteSpellCommand`.
-- `GridController.assignType` expects 0-100 weights in its probability table and scales `Random.value` accordingly.
+- Targeted spell board effects should prefer reusable parameterized actions: `scoreSquare`/`destroySquare`, `targetShape <shape> <score|destroy|count>`, `randomPieces <count> <score|destroy>`, and `rotateSquare <clockwise|counterclockwise>`. Use `score` when resources should be awarded and `destroy` when pieces should only be removed/replaced.
+- `GridController.assignType` expects 0-100 weights in its probability table and scales `Random.value` accordingly. Generated board types are mapped explicitly, so non-contiguous or retired tile IDs can remain supported.
+- Board tile IDs are centralized in `ThingTypes`: mana `0-2`, damage `3`, legacy health `4`, legacy multiplier `5`, null `6`, brick `7`, wildcard `8`, rainbow mana `9`, and empty `-1`.
+- Null tiles match and clear but do not score resources. Bricks cannot move or match. Wildcards can participate in red/blue/yellow/rainbow mana matches but do not start matches by themselves or score their own resource. Rainbow mana matches only with rainbow mana and wildcards, then gives one mana of each color per scored tile.
 - `DialogueController` parses loaded text through `DialogueScriptParser` and dispatches commands through `DialogueCommandRunner`; command behavior still delegates to `DialogueController.performAction`.
 - `CombatSceneRefs` binds combat scene references. Prefer wiring serialized fields in `CombatScene`; name-based fallback binding remains for compatibility.
 - Player and enemy state is shared through `CombatantState`, `CombatantView`, and `CombatantRuntime`, while older controller APIs remain as wrappers.
@@ -44,6 +47,7 @@ Build scenes are configured in `ProjectSettings/EditorBuildSettings.asset`:
 - Spell testbed: use Unity menu `Dev/Play Spell Test Dummy`.
 - Debug profiles: select a `DebugCombatProfile` and choose `Dev/Play Selected Debug Profile`.
 - Default spell test profile: `Assets/Debug/Profiles/SpellTestDummy.asset`.
+- New spell test profiles are grouped under `Assets/Debug/Profiles`: `NewSpellDestructionRandom.asset`, `NewSpellShapesRotation.asset`, and `EtherealScoreVariants.asset`.
 
 ## Caution
 

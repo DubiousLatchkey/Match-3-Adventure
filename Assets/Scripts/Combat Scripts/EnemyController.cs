@@ -223,12 +223,7 @@ public class EnemyController : MonoBehaviour, PlayerController
         setBlueMana(0);
         setYellowMana(0);
 
-        if (combat.getPortrait(combat.getRound()) != "") {
-            portrait.sprite = Resources.Load<Sprite>("Characters/" + combat.getPortrait(combat.getRound()));
-        }
-        else {
-            portrait.sprite = Resources.Load<Sprite>("Characters/" + enemy.Name + "Normal");
-        }
+        LoadEnemyPortrait();
 
         for (int i = 0; i < enemy.Spells.Length; i++) {
             //equippedSpells[i].transform.SetParent(GameObject.Find("Canvas").transform);
@@ -864,12 +859,7 @@ public class EnemyController : MonoBehaviour, PlayerController
         combatant.State.Weapon = weapon;
         SyncFieldsFromCombatant();
 
-        if (combat.getPortrait(combat.getRound()) != "") {
-            portrait.sprite = Resources.Load<Sprite>("Characters/" + combat.getPortrait(combat.getRound()));
-        }
-        else {
-            portrait.sprite = Resources.Load<Sprite>("Characters/" + enemy.Name + "Normal");
-        }
+        LoadEnemyPortrait();
 
         foreach (Button i in equippedSpells) {
             Destroy(i.gameObject);
@@ -901,6 +891,17 @@ public class EnemyController : MonoBehaviour, PlayerController
         LoadEnemyWeapon();
         combatant.State.Weapon = weapon;
         SyncFieldsFromCombatant();
+    }
+
+    private void LoadEnemyPortrait() {
+        string combatPortrait = combat.getPortrait(combat.getRound());
+        string portraitKey = !string.IsNullOrWhiteSpace(combatPortrait) ? combatPortrait : enemy.PortraitKey;
+        Sprite sprite = Resources.Load<Sprite>("Characters/" + portraitKey);
+        if (sprite == null) {
+            sprite = Resources.Load<Sprite>("Characters/" + portraitKey + "Normal");
+        }
+
+        portrait.sprite = sprite;
     }
 
     public bool checkCosts(int[] costs) {

@@ -34,14 +34,14 @@ main:Something is very wrong here.  I-I can't feel my magic.  Where's the Mage's
 main:Wait, I don't even know your-
  :The sounds from earlier have stopped
 |setExpression main Serious
-|enter mercenaryAtherian 7 -1 generic raider
+|enter mercenaryAtherian 7 -1 expression generic displayname Raider
 |move main 1 -4 0 1
-raider:Well well well, looks like we got ourselves a scavenger.  You've strayed a little too far from your little camp haven't you?
+mercenaryAtherian:Well well well, looks like we got ourselves a scavenger.  You've strayed a little too far from your little camp haven't you?
 main:What?  I'm not a scavenger!
-raider:Of course you aren't.  Take her things.
+mercenaryAtherian:Of course you aren't.  Take her things.
  :They gesture to the heavily armed people behind them.
-raider:You know the consequences of scavenging here lady.  If you know what's good for you, you'll just hand over your valuables and get lost.
+mercenaryAtherian:You know the consequences of scavenging here lady.  If you know what's good for you, you'll just hand over your valuables and get lost.
 |setExpression main Angry
 main:Excuse me?  You can't do that!
-raider:Ha!  Just watch me!
+mercenaryAtherian:Ha!  Just watch me!
 |combatDirect futureCombat

@@ -77,6 +77,7 @@ public class GridController : MonoBehaviour, PlayerController{
     List<Button> equippedSpells;
     List<StatusEffect> statusEffects;
     List<int> selectedSpellTargets;
+    List<GameObject> spellTargetHighlights;
     Etcetera extraStatusEffects;
 
     public Weapon weapon;
@@ -114,6 +115,9 @@ public class GridController : MonoBehaviour, PlayerController{
         }
         if (selectedSpellTargets == null) {
             selectedSpellTargets = new List<int>();
+        }
+        if (spellTargetHighlights == null) {
+            spellTargetHighlights = new List<GameObject>();
         }
         if (weapon == null) {
             weapon = new Weapon();
@@ -190,6 +194,7 @@ public class GridController : MonoBehaviour, PlayerController{
         audio = GetComponent<AudioSource>();
         statusEffects = new List<StatusEffect>();
         selectedSpellTargets = new List<int>();
+        spellTargetHighlights = new List<GameObject>();
         extraStatusEffects = new Etcetera(null, false);
         moves = new List<Move>();
         extraTurn = false;
@@ -1185,6 +1190,7 @@ public class GridController : MonoBehaviour, PlayerController{
 
                     if (currentSpell.Effects[0] == 0) {
                         positions = GetCenteredSquarePositions(index, int.Parse(parameters[1]));
+                        AddSpellTargetHighlight(index);
 
                         lastSpellDestroyedCount = positions.Count;
                         if (parameters[0] == "scoreSquare") {
@@ -1204,6 +1210,7 @@ public class GridController : MonoBehaviour, PlayerController{
                         return;
                     }
 
+                    AddSpellTargetHighlight(index);
                     lastSpellDestroyedCount = positions.Count;
                     if (parameters[2] == "score") {
                         toDelete.UnionWith(positions);
@@ -1220,11 +1227,13 @@ public class GridController : MonoBehaviour, PlayerController{
                         return;
                     }
 
+                    AddSpellTargetHighlight(index);
                     RotateSquare2x2(index, parameters[1] == "clockwise");
                     CompleteTargetedSpellCommand();
                     break;
                 case ("shiftTarget"):
                     index = getIndex(thingController.gameObject);
+                    AddSpellTargetHighlight(index);
                     grid[index].setType(int.Parse(parameters[1]));
                     thingController.assignPiece(int.Parse(parameters[1]));
 
@@ -1243,6 +1252,7 @@ public class GridController : MonoBehaviour, PlayerController{
                         return;
                     }
 
+                    AddSpellTargetHighlight(index);
                     lastSpellDestroyedCount = positions.Count;
                     toDelete.UnionWith(positions);
                     CompleteTargetedSpellCommand();
@@ -1255,6 +1265,7 @@ public class GridController : MonoBehaviour, PlayerController{
                         return;
                     }
 
+                    AddSpellTargetHighlight(index);
                     lastSpellDestroyedCount = positions.Count;
                     toDelete.UnionWith(positions);
                     CompleteTargetedSpellCommand();
@@ -1272,6 +1283,7 @@ public class GridController : MonoBehaviour, PlayerController{
         if (selectedSpellTargets.Count == 0) {
             selectedSpellTargets.Add(index);
             selectedPiece = thingController;
+            AddSpellTargetHighlight(index);
             selectPiece(index, Color.cyan);
             makeSplashText("Select a second piece", isTurn);
             return;
@@ -1287,6 +1299,7 @@ public class GridController : MonoBehaviour, PlayerController{
         actionAndParameters = "";
         targetingIndicator.SetActive(false);
 
+        AddSpellTargetHighlight(index);
         selectPiece(index, Color.cyan);
         swap(firstIndex, index);
 
@@ -1300,7 +1313,7 @@ public class GridController : MonoBehaviour, PlayerController{
         List<string> parameters = pendingSpellParameters;
         int nextIndex = pendingSpellParameterIndex;
 
-        ClearCurrentSpellCast();
+        ClearCurrentSpellCast(false);
 
         if (parameters != null && spell != null && caster != null && target != null) {
             ExecuteSpellParameters(spell, caster, target, parameters, nextIndex);
@@ -1317,6 +1330,28 @@ public class GridController : MonoBehaviour, PlayerController{
         makeSplashText(message, isTurn);
     }
 
+    private void AddSpellTargetHighlight(int index) {
+        if (index < 0 || index >= grid.Count) {
+            return;
+        }
+
+        GameObject highlight = Instantiate(Resources.Load<GameObject>("MatchIdentifier"));
+        highlight.name = "SpellTargetHighlight";
+        highlight.GetComponent<Image>().color = Color.cyan;
+        highlight.transform.SetParent(gameObject.transform);
+        highlight.transform.position = grid[index].getObject().transform.position;
+        spellTargetHighlights.Add(highlight);
+    }
+
+    private void ClearSpellTargetHighlights() {
+        foreach (GameObject highlight in spellTargetHighlights) {
+            if (highlight != null) {
+                Destroy(highlight);
+            }
+        }
+        spellTargetHighlights.Clear();
+    }
+
     private void CancelCurrentSpellCast() {
         if (currentSpell != null && currentSpellCaster != null) {
             for (int i = 0; i < currentSpell.Costs.Length; i++) {
@@ -1324,14 +1359,17 @@ public class GridController : MonoBehaviour, PlayerController{
             }
         }
 
-        ClearCurrentSpellCast();
+        ClearCurrentSpellCast(true);
         turnOnSpells();
         makeSplashText("Spell cancelled", isTurn);
     }
 
-    private void ClearCurrentSpellCast() {
+    private void ClearCurrentSpellCast(bool clearHighlights = true) {
         actionAndParameters = "";
         selectedSpellTargets.Clear();
+        if (clearHighlights) {
+            ClearSpellTargetHighlights();
+        }
         selectedPiece = null;
         currentSpell = null;
         currentSpellCaster = null;

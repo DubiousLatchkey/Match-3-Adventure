@@ -11,6 +11,7 @@ public sealed class EnemyContentEntry {
     public string id;
     public string key;
     public string name;
+    public string portraitKey;
     public int[] priorities;
     public int hp;
     public int maxRedMana;
@@ -78,7 +79,7 @@ public static class EnemyContentLoader {
             }
         }
 
-        return new Enemy(entry.name, entry.priorities, spells.ToArray(), entry.hp,
+        return new Enemy(entry.name, entry.portraitKey, entry.priorities, spells.ToArray(), entry.hp,
             entry.maxRedMana, entry.maxBlueMana, entry.maxYellowMana, entry.failRate);
     }
 }

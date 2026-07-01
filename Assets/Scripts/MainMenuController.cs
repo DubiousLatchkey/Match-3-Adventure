@@ -39,7 +39,7 @@ public class MainMenuController : MonoBehaviour
         if(SaveGameService.GetInt("savedGameExists", 0) == 1) {
             //PLACEHOLDER: To be replaced with resuming to specific location
             //SceneManager.LoadScene("CombatScene", LoadSceneMode.Single);
-            DialogueController.dialogueToLoad = "revelation";
+            DialogueController.dialogueToLoad = StoryFlowConfig.DefaultResume;
             SceneManager.LoadScene("DialogueScene", LoadSceneMode.Single);
         }
         //TODO: What to when there is no saved game
@@ -49,7 +49,7 @@ public class MainMenuController : MonoBehaviour
         SaveGameService.NewGame(SpellContentLoader.LoadSpells(), WeaponContentLoader.LoadWeapons());
 
         //Intro
-        DialogueController.dialogueToLoad = "opening";
+        DialogueController.dialogueToLoad = StoryFlowConfig.NewGameStart;
         SceneManager.LoadScene("DialogueScene", LoadSceneMode.Single);
 
     }

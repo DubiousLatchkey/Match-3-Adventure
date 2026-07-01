@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 2185011167640262644}
   - component: {fileID: 2185011167640262643}
   - component: {fileID: 2185011167640262646}
-  - component: {fileID: 2185011167640262645}
   - component: {fileID: 2185011167640262642}
+  - component: {fileID: 2813085144971915118}
   m_Layer: 5
   m_Name: Character
   m_TagString: Untagged
@@ -32,9 +32,9 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -64,6 +64,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -102,19 +103,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f757ad549e279194094f0b8b61bebe1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2185011167640262645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2185011167640262641}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b535ae45acdeaa47843ad9560cd13a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minimumStep: 0.1
 --- !u!114 &2185011167640262642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -159,6 +148,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2185011167640262643}
+        m_TargetAssemblyTypeName: 
         m_MethodName: click
         m_Mode: 1
         m_Arguments:
@@ -169,3 +159,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2813085144971915118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2185011167640262641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e545abf0a344852a06ebc36d1aa50f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueCharacterMover

@@ -1,0 +1,2 @@
+enemy: bandit
+dialogue: mineAttack

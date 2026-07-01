@@ -1,0 +1,26 @@
+|ann 0.18 0.08,gabriella 0.82 0.08
+|setBackground hallwayLord
+ann:Relative movement test, take one.
+gabriella:We're standing at eighteen percent and eighty-two percent across the character stage.
+|moveTo ann 0.8 0.34 0.08 1
+ann:I should slide closer to the middle without caring how wide the screen is.
+|moveTo gabriella 0.8 0.66 0.08 1
+gabriella:And I should match you from the other side.
+|move ann 0.8 0.08 0 1
+|move gabriella 0.8 -0.08 0 1
+ann:Now we both nudge outward using relative movement.
+gabriella:Useful when two or three characters need to share one side.
+|setExpression ann Happy
+|setExpression gabriella Happy
+ann:Expressions still work.
+gabriella:Good. It would be awkward if smiling broke geometry.
+|swap ann gabriella
+ann:Swap should trade our current stage targets.
+gabriella:If this looks clean, the new mover is doing its job.
+|moveTo ann 0.8 0.16 0.08 1
+|moveTo gabriella 0.8 0.84 0.08 1
+ann:Now we stretch back toward the edges.
+gabriella:Those are still relative positions, not pixels.
+|exit ann left
+|exit gabriella right
+ :Both characters should fade while leaving generically.

@@ -1,0 +1,3 @@
+enemy: bandit
+enemy: bandit
+dialogue: findMineLeader

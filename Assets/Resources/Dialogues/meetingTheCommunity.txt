@@ -105,29 +105,29 @@ main:Alright, ready to go then!
 |exit pleice left
 |exit main right
 |exit catelia right
-|enter mercenaryExchange -10 -1 generic thief
-|enter mageAtherian 10 -1 generic ???
-thief:This is the stuff.  
+|enter mercenaryExchange -10 -1 expression generic displayname Thief
+|enter mageAtherian 10 -1 expression generic displayname ???
+mercenaryExchange:This is the stuff.  
  :The Exchange member gestures to a nearby chest
-thief:Do you have the payment?
-???:Of course.  My employer always keeps her word.
+mercenaryExchange:Do you have the payment?
+mageAtherian:Of course.  My employer always keeps her word.
  :The buyer opens a smaller chest, revealing the gold within.
 catelia:Alright, on my signal.  Wait until we know where the leader is.
  :Representatives of both parties cross to check the validity of the other's goods.
-???:Hmm... This Illis is not pure... there are bits of metal and wood in here.
-thief:Hey, this is the best you can get from the black market - unless of course you want the Mage's Guild asking why you need so much.
-???:My mistress will hear about your... repurposed product.
-thief:As long as we get paid.  So are we good here?
+mageAtherian:Hmm... This Illis is not pure... there are bits of metal and wood in here.
+mercenaryExchange:Hey, this is the best you can get from the black market - unless of course you want the Mage's Guild asking why you need so much.
+mageAtherian:My mistress will hear about your... repurposed product.
+mercenaryExchange:As long as we get paid.  So are we good here?
  :The thief looks to the shadows behind them where another figure gives a nod.
 catelia: That's the leader.  I'll go there, you two, disrupt the sale.
-thief:Things look good on this end.  Shake on it?
+mercenaryExchange:Things look good on this end.  Shake on it?
  :As the mysterious figure moves to complete the deal... 
 catelia:Now!
-|move ??? 1 5 0 1
-|move thief 1 15 0 1
+|move mageAtherian 1 5 0 1
+|move mercenaryExchange 1 15 0 1
 |enter main -5 -1
 |enter pleice -13 -1
  :@main@ and Pleice burst out of the shadows with the rest of the watch.  Catelia rushes to the surprised Exchange leader.
-thief:What the-
-???:I knew this was a bad idea!
+mercenaryExchange:What the-
+mageAtherian:I knew this was a bad idea!
 |combat docksCombat

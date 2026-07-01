@@ -1,17 +1,17 @@
 |main -5 -1
-|enter mercenaryAtherian 5 -1 generic raider
+|enter mercenaryAtherian 5 -1 expression generic displayname Raider
 |setBackground testingHallRuined
 |playMusic Anodyne
 main:Hyah!
  :@main@ attempts to cast a spell at the raider, but nothing happens...
 main:But why?
-raider:What, you trying to cast magic?  That's rich.  
-raider:Agh!
+mercenaryAtherian:What, you trying to cast magic?  That's rich.  
+mercenaryAtherian:Agh!
  :The raider's sword lands directly on @main@'s head
 main:No!
 |transition lab
 |playMusic Sunset Meadow
-|exit raider right
+|exit mercenaryAtherian right
 |translate main 12 -1
 main:What?  Owwww my head...
 |enter pleice 0 -1
@@ -116,14 +116,14 @@ pleice:Right, you missed dinner!  Geez, I totally forgot!
 |setExpression pleice Normal
 pleice:It's right down this alley, I know this great place-
 |playMusic Flesh & Bones
-|enter mercenaryExchange 10 -1 generic thief
+|enter mercenaryExchange 10 -1 expression generic displayname Thief
 |move main 1 -10 0 1
 |move pleice 1 -10 0 1
-thief:Well what do we have here?
+mercenaryExchange:Well what do we have here?
 |setExpression pleice Angry
 pleice:Not one of you guys...
 |setExpression main Serious
 main:Please, we're guild apprentices, you don't want to hurt yourself.
-thief:I think I know exactly what I'm doing.  They give you apprentices all this expensive equipment before you know how to use it!  You're begging to get robbed.  What say you just pay your dues to the Exchange huh?
+mercenaryExchange:I think I know exactly what I'm doing.  They give you apprentices all this expensive equipment before you know how to use it!  You're begging to get robbed.  What say you just pay your dues to the Exchange huh?
 pleice:Don't say we didn't warn you.
 |combat exchangeThiefCombat

@@ -1,0 +1,34 @@
+|ann 0.65 0,gabriella 0.35 0
+|setBackground slaverCampExterior
+gabriella: Ugh, my feet hurt, can we take a break?  
+ann: Already?  We've only been walking, what, 3 hours today?
+gabriella: Yeah, but we've been walking for a week now.
+ann: Ah, this is truly the splendor of nobility I always hear about.  Setting a great example for the common folk there.
+gabriella: Hardy har har.  Usually, I'd have a carriage for a journey of this length so excuse me if I need to take a break from this endless walking.
+ann: Shouldn't have let your dad send you to do real work at the guild.
+gabriella: Oh please, I'm sure if I complained enough, he'd send someone to attend to me.  I can handle roughing it a little.  
+gabriella: Although...
+ann: Go on...
+|setExpression gabriella Happy
+gabriella: Ann, as the future Lady Duvall, I hereby command thee carry me the rest of the way to Aedava.
+|setExpression gabriella Normal
+ann: Sure - as soon as you pull a litter out of your pack!
+gabriella: I'll have you know I ride by litter all the time back home.  I'm sure we can find a pushcart or something at the next inn.  You can carry me in that.
+ann: As long as you're paying.  I don't think Mary gave us enough money to buy something like that.
+gabriella: I'm sure I could negotiate something.  Any reputable merchant would recognize the symbol on my signet ring and I could write a promissory note they could cash at any bank where my family has holdings.  Or maybe a kind of bill of exchange would be better?
+ann: I still don't understand how anybody can trust something like that.  A piece of paper?  Real money has the empress' face stamped into metal.  That's real.
+gabriella: It's extremely trustworthy!  Leave it to the country bumpkin to not understand it isn't practical to move loads of gold around for every transaction.
+ann: Hey!  Who're you calling a bumpkin?
+gabriella: I taught you to read.  I think I have every right to call you a bumpkin, bumpkin.
+ann: Eeeh, you got me there.
+gabriella: Seriously though, can we take a second to rest?  Maybe we can take an early lunch.
+ann: Wait, did you hear that?
+: The two stop to listen.
+|enter thief 0.75 0
+|moveTo ann 8 0.4 0 1
+|moveTo gabriella 8 0.2 0 1
+thief: Ah well, looks like the jig is up.  Hand over your valuables and we might let you live.
+ann: I told you you shouldn't have brought your jewelry.
+gabriella: Whatever, I'm not giving anything to the likes of them.
+thief: Your life it is then.
+|combat firstThiefCombat

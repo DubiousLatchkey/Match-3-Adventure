@@ -1,0 +1,13 @@
+|ann 0.6 0,gabriella 0.8 0
+|setBackground Wall
+: Ann waves a torch to signal the villagers.  They emerge from the underbrush in varying garb from fully armed military family members to those with pitchforks.
+ann: Let's go!
+|transition slaverCampInterior
+|moveTo ann 8 0.2 0 1
+|moveTo gabriella 8 0.4 0 1
+: Shouts and footsteps rumble through the night as the bandits are caught off guard and rush to prepare defenses.
+: A bell rings.
+gabriella: Do you hear that?  Let's get their leader before they all wake up.
+|enter thief 0.75 0 displayname Bandit
+thief: Over here, get them!
+|combat mineInteriorCombat

@@ -1,6 +1,7 @@
 ﻿public class Enemy {
 
     public string Name;
+    public string PortraitKey;
 
     public float failRate;
 
@@ -14,8 +15,13 @@
 
     public int Health;
 
-    public Enemy(string n, int[] p, Spell[] s, int h, int r, int b, int y, float fail) {
+    public Enemy(string n, int[] p, Spell[] s, int h, int r, int b, int y, float fail)
+        : this(n, "", p, s, h, r, b, y, fail) {
+    }
+
+    public Enemy(string n, string portraitKey, int[] p, Spell[] s, int h, int r, int b, int y, float fail) {
         Name = n;
+        PortraitKey = string.IsNullOrWhiteSpace(portraitKey) ? n : portraitKey;
         Priorities = p;
         Health = h;
         Spells = s;
@@ -28,6 +34,7 @@
 
     public Enemy() {
         Name = "Default";
+        PortraitKey = Name;
         Priorities = new int[] { 0, 0, 0, };
         Health = 100;
         Spells = new Spell[0];

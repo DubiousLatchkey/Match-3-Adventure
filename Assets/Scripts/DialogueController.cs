@@ -1,9 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DialogueController : MonoBehaviour
@@ -19,15 +17,32 @@ public class DialogueController : MonoBehaviour
     public GameObject CG;
     public Button skipButton;
     public GameObject mainCamera;
+    public RectTransform characterStage;
 
     private bool wasCutOff = false;
     private List<string> lines;
     private List<DialogueScriptLine> scriptLines;
     private int linePosition = 0;
     private IDictionary<string, GameObject> characters;
+    private IDictionary<string, DialogueActor> dialogueActors;
 
+    private sealed class DialogueActor {
+        public DialogueActor(string assetKey, string displayName, GameObject instance) {
+            AssetKey = assetKey;
+            DisplayName = displayName;
+            Instance = instance;
+        }
+
+        public string AssetKey;
+        public string DisplayName;
+        public GameObject Instance;
+    }
+
+    [System.Obsolete("Dialogue positions are now relative to characterStage.")]
     public float baseYAxisOffset = -0.5f;
+    [System.Obsolete("Dialogue positions are now relative to characterStage.")]
     public float positionalMultiplier = 50;
+    public float characterStageYOffset = 0.5f;
     public float baseSpeed;
     public int maxCharacters = 250;
     public static IDictionary<string, string> dialogueVariables;
@@ -55,6 +70,11 @@ public class DialogueController : MonoBehaviour
         if (dialogueToLoad == "changeover") {
             Destroy(mainCamera.GetComponent<AudioListener>());
         }
+#if UNITY_EDITOR
+        if (DebugDialogueRuntime.TryGetEditorDialogueOverride(out string debugDialogueId)) {
+            dialogueToLoad = debugDialogueId;
+        }
+#endif
         isSkipping = false;
         dialogueVariables = new Dictionary<string, string>();
         textLinkedMoveLengths = new Dictionary<string, int>();
@@ -97,6 +117,7 @@ public class DialogueController : MonoBehaviour
 
         //Load Characters
         characters = new Dictionary<string, GameObject>();
+        dialogueActors = new Dictionary<string, DialogueActor>();
         loadCharacters();
         linePosition++;
 
@@ -232,7 +253,7 @@ public class DialogueController : MonoBehaviour
             if (textLinkedMoveLengths.Keys.Contains(entry.Key)) {
                 if(textLinkedMoveLengths[entry.Key] == 0) {
                     //If reached end of location, snap to position
-                    entry.Value.transform.position = entry.Value.GetComponent<MoveToTargetBehavior>().getTarget();
+                    entry.Value.GetComponent<DialogueCharacterMover>().SetPosition(entry.Value.GetComponent<DialogueCharacterMover>().GetTarget());
                     textLinkedMoveLengths.Remove(entry.Key);
                 }
             }
@@ -287,9 +308,8 @@ public class DialogueController : MonoBehaviour
                     entry.Value.GetComponent<FadeController>().setFadeOut();
                 }
             }
-            if (name == "main") { name = SaveGameService.GetString("name", "Rachel"); }
-         
-            nameText.text = char.ToUpper(name[0]) + name.Substring(1);
+            string displayName = GetDisplayName(name);
+            nameText.text = displayName;
             if (name == " ") { //For narration
                 namePlate.SetActive(false);
             }
@@ -397,207 +417,262 @@ public class DialogueController : MonoBehaviour
 
         //Loop through
         foreach (string i in characterNames) {
-            List<string> characterInfo = new List<string>(i.Split(' '));
+            List<string> characterInfo = new DialogueCommandTokenizer().Tokenize(i);
             //Load image
-            characters.Add(characterInfo[0], Instantiate(Resources.Load<GameObject>("Character"), GameObject.Find("Characters").transform));
-            characters[characterInfo[0]].GetComponent<Image>().sprite = Resources.Load<Sprite>("Characters/" + characterInfo[0] + "Normal");
+            string expression = "Normal";
+            string displayName = DefaultDisplayName(characterInfo[0]);
+            ParseSceneSetupOptions(characterInfo, ref expression, ref displayName);
+            AddDialogueActor(characterInfo[0], displayName, expression);
             //Set none as focused
             characters[characterInfo[0]].GetComponent<Image>().color = new Color32(150, 150, 150, 255);
 
             //Position image
             //characters[characterInfo[0]].transform.SetParent(GameObject.Find("Characters").transform);
-            characters[characterInfo[0]].transform.localPosition = new Vector3(0, 0);
-            float xPosition = float.Parse(characterInfo[1]) * positionalMultiplier;
-            float yPosition = (float.Parse(characterInfo[2]) + baseYAxisOffset) * positionalMultiplier;
-            characters[characterInfo[0]].transform.localPosition = (new Vector3(xPosition, yPosition));
+            float xPosition = float.Parse(characterInfo[1]);
+            float yPosition = float.Parse(characterInfo[2]);
+            SetCharacterStagePosition(characters[characterInfo[0]], xPosition, yPosition);
         }
 
     }
 
-    //String that corresponds to an action in the dialogue
-    public void performAction(string action) {
-        List<string> actionAndParameters = new List<string>(action.Split(' '));
-        switch (actionAndParameters[0]) {
-            //Add spaces to actions without parameters for proper parsing
-            case ("translate"):
-                //Teleports to coords of parameters 2 and 3
-                float xMove = float.Parse(actionAndParameters[2]) * positionalMultiplier;
-                float yMove = (float.Parse(actionAndParameters[3]) + baseYAxisOffset) * positionalMultiplier;
-                characters[actionAndParameters[1]].transform.localPosition = (new Vector3(xMove, yMove));
-                characters[actionAndParameters[1]].GetComponent<MoveToTargetBehavior>().setTarget(characters[actionAndParameters[1]].transform.position);
-                //Debug.Log(characters[actionAndParameters[1]].transform.localPosition);
-                //Debug.Log(characters[actionAndParameters[1]].transform.position);
-                break;
-            case ("setExpression"):
-                //Sets parameter 1's expression to parameter 2
-                string filename = "Characters/" + actionAndParameters[1] + actionAndParameters[2];
-                filename = filename.Trim();
-                characters[actionAndParameters[1]].GetComponent<Image>().sprite = Resources.Load<Sprite>(filename);
-                break;
-            case ("move"):
-                //Moves parameter 1 by parameters 3 and 4 at speed parameter 2 over parameter 5 dialogue lines
-                move(actionAndParameters[1], float.Parse(actionAndParameters[2]), float.Parse(actionAndParameters[3]), float.Parse(actionAndParameters[4]));
-                textLinkedMoveLengths.Add(actionAndParameters[1], int.Parse(actionAndParameters[5]));
-                break;
-            case ("moveTo"):
-                //Moves parameter 1 to coordinates parameters 3 and 4 at speed parameter 2 over parameter 5 dialogue lines
-                moveTo(actionAndParameters[1], float.Parse(actionAndParameters[2]), float.Parse(actionAndParameters[3]), float.Parse(actionAndParameters[4]));
-                textLinkedMoveLengths.Add(actionAndParameters[1], int.Parse(actionAndParameters[5]));
-                break;
-            case ("exit"):
-                //Fade and move out character, followed by deletion
-                FadeController fadeController = characters[actionAndParameters[1]].GetComponent<FadeController>();
-                MoveToTargetBehavior targetBehavior = characters[actionAndParameters[1]].GetComponent<MoveToTargetBehavior>();
-                actionAndParameters[2] = actionAndParameters[2].Trim();
-                if (actionAndParameters[2] == "right") {
-                    targetBehavior.setTarget(new Vector3(3, 0) + characters[actionAndParameters[1]].transform.position);
-                    //targetBehavior.setTarget(characters[actionAndParameters[1]].transform.position + characters[actionAndParameters[1]].transform.right * 100, 1.5f);
-                }
-                else if (actionAndParameters[2] == "left") {
-                    targetBehavior.setTarget(new Vector3(-3, 0) + characters[actionAndParameters[1]].transform.position);
-                }
-                else if (actionAndParameters[2] == "down") {
-                    //targetBehavior.setTarget(new Vector3(characters[actionAndParameters[1]].transform.position.x, (-10 + baseYAxisOffset) * positionalMultiplier), 0.001f);
-                    targetBehavior.setTarget(new Vector3(0, -3) + characters[actionAndParameters[1]].transform.position);
-                }
-                targetBehavior.setSpeed(0.05f);
-                fadeController.scheduleForDeletion();
-                characters.Remove(actionAndParameters[1]);
-                break;
-            case ("enter"):
-                //Loads in parameter 1 at position parameters 2 and 3
-                //If parameter 4 is "generic", load generic character instead
-                //Generics can also have an alias at parameter 5.  Blank means the alias is the file name of the image
-                //Add person at position
-                string additional = "";
-                string alias;
-                if (actionAndParameters.Count < 5) { additional = "Normal"; }
-                
-                string characterName = actionAndParameters[1].Trim();
+    public void TranslateCharacter(string character, float x, float y) {
+        SetCharacterStagePosition(characters[character], x, y);
+    }
 
-                if (actionAndParameters.Count > 5) {
-                    alias = actionAndParameters[5].Trim();
-                }
-                else {
-                    alias = characterName;
-                }
+    public void SetCharacterExpression(string character, string expression) {
+        string assetKey = dialogueActors.ContainsKey(character) ? dialogueActors[character].AssetKey : character;
+        characters[character].GetComponent<Image>().sprite = LoadCharacterSprite(assetKey, expression);
+    }
 
-                characters.Add(alias, Instantiate(Resources.Load<GameObject>("Character"), GameObject.Find("Characters").transform));
-                characters[alias].GetComponent<Image>().sprite = Resources.Load<Sprite>("Characters/"+characterName + additional);
+    public void SetCharacterDisplayName(string character, string displayName) {
+        if (!dialogueActors.ContainsKey(character)) {
+            Debug.LogWarning("Cannot set display name for missing dialogue character '" + character + "'.");
+            return;
+        }
 
-                characters[alias].GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 0.5f);
-                fadeController = characters[alias].GetComponent<FadeController>();
-                fadeController.setFadeIn();
+        dialogueActors[character].DisplayName = displayName;
+    }
 
-                //characters[characterName].transform.SetParent(GameObject.Find("Characters").transform);
+    public void SetTextLinkedMoveLength(string character, int lineCount) {
+        textLinkedMoveLengths[character] = lineCount;
+    }
 
-                //Set position
-                characters[alias].transform.localPosition = new Vector3(0, 0);
-                float xPosition = float.Parse(actionAndParameters[2]) * positionalMultiplier;
-                float yPosition = (float.Parse(actionAndParameters[3]) + baseYAxisOffset) * positionalMultiplier;
-                characters[alias].transform.localPosition = (new Vector3(xPosition, yPosition));
+    public void ExitCharacter(string character, string direction) {
+        FadeController fadeController = characters[character].GetComponent<FadeController>();
+        DialogueCharacterMover targetBehavior = EnsureDialogueMover(characters[character]);
+        Vector2 currentPosition = GetStageRelativePosition(characters[character]);
+        if (direction == "right") {
+            targetBehavior.SetTarget(ToStageAnchoredPosition(1.2f, currentPosition.y));
+        }
+        else if (direction == "left") {
+            targetBehavior.SetTarget(ToStageAnchoredPosition(-0.2f, currentPosition.y));
+        }
+        else if (direction == "down") {
+            targetBehavior.SetTarget(ToStageAnchoredPosition(currentPosition.x, -0.35f));
+        }
 
-                break;
-            case ("combat"):
-                //Loads combat with name parameter 1
-                GridController.combatToLoad = actionAndParameters[1];
+        targetBehavior.SetSpeed(0.05f);
+        fadeController.scheduleForDeletion();
+        characters.Remove(character);
+        dialogueActors.Remove(character);
+    }
 
-                SceneManager.LoadScene("GearUpScene", LoadSceneMode.Single);
-                break;
-            case ("combatDirect"):
-                //Loads combat with name parameter 1 without going to gear up scene
-                GridController.combatToLoad = actionAndParameters[1];
+    public void EnterCharacter(string characterName, float x, float y, string expression, string displayName) {
+        string resolvedExpression = string.IsNullOrWhiteSpace(expression) ? "Normal" : expression;
+        string resolvedDisplayName = string.IsNullOrWhiteSpace(displayName) ? DefaultDisplayName(characterName) : displayName;
+        AddDialogueActor(characterName, resolvedDisplayName, resolvedExpression);
+        characters[characterName].GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 0.5f);
+        characters[characterName].GetComponent<FadeController>().setFadeIn();
 
-                SceneManager.LoadScene("CombatScene", LoadSceneMode.Single);
-                break;
-            case ("resumeCombat"):
-                //Closes dialogue and goes to already loaded combat for changeovers
-                ScriptController.unPauseGame();
-                ScriptController.showCombat();
+        SetCharacterStagePosition(characters[characterName], x, y);
+    }
 
-                SceneManager.UnloadSceneAsync("DialogueScene");
-                break;
-            case ("transition"):
-                //Change background to parameter 1 with fade to black
-                //Fade to black, change backgrounds, and go back
-                fadeImage.enabled = true;
-                nextBackground = Resources.Load<Sprite>("Backgrounds/" + actionAndParameters[1].Trim());
-                SaveGameService.SetString("background", actionAndParameters[1].Trim());
-                StartCoroutine(FadeToBlack());
-                break;
-            case ("setBackground"):
-                //Set background with no transition to parameter 1
-                backgound.GetComponent<Image>().sprite = Resources.Load<Sprite>("Backgrounds/" + actionAndParameters[1].Trim());
-                SaveGameService.SetString("background", actionAndParameters[1].Trim());
-                break;
-            case ("setPrefValue"):
-                //Set player prefs key (Combination of all parameters except first and last) to last parameter
-                string key = string.Join(" ", actionAndParameters.GetRange(1, actionAndParameters.Count - 2));
-                //Debug.Log(key);
-                SaveGameService.SetInt(key, int.Parse(actionAndParameters[actionAndParameters.Count - 1]));
-                break;
-            case ("playMusic"):
-                //Play music with name made from all non-zero parameters
-                //Use only for music, not sound
-                //Debug.Log(string.Join(" ", actionAndParameters.GetRange(1, actionAndParameters.Count - 1)));
-                music.setTrack(string.Join(" ", actionAndParameters.GetRange(1, actionAndParameters.Count - 1)).Trim());
-                music.play();
-                break;
-            case ("stopMusic"):
-                //No parameters, just stops music
-                music.stop();
-                break;
-            case ("playSound"):
-                //Play sound with name made from all non-zero parameters
-                //Use only for sound effects, not music
-                GameObject soundEffect = Instantiate(Resources.Load<GameObject>("sound effect"));
-                soundEffect.GetComponent<SoundEffectHandler>().play(string.Join(" ", actionAndParameters.GetRange(1, actionAndParameters.Count - 1)).Trim());
-                break;
-            case ("display"):
-                //Set display image to nonzero parameters
-                displayImage.SetActive(true);
-                displayImage.GetComponent<Image>().sprite = Resources.Load<Sprite>(string.Join(" ", actionAndParameters.GetRange(1, actionAndParameters.Count - 1)).Trim());
-                break;
-            case ("stopDisplay"):
-                //No parameters, just turns off image display
-                displayImage.SetActive(false);
-                break;
-            case ("displayCG"):
-                //Sets CG image to nonzero parameters
-                CG.GetComponent<Image>().enabled = true;
-                displayImage.GetComponent<Image>().sprite = Resources.Load<Sprite>(string.Join(" ", actionAndParameters.GetRange(1, actionAndParameters.Count - 1)).Trim());
-                break;
-            case ("stopDisplayCG"):
-                //No parameters, just turns off CG display
-                CG.GetComponent<Image>().enabled = false;
-                break;
-            case ("swap"):
-                //swap position of character with name parameter 1 with character with name parameter 2 (for when too many people are on screen)
-                MoveToTargetBehavior targetBehavior1 = characters[actionAndParameters[1].Trim()].GetComponent<MoveToTargetBehavior>();
-                MoveToTargetBehavior targetBehavior2 = characters[actionAndParameters[2].Trim()].GetComponent<MoveToTargetBehavior>();
-                targetBehavior1.setTarget(targetBehavior2.gameObject.transform.position, 1.5f);
-                targetBehavior2.setTarget(targetBehavior1.gameObject.transform.position, 1.5f);
-                break;
+    public void TransitionBackground(string backgroundName) {
+        fadeImage.enabled = true;
+        nextBackground = Resources.Load<Sprite>("Backgrounds/" + backgroundName.Trim());
+        SaveGameService.SetString("background", backgroundName.Trim());
+        StartCoroutine(FadeToBlack());
+    }
+
+    public void SetBackground(string backgroundName) {
+        backgound.GetComponent<Image>().sprite = Resources.Load<Sprite>("Backgrounds/" + backgroundName.Trim());
+        SaveGameService.SetString("background", backgroundName.Trim());
+    }
+
+    public void PlayMusic(string trackName) {
+        music.setTrack(trackName.Trim());
+        music.play();
+    }
+
+    public void StopMusic() {
+        music.stop();
+    }
+
+    public void DisplayImage(string resourcePath) {
+        displayImage.SetActive(true);
+        displayImage.GetComponent<Image>().sprite = Resources.Load<Sprite>(resourcePath.Trim());
+    }
+
+    public void StopDisplayImage() {
+        displayImage.SetActive(false);
+    }
+
+    public void DisplayCG(string resourcePath) {
+        CG.GetComponent<Image>().enabled = true;
+        displayImage.GetComponent<Image>().sprite = Resources.Load<Sprite>(resourcePath.Trim());
+    }
+
+    public void StopDisplayCG() {
+        CG.GetComponent<Image>().enabled = false;
+    }
+
+    public void SwapCharacters(string firstCharacter, string secondCharacter) {
+        DialogueCharacterMover targetBehavior1 = EnsureDialogueMover(characters[firstCharacter.Trim()]);
+        DialogueCharacterMover targetBehavior2 = EnsureDialogueMover(characters[secondCharacter.Trim()]);
+        Vector2 firstTarget = targetBehavior1.GetTarget();
+        Vector2 secondTarget = targetBehavior2.GetTarget();
+        targetBehavior1.SetTarget(secondTarget, 1.5f);
+        targetBehavior2.SetTarget(firstTarget, 1.5f);
+    }
+
+    public void MoveCharacter(string character, float speed, float xMove, float yMove) {
+        DialogueCharacterMover targetBehavior = EnsureDialogueMover(characters[character]);
+        Vector2 currentPosition = GetStageRelativePosition(targetBehavior.GetTarget());
+        targetBehavior.SetTarget(ToStageAnchoredPosition(currentPosition.x + xMove, currentPosition.y + yMove), speed);
+    }
+
+    public void MoveCharacterTo(string character, float speed, float xTarget, float yTarget) {
+        DialogueCharacterMover targetBehavior = EnsureDialogueMover(characters[character]);
+        targetBehavior.SetTarget(ToStageAnchoredPosition(xTarget, yTarget), speed);
+
+    }
+
+    private RectTransform GetCharacterStage() {
+        if (characterStage == null) {
+            GameObject stage = GameObject.Find("Characters");
+            if (stage != null) {
+                characterStage = stage.GetComponent<RectTransform>();
+            }
+        }
+
+        return characterStage;
+    }
+
+    private DialogueCharacterMover EnsureDialogueMover(GameObject character) {
+        DialogueCharacterMover mover = character.GetComponent<DialogueCharacterMover>();
+        if (mover == null) {
+            Debug.LogError("Dialogue character '" + character.name + "' needs a DialogueCharacterMover component.");
+        }
+
+        return mover;
+    }
+
+    private void SetCharacterStagePosition(GameObject character, float x, float y) {
+        EnsureDialogueMover(character).SetPosition(ToStageAnchoredPosition(x, y));
+    }
+
+    private void AddDialogueActor(string assetKey, string displayName, string expression) {
+        GameObject actor = Instantiate(Resources.Load<GameObject>("Character"), GetCharacterStage());
+        characters.Add(assetKey, actor);
+        dialogueActors[assetKey] = new DialogueActor(assetKey, displayName, actor);
+        EnsureDialogueMover(actor);
+        actor.GetComponent<Image>().sprite = LoadCharacterSprite(assetKey, expression);
+    }
+
+    private static void ParseSceneSetupOptions(List<string> characterInfo, ref string expression, ref string displayName) {
+        if (characterInfo.Count <= 3) {
+            return;
+        }
+
+        if (!TryParseCharacterDisplayOptions(characterInfo, 3, ref expression, ref displayName)) {
+            expression = characterInfo[3];
+            if (characterInfo.Count > 4) {
+                displayName = characterInfo[4];
+            }
         }
     }
 
-    //Move character in relative units
-    public void move(string character, float speed, float xMove, float yMove) {
-        xMove = xMove * positionalMultiplier;
-        yMove = (yMove + baseYAxisOffset) * positionalMultiplier;
-        //speed = speed * baseSpeed;
-        MoveToTargetBehavior targetBehavior = characters[character].GetComponent<MoveToTargetBehavior>();
-        //Debug.Log(new Vector3(xMove, yMove) + " " + characters[actionAndParameters[1]].transform.localPosition +" " + characters[actionAndParameters[1]].transform.position);
-        targetBehavior.setTarget((new Vector3(xMove, yMove, -characters[character].transform.localPosition.z) + characters[character].transform.localPosition) / 100, speed);
+    private static bool TryParseCharacterDisplayOptions(List<string> arguments, int startIndex, ref string expression, ref string displayName) {
+        int index = startIndex;
+        while (index < arguments.Count) {
+            if (index + 1 >= arguments.Count) {
+                return false;
+            }
+
+            string key = NormalizeDisplayOptionKey(arguments[index]);
+            string value = arguments[index + 1];
+            if (key == "expression") {
+                expression = value;
+            }
+            else if (key == "displayname" || key == "name") {
+                displayName = value;
+            }
+            else {
+                return false;
+            }
+
+            index += 2;
+        }
+
+        return true;
     }
 
-    //Move character to target position
-    public void moveTo(string character, float speed, float xTarget, float yTarget) {
-        MoveToTargetBehavior targetBehavior = characters[character].GetComponent<MoveToTargetBehavior>();
-        xTarget = xTarget * positionalMultiplier;
-        yTarget = (yTarget + baseYAxisOffset) * positionalMultiplier;
-        //speed = speed * baseSpeed;
-        targetBehavior.setTarget((new Vector3(xTarget, yTarget, -characters[character].transform.localPosition.z)) / 100, speed);
+    private static string NormalizeDisplayOptionKey(string key) {
+        return key.Replace("-", "").Replace("_", "").ToLowerInvariant();
+    }
 
+    private Sprite LoadCharacterSprite(string assetKey, string expression) {
+        Sprite sprite = Resources.Load<Sprite>("Characters/" + assetKey + expression);
+        if (sprite == null) {
+            sprite = Resources.Load<Sprite>("Characters/" + assetKey);
+        }
+        if (sprite == null) {
+            sprite = Resources.Load<Sprite>("Characters/" + assetKey + "Normal");
+        }
+
+        return sprite;
+    }
+
+    private string GetDisplayName(string character) {
+        if (character == " ") {
+            return character;
+        }
+
+        if (character == "main") {
+            return SaveGameService.GetString("name", "Rachel");
+        }
+
+        if (dialogueActors.ContainsKey(character) && !string.IsNullOrWhiteSpace(dialogueActors[character].DisplayName)) {
+            return dialogueActors[character].DisplayName;
+        }
+
+        return DefaultDisplayName(character);
+    }
+
+    private static string DefaultDisplayName(string character) {
+        if (string.IsNullOrEmpty(character)) {
+            return character;
+        }
+
+        return char.ToUpper(character[0]) + character.Substring(1);
+    }
+
+    private Vector2 GetStageRelativePosition(GameObject character) {
+        RectTransform rectTransform = character.GetComponent<RectTransform>();
+        return GetStageRelativePosition(rectTransform.anchoredPosition);
+    }
+
+    private Vector2 GetStageRelativePosition(Vector2 anchoredPosition) {
+        Rect stageRect = GetCharacterStage().rect;
+        return new Vector2(
+            (anchoredPosition.x / stageRect.width) + 0.5f,
+            (anchoredPosition.y / stageRect.height) + 0.5f);
+    }
+
+    private Vector2 ToStageAnchoredPosition(float x, float y) {
+        Rect stageRect = GetCharacterStage().rect;
+        return new Vector2(
+            (x - 0.5f) * stageRect.width,
+            (y + characterStageYOffset - 0.5f) * stageRect.height);
     }
 }

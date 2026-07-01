@@ -6,7 +6,9 @@ using UnityEngine;
 
 public static class DebugLaunchMenu {
     private const string DefaultProfilePath = "Assets/Debug/Profiles/SpellTestDummy.asset";
+    private const string DefaultDialogueProfilePath = "Assets/Debug/DialogueProfiles/RelativeMovementTest.asset";
     private const string CombatScenePath = "Assets/Scenes/CombatScene.unity";
+    private const string DialogueScenePath = "Assets/Scenes/DialogueScene.unity";
 
     [MenuItem("Dev/Play Spell Test Dummy")]
     public static void PlaySpellTestDummy() {
@@ -30,6 +32,11 @@ public static class DebugLaunchMenu {
         EditorGUIUtility.PingObject(Selection.activeObject);
     }
 
+    [MenuItem("Dev/Play Dialogue Test")]
+    public static void PlayDialogueTest() {
+        PlayDialogueProfile(LoadOrCreateDefaultDialogueProfile());
+    }
+
     private static void PlayProfile(DebugCombatProfile profile) {
         if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) {
             return;
@@ -51,6 +58,35 @@ public static class DebugLaunchMenu {
         System.IO.Directory.CreateDirectory("Assets/Debug/Profiles");
         profile = ScriptableObject.CreateInstance<DebugCombatProfile>();
         AssetDatabase.CreateAsset(profile, DefaultProfilePath);
+        AssetDatabase.SaveAssets();
+        return profile;
+    }
+
+    private static void PlayDialogueProfile(DebugDialogueProfile profile) {
+        if (profile == null || string.IsNullOrWhiteSpace(profile.dialogueId)) {
+            Debug.LogWarning("Dialogue profile needs a dialogue id.");
+            return;
+        }
+
+        if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) {
+            return;
+        }
+
+        DebugDialogueRuntime.SetEditorDialogueOverride(profile.dialogueId.Trim());
+        EditorSceneManager.OpenScene(DialogueScenePath);
+        EditorApplication.isPlaying = true;
+    }
+
+    private static DebugDialogueProfile LoadOrCreateDefaultDialogueProfile() {
+        DebugDialogueProfile profile = AssetDatabase.LoadAssetAtPath<DebugDialogueProfile>(DefaultDialogueProfilePath);
+        if (profile != null) {
+            return profile;
+        }
+
+        System.IO.Directory.CreateDirectory("Assets/Debug/DialogueProfiles");
+        profile = ScriptableObject.CreateInstance<DebugDialogueProfile>();
+        profile.dialogueId = "relativeMovementTest";
+        AssetDatabase.CreateAsset(profile, DefaultDialogueProfilePath);
         AssetDatabase.SaveAssets();
         return profile;
     }

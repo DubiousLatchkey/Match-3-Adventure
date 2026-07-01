@@ -1,0 +1,424 @@
+{
+  "version": 1,
+  "nodes": {
+    "dialogue:3_004_iredellSeige": {
+      "x": 80,
+      "y": 80
+    },
+    "dialogue:3_005_iredellCastleAdvance": {
+      "x": 80,
+      "y": 200
+    },
+    "dialogue:3_006_iredellCastleCourtyard": {
+      "x": 80,
+      "y": 320
+    },
+    "dialogue:3_007_iredellConfrontation": {
+      "x": 80,
+      "y": 440
+    },
+    "dialogue:AedavaBound": {
+      "x": 237.312252294914,
+      "y": 2855.203125
+    },
+    "dialogue:announcementOfIntent": {
+      "x": 80,
+      "y": 560
+    },
+    "dialogue:aPlaceToStart": {
+      "x": 80,
+      "y": 680
+    },
+    "dialogue:assaultOnTheControlRoom": {
+      "x": 80,
+      "y": 800
+    },
+    "dialogue:changeover": {
+      "x": 80,
+      "y": 920
+    },
+    "dialogue:closingTheCityGates": {
+      "x": 80,
+      "y": 1040
+    },
+    "dialogue:endOfAct1": {
+      "x": 80,
+      "y": 1160
+    },
+    "dialogue:escapeBackToTown": {
+      "x": 80,
+      "y": 1280
+    },
+    "dialogue:findMineLeader": {
+      "x": 268.22988754225344,
+      "y": 3970.3869929574116
+    },
+    "dialogue:infiltrationPlan": {
+      "x": 80,
+      "y": 1400
+    },
+    "dialogue:lameDuckAdministration": {
+      "x": 80,
+      "y": 1520
+    },
+    "dialogue:margaretArrives": {
+      "x": 258,
+      "y": 2504
+    },
+    "dialogue:meetingAtheria": {
+      "x": 80,
+      "y": 1760
+    },
+    "dialogue:meetingTheCommunity": {
+      "x": 80,
+      "y": 1880
+    },
+    "dialogue:mineAttack": {
+      "x": 239.10722208731573,
+      "y": 3652.748950207559
+    },
+    "dialogue:newDialogue": {
+      "x": 980,
+      "y": 80
+    },
+    "dialogue:newPlan": {
+      "x": 237.3531407798933,
+      "y": 3115.864821193487
+    },
+    "dialogue:opening": {
+      "x": 980,
+      "y": 200
+    },
+    "dialogue:preExchangeBossFight": {
+      "x": 980,
+      "y": 320
+    },
+    "dialogue:regroupingBeforeTheAssault": {
+      "x": 980,
+      "y": 440
+    },
+    "dialogue:relativeMovementTest": {
+      "x": 980,
+      "y": 560
+    },
+    "dialogue:restructuring": {
+      "x": 980,
+      "y": 680
+    },
+    "dialogue:revelation": {
+      "x": 980,
+      "y": 800
+    },
+    "dialogue:sampleDialogue": {
+      "x": 980,
+      "y": 920
+    },
+    "dialogue:sampleDialogue2": {
+      "x": 980,
+      "y": 1040
+    },
+    "dialogue:takingAMine": {
+      "x": 230.46095064991107,
+      "y": 3379.150073841166
+    },
+    "dialogue:thePortal": {
+      "x": 980,
+      "y": 1160
+    },
+    "dialogue:wakingUp": {
+      "x": 980,
+      "y": 1280
+    },
+    "dialogue:walkingIntoTrouble": {
+      "x": 284,
+      "y": 2174
+    },
+    "combat:3_004_iredellSeigeCombat": {
+      "x": 1410,
+      "y": 1760
+    },
+    "combat:3_005_iredellCastleAdvanceCombat": {
+      "x": 1410,
+      "y": 1520
+    },
+    "combat:3_006_iredellCastleCourtyardCombat": {
+      "x": 1410,
+      "y": 1640
+    },
+    "combat:atheriaCombat": {
+      "x": 1410,
+      "y": 1880
+    },
+    "combat:banditBossCombat": {
+      "x": 2310,
+      "y": 320
+    },
+    "combat:blatchfordInvasionCombat": {
+      "x": 2310,
+      "y": 440
+    },
+    "combat:blatchfordCombat": {
+      "x": 2310,
+      "y": 80
+    },
+    "combat:blatchfordInvasionCombat2": {
+      "x": 2310,
+      "y": 200
+    },
+    "combat:breakingThroughToTheGatesCombat": {
+      "x": 2310,
+      "y": 560
+    },
+    "combat:cateliaBatteringRamCombat": {
+      "x": 2310,
+      "y": 680
+    },
+    "combat:cateliaMerchantCombat": {
+      "x": 2310,
+      "y": 800
+    },
+    "combat:cateliaMerchantCombat2": {
+      "x": 2310,
+      "y": 920
+    },
+    "combat:cordissCombat": {
+      "x": 2310,
+      "y": 1040
+    },
+    "combat:cordissianGuardCombat": {
+      "x": 2310,
+      "y": 1160
+    },
+    "combat:debugSpellTestDummy": {
+      "x": 2310,
+      "y": 1280
+    },
+    "combat:docksCombat": {
+      "x": 2310,
+      "y": 1400
+    },
+    "combat:duvallCombat": {
+      "x": 2310,
+      "y": 1520
+    },
+    "combat:ellsworthCastleCombat": {
+      "x": 2310,
+      "y": 1640
+    },
+    "combat:ellsworthCombat": {
+      "x": 2310,
+      "y": 1760
+    },
+    "combat:examCombat": {
+      "x": 2310,
+      "y": 1880
+    },
+    "combat:exchangeBossCombat": {
+      "x": 3210,
+      "y": 80
+    },
+    "combat:exchangeTakeoverCombat": {
+      "x": 3210,
+      "y": 320
+    },
+    "combat:exchangeBossCombat2": {
+      "x": 3210,
+      "y": 200
+    },
+    "combat:exchangeTakeoverCombat2": {
+      "x": 3210,
+      "y": 440
+    },
+    "combat:exchangeThiefCombat": {
+      "x": 3210,
+      "y": 560
+    },
+    "combat:futureCombat": {
+      "x": 3210,
+      "y": 800
+    },
+    "combat:firstThiefCombat": {
+      "x": 268,
+      "y": 2348
+    },
+    "combat:guardCombat": {
+      "x": 3210,
+      "y": 920
+    },
+    "combat:invasionStartingCombat": {
+      "x": 3210,
+      "y": 1040
+    },
+    "combat:iredellCombat": {
+      "x": 3210,
+      "y": 1160
+    },
+    "combat:iredellInvasionCombat": {
+      "x": 3210,
+      "y": 1280
+    },
+    "combat:iredellInvasionCombat2": {
+      "x": 3210,
+      "y": 1400
+    },
+    "combat:jayBlatchfordCombat": {
+      "x": 3210,
+      "y": 1520
+    },
+    "combat:jayMageCombat": {
+      "x": 3210,
+      "y": 1640
+    },
+    "combat:jayNobleFight": {
+      "x": 3210,
+      "y": 1880
+    },
+    "combat:jayMageCombat2": {
+      "x": 3210,
+      "y": 1760
+    },
+    "combat:mageRepresentativeCombat": {
+      "x": 4110,
+      "y": 80
+    },
+    "combat:merchantExteriorCombat": {
+      "x": 4110,
+      "y": 200
+    },
+    "combat:merchantExteriorCombat2": {
+      "x": 4110,
+      "y": 320
+    },
+    "combat:mercTestCombat": {
+      "x": 225.86615722992292,
+      "y": 3241.189606564843
+    },
+    "combat:mineInteriorCombat": {
+      "x": 246.76893689234242,
+      "y": 3799.1887979025328
+    },
+    "combat:mineLeaderCombat": {
+      "x": 265.84390940641595,
+      "y": 4121.3182887947605
+    },
+    "combat:mineWallCombat": {
+      "x": 232,
+      "y": 3510.981286920583
+    },
+    "combat:necromancerCombat": {
+      "x": 4110,
+      "y": 440
+    },
+    "combat:oleronCombat": {
+      "x": 4110,
+      "y": 560
+    },
+    "combat:OpeningThePortalCombat": {
+      "x": 4110,
+      "y": 680
+    },
+    "combat:outsideBanditCombat": {
+      "x": 4110,
+      "y": 800
+    },
+    "combat:outsideBanditCombat2": {
+      "x": 4110,
+      "y": 920
+    },
+    "combat:outsideSlaverCampCombat": {
+      "x": 4110,
+      "y": 1160
+    },
+    "combat:pleiceCombat": {
+      "x": 4110,
+      "y": 1040
+    },
+    "combat:pleiceCourtierCombat": {
+      "x": 4110,
+      "y": 1280
+    },
+    "combat:pleiceEllsworthCombat": {
+      "x": 4110,
+      "y": 1400
+    },
+    "combat:postPortalCombat": {
+      "x": 4110,
+      "y": 1520
+    },
+    "combat:roxanneBlatchfordCombat": {
+      "x": 4110,
+      "y": 1640
+    },
+    "combat:roxanneBlatchfordCombat2": {
+      "x": 4110,
+      "y": 1760
+    },
+    "combat:roxanneCombat": {
+      "x": 4110,
+      "y": 1880
+    },
+    "combat:roxanneMageCombat": {
+      "x": 5010,
+      "y": 80
+    },
+    "combat:secondThiefCombat": {
+      "x": 242,
+      "y": 2690
+    },
+    "combat:skeletonFirstEncounterCombat": {
+      "x": 5010,
+      "y": 320
+    },
+    "combat:slaveOwnerCombat": {
+      "x": 5010,
+      "y": 440
+    },
+    "combat:slaverSquabbleCombat": {
+      "x": 5010,
+      "y": 560
+    },
+    "combat:spyInCastleTownCombat": {
+      "x": 5010,
+      "y": 680
+    },
+    "combat:successionCombat": {
+      "x": 5010,
+      "y": 800
+    },
+    "combat:TestCombat": {
+      "x": 5010,
+      "y": 920
+    },
+    "combat:testCombat2": {
+      "x": 5010,
+      "y": 1040
+    },
+    "combat:tollCombat": {
+      "x": 232,
+      "y": 3001.8046875
+    },
+    "combat:trebuchetCombat": {
+      "x": 5010,
+      "y": 1160
+    },
+    "combat:trebuchetGuardCombat": {
+      "x": 5010,
+      "y": 1280
+    },
+    "combat:warroomGuardsCombat": {
+      "x": 5010,
+      "y": 1400
+    },
+    "dialogue:mineConsolidation": {
+      "x": 273.8439094064159,
+      "y": 4304.4198512947605
+    }
+  },
+  "placeholders": {
+    "characters": [],
+    "backgrounds": [],
+    "music": [],
+    "sounds": [],
+    "displays": []
+  }
+}

@@ -1,0 +1,13 @@
+|ann 0.4 0,gabriella 0.2 0,thief 0.75 0
+thief: Urgh...
+|exit thief down
+thief: They killed Kenny!  You'll pay for that!
+ann: Shoot, that's a lot of guys...
+gabriella: We can take them.
+thief: Augh!
+|enter margaret 0.65 0
+margaret: Need some help?
+ann: And you are?
+margaret: How about after we're out of this?
+thief: Get 'em
+|combat secondThiefCombat

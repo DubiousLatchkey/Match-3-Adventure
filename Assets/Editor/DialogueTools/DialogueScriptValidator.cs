@@ -212,6 +212,12 @@ public static class DialogueScriptValidator {
         else if ((commandName == "combat" || commandName == "combatDirect") && tokens.Count > 1) {
             ValidateResource<TextAsset>("Assets/Resources/Combats/" + tokens[1], assetPath, lineNumber, "Combat script", issues);
         }
+        else if (commandName == "dialogue" && tokens.Count > 1) {
+            ValidateResource<TextAsset>("Assets/Resources/Dialogues/" + tokens[1], assetPath, lineNumber, "Dialogue script", issues);
+        }
+        else if (commandName == "gearStop" && tokens.Count > 1) {
+            ValidateResource<TextAsset>("Assets/Resources/Data/GearStops/" + tokens[1], assetPath, lineNumber, "Gear stop", issues);
+        }
     }
 
     private static void TrackCharacterChanges(string commandName, List<string> tokens, HashSet<string> characters) {

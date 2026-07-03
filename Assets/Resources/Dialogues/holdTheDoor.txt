@@ -1,0 +1,15 @@
+|ann 0.35 0,margaret 0.65 0
+|setBackground Wall
+|title "Hold Out"
+ann: Ok, they'll be here any minute now.
+margaret: I hope you're right because that's a lot of guys coming at us.
+ann: I'm going down with the ambush force - come with me!
+|transition slaverCampInterior
+: The two join the villagers lying in wait.
+margaret: Now?
+ann: Remember the plan.  We just need to hold until the cavalry arrives.
+: Bandits brandishing axes approach the gate.
+|moveTo ann 4 0.4 0 1
+|moveTo margaret 4 0.6 0 1
+ann: Get them off the gate!
+|combatDirect mineGateCombat

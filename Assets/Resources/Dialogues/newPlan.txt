@@ -36,49 +36,23 @@ margaret: Ok, fire away.
 ann: The bandits - I assume they're organized if they're setting up tolls.  What's up with them?
 margaret: Like who runs them?  I think someone named Taney?
 ann: Ok, that's something.  Where do they hide out?
-margaret: They don't exactly hide.  After the last war, there were a lot of veterans returning home.  Taney gathered up a bunch and forced Marquess Blair from Arcadiopolis.  She runs the city now - not that a lot of people stayed around.
+margaret: They don't exactly hide.  After the last war, there were a lot of veterans returning home.  Taney gathered up a bunch and forced Marquess Blair from Philadelphia.  She runs the city now - not that a lot of people stayed around.
 gabriella: How did a bunch of bandits unseat an Earl?
 margaret: Beats me.  I just know the stories from the refugees who fled through here.
-ann: What I'm hearing is that if we can force Taney from Arcadiopolis, we can restore order in Thracia.  
+ann: What I'm hearing is that if we can force Taney from Philadelphia, we can restore order in Thracia.  
 margaret: In theory, yeah.  So?  We've wanted to do that for years now.  
 ann: And the thing that's stopping you is the same thing that's stopping us - money.
 ann: Margaret, when Lord Blair still ran things around here, what were his lands known for?  What were the most profitable assets?  Ports?  Fisheries?
 margaret: Mines.  There are a few Ley deposits around here.  They're still running - it's just that Taney controls them now.
 ann: Perfect.
 gabriella: Ah, I think I'm starting to see your plan...
-ann: The mercenary company Samuel works with.  If we could hire them, we could rout the bandits from Arcadiopolis.  Problem: we don't have the money for that.
+ann: The mercenary company Samuel works with.  If we could hire them, we could rout the bandits from Philadelphia.  Problem: we don't have the money for that.
 ann: Solution: We make money.  If we can take a mine and defend it, we can get the profit from it.  I'm sure, Gabby, your father or the Mage's Guild would be happy to buy Ley crystals at a discount.  Then, we can use the money to hire the mercenaries.
 ann: Before you say anything else, I know we need to take a mine first.  Margaret, this is where you come in.  If you can rally enough locals together, we should be able to do it.  
 gabriella: So, in order to avoid paying say 5 mercenaries for a few weeks, the plan is to pay the entire company to take a city?
 ann: Yep.  I know it sounds crazy, but it's the only way.  Gabby, you and I can't do or afford this ourselves without the community.  The people of Aedava and the other villages won't help us just because - they need to benefit too.  Luckily, our goals are aligned - we all want the bandits gone and we all lack the funds to do it.  
 margaret: I am tired of all the bandits around here...  The elders have talked about doing something, but it's never gone beyond just talk, talk, talk.  I'm in.
-gabriella: You know, this might actually work.  Besides, it's the right thing to do.  If we can take a mine, I'll talk to my father about securing a loan to hire these mercenaries.  Arcadiopolis probably has all the bandits' ill-gotten gains, so we can use them to pay him back.
+gabriella: You know, this might actually work.  Besides, it's the right thing to do.  If we can take a mine, I'll talk to my father about securing a loan to hire these mercenaries.  Philadelphia probably has all the bandits' ill-gotten gains, so we can use them to pay him back.
 ann: Alright!  We need to talk to the mercenaries to make sure they're even up for this.  Margaret, can you get us in and start recruiting?
 margaret: No problem.
-|transition exchangeCamp
-|exit margaret right
-|translate ann 0.6
-|translate gabriella 0.8
-ann: Greetings.  I'm Ann and this is -
-gabriella: Gabriella.  Gabriella Duvall
-ann: We're here to see if you're interested in a contract.
-|enter clarissa 0.35 0
-clarissa: Well met.  I'm Clarissa, and this is my company.  I'm always interested in money.
-ann: Great.  My question is, with the forces you have, can you take Arcadiopolis from Taney?
-clarissa: That... is a big ask.  Not alone.  You think I'd be sitting here in the woods if I could do that?
-ann: Let's say you had a peasant levy of 200 volunteers helping.
-clarissa: That changes the math.  Sure, but who are you to be asking this of me?  You're obviously not from around here.  I would have assumed Baron Duvall was behind this but you, a commoner, are speaking over his daughter here.  You're wearing the attire of one of the guilds but didn't introduce yourselves as representing one.  What exactly is going on here?
-gabriella: It's a long story.
-ann: Long story short is we are from the Mage's Guild, but we need safe travel to perform our measurements here.  That means the bandits gone from Blair lands.
-clarissa: Since when is the Mage's Guild in the business of routing bandits?
-ann: They're not.  We can't afford an escort so the only way to win here is to create an uprising.  My plan is to seize a mine and use its proceeds to hire you.
-clarissa: I admire the ambition.  
-ann: So, name your price and we'll get it to you.
-clarissa: You look way too young to have hired a mercenary company before - you do realize how expensive it is, right?
-ann: Name your price, and we'll see.
-clarissa: Well, daily wages will run around 5 gold and it costs around the same for supplies and equipment.  Let's add 20% for assumption of risk and profit for 12 gold a day.  Taking a city is at least a 2-month affair, so you should probably budget for 3.  That'll run you... around a thousand gold?  I'm no miner, but that seems steep for a single mine to cover.
-gabriella: My father will cover any shortfall.  We'll talk to the landowners hiring you for protection as well - they won't need the protection if we succeed, so that money can help cover the cost as well.
-clarissa: Very well.  This seems sound in principle.  My only concern is that while the villagers of Aedava may have vouched for you, I don't know you.
-gabriella: Trust me, Ann will see this through and she won't backstab you.
-clarissa: Easy words to say.  I think there's a lot you can learn from a person from how they fight - Caroline, you're up.
-|combat mercTestCombat
+|gearStop minePlanPrep

@@ -1,0 +1,18 @@
+[package]
+name = "story-flow-tauri"
+version = "0.1.0"
+description = "Native desktop editor for Match-3 Adventure story flow files"
+authors = ["Match-3 Adventure"]
+edition = "2021"
+
+[lib]
+name = "story_flow_tauri_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"

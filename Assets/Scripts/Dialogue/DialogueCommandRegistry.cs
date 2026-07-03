@@ -41,6 +41,9 @@ public sealed class DialogueCommandRegistry {
         Register("enter", Enter);
         Register("combat", Combat);
         Register("combatDirect", CombatDirect);
+        Register("dialogue", Dialogue);
+        Register("gearStop", GearStop);
+        Register("title", Title);
         Register("resumeCombat", ResumeCombat);
         Register("transition", Transition);
         Register("setBackground", SetBackground);
@@ -175,6 +178,19 @@ public sealed class DialogueCommandRegistry {
     private static void CombatDirect(DialogueCommandContext context) {
         GridController.combatToLoad = context.RequireString(1, "combatDirect");
         SceneManager.LoadScene("CombatScene", LoadSceneMode.Single);
+    }
+
+    private static void GearStop(DialogueCommandContext context) {
+        GearStopRuntime.LoadGearStop(context.RequireString(1, "gearStop"));
+    }
+
+    private static void Dialogue(DialogueCommandContext context) {
+        DialogueController.dialogueToLoad = context.RequireString(1, "dialogue");
+        SceneManager.LoadScene("DialogueScene", LoadSceneMode.Single);
+    }
+
+    private static void Title(DialogueCommandContext context) {
+        // Metadata only. Gear stop menus and authoring tools can read this from the dialogue asset.
     }
 
     private static void ResumeCombat(DialogueCommandContext context) {

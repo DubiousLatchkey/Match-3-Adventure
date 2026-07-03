@@ -109,7 +109,7 @@ public class EquippingController : MonoBehaviour {
         }
         
         //Skip scene if no spells and weapons
-        if (availableWeapons.Count < 1 && availableSpells.Count < 1) {
+        if (!GearStopRuntime.HasActiveGearStop && availableWeapons.Count < 1 && availableSpells.Count < 1) {
             moveToCombat();
         }
 
@@ -144,7 +144,7 @@ public class EquippingController : MonoBehaviour {
         }
     }
 
-    public void moveToCombat() {
+    public void SaveEquipment() {
         //Sets all spells to 6 for available
         foreach (Button i in availableSpells) {
             SaveGameService.SetInt(i.GetComponentInChildren<Text>().text, 6);
@@ -167,6 +167,10 @@ public class EquippingController : MonoBehaviour {
         if (equippedWeapons[0].getHoldName() != "") {
             SaveGameService.SetInt(equippedWeapons[0].getHoldName(), 2);
         }
+    }
+
+    public void moveToCombat() {
+        SaveEquipment();
 
         SceneManager.LoadScene("CombatScene", LoadSceneMode.Single);
 

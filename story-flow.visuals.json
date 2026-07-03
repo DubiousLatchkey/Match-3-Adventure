@@ -21,13 +21,17 @@
       "x": 237.312252294914,
       "y": 2855.203125
     },
-    "dialogue:announcementOfIntent": {
-      "x": 80,
-      "y": 560
-    },
     "dialogue:aPlaceToStart": {
       "x": 80,
       "y": 680
+    },
+    "dialogue:aedavaRoadToNextTown": {
+      "x": 219.18734645269964,
+      "y": 3086.633395985359
+    },
+    "dialogue:announcementOfIntent": {
+      "x": -216.88927992390114,
+      "y": 586.390158215458
     },
     "dialogue:assaultOnTheControlRoom": {
       "x": 80,
@@ -50,8 +54,8 @@
       "y": 1280
     },
     "dialogue:findMineLeader": {
-      "x": 268.22988754225344,
-      "y": 3970.3869929574116
+      "x": 220.86890336379918,
+      "y": 4389.549734948756
     },
     "dialogue:infiltrationPlan": {
       "x": 80,
@@ -73,17 +77,41 @@
       "x": 80,
       "y": 1880
     },
+    "dialogue:mercenaryContractMeeting": {
+      "x": 208,
+      "y": 3504.5
+    },
     "dialogue:mineAttack": {
-      "x": 239.10722208731573,
-      "y": 3652.748950207559
+      "x": 286.01196732127545,
+      "y": 4159.621358325134
+    },
+    "dialogue:mineConsolidation": {
+      "x": 229.70084544893967,
+      "y": 4738.60843340653
+    },
+    "dialogue:mineCounterattack": {
+      "x": 263.48014015771616,
+      "y": 5769.755907080363
+    },
+    "dialogue:mineDefenseEmergency": {
+      "x": 228,
+      "y": 5097.15234375
+    },
+    "dialogue:mineRaidInfiltration": {
+      "x": 246,
+      "y": 3912
+    },
+    "dialogue:mineWallDefense": {
+      "x": 269.2988518130346,
+      "y": 6098.607633150234
     },
     "dialogue:newDialogue": {
       "x": 980,
       "y": 80
     },
     "dialogue:newPlan": {
-      "x": 237.3531407798933,
-      "y": 3115.864821193487
+      "x": 229.39461704757463,
+      "y": 3283.5330110520363
     },
     "dialogue:opening": {
       "x": 980,
@@ -94,32 +122,36 @@
       "y": 320
     },
     "dialogue:regroupingBeforeTheAssault": {
-      "x": 980,
-      "y": 440
+      "x": 726,
+      "y": 458
     },
     "dialogue:relativeMovementTest": {
       "x": 980,
       "y": 560
+    },
+    "dialogue:rescuingADuchess": {
+      "x": 263.8074067633319,
+      "y": 5450.581211516445
     },
     "dialogue:restructuring": {
       "x": 980,
       "y": 680
     },
     "dialogue:revelation": {
-      "x": 980,
-      "y": 800
+      "x": 780,
+      "y": 854
     },
     "dialogue:sampleDialogue": {
-      "x": 980,
-      "y": 920
+      "x": 832,
+      "y": 936
     },
     "dialogue:sampleDialogue2": {
       "x": 980,
       "y": 1040
     },
     "dialogue:takingAMine": {
-      "x": 230.46095064991107,
-      "y": 3379.150073841166
+      "x": 252.05392062812717,
+      "y": 3701.3328507182173
     },
     "dialogue:thePortal": {
       "x": 980,
@@ -145,6 +177,14 @@
       "x": 1410,
       "y": 1640
     },
+    "combat:OpeningThePortalCombat": {
+      "x": 4110,
+      "y": 680
+    },
+    "combat:TestCombat": {
+      "x": 5010,
+      "y": 920
+    },
     "combat:atheriaCombat": {
       "x": 1410,
       "y": 1880
@@ -153,13 +193,13 @@
       "x": 2310,
       "y": 320
     },
-    "combat:blatchfordInvasionCombat": {
-      "x": 2310,
-      "y": 440
-    },
     "combat:blatchfordCombat": {
       "x": 2310,
       "y": 80
+    },
+    "combat:blatchfordInvasionCombat": {
+      "x": 2310,
+      "y": 440
     },
     "combat:blatchfordInvasionCombat2": {
       "x": 2310,
@@ -168,6 +208,10 @@
     "combat:breakingThroughToTheGatesCombat": {
       "x": 2310,
       "y": 560
+    },
+    "combat:caravanRescueCombat": {
+      "x": 244.0147881017386,
+      "y": 5269.67461521837
     },
     "combat:cateliaBatteringRamCombat": {
       "x": 2310,
@@ -217,13 +261,13 @@
       "x": 3210,
       "y": 80
     },
-    "combat:exchangeTakeoverCombat": {
-      "x": 3210,
-      "y": 320
-    },
     "combat:exchangeBossCombat2": {
       "x": 3210,
       "y": 200
+    },
+    "combat:exchangeTakeoverCombat": {
+      "x": 3210,
+      "y": 320
     },
     "combat:exchangeTakeoverCombat2": {
       "x": 3210,
@@ -233,13 +277,13 @@
       "x": 3210,
       "y": 560
     },
-    "combat:futureCombat": {
-      "x": 3210,
-      "y": 800
-    },
     "combat:firstThiefCombat": {
       "x": 268,
       "y": 2348
+    },
+    "combat:futureCombat": {
+      "x": 3210,
+      "y": 800
     },
     "combat:guardCombat": {
       "x": 3210,
@@ -269,17 +313,21 @@
       "x": 3210,
       "y": 1640
     },
-    "combat:jayNobleFight": {
-      "x": 3210,
-      "y": 1880
-    },
     "combat:jayMageCombat2": {
       "x": 3210,
       "y": 1760
     },
+    "combat:jayNobleFight": {
+      "x": 3210,
+      "y": 1880
+    },
     "combat:mageRepresentativeCombat": {
       "x": 4110,
       "y": 80
+    },
+    "combat:mercTestCombat": {
+      "x": 257.8661572299229,
+      "y": 3605.189606564843
     },
     "combat:merchantExteriorCombat": {
       "x": 4110,
@@ -289,21 +337,17 @@
       "x": 4110,
       "y": 320
     },
-    "combat:mercTestCombat": {
-      "x": 225.86615722992292,
-      "y": 3241.189606564843
-    },
     "combat:mineInteriorCombat": {
-      "x": 246.76893689234242,
-      "y": 3799.1887979025328
+      "x": 225.28352391084428,
+      "y": 4250.57579303861
     },
     "combat:mineLeaderCombat": {
-      "x": 265.84390940641595,
-      "y": 4121.3182887947605
+      "x": 219.2878461202328,
+      "y": 4529.759062429196
     },
     "combat:mineWallCombat": {
-      "x": 232,
-      "y": 3510.981286920583
+      "x": 262.14130060937,
+      "y": 4034.0562434671715
     },
     "combat:necromancerCombat": {
       "x": 4110,
@@ -312,10 +356,6 @@
     "combat:oleronCombat": {
       "x": 4110,
       "y": 560
-    },
-    "combat:OpeningThePortalCombat": {
-      "x": 4110,
-      "y": 680
     },
     "combat:outsideBanditCombat": {
       "x": 4110,
@@ -385,17 +425,13 @@
       "x": 5010,
       "y": 800
     },
-    "combat:TestCombat": {
-      "x": 5010,
-      "y": 920
-    },
     "combat:testCombat2": {
       "x": 5010,
       "y": 1040
     },
     "combat:tollCombat": {
-      "x": 232,
-      "y": 3001.8046875
+      "x": 252,
+      "y": 3173.8046875
     },
     "combat:trebuchetCombat": {
       "x": 5010,
@@ -405,13 +441,45 @@
       "x": 5010,
       "y": 1280
     },
+    "combat:wallDefenseCombat1": {
+      "x": 265.55536003804946,
+      "y": 5931.081078540181
+    },
     "combat:warroomGuardsCombat": {
       "x": 5010,
       "y": 1400
     },
-    "dialogue:mineConsolidation": {
-      "x": 273.8439094064159,
-      "y": 4304.4198512947605
+    "gearStop:aedavaRoadPrep": {
+      "x": 254,
+      "y": 3006
+    },
+    "gearStop:mineCounterattackPrep": {
+      "x": 245.00702940689558,
+      "y": 5612.600453176201
+    },
+    "gearStop:mineDefensePrep": {
+      "x": 256,
+      "y": 4924
+    },
+    "gearStop:minePlanPrep": {
+      "x": 228,
+      "y": 3394
+    },
+    "gearStop:mineRaidPrep": {
+      "x": 254,
+      "y": 3794
+    },
+    "combat:wallDefenseCombat2": {
+      "x": 269.7913626855332,
+      "y": 6244.058880697243
+    },
+    "dialogue:holdTheDoor": {
+      "x": 281.66693388248916,
+      "y": 6407.945886677457
+    },
+    "combat:mineGateCombat": {
+      "x": 289.5839813471266,
+      "y": 6566.420848492392
     }
   },
   "placeholders": {

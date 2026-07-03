@@ -1,0 +1,29 @@
+|ann 0.6 0,clarissa 0.35 0,gabriella 0.8 0
+|title "The Mine Raid"
+|setBackground exchangeCamp
+|transition InnroomWhereItHappens
+|translate ann 0.2 0
+|translate gabriella 0.4 0
+|enter margaret 0.65 0
+|exit clarissa left
+: Two weeks later...
+ann: Any news from the inside?
+margaret: Yes, and it's good.  The miners aren't happy with their wages - they've been reduced since Taney took over - and one of them is willing to leave one of the gates open at night.  
+ann: Ok, then the plan will work.  I'll sneak in with Gabby, and we'll take out the guards on watch.  Then, we'll signal the attack and take control of the mine.
+gabriella: See you on the other side, Margaret!
+|transition cityWallExterior
+|exit margaret right
+ann: There!  The gate's open!
+gabriella: Let's go!
+|move gabriella 1 0.4 0 1
+|move ann 1 0.4 0 1
+gabriella: Did he see us?
+ann: No, just keep moving.
+gabriella: Are you sure?
+ann: No, but it's too late to back out now, we're here.
+|transition Wall
+|enter thief 0.25 0
+ann: You take the on eon the right, I'll take the one on the left.  On three:  One...
+gabriella: Two...
+ann: Three!
+|combatDirect mineWallCombat

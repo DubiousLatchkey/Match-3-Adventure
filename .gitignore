@@ -70,3 +70,13 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Story Flow local tool outputs
+/story-flow-pwa/node_modules/
+/story-flow-pwa/dist/
+/story-flow-pwa/dev-dist/
+/story-flow-pwa/*.log
+/story-flow-tauri/node_modules/
+/story-flow-tauri/dist/
+/story-flow-tauri/src-tauri/target/
+/story-flow-tauri/*.log

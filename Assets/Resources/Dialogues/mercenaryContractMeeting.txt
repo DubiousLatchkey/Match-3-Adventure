@@ -1,0 +1,30 @@
+|ann 0.2 0,gabriella 0.4 0,margaret 0.65 0
+|title "Meeting the Mercenaries"
+|setBackground Inn
+|transition exchangeCamp
+|exit margaret right
+|translate ann 0.6 0
+|translate gabriella 0.8 0
+ann: Greetings.  I'm Ann and this is -
+gabriella: Gabriella.  Gabriella Duvall
+ann: We're here to see if you're interested in a contract.
+|enter clarissa 0.35 0
+clarissa: Well met.  I'm Clarissa, and this is my company.  I'm always interested in money.
+ann: Great.  My question is, with the forces you have, can you take Philadelphia from Taney?
+clarissa: That... is a big ask.  Not alone.  You think I'd be sitting here in the woods if I could do that?
+ann: Let's say you had a peasant levy of 200 volunteers helping.
+clarissa: That changes the math.  Sure, but who are you to be asking this of me?  You're obviously not from around here.  I would have assumed Baron Duvall was behind this but you, a commoner, are speaking over his daughter here.  You're wearing the attire of one of the guilds but didn't introduce yourselves as representing one.  What exactly is going on here?
+gabriella: It's a long story.
+ann: Long story short is we are from the Mage's Guild, but we need safe travel to perform our measurements here.  That means the bandits gone from Blair lands.
+clarissa: Since when is the Mage's Guild in the business of routing bandits?
+ann: They're not.  We can't afford an escort so the only way to win here is to create an uprising.  My plan is to seize a mine and use its proceeds to hire you.
+clarissa: I admire the ambition.  
+ann: So, name your price and we'll get it to you.
+clarissa: You look way too young to have hired a mercenary company before - you do realize how expensive it is, right?
+ann: Name your price, and we'll see.
+clarissa: Well, daily wages will run around 5 gold and it costs around the same for supplies and equipment.  Let's add 20% for assumption of risk and profit for 12 gold a day.  Taking a city is at least a 2-month affair, so you should probably budget for 3.  That'll run you... around a thousand gold?  I'm no miner, but that seems steep for a single mine to cover.
+gabriella: My father will cover any shortfall.  We'll talk to the landowners hiring you for protection as well - they won't need the protection if we succeed, so that money can help cover the cost as well.
+clarissa: Very well.  This seems sound in principle.  My only concern is that while the villagers of Aedava may have vouched for you, I don't know you.
+gabriella: Trust me, Ann will see this through and she won't backstab you.
+clarissa: Easy words to say.  I think there's a lot you can learn from a person from how they fight - Caroline, you're up.
+|combatDirect mercTestCombat

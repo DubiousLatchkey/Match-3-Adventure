@@ -1,0 +1,19 @@
+|ann 0.35 0,gabriella 0.65 0
+|title "On the Road to the Next Town"
+|setBackground Inn
+|transition skeletonCamp
+: On the road to the next town...
+ann: Aw crud.  Looks like I'm gonna have to eat my words.
+|moveTo gabriella 8 0.4 0 1
+|moveTo ann 8 0.2 0 1
+|enter thief 0.75 0
+thief: Where do you think you're going, ladies?  If you want to pass this road, you need to pay the toll.
+ann: I can spare a copper.
+thief: Interesting you say that.
+: The bandit gestures towards Gabriella's bejeweled top with his blade.
+thief: Because I think you can spare a lot more than that.
+gabriella: If you think I'm cutting one of these out to give to you, you've got another thing coming.
+bandit: Hey, that's Mage's Guild garb - those two are the ones who killed Kenny!
+ann: You'll join him if you don't let us through!
+thief: Yeah, I don't think so.
+|combatDirect tollCombat

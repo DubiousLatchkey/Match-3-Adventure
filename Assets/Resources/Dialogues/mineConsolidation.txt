@@ -35,7 +35,7 @@ gabriella: Here it shows they have enough to cover a month's expenses.  If the g
 ann: Never hoped someone was embezzling money before...
 gabriella: Ok, here we go with the all-important income section.  Looks like shipments are monthly as well, and their client paid them around 600 gold last month.
 ann: Shoot, so a 400 gold profit?
-gabriella: You forgot operating costs.  I'm eyeballing it here, but it looks around 200 gold a month.  That leaves us with a 200 gold profit which seems right since it looks like that's how much they sent to Arcadiopolis each month.  That's not bad at all - 200 gold a month is 2400 gold a year - enough for a lavish lifestyle.
+gabriella: You forgot operating costs.  I'm eyeballing it here, but it looks around 200 gold a month.  That leaves us with a 200 gold profit which seems right since it looks like that's how much they sent to Philadelphia each month.  That's not bad at all - 200 gold a month is 2400 gold a year - enough for a lavish lifestyle.
 margaret: Wow, Lord Blair made that much money from this place?
 gabriella: Probably more.  With the other mines, he controlled a good percentage of the ley supply in the Empire which probably gave him leverage for better contracts.  Not to mention economies of scale -
 ann: Yeah, it's a lot of money, but we're missing the important part - it's not enough to pay Clarissa's mercenaries.  It's not even close unless we wait half a year.
@@ -58,19 +58,14 @@ ann: If you came all the way to watch, you could have helped.
 clarissa: I could have, but I don't didn't see the profit in it.  But now that you were successful, my getting paid seems a lot more likely.  So, what's the verdict on this mine?  
 ann: It's very profitable, but not as profitable as I had hoped.  We can net 200 gold a month and probably less the first month.
 clarissa: I quoted you, what, a thousand gold?  I'm willing to take payment month by month but you're still short around hundred gold a month and I do want at least 2 months up front.  I'm feeling generous - call it 650.
-gabriella: Like I said before, my father will cover the difference.  If you lend me one of your people for protection, we can ride out to Duvall territory, and we'll have it in a few weeks.  It'll be a loan, so we'll need to retain the right to spoils in Arcadiopolis so we can pay it back.
+gabriella: Like I said before, my father will cover the difference.  If you lend me one of your people for protection, we can ride out to Duvall territory, and we'll have it in a few weeks.  It'll be a loan, so we'll need to retain the right to spoils in Philadelphia so we can pay it back.
 margaret: Also, I know the wealthier folks around here have paid you for longer term security contracts, if we fold them into this, it should cover some of the costs.  I'll try to convince them.
 clarissa: Spoils rights are no issue if you pay my full price, and I'm willing to give a discount depending how many landowners I don't have to keep defending.  Deal.
 ann: Hang on, while you and whoever we send to deliver the ley is gone, we'll need to continue to guard the mine in case Taney's bandits come back.
 clarissa: Oh, they will.  Don't worry, defending is easier than attacking.  I'd be more than willing to help if you can pay up.
 ann: We'll give you a more exact amount we can pay later, but we will need it.
-clarissa: I'll make it simple for you - one gold coin per mercenary for the duration of the time Gabriella takes to get the full amount
+clarissa: I'll make it simple for you - one gold coin per mercenary for the duration of the time Gabriella takes to get the full amount.
 margaret: That's ludicrously high!  I should become a mercenary...
 clarissa: Oh, it's not like they get paid that full amount.  I have to feed and equip them, oh, and don't forget my cut.
 ann: I'll take it.
-|transition slaverCampInterior
-|exit margaret left
-|exit clarissa left
-|exit gabriella right
-|translate ann 0.5 0
-: One week later...
+|gearStop mineDefensePrep

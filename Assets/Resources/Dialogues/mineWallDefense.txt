@@ -1,0 +1,7 @@
+|ann 0.35 0,margaret 0.65 0
+|setBackground Wall
+|title "The Dread of Waiting"
+ann: Stop them from reaching the gate!
+margaret: Shouldn't the mercenaries be attacking by now?
+ann: Not yet.  They need to be entirely in the kill zone.  Keep shooting!
+|combatDirect wallDefenseCombat2

@@ -1,0 +1,93 @@
+|ann 0.35 0
+|setBackground slaverCampExterior
+|title Return
+: A week later...
+: The thundering of hooves precedes the appearance of a lone horse.  Atop it, is Gabriella, who dismounts at the gate.
+|enter gabriella 0.65 0
+|moveTo ann 8 0.35 0 1
+gabriella: Wow, you've been busy here!  I remember there being more trees.
+ann: Yeah, fortifications.  First though, you're back!  Where's your escort?
+gabriella: Oh, she went to tell Clarissa the good news - I got the money!
+ann: Amazing!  Where is it?
+gabriella: Oh it's just here in my pack.  
+: She tosses the it to Ann.
+ann: Wow, that's heavy, but not as heavy as I thought.  Are you sure there's a thousand gold in here?
+gabriella: My dad taught me a trick once - 100 gold coins is one pound, so 1000 is ten pounds.
+ann: Imagine having so much money you need to weigh it...
+gabriella: Hah.  He did give me a few stipulations though.
+ann: Ok, anything crazy?
+gabriella: The loan is to you, but he wants me to manage the money.
+ann: Reasonable, I suppose considering he's never met me.
+gabriella: Aaaand, since you don't exactly have collateral, if you fail to pay it back you have to work for him until you pay it back, which is likely going to be forever.
+ann: I see...
+gabriella: That's an amazingly good loan agreement if you think about it.  In my opinion it shows he values your work, or believes that you, someday, will be able to pay it back.
+ann: How did you describe me to make him think that?
+gabriella: I was honest.  I said you were ambitious and never let anything stop or slow you down.
+ann: And he just took that?
+gabriella: He said that if I believe in you, he believes in you.
+ann: You believe in me?  Aww...
+gabriella: Of course!  Any sane person would have said "Gee, I don't want to die for these measurements" and turned around the moment they saw bandits.
+ann: Now you're calling me insane?
+gabriella: In a good way!  Most people have their passions, but they aren't, I don't know, driven like you are.  I remember when you were learning to write and I couldn't find a pen and it turned out that you had gone through all of them.  All of them!
+ann: Well, everyone else could read and write.  I kind of had to study hard just to keep up.
+gabriella: And there was that time last year when I got that military posting and you really wanted it too, but they weren't taking apprentices.  Then, on the day when I went, you just kind of showed up and they didn't look too closely at the paperwork and you just, like, did the job?
+ann: I needed the experience!
+gabriella: How did you even live the first year at the guild?  I know for sure Mary wasn't paying you before you took the apprentice's exam.
+ann: I mean, she did give me a bed.  I just used the mess hall mostly - no one questioned me.  I also worked some odd jobs.
+gabriella: See, that's crazy, since I know you also basically lived in the library and somehow went from being completely illiterate with no formal schooling to passing that exam in a year.  And that's just the stuff I can remember off the top of my head.
+ann: Is it really that crazy?  It's the only path I had that could actually lead me somewhere instead of just living and dying a farmer.
+gabriella: Let me ask you this - did the guys we sent to sell the ley to the guild get back?
+ann: Yeah, yesterday actually.  500 gold.  Most of it I had to spend on keeping the mine running.
+gabriella: I think the only reason Mary would even buy that ley is because she sees it in you too.  You know, usually, these large transactions involve a lot of back and forth negotiations before a commitment.  There's a reason she paid up now and there's a reason she picked you up off the street - she thinks you can make this work.
+ann: Thanks, Gabby.
+gabriella: Anytime.  Where was I?  Right, the loan.  My father only wants 20% interest and he gave you 2 years to pay it back.
+ann: Well, succeed or fail, it'll be over in less than 1.
+gabriella: Not necessarily.  We're only short 100 gold a month assuming we can get 200 gold a month from the mine.  If we can keep that up, we can theoretically go 10 months.  Then, I assume if we don't succeed, we'll still have a mercenary army and can, say, seize another mine from Taney.  Then we might be profitable and pay things off.
+ann: That's some good business sense.  I wasn't even thinking of it from that perspective.
+gabriella: My father wouldn't have agreed to it if he didn't think he would make money.  I made a whole business plan and everything for him.
+: A horse pulls to a sudden stop from a full gallop.
+|moveTo ann 8 0.2 0 1
+|moveTo gabriella 8 0.4 0 1
+|enter clarissa 0.75 0
+clarissa: I heard the good news.  Is this happening?
+ann: It is, we have your payment for the first 2 months.
+clarissa: Excellent.  It's good timing too because those bandits are up to something.
+ann: Your mysterious plan - I'm dying to hear it.
+clarissa: Your goal is to take Philadelphia and restore order to Blair lands.  I have a way we can make taking Philadelphia a lot more easily.
+gabriella: Oh, just say it!
+clarissa: I figure that Taney has got most of her people already tied up.  There's a lot of territory to cover and a lot of assets to protect.  She's only mustered around 200 men to retake the mine which is less than I would have thought.  
+ann: Or she didn't think we were worth mobilizing her full force.
+clarissa: Regardless, we want these guys dealt with so they can't help defend Philadelphia later.  I say, we goad them into attacking.  Don't reinforce the gate, rotate fewer sentries on at night to appear undermanned and I'll bet you they'll attack within a week.  Our biggest advantage here is actually that they don't know about me.
+ann: What do you mean by that?
+clarissa: Well, what have I done so far?  I've helped you build some fortifications, but Taney's people know me as someone who gives guard contracts, not a real fighting force.  After all, how could the villages pay for it?  I'll pull my guys from the mine, and it will appear like our business is complete.  You can have some villages station the post and they'll attack thinking it's easy pickings.  Then, that's when I come in.  I'll hide my guys out of eyesight and once they attack, we'll hit them from behind.  They'll be sandwiched between our fortifications and our army.  I've been able to call in around 200 soldiers myself - with volunteers from the villages in the mine, we'll outnumber and outposition them.  Once my cavalry come in, they'll be done for.  
+gabriella: A sly strategy.
+clarissa: After that, Taney will have some choices depending on how strong she thinks her position is.  If she has a lot more men, she'll meet us in open combat.  We'll probably have to go on the offensive then. If she has some men, but not more than us, she'll probably sit tight in Philadelphia and fortify.  If this is all her guys, she'll have to pull in those she has managing other productive assets and fortify.  That's the best case, because that means we've basically liberated the region except for the city itself.
+ann: Let's not get ahead of ourselves.  First, we have to win here.
+clarissa: Agreed.  I'll pull my guys out and move my camp nearby but far enough to remain hidden.  I have more horses than experienced riders right now - do either of you have experience with mounted combat?
+gabriella: I've had some training.
+ann: I can't ride.
+gabriella: Then I'll go with Clarissa while you stay here and guard the mine.
+ann: Alright.  This should be the last time we talk here in front of the mine too - if we have any more business, we discuss it at your camp to keep the ruse up.
+|transition Wall
+|exit gabriella left
+|exit clarissa right
+|translate ann 0.35 0
+: Four days later...
+ann: (Every day we wait I have to pay to feed the villagers to defend the mine... Why can't they attack already?)
+|enter margaret 0.65 0
+margaret: It's happening.
+ann: For real?
+margaret: A scout just reported in - they're making formations and heading over.
+ann: If the scout had time to talk to you're they're probably almost here.  We need to send a message to Clarissa and Gabby.
+margaret: Already enroute.
+: Ann peeks over the edge of the wall.
+ann: Shoot, they're already here.  They're gathering at the treeline.
+|moveTo ann 3 0.25 0 1
+: Ann moves over to the alarm bell and rings it.  The volunteer force rushes to get into positions.  Those who can shoot mount the wall.  Most remain hidden, lying in wait for the mercenaries to strike the rear line.
+|moveTo ann 3 0.35 0 1
+: They wait.
+margaret: What are they waiting for?
+ann: Girl, I don't know.
+: With a thunk, an arrow lands nearby.
+ann: It's showtime!  Return fire!
+|combatDirect wallDefenseCombat1

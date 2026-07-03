@@ -1,0 +1,24 @@
+|ann 0.5 0
+|title "A Carriage Under Attack"
+|setBackground slaverCampInterior
+: One week later...
+ann: And that leaves... 10 spare gold.  Enough for ten mercenaries.  Ok, sure.
+|enter margaret 0.65 0
+|moveTo ann 8 0.35 0 1
+margaret: Ann!  There's a carriage on the road being attacked.  We need your help!
+|move margaret 4 0.1 0 1
+ann: We can't leave the mine undefended.
+margaret: Hey, this might not be your home, but it's mine.  The mine will take care of itself for a bit, now come on, and let's go!
+ann: Sorry, it's just I don't know if we can afford - whatever I'm coming!
+|moveTo ann 4 1.2 0 1
+|moveTo margaret 4 1.2 0 1
+|transition OutsideOfTheCastle
+|moveTo ann 4 0.6 0 1
+|moveTo margaret 4 0.8 0 1
+margaret: There, look!
+ann: Wow that's a fancy carriage.
+: A group of ten or so bandits is surrounding a carriage.  Its guards have dismounted but while they are better equipped, they are outnumbered two to one.
+bandit: Hey, behind you!
+|enter bandit 0.25 0
+margaret: Surprise!
+|combatDirect caravanRescueCombat

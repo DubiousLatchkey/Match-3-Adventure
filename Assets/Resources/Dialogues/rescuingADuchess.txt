@@ -1,0 +1,90 @@
+|ann 0.6 0,bandit 0.25 0,margaret 0.8 0
+|setBackground OutsideOfTheCastle
+|title "Rescuing A Duchess"
+: With their numbers reduced by the combined efforts of the soldiers and the two rescuers, the bandits hastily remove themselves from the scene
+|exit bandit left
+soldier: Thanks for the assist.
+margaret: Just doing our part.
+: The carriage doors open.
+|enter rehnquist 0.25 0
+rehnquist: To whom do I owe my daring rescue?
+margaret: My lady, I am Margaret.
+ann: And I'm Ann, my lady.
+rehnquist: You should address me as "Your Grace", but given the circumstances, I can forgive any lapses in decorum.  I am Duchess Rehnquist.  You have my thanks.
+ann: THE Duchess Rehnquist?
+rehnquist: The one and only.
+ann: You're a long way from Thessalonike.
+rehnquist: Indeed.  Although...
+: She observes Ann.
+rehnquist: There was word in the villages of a pair of mages who had come to rid the theme of bandits.  Would that perhaps be you?
+ann: Yes, Your Grace.
+rehnquist: Fascinating, then you are also some ways from Constantiapolis, are you not?
+rehnquist: There are many reasons one might be travelling, and I will not be divulging my purpose here.
+margaret: Your Grace, if you intend to travel, we must advise you not to continue south.  Philadelphia is overrun with -
+rehnquist: Bandits - yes, I'm familiar with Taney and her little gang.  Too familiar.
+margaret: Ah, of course, Your Grace.
+ann: Not for long if we can help it.  We're looking to take it, er, for the sake of the Empire's stability, of course.
+rehnquist: Right.  In any case, I don't have time to wait for that.  Captain?  Get us moving again.
+: As she returns to her carriage, she tosses a bag of coin of at Ann.
+rehnquist: Consider this payment for your help - and for your silence.  I was never here, understand?
+margaret: Yes, Your Grace.
+rehnquist: Oh, and if you do succeed, contact me.  I'm sure woman of your... ambition should have no problem with that.
+|exit rehnquist left
+: With the strike of a whip, the carriage continues on its journey with its mounted guard.
+|moveTo ann 4 0.35 0 1
+|moveTo margaret 4 0.65 0 1
+ann: 22, 23, 24 - there's 25 gold coins in here!
+margaret: That's enough to last me 2 years!  Or to expand my farm!
+ann: She just had this lying around?
+margaret: She really didn't want anyone knowing she was here.
+ann: I mean she's not exactly travelling subtly.
+margaret: I guess she's not disguising that she's rich, just her identity.
+ann: What do you think she was doing here?
+margaret: She just paid us 25 gold not to ask questions!
+ann: She paid us to not tell anyone else.  It can't hurt to speculate.
+margaret: Ok, well, it's got to be really bad, right?  Something scandalous - like a secret lover!
+ann: Or she's got assassins on her and wants to keep a low profile.
+margaret: That doesn't explain why she's here though.
+ann: Hmmm, I got it - she's got assassins on her, so she took an extended vacation around the Empire - always moving to avoid them catching up.
+margaret: Sounds like something out of an epic poem a singer would perform.  Wait, I've got it, maybe it has something to do with Taney...  she said she knew her.
+ann: The one thing I know about Duchess Rehnquist is that she led the last war.  If Taney was a veteran... maybe they do know each other.
+margaret: I guess they had a falling out considering what just happened.
+ann: Yeah, at least we stopped those bandits from getting their hands on this 25 gold.  We can hire 25 more mercenaries with this for until Gabby gets back.
+margaret: Hey, half of that is mine!
+ann: What are you going to spend it on?  It doesn't matter if you expand your farm if bandits just raid it.
+margaret: I hate how that's true... Money really is useless without the rule of law.  
+margaret: How about this, I'll say I invested my twelve and a half gold into our scheme here - you can pay me back after you pay back Gabriella's father.
+ann: You know, if we fail, you'll never see this gold again - you could just take it and make a life somewhere else.
+margaret: Where would I go?  This is where my family is - where everyone I've ever known is.  If I wanted to leave, I would have when the bandits first came around.  I'm staying.  And if I'm staying, I'm investing in the community.
+ann: Funny, because I'm not really your community.
+margaret: Well, you are now.  You've given us more hope for our community than anyone has in years.  Even if we fail, you're welcome to stay with us.
+ann: Thanks, but I'm trying not to be a farmer.  I'm trying to be more, and this is the most significant thing I've ever done, so you better believe I'm going to do everything to make it work.  I don't want to be out a thousand gold to Gabby's dad.
+margaret: Right, we better get to Clarissa then.
+|transition SkeletonCamp
+|moveTo ann 8 0.6 0 1
+|moveTo margaret 8 0.8 0 1
+|enter clarissa 0.25 0
+ann: Clarissa, I have 35 gold for you.  It's what the mine had after expenses.
+clarissa: You came through, good.  My scouts have been seeing signs that the bandits are grouping for a large attack - no prize for guessing where they're going to hit.
+ann: As someone with military experience, what would you recommend?
+clarissa: Well, I can give you 35 guys, but they're not going to beat what Taney is preparing.
+: She pauses.
+clarissa: Look, I want this to work.  Right now, the contracts I have to guard land in the villages around here don't take up all my soldiers.  That means I've got idle folk, and idle mercenaries aren't good for anyone.  We've been here a while, which means that we like your people Margaret - we don't want to do what Taney is doing and start raiding.  I keep my best guys here on half pay, but I can't afford to do that for everyone.  I had to let a lot of guys go temporarily until I could find a contract.  This is our big ticket.  I can call everyone back in, but there needs to be money on the table by the time they get here.
+clarissa: Am I clear?
+ann: Crystal.  You can count on Gabby - she'll be here soon.
+clarissa: Good.  This 35 gold isn't a lot, but it shows your intent.  My plan will assume the money arrives, because if not, this whole conversation is moot.  These 35 guys - I'm not going have them guard the mine.
+margaret: You're not?
+clarissa: Taney is coming in organized.  Guards are for warding off opportunistic scavengers and idiots with swords trying to make a quick buck.  Against an organized attack, we need an organized defense.
+ann: What would that involve?
+clarissa: There's already a wall and watchtowers, which is good.  Next, we need to make their approach harder.  If we clear the surrounding trees, we get rid of their cover - arrows and magic can rain hell on them as they approach.  We then use the lumber from the trees to make wooden stakes and plant them in the earth to make them have to navigate around them and spend more time exposed.  There's probably also enough time to dig a ditch in front of the wall.  The dirt can help reinforce the wall and make it more resistant to fire.
+ann: So... construction work?
+clarissa: Don't believe the stories.  War is 80% construction and 20% fighting.  If I wanted to take your mine and I saw those fortifications, I'd think twice.  It might even deter them from attacking entirely and they'll just try and starve you out.  Hmm...
+margaret: What is it?
+clarissa: There's a difference between winning a battle and winning a war.  I can guard against bandit attacks on supplies, but that doesn't bring us any closer to defeating them or taking Philadelphia as the ultimate goal is - it just leaves us at an impasse.
+ann: What's the alternative?
+clarissa: Depends on what exactly we're dealing with.  It also depends on how many people I can muster - I'll need to take stock of my equipment too.  Talk to me again later.
+ann: Later when we have the money, you mean.
+clarissa: Entirely coincidental, I assure you.  I'll send the 35 over now to begin fortifying.
+ann: Ok, we're counting on you, then.
+clarissa: Oh, believe me, I know.
+|gearStop mineCounterattackPrep
